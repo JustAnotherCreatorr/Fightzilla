@@ -19,6 +19,10 @@ public class prototypingmovement : MonoBehaviour
      */
 
     public Animator animator;
+    public int gradualIncrease = 5;
+    private float speed;
+    private float acceleration;
+    private bool holdingDown;
 
     // Start is called before the first frame update
     void Start()
@@ -31,31 +35,46 @@ public class prototypingmovement : MonoBehaviour
     {
         float horizontal = Input.GetAxis("Horizontal");
 
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (Input.anyKey && horizontal != 0f)
         {
-            if (Input.GetKey(KeyCode.LeftShift))
-            {
-                animator.SetFloat("MoveSpeed", 1f);
-            }
-            else
-            {
-                animator.SetFloat("MoveSpeed", horizontal);
-            }
-        } 
-
-        if (Input.GetKeyUp(KeyCode.RightArrow))
-        {
-            StartCoroutine(GradualDecrease(horizontal));
+            acceleration = speed + Time.deltaTime;
+            //speed += 0.1f * Time.deltaTime * gradualIncrease;
+            speed = horizontal * acceleration;
+            holdingDown = true;
+            Debug.Log("A key is being pressed");
         }
+        else
+        {
+            //if ()
+            //{
+            //    horizontal -= 0.1f * time.deltatime * gradualincrease;
+            //}
+        }
+
+        animator.SetFloat("MoveSpeed", speed);
+
+        if (speed == 0f)
+        {
+            StopCoroutine(GradualDecrease(speed));
+            return;
+        }
+
+        if (!Input.anyKey && holdingDown)
+        {
+            Debug.Log("A key was released");
+            holdingDown = false;
+            acceleration = 0f;
+            StartCoroutine(GradualDecrease(speed));
+        }
+
+        animator.SetFloat("MoveSpeed", speed);
+
     }
 
-    IEnumerator GradualDecrease(float horizontal)
-    {
-
-        float nhorizontal = horizontal - 0.01f;
-        animator.SetFloat("MoveSpeed", nhorizontal);
-        Debug.Log(horizontal);
-        yield return new WaitForSeconds(.1f);
-        
-    }
+     IEnumerator GradualDecrease(float speed)
+     {
+        gradualIncrease *= -1;
+        speed -= 0.1f * Time.deltaTime * gradualIncrease;
+        yield return new WaitForSeconds(.001f);
+     } 
 }
