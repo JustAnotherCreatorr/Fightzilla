@@ -50,7 +50,6 @@ public class prototypingmovement : MonoBehaviour
             acceleration = posSpeed + Time.deltaTime;
             float PosHorizontal = Mathf.Abs(horizontal);
             posSpeed = PosHorizontal * acceleration * runAccel;
-            print($"Acceleration: {acceleration}. Speed: {posSpeed}. Horizontal: {PosHorizontal}");
             holdingDown = true;
             speed = posSpeed;
         }
@@ -59,10 +58,14 @@ public class prototypingmovement : MonoBehaviour
 
         if (!Input.anyKey && holdingDown)
         {
-            Debug.Log("A key was released");
-            holdingDown = false;
-            acceleration = 0f;
-            StartCoroutine(GradualDecrease());
+            if (horizontal != 0f)
+            {
+                Debug.Log("A key was released");
+                holdingDown = false;
+                acceleration = 0f;
+                StartCoroutine(GradualDecrease());
+            }
+            
         }
 
         if (horizontal > 0)
@@ -97,14 +100,16 @@ public class prototypingmovement : MonoBehaviour
 
     IEnumerator GradualDecrease()
      {
-        while (speed > 0f)
+        float posSpeed = Mathf.Abs(speed);
+
+        while (posSpeed > 0f)
         {
-            speed -= 0.1f * Time.deltaTime * gradualIncrease;
-            Debug.Log(speed);
+            posSpeed -= 0.1f * Time.deltaTime * gradualIncrease;
+            speed = posSpeed;
             yield return new WaitForEndOfFrame();
         }
 
-        if (speed < 0f && !Input.GetKey(KeyCode.LeftArrow))
+        if (posSpeed < 0f && !Input.GetKey(KeyCode.LeftArrow))
         {
             speed = 0f;
         }
