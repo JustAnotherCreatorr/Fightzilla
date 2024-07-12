@@ -23,6 +23,10 @@ public class prototypingmovement : MonoBehaviour
     private float speed;
     private float acceleration;
     private bool holdingDown;
+    private float maxSpeed = 1;
+    private float maxNegativeSpeed = -1;
+    private float runAccel = 1;
+
 
     // Start is called before the first frame update
     void Start()
@@ -34,47 +38,75 @@ public class prototypingmovement : MonoBehaviour
     void Update()
     {
         float horizontal = Input.GetAxis("Horizontal");
+        bool shiftPressed = Input.GetKey(KeyCode.RightShift);
+
+        Sprint(shiftPressed);
+
+        // if right is being pressed
 
         if (Input.anyKey && horizontal != 0f)
         {
-            acceleration = speed + Time.deltaTime;
-            //speed += 0.1f * Time.deltaTime * gradualIncrease;
-            speed = horizontal * acceleration;
+            float posSpeed = Mathf.Abs(speed); 
+            acceleration = posSpeed + Time.deltaTime;
+            float PosHorizontal = Mathf.Abs(horizontal);
+            posSpeed = PosHorizontal * acceleration * runAccel;
+            print($"Acceleration: {acceleration}. Speed: {posSpeed}. Horizontal: {PosHorizontal}");
             holdingDown = true;
-            Debug.Log("A key is being pressed");
-        }
-        else
-        {
-            //if ()
-            //{
-            //    horizontal -= 0.1f * time.deltatime * gradualincrease;
-            //}
+            speed = posSpeed;
         }
 
-        animator.SetFloat("MoveSpeed", speed);
-
-        if (speed == 0f)
-        {
-            StopCoroutine(GradualDecrease(speed));
-            return;
-        }
+        // no keys are being pressed
 
         if (!Input.anyKey && holdingDown)
         {
             Debug.Log("A key was released");
             holdingDown = false;
             acceleration = 0f;
-            StartCoroutine(GradualDecrease(speed));
+            StartCoroutine(GradualDecrease());
         }
 
-        animator.SetFloat("MoveSpeed", speed);
+        if (horizontal > 0)
+        {
+            speed = Mathf.Abs(speed);
+        } 
+        else if (horizontal < 0)
+        {
+            speed = -Mathf.Abs(speed);
+        }
 
+        speed = Mathf.Clamp(speed, maxNegativeSpeed, maxSpeed);
+
+        animator.SetFloat("MoveSpeed", speed);
     }
 
-     IEnumerator GradualDecrease(float speed)
+    private void Sprint(bool shiftPressed)
+    {
+        if (shiftPressed)
+        {
+            maxSpeed = 2;
+            maxNegativeSpeed = -2;
+            runAccel = 1.07f;
+        }
+        else
+        {
+            maxSpeed = 1;
+            maxNegativeSpeed = -1;
+            runAccel = 1;
+        }
+    }
+
+    IEnumerator GradualDecrease()
      {
-        gradualIncrease *= -1;
-        speed -= 0.1f * Time.deltaTime * gradualIncrease;
-        yield return new WaitForSeconds(.001f);
+        while (speed > 0f)
+        {
+            speed -= 0.1f * Time.deltaTime * gradualIncrease;
+            Debug.Log(speed);
+            yield return new WaitForEndOfFrame();
+        }
+
+        if (speed < 0f && !Input.GetKey(KeyCode.LeftArrow))
+        {
+            speed = 0f;
+        }
      } 
 }
