@@ -27,6 +27,7 @@ public class prototypingmovement : MonoBehaviour
     private float maxNegativeSpeed = -1;
     private float runAccel = 1;
 
+    public Animation dashForward;
 
     // Start is called before the first frame update
     void Start()
@@ -39,15 +40,21 @@ public class prototypingmovement : MonoBehaviour
     {
         float horizontal = Input.GetAxis("Horizontal");
         bool shiftPressed = Input.GetKey(KeyCode.RightShift);
+        bool dashPressed = Input.GetKeyDown(KeyCode.Comma);
+        bool upArrowPressed = Input.GetKeyDown(KeyCode.UpArrow);
 
         Sprint(shiftPressed);
+
+        Dash(dashPressed);
+
+        Jump(upArrowPressed);
 
         // if right is being pressed
 
         if (Input.anyKey && horizontal != 0f)
         {
             float posSpeed = Mathf.Abs(speed); 
-            acceleration = posSpeed + Time.deltaTime;
+            acceleration = posSpeed + Time.deltaTime + 0.1f;
             float PosHorizontal = Mathf.Abs(horizontal);
             posSpeed = PosHorizontal * acceleration * runAccel;
             holdingDown = true;
@@ -60,7 +67,7 @@ public class prototypingmovement : MonoBehaviour
         {
             if (horizontal != 0f)
             {
-                Debug.Log("A key was released");
+               // Debug.Log("A key was released");
                 holdingDown = false;
                 acceleration = 0f;
                 StartCoroutine(GradualDecrease());
@@ -80,6 +87,7 @@ public class prototypingmovement : MonoBehaviour
         speed = Mathf.Clamp(speed, maxNegativeSpeed, maxSpeed);
 
         animator.SetFloat("MoveSpeed", speed);
+    
     }
 
     private void Sprint(bool shiftPressed)
@@ -98,13 +106,40 @@ public class prototypingmovement : MonoBehaviour
         }
     }
 
+    private void Dash(bool dashPressed)
+    {
+        if (dashPressed && speed > 0f)
+        {
+            animator.SetBool("dashPressed", true);
+            animator.Play("Base Layer.DashForward");
+            animator.SetBool("dashPressed", false);
+        }
+
+        if (dashPressed && speed < 0f)
+        {
+            animator.SetBool("dashPressed", true);
+            animator.Play("Base Layer.DashBackward");
+            animator.SetBool("dashPressed", false);
+        }
+    }
+
+    private void Jump(bool spacePressed)
+    {
+        if (spacePressed)
+        {
+            animator.SetBool("spacePressed", true);
+            animator.Play("Base Layer.Jump");
+            animator.SetBool("spacePressed", false);
+        }
+    }
+
     IEnumerator GradualDecrease()
      {
         float posSpeed = Mathf.Abs(speed);
 
         while (posSpeed > 0f)
         {
-            posSpeed -= 0.1f * Time.deltaTime * gradualIncrease;
+            posSpeed -= 0.2f * Time.deltaTime * gradualIncrease;
             speed = posSpeed;
             yield return new WaitForEndOfFrame();
         }
