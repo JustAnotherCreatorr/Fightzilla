@@ -170,10 +170,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 43326226}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78ca3b377601e8345a11509c224c6d07, type: 3}
+  m_Script: {fileID: 11500000, guid: 29971a6043cd4904a84c8a0b8bf07f22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  value: 140
+  newAmount: 0
+  Amount: {fileID: 1972097266}
+  winCPU: {fileID: 0}
+  winP2: {fileID: 0}
+  winCPUTT: {fileID: 0}
+  winP2TT: {fileID: 43326229}
+  noWinTM: {fileID: 0}
+  ONEwinTM: {fileID: 0}
+  TWOwinTM: {fileID: 0}
+  winTM: {fileID: 0}
+  selectedButton: {fileID: 0}
+  buttonPressed: 0
+  value: 130
 --- !u!114 &43326229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -216,7 +228,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 43326230}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 43326228}
+        m_MethodName: OnMouseDown
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &43326230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -609,9 +632,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 166313014}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78ca3b377601e8345a11509c224c6d07, type: 3}
+  m_Script: {fileID: 11500000, guid: 29971a6043cd4904a84c8a0b8bf07f22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  newAmount: 0
+  Amount: {fileID: 1972097266}
+  winCPU: {fileID: 0}
+  winP2: {fileID: 166313017}
+  winCPUTT: {fileID: 0}
+  winP2TT: {fileID: 0}
+  noWinTM: {fileID: 0}
+  ONEwinTM: {fileID: 0}
+  TWOwinTM: {fileID: 0}
+  winTM: {fileID: 0}
+  selectedButton: {fileID: 0}
+  buttonPressed: 0
   value: 100
 --- !u!114 &166313017
 MonoBehaviour:
@@ -656,8 +691,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1972097268}
-        m_MethodName: ButtonClicked
+      - m_Target: {fileID: 166313016}
+        m_MethodName: OnMouseDown
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1138,8 +1173,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: 29971a6043cd4904a84c8a0b8bf07f22, type: 3}
-        m_MethodName: 
+      - m_Target: {fileID: 663580678}
+        m_MethodName: OnMouseDown
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1195,9 +1230,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 663580673}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78ca3b377601e8345a11509c224c6d07, type: 3}
+  m_Script: {fileID: 11500000, guid: 29971a6043cd4904a84c8a0b8bf07f22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  newAmount: 0
+  Amount: {fileID: 1972097266}
+  winCPU: {fileID: 663580675}
+  winP2: {fileID: 0}
+  winCPUTT: {fileID: 0}
+  winP2TT: {fileID: 0}
+  noWinTM: {fileID: 0}
+  ONEwinTM: {fileID: 0}
+  TWOwinTM: {fileID: 0}
+  winTM: {fileID: 0}
+  selectedButton: {fileID: 0}
+  buttonPressed: 0
   value: 75
 --- !u!1 &714618528
 GameObject:
@@ -1248,9 +1295,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 714618528}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78ca3b377601e8345a11509c224c6d07, type: 3}
+  m_Script: {fileID: 11500000, guid: 29971a6043cd4904a84c8a0b8bf07f22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  newAmount: 0
+  Amount: {fileID: 1972097266}
+  winCPU: {fileID: 0}
+  winP2: {fileID: 0}
+  winCPUTT: {fileID: 0}
+  winP2TT: {fileID: 0}
+  noWinTM: {fileID: 0}
+  ONEwinTM: {fileID: 0}
+  TWOwinTM: {fileID: 0}
+  winTM: {fileID: 714618531}
+  selectedButton: {fileID: 0}
+  buttonPressed: 0
   value: 400
 --- !u!114 &714618531
 MonoBehaviour:
@@ -1294,7 +1353,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 714618532}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 714618530}
+        m_MethodName: OnMouseDown
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &714618532
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1409,8 +1479,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 153, y: -75.35431}
-  m_SizeDelta: {x: 529.21045, y: 150.70862}
+  m_AnchoredPosition: {x: 249.6, y: -50}
+  m_SizeDelta: {x: 500, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &941621493
 MonoBehaviour:
@@ -1438,7 +1508,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 300
-    m_Alignment: 4
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -1510,9 +1580,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 1097627358}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78ca3b377601e8345a11509c224c6d07, type: 3}
+  m_Script: {fileID: 11500000, guid: 29971a6043cd4904a84c8a0b8bf07f22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  newAmount: 0
+  Amount: {fileID: 1972097266}
+  winCPU: {fileID: 0}
+  winP2: {fileID: 0}
+  winCPUTT: {fileID: 0}
+  winP2TT: {fileID: 0}
+  noWinTM: {fileID: 1097627361}
+  ONEwinTM: {fileID: 0}
+  TWOwinTM: {fileID: 0}
+  winTM: {fileID: 0}
+  selectedButton: {fileID: 0}
+  buttonPressed: 0
   value: -100
 --- !u!114 &1097627361
 MonoBehaviour:
@@ -1556,7 +1638,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1097627362}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1097627360}
+        m_MethodName: OnMouseDown
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1097627362
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1726,9 +1819,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 1517010445}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78ca3b377601e8345a11509c224c6d07, type: 3}
+  m_Script: {fileID: 11500000, guid: 29971a6043cd4904a84c8a0b8bf07f22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  newAmount: 0
+  Amount: {fileID: 1972097266}
+  winCPU: {fileID: 0}
+  winP2: {fileID: 0}
+  winCPUTT: {fileID: 0}
+  winP2TT: {fileID: 0}
+  noWinTM: {fileID: 0}
+  ONEwinTM: {fileID: 0}
+  TWOwinTM: {fileID: 1517010448}
+  winTM: {fileID: 0}
+  selectedButton: {fileID: 0}
+  buttonPressed: 0
   value: 150
 --- !u!114 &1517010448
 MonoBehaviour:
@@ -1772,7 +1877,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1517010449}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1517010447}
+        m_MethodName: OnMouseDown
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1517010449
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1859,9 +1975,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 1547871839}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78ca3b377601e8345a11509c224c6d07, type: 3}
+  m_Script: {fileID: 11500000, guid: 29971a6043cd4904a84c8a0b8bf07f22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  newAmount: 0
+  Amount: {fileID: 1972097266}
+  winCPU: {fileID: 0}
+  winP2: {fileID: 0}
+  winCPUTT: {fileID: 0}
+  winP2TT: {fileID: 0}
+  noWinTM: {fileID: 0}
+  ONEwinTM: {fileID: 1547871842}
+  TWOwinTM: {fileID: 0}
+  winTM: {fileID: 0}
+  selectedButton: {fileID: 0}
+  buttonPressed: 0
   value: 50
 --- !u!114 &1547871842
 MonoBehaviour:
@@ -1905,7 +2033,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1547871843}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1547871841}
+        m_MethodName: OnMouseDown
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1547871843
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2159,10 +2298,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 1777303478}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78ca3b377601e8345a11509c224c6d07, type: 3}
+  m_Script: {fileID: 11500000, guid: 29971a6043cd4904a84c8a0b8bf07f22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  value: 120
+  newAmount: 0
+  Amount: {fileID: 1972097266}
+  winCPU: {fileID: 0}
+  winP2: {fileID: 0}
+  winCPUTT: {fileID: 1777303481}
+  winP2TT: {fileID: 0}
+  noWinTM: {fileID: 0}
+  ONEwinTM: {fileID: 0}
+  TWOwinTM: {fileID: 0}
+  winTM: {fileID: 0}
+  selectedButton: {fileID: 0}
+  buttonPressed: 0
+  value: 110
 --- !u!114 &1777303481
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2205,7 +2356,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1777303482}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1777303480}
+        m_MethodName: OnMouseDown
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1777303482
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2412,7 +2574,6 @@ GameObject:
   - component: {fileID: 1972097265}
   - component: {fileID: 1972097267}
   - component: {fileID: 1972097266}
-  - component: {fileID: 1972097268}
   m_Layer: 5
   m_Name: Amount
   m_TagString: Untagged
@@ -2436,8 +2597,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 310, y: -56}
-  m_SizeDelta: {x: 529.21045, y: 150.70862}
+  m_AnchoredPosition: {x: 610.4, y: -59.6}
+  m_SizeDelta: {x: 669.7228, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1972097266
 MonoBehaviour:
@@ -2465,7 +2626,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 300
-    m_Alignment: 4
+    m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -2480,31 +2641,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1972097264}
   m_CullTransparentMesh: 0
---- !u!114 &1972097268
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1972097264}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29971a6043cd4904a84c8a0b8bf07f22, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentAmount: 0
-  newAmount: 0
-  Amount: {fileID: 1972097266}
-  winCPU: {fileID: 663580675}
-  winP2: {fileID: 166313017}
-  winCPUTT: {fileID: 1777303481}
-  winP2TT: {fileID: 43326229}
-  noWinTM: {fileID: 1097627361}
-  ONEwinTM: {fileID: 1547871842}
-  TWOwinTM: {fileID: 1517010448}
-  winTM: {fileID: 714618531}
-  buttonPressed: 0
-  value: {fileID: 0}
 --- !u!1 &2046742649
 GameObject:
   m_ObjectHideFlags: 0

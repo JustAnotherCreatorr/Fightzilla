@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class prototypingbattlebucks : MonoBehaviour, IPointerDownHandler, IPointerUpHandler 
 {
 
-    public float currentAmount;
+    //public float currentAmount;
     public float newAmount;
 
     public Text Amount;
@@ -21,29 +21,43 @@ public class prototypingbattlebucks : MonoBehaviour, IPointerDownHandler, IPoint
     public Button TWOwinTM;
     public Button winTM;
 
+    public Button selectedButton;
+
     public bool buttonPressed;
 
-    public buttonValue value;
-
+    public float value;
+   
     // Start is called before the first frame update
+
+    void Start()
+    {
+        newAmount = PlayerPrefs.GetFloat("Amount");
+        Amount.text = newAmount.ToString();
+    }
     public void OnPointerDown(PointerEventData eventData)
     {
         buttonPressed = true;
+        Debug.Log("pointer is down");
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
         buttonPressed = false;
+        Debug.Log("pointer is up");
     }
 
 
     void Update()
     {
-        if (buttonPressed)
-        {
-            currentAmount += value.value = newAmount;
+        
+    }
+
+    public void OnMouseDown()
+    {
+            Debug.Log("buttonPressed");
+            newAmount = PlayerPrefs.GetFloat("Amount") + value;
+            PlayerPrefs.SetFloat("Amount", newAmount);
             Amount.text = newAmount.ToString();
-        }
     }
 
 }
