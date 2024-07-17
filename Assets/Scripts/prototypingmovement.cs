@@ -18,27 +18,33 @@ public class prototypingmovement : MonoBehaviour
      
      */
 
+    public GameObject player;
+    public float speed;
     public Animator animator;
     public int gradualIncrease = 5;
-    private float speed;
+    private float animParaSpeed;
     private float acceleration;
     private bool holdingDown;
     private float maxSpeed = 1;
     private float maxNegativeSpeed = -1;
     private float runAccel = 1;
+    public Rigidbody rigidbody;
 
-    public Animation dashForward;
+    public Transform orientation;
+    public float dashForce;
 
     // Start is called before the first frame update
     void Start()
     {
         Animator animator = GetComponent<Animator>();
+        rigidbody = GetComponent<Rigidbody>(); 
     }
 
     // Update is called once per frame
     void Update()
     {
         float horizontal = Input.GetAxis("Horizontal");
+        float vertical = Input.GetAxis("Vertical");
         bool shiftPressed = Input.GetKey(KeyCode.RightShift);
         bool dashPressed = Input.GetKeyDown(KeyCode.Comma);
         bool upArrowPressed = Input.GetKeyDown(KeyCode.UpArrow);
@@ -53,12 +59,12 @@ public class prototypingmovement : MonoBehaviour
 
         if (Input.anyKey && horizontal != 0f)
         {
-            float posSpeed = Mathf.Abs(speed); 
+            float posSpeed = Mathf.Abs(animParaSpeed); 
             acceleration = posSpeed + Time.deltaTime + 0.1f;
             float PosHorizontal = Mathf.Abs(horizontal);
             posSpeed = PosHorizontal * acceleration * runAccel;
             holdingDown = true;
-            speed = posSpeed;
+            animParaSpeed = posSpeed;
         }
 
         // no keys are being pressed
@@ -77,16 +83,20 @@ public class prototypingmovement : MonoBehaviour
 
         if (horizontal > 0)
         {
-            speed = Mathf.Abs(speed);
+            animParaSpeed = Mathf.Abs(animParaSpeed);
         } 
         else if (horizontal < 0)
         {
-            speed = -Mathf.Abs(speed);
+            animParaSpeed = -Mathf.Abs(animParaSpeed);
         }
 
-        speed = Mathf.Clamp(speed, maxNegativeSpeed, maxSpeed);
+        animParaSpeed = Mathf.Clamp(animParaSpeed, maxNegativeSpeed, maxSpeed);
 
-        animator.SetFloat("MoveSpeed", speed);
+        Vector3 movement = new Vector3(0, vertical, horizontal);
+
+        transform.position += movement * Time.deltaTime * speed;
+
+        animator.SetFloat("MoveSpeed", animParaSpeed);
     
     }
 
@@ -96,27 +106,34 @@ public class prototypingmovement : MonoBehaviour
         {
             maxSpeed = 2;
             maxNegativeSpeed = -2;
+            speed = 10;
             runAccel = 1.07f;
         }
         else
         {
             maxSpeed = 1;
             maxNegativeSpeed = -1;
+            speed = 5;
             runAccel = 1;
         }
     }
 
     private void Dash(bool dashPressed)
     {
-        if (dashPressed && speed > 0f)
+        if (dashPressed && animParaSpeed > 0f)
         {
+
+            Vector3 forceToApply = orientation.forward * dashForce;
+            rigidbody.AddForce(forceToApply, ForceMode.Impulse);
             animator.SetBool("dashPressed", true);
             animator.Play("Base Layer.DashForward");
             animator.SetBool("dashPressed", false);
         }
 
-        if (dashPressed && speed < 0f)
+        if (dashPressed && animParaSpeed < 0f)
         {
+            Vector3 forceToApply = orientation.forward * dashForce * -1f;
+            rigidbody.AddForce(forceToApply, ForceMode.Impulse);
             animator.SetBool("dashPressed", true);
             animator.Play("Base Layer.DashBackward");
             animator.SetBool("dashPressed", false);
@@ -135,18 +152,18 @@ public class prototypingmovement : MonoBehaviour
 
     IEnumerator GradualDecrease()
      {
-        float posSpeed = Mathf.Abs(speed);
+        float posSpeed = Mathf.Abs(animParaSpeed);
 
         while (posSpeed > 0f)
         {
             posSpeed -= 0.2f * Time.deltaTime * gradualIncrease;
-            speed = posSpeed;
+            animParaSpeed = posSpeed;
             yield return new WaitForEndOfFrame();
         }
 
         if (posSpeed < 0f && !Input.GetKey(KeyCode.LeftArrow))
         {
-            speed = 0f;
+            animParaSpeed = 0f;
         }
      } 
 }
