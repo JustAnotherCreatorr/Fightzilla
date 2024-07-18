@@ -30,8 +30,17 @@ public class prototypingmovement : MonoBehaviour
     private float runAccel = 1;
     public Rigidbody rigidbody;
 
+    public float dashCd;
+    private float dashCdTimer;
+
     public Transform orientation;
     public float dashForce;
+    public float dashDuration;
+
+    public float jumpStrength;
+    public bool isGrounded;
+    
+    
 
     // Start is called before the first frame update
     void Start()
@@ -43,6 +52,10 @@ public class prototypingmovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        isGrounded = Physics.Raycast(transform.position, Vector3.down, 1f);
+        Debug.DrawRay(transform.position, Vector3.down * 1f, Color.black);
+        print(isGrounded);
+
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
         bool shiftPressed = Input.GetKey(KeyCode.RightShift);
@@ -59,7 +72,7 @@ public class prototypingmovement : MonoBehaviour
 
         if (Input.anyKey && horizontal != 0f)
         {
-            float posSpeed = Mathf.Abs(animParaSpeed); 
+            float posSpeed = Mathf.Abs(animParaSpeed);
             acceleration = posSpeed + Time.deltaTime + 0.1f;
             float PosHorizontal = Mathf.Abs(horizontal);
             posSpeed = PosHorizontal * acceleration * runAccel;
@@ -73,18 +86,18 @@ public class prototypingmovement : MonoBehaviour
         {
             if (horizontal != 0f)
             {
-               // Debug.Log("A key was released");
+                // Debug.Log("A key was released");
                 holdingDown = false;
                 acceleration = 0f;
                 StartCoroutine(GradualDecrease());
             }
-            
+
         }
 
         if (horizontal > 0)
         {
             animParaSpeed = Mathf.Abs(animParaSpeed);
-        } 
+        }
         else if (horizontal < 0)
         {
             animParaSpeed = -Mathf.Abs(animParaSpeed);
@@ -97,7 +110,19 @@ public class prototypingmovement : MonoBehaviour
         transform.position += movement * Time.deltaTime * speed;
 
         animator.SetFloat("MoveSpeed", animParaSpeed);
-    
+
+        if (dashCdTimer > 0)
+        {
+            dashCdTimer -= Time.deltaTime;
+        }
+    }
+
+    private bool GetIsGrounded()
+    {
+        isGrounded = Physics.Raycast(transform.position, Vector3.down, 1f);
+        Debug.DrawRay(transform.position, Vector3.down * 1f, Color.black);
+        print(isGrounded);
+        return isGrounded;
     }
 
     private void Sprint(bool shiftPressed)
@@ -122,7 +147,12 @@ public class prototypingmovement : MonoBehaviour
     {
         if (dashPressed && animParaSpeed > 0f)
         {
-
+            if (dashCdTimer > 0)
+            {
+                return;
+            }
+            else dashCdTimer = dashCd;
+            
             Vector3 forceToApply = orientation.forward * dashForce;
             rigidbody.AddForce(forceToApply, ForceMode.Impulse);
             animator.SetBool("dashPressed", true);
@@ -132,6 +162,11 @@ public class prototypingmovement : MonoBehaviour
 
         if (dashPressed && animParaSpeed < 0f)
         {
+            if (dashCdTimer > 0)
+            {
+                return;
+            }
+            else dashCdTimer = dashCd;
             Vector3 forceToApply = orientation.forward * dashForce * -1f;
             rigidbody.AddForce(forceToApply, ForceMode.Impulse);
             animator.SetBool("dashPressed", true);
@@ -142,11 +177,14 @@ public class prototypingmovement : MonoBehaviour
 
     private void Jump(bool spacePressed)
     {
-        if (spacePressed)
+        if (spacePressed && GetIsGrounded())
         {
+
+            rigidbody.AddForce(Vector3.up * jumpStrength, ForceMode.Impulse);
+
             animator.SetBool("spacePressed", true);
             animator.Play("Base Layer.Jump");
-            animator.SetBool("spacePressed", false);
+            animator.SetBool("spacePressed", false); 
         }
     }
 
@@ -156,7 +194,7 @@ public class prototypingmovement : MonoBehaviour
 
         while (posSpeed > 0f)
         {
-            posSpeed -= 0.2f * Time.deltaTime * gradualIncrease;
+            posSpeed -= 0.4f * Time.deltaTime * gradualIncrease;
             animParaSpeed = posSpeed;
             yield return new WaitForEndOfFrame();
         }
