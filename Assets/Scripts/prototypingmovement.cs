@@ -45,22 +45,21 @@ public class prototypingmovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Animator animator = GetComponent<Animator>();
-        rigidbody = GetComponent<Rigidbody>(); 
+        rigidbody = GetComponent<Rigidbody>();
+        animator.SetFloat("YVelocity", rigidbody.velocity.y);
     }
 
     // Update is called once per frame
     void Update()
     {
-        isGrounded = Physics.Raycast(transform.position, Vector3.down, 1f);
-        Debug.DrawRay(transform.position, Vector3.down * 1f, Color.black);
-        print(isGrounded);
+        #region other
 
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
         bool shiftPressed = Input.GetKey(KeyCode.RightShift);
         bool dashPressed = Input.GetKeyDown(KeyCode.Comma);
         bool upArrowPressed = Input.GetKeyDown(KeyCode.UpArrow);
+        GetIsGrounded();
 
         Sprint(shiftPressed);
 
@@ -109,19 +108,49 @@ public class prototypingmovement : MonoBehaviour
 
         transform.position += movement * Time.deltaTime * speed;
 
-        animator.SetFloat("MoveSpeed", animParaSpeed);
-
         if (dashCdTimer > 0)
         {
             dashCdTimer -= Time.deltaTime;
         }
+
+        animator.SetFloat("MoveSpeed", animParaSpeed);
+
+        #endregion other
+
+        animator.SetFloat("YVelocity", rigidbody.velocity.y);
+
+        //if (rigidbody.velocity.y < 0)
+        //{
+        //    if (GetIsGrounded())
+        //    {
+        //        print("isgrounded");
+        //        rigidbody.velocity = new Vector2(rigidbody.velocity.x, 0);
+        //        print(rigidbody.velocity.y);
+        //    }
+        //} 
     }
 
     private bool GetIsGrounded()
     {
         isGrounded = Physics.Raycast(transform.position, Vector3.down, 1f);
         Debug.DrawRay(transform.position, Vector3.down * 1f, Color.black);
-        print(isGrounded);
+        
+        if (isGrounded)
+        {
+            print(" if is grounded ");
+            animator.SetTrigger("isGrounded");
+        } 
+        else
+        {
+            if (rigidbody.velocity.y > 0)
+            {
+                animator.SetTrigger("isJumping");
+            } else if (rigidbody.velocity.y < 0)
+            {
+                animator.SetTrigger("isFalling");
+            }
+        }
+
         return isGrounded;
     }
 
@@ -175,17 +204,22 @@ public class prototypingmovement : MonoBehaviour
         }
     }
 
-    private void Jump(bool spacePressed)
+    private void Jump(bool upArrowPressed)
     {
-        if (spacePressed && GetIsGrounded())
+
+        if (!upArrowPressed)
         {
-
-            rigidbody.AddForce(Vector3.up * jumpStrength, ForceMode.Impulse);
-
-            animator.SetBool("spacePressed", true);
-            animator.Play("Base Layer.Jump");
-            animator.SetBool("spacePressed", false); 
+            return;
         }
+        Debug.Log("upArrow was pressed");
+        if (!isGrounded)
+        {
+            return;
+        }
+        Debug.Log("isGrounded was true");
+
+            print("jump");
+            rigidbody.AddForce(Vector3.up * jumpStrength, ForceMode.Impulse);
     }
 
     IEnumerator GradualDecrease()

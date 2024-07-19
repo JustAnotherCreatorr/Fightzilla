@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 220534054}
   - component: {fileID: 220534053}
   - component: {fileID: 220534052}
+  - component: {fileID: 220534057}
   - component: {fileID: 220534051}
   m_Layer: 0
   m_Name: Capsule
@@ -151,9 +152,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 220534050}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db1c95feff8389649a68e93026a69257, type: 3}
+  m_Script: {fileID: 11500000, guid: cd157cc19f52b2a47ba6293194868ef2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 220534050}
+  speed: 0
+  animator: {fileID: 0}
+  gradualIncrease: 5
+  rigidbody: {fileID: 220534052}
+  dashCd: 0
+  orientation: {fileID: 0}
+  dashForce: 0
+  dashDuration: 0
+  jumpStrength: 0
+  isGrounded: 0
 --- !u!54 &220534052
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -179,7 +191,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 220534050}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.5
   m_Height: 2
   m_Direction: 1
@@ -245,6 +257,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &220534057
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 220534050}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.8287044, z: 0.9686812}
+  m_Center: {x: 0, y: 0.18915868, z: -0.015659392}
 --- !u!1 &648749761
 GameObject:
   m_ObjectHideFlags: 0
