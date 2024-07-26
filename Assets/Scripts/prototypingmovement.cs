@@ -55,7 +55,6 @@ public class prototypingmovement : MonoBehaviour
         #region other
 
         float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
         bool shiftPressed = Input.GetKey(KeyCode.RightShift);
         bool dashPressed = Input.GetKeyDown(KeyCode.Comma);
         bool upArrowPressed = Input.GetKeyDown(KeyCode.UpArrow);
@@ -104,7 +103,7 @@ public class prototypingmovement : MonoBehaviour
 
         animParaSpeed = Mathf.Clamp(animParaSpeed, maxNegativeSpeed, maxSpeed);
 
-        Vector3 movement = new Vector3(0, vertical, horizontal);
+        Vector3 movement = new Vector3(0, rigidbody.velocity.x, horizontal);
 
         transform.position += movement * Time.deltaTime * speed;
 
