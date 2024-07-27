@@ -38,7 +38,7 @@ public class prototypingmovement : MonoBehaviour
     public float dashDuration;
 
     public float jumpStrength;
-    public bool isGrounded;
+    public bool isGrounded = true;
     
     
 
@@ -127,6 +127,21 @@ public class prototypingmovement : MonoBehaviour
         //        print(rigidbody.velocity.y);
         //    }
         //} 
+
+        
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "groundingFloor")
+        {
+            animator.SetBool("isGrounded", true);
+            animator.Play("Base Layer.Blend Tree");
+        }
+        else
+        {
+            animator.SetBool("isGrounded", false);
+        }
     }
 
     private bool GetIsGrounded()
@@ -137,16 +152,14 @@ public class prototypingmovement : MonoBehaviour
         if (isGrounded)
         {
             print(" if is grounded ");
-            animator.SetTrigger("isGrounded");
+            animator.SetBool("isGrounded", true);
         } 
         else
         {
-            if (rigidbody.velocity.y > 0)
-            {
-                animator.SetTrigger("isJumping");
-            } else if (rigidbody.velocity.y < 0)
+            if (rigidbody.velocity.y < 0)
             {
                 animator.SetTrigger("isFalling");
+                animator.Play("Base Layer.Falling");
             }
         }
 
@@ -171,8 +184,14 @@ public class prototypingmovement : MonoBehaviour
         }
     }
 
-    private void Dash(bool dashPressed)
+    public void Dash(bool dashPressed)
     {
+
+        if (!isGrounded)
+        {
+            return;
+        }
+
         if (dashPressed && animParaSpeed > 0f)
         {
             if (dashCdTimer > 0)
@@ -180,7 +199,7 @@ public class prototypingmovement : MonoBehaviour
                 return;
             }
             else dashCdTimer = dashCd;
-            
+
             Vector3 forceToApply = orientation.forward * dashForce;
             rigidbody.AddForce(forceToApply, ForceMode.Impulse);
             animator.SetBool("dashPressed", true);
@@ -206,19 +225,21 @@ public class prototypingmovement : MonoBehaviour
     private void Jump(bool upArrowPressed)
     {
 
-        if (!upArrowPressed)
-        {
-            return;
-        }
-        Debug.Log("upArrow was pressed");
+
         if (!isGrounded)
         {
             return;
         }
-        Debug.Log("isGrounded was true");
+
+        if (!upArrowPressed)
+        {
+            return;
+        }
 
             print("jump");
+            animator.Play("Base Layer.Jumping");
             rigidbody.AddForce(Vector3.up * jumpStrength, ForceMode.Impulse);
+            animator.SetBool("isGrounded", false);
     }
 
     IEnumerator GradualDecrease()
