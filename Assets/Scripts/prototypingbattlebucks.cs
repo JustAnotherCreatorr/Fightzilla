@@ -34,6 +34,7 @@ public class prototypingbattlebucks : MonoBehaviour, IPointerDownHandler, IPoint
         newAmount = PlayerPrefs.GetFloat("Amount");
         Amount.text = newAmount.ToString();
     }
+
     public void OnPointerDown(PointerEventData eventData)
     {
         buttonPressed = true;

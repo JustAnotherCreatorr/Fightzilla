@@ -56,11 +56,14 @@ public class prototypingmovement : MonoBehaviour
 
         float horizontal = Input.GetAxis("Horizontal");
         bool shiftPressed = Input.GetKey(KeyCode.RightShift);
+        bool downPressed = Input.GetKey(KeyCode.DownArrow);
         bool dashPressed = Input.GetKeyDown(KeyCode.Comma);
         bool upArrowPressed = Input.GetKeyDown(KeyCode.UpArrow);
         GetIsGrounded();
 
         Sprint(shiftPressed);
+
+      //  Crouch(downPressed);
 
         Dash(dashPressed);
 
@@ -184,6 +187,21 @@ public class prototypingmovement : MonoBehaviour
         }
     }
 
+    //private void Crouch(bool downPressed)
+    //{
+
+    //    if (!downPressed)
+    //    {
+           
+    //    }
+
+    //    if (downPressed)
+    //    {
+    //        animator.SetBool("isCrouching", true);
+    //        animator.Play("Base Layer.Crouch");
+    //    }
+    //}
+
     public void Dash(bool dashPressed)
     {
 
@@ -257,5 +275,10 @@ public class prototypingmovement : MonoBehaviour
         {
             animParaSpeed = 0f;
         }
-     } 
+    } 
+
+    IEnumerator IdleCrouchTransition()
+    {
+        yield return new WaitForEndOfFrame();
+    }
 }
