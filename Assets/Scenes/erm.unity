@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -794,6 +794,8 @@ MonoBehaviour:
   dashDuration: 0.25
   jumpStrength: 0.8
   isGrounded: 0
+  isSprinting: 0
+  isCrouching: 0
 --- !u!136 &375259169
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1903,8 +1905,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1140252395}
-  m_LocalRotation: {x: -0.010474379, y: -0.7506339, z: -0.011903238, w: 0.6605282}
-  m_LocalPosition: {x: 8.75, y: 4.17, z: 4.29}
+  m_LocalRotation: {x: -0.008772762, y: 0.5832756, z: -0.00629846, w: -0.8122025}
+  m_LocalPosition: {x: 9.885838, y: 2.7282822, z: 5.048826}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
