@@ -39,8 +39,13 @@ public class prototypingmovement : MonoBehaviour
 
     public float jumpStrength;
     public bool isGrounded = true;
-    
-    
+
+    public bool isSprinting;
+    public bool isCrouching;
+
+    private float backwardSpeedMod;
+    private float crouchSpeedMod;
+    private float slightBoostMod;
 
     // Start is called before the first frame update
     void Start()
@@ -61,13 +66,15 @@ public class prototypingmovement : MonoBehaviour
         bool upArrowPressed = Input.GetKeyDown(KeyCode.UpArrow);
         GetIsGrounded();
 
-        Sprint(shiftPressed);
+        Sprint(shiftPressed, horizontal);
 
       //  Crouch(downPressed);
 
         Dash(dashPressed);
 
         Jump(upArrowPressed);
+
+        Crouch(downPressed);
 
         // if right is being pressed
 
@@ -108,7 +115,7 @@ public class prototypingmovement : MonoBehaviour
 
         Vector3 movement = new Vector3(0, rigidbody.velocity.x, horizontal);
 
-        transform.position += movement * Time.deltaTime * speed;
+        transform.position += movement * Time.deltaTime * speed * crouchSpeedMod * backwardSpeedMod * slightBoostMod;
 
         if (dashCdTimer > 0)
         {
@@ -121,17 +128,37 @@ public class prototypingmovement : MonoBehaviour
 
         animator.SetFloat("YVelocity", rigidbody.velocity.y);
 
-        //if (rigidbody.velocity.y < 0)
-        //{
-        //    if (GetIsGrounded())
-        //    {
-        //        print("isgrounded");
-        //        rigidbody.velocity = new Vector2(rigidbody.velocity.x, 0);
-        //        print(rigidbody.velocity.y);
-        //    }
-        //} 
 
-        
+        if (horizontal > 0 && !isCrouching)
+        {
+            backwardSpeedMod = 0;
+            crouchSpeedMod = 0;
+        }
+
+        if (horizontal > 0 && !isSprinting)
+        {
+            slightBoostMod = 1.4f;
+        }
+        else
+        {
+            slightBoostMod = 1;
+        }
+
+        if (horizontal < 0)
+        {
+            if (!isGrounded)
+            {
+                backwardSpeedMod = 1;
+                return;
+            }
+            backwardSpeedMod = 0.6f;
+        }
+        else
+        {
+            backwardSpeedMod = 1;
+        }
+
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -154,8 +181,9 @@ public class prototypingmovement : MonoBehaviour
         
         if (isGrounded)
         {
-            print(" if is grounded ");
+            print("if is grounded");
             animator.SetBool("isGrounded", true);
+            backwardSpeedMod = 0.6f;
         } 
         else
         {
@@ -169,17 +197,41 @@ public class prototypingmovement : MonoBehaviour
         return isGrounded;
     }
 
-    private void Sprint(bool shiftPressed)
+    private void Sprint(bool shiftPressed, float horizontal)
     {
+
+        if (isCrouching)
+        {
+            isSprinting = false;
+            return;
+        }
+
+        if (!isGrounded)
+        {
+            isSprinting = false;
+            return;
+        }
+
         if (shiftPressed)
         {
+            isSprinting = true;
             maxSpeed = 2;
             maxNegativeSpeed = -2;
-            speed = 10;
+
+            if (horizontal > 0)
+            {
+                speed = 15;
+
+            } else
+            {
+                speed = 10;
+            }
+
             runAccel = 1.07f;
         }
         else
         {
+            isSprinting = false;
             maxSpeed = 1;
             maxNegativeSpeed = -1;
             speed = 5;
@@ -187,20 +239,31 @@ public class prototypingmovement : MonoBehaviour
         }
     }
 
-    //private void Crouch(bool downPressed)
-    //{
+    private void Crouch(bool downpressed)
+    {
 
-    //    if (!downPressed)
-    //    {
-           
-    //    }
+        if (!isGrounded)
+        {
+            crouchSpeedMod = 1;
+            return;
+        }
 
-    //    if (downPressed)
-    //    {
-    //        animator.SetBool("isCrouching", true);
-    //        animator.Play("Base Layer.Crouch");
-    //    }
-    //}
+        if (!downpressed)
+        {
+            isCrouching = false;
+            crouchSpeedMod = 1f;
+            animator.SetBool("isCrouching", false);
+            return;
+        }
+
+        if (downpressed)
+        {
+            isCrouching = true;
+            crouchSpeedMod = 0.8f;
+            animator.SetBool("isCrouching", true);
+            animator.Play("Base Layer.Crouch");
+        }
+    }
 
     public void Dash(bool dashPressed)
     {
@@ -256,6 +319,7 @@ public class prototypingmovement : MonoBehaviour
 
             print("jump");
             animator.Play("Base Layer.Jumping");
+            backwardSpeedMod = 1f;
             rigidbody.AddForce(Vector3.up * jumpStrength, ForceMode.Impulse);
             animator.SetBool("isGrounded", false);
     }
