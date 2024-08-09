@@ -276,6 +276,11 @@ public class prototypingmovement : MonoBehaviour
             return;
         }
 
+        if (isCrouching)
+        {
+            return;
+        }
+
         if (dashPressed && animParaSpeed > 0f)
         {
             if (dashCdTimer > 0)
