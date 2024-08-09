@@ -6,29 +6,20 @@ using UnityEngine;
 public class prototypingmovement : MonoBehaviour
 {
 
-    /*
-     Link to tutorial: https://youtu.be/KNoZeN3rjc4
-
-    Resources Used so far:
-    https://forum.unity.com/threads/how-to-make-coroutine-slow-down-based-on-timescale.889279/
-    https://docs.unity3d.com/Manual/Coroutines.html
-    https://stackoverflow.com/questions/38518903/unity-5-how-to-pass-multiple-parameters-on-button-click-function-from-inspector#:~:text=It%20can%20only%20take%20one%20parameter%20and,the%20function%20must%20be%20a%20non%20static%20function.
-    https://forum.unity.com/threads/how-to-make-bool-trigger-an-animation-in-blend-tree.893983/
-    https://forum.unity.com/threads/problems-with-backward-waliking-animation-in-blend-tree.425126/ 
-     
-     */
+    #region variables
 
     public GameObject player;
-    public float speed;
     public Animator animator;
+    public Rigidbody rigidbody;
+
+    public float speed;
     public int gradualIncrease = 5;
     private float animParaSpeed;
     private float acceleration;
     private bool holdingDown;
-    private float maxSpeed = 1;
-    private float maxNegativeSpeed = -1;
+    private float maxParaSpeed = 1;
+    private float maxParaNegativeSpeed = -1;
     private float runAccel = 1;
-    public Rigidbody rigidbody;
 
     public float dashCd;
     private float dashCdTimer;
@@ -46,6 +37,9 @@ public class prototypingmovement : MonoBehaviour
     private float backwardSpeedMod;
     private float crouchSpeedMod;
     private float slightBoostMod;
+    private float pullback;
+
+    #endregion variables
 
     // Start is called before the first frame update
     void Start()
@@ -57,7 +51,7 @@ public class prototypingmovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        #region other
+        #region movement
 
         float horizontal = Input.GetAxis("Horizontal");
         bool shiftPressed = Input.GetKey(KeyCode.RightShift);
@@ -67,8 +61,6 @@ public class prototypingmovement : MonoBehaviour
         GetIsGrounded();
 
         Sprint(shiftPressed, horizontal);
-
-      //  Crouch(downPressed);
 
         Dash(dashPressed);
 
@@ -111,11 +103,11 @@ public class prototypingmovement : MonoBehaviour
             animParaSpeed = -Mathf.Abs(animParaSpeed);
         }
 
-        animParaSpeed = Mathf.Clamp(animParaSpeed, maxNegativeSpeed, maxSpeed);
+        animParaSpeed = Mathf.Clamp(animParaSpeed, maxParaNegativeSpeed, maxParaSpeed);
 
         Vector3 movement = new Vector3(0, rigidbody.velocity.x, horizontal);
 
-        transform.position += movement * Time.deltaTime * speed * crouchSpeedMod * backwardSpeedMod * slightBoostMod;
+        transform.position += movement * Time.deltaTime * speed * crouchSpeedMod * backwardSpeedMod * slightBoostMod * pullback;
 
         if (dashCdTimer > 0)
         {
@@ -124,10 +116,12 @@ public class prototypingmovement : MonoBehaviour
 
         animator.SetFloat("MoveSpeed", animParaSpeed);
 
-        #endregion other
-
         animator.SetFloat("YVelocity", rigidbody.velocity.y);
 
+
+        #endregion movement
+
+        #region SpeedMods
 
         if (horizontal > 0 && !isCrouching)
         {
@@ -135,13 +129,13 @@ public class prototypingmovement : MonoBehaviour
             crouchSpeedMod = 0;
         }
 
-        if (horizontal > 0 && !isSprinting)
+        if (horizontal > 0 && !isSprinting && isGrounded)
         {
             slightBoostMod = 1.4f;
         }
         else
         {
-            slightBoostMod = 1;
+            slightBoostMod = 0.9f;
         }
 
         if (horizontal < 0)
@@ -158,6 +152,15 @@ public class prototypingmovement : MonoBehaviour
             backwardSpeedMod = 1;
         }
 
+        if (!isGrounded && horizontal > 0)
+        {
+            pullback = 0.7f;
+        } else
+        {
+            pullback = 1;
+        }
+
+        #endregion SpeedMods
 
     }
 
@@ -215,8 +218,8 @@ public class prototypingmovement : MonoBehaviour
         if (shiftPressed)
         {
             isSprinting = true;
-            maxSpeed = 2;
-            maxNegativeSpeed = -2;
+            maxParaSpeed = 2;
+            maxParaNegativeSpeed = -2;
 
             if (horizontal > 0)
             {
@@ -232,8 +235,8 @@ public class prototypingmovement : MonoBehaviour
         else
         {
             isSprinting = false;
-            maxSpeed = 1;
-            maxNegativeSpeed = -1;
+            maxParaSpeed = 1;
+            maxParaNegativeSpeed = -1;
             speed = 5;
             runAccel = 1;
         }
@@ -341,8 +344,4 @@ public class prototypingmovement : MonoBehaviour
         }
     } 
 
-    IEnumerator IdleCrouchTransition()
-    {
-        yield return new WaitForEndOfFrame();
-    }
 }
