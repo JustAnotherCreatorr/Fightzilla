@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class prototypingbattlebucks : MonoBehaviour, IPointerDownHandler, IPointerUpHandler 
+public class PROTOTYPEBB : MonoBehaviour, IPointerDownHandler, IPointerUpHandler 
 {
 
     //public float currentAmount;
