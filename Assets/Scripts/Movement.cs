@@ -6,6 +6,8 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
 
+
+
     #region variables
 
     public GameObject player;
@@ -39,11 +41,13 @@ public class Movement : MonoBehaviour
     private float slightBoostMod;
     private float pullback;
 
+    private bool allowMovement = false;
     #endregion variables
 
     // Start is called before the first frame update
     void Start()
     {
+
         rigidbody = GetComponent<Rigidbody>();
         animator.SetFloat("YVelocity", rigidbody.velocity.y);
     }
@@ -51,6 +55,12 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (allowMovement == false)
+        {
+            return;
+        }
+
         #region movement
 
         float horizontal = Input.GetAxis("Horizontal");
@@ -347,6 +357,23 @@ public class Movement : MonoBehaviour
         {
             animParaSpeed = 0f;
         }
-    } 
+
+
+    }
+
+    private void AllowMovement()
+    {
+        allowMovement = true;
+    }
+
+    private void OnEnable()
+    {
+        Actions.OnCountdownEnd += AllowMovement;
+    }
+
+    private void OnDisable()
+    {
+        Actions.OnCountdownEnd -= AllowMovement;
+    }
 
 }
