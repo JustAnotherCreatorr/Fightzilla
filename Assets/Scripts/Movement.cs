@@ -13,6 +13,7 @@ public class Movement : MonoBehaviour
     public GameObject player;
     public Animator animator;
     public Rigidbody rigidbody;
+    public int playerNumber;
 
     public float speed;
     public int gradualIncrease = 5;
@@ -35,11 +36,16 @@ public class Movement : MonoBehaviour
 
     public bool isSprinting;
     public bool isCrouching;
+    public bool isBlocking;
 
     private float backwardSpeedMod;
     private float crouchSpeedMod;
     private float slightBoostMod;
     private float pullback;
+    private float hitStop = 1;
+
+
+    public AnimationClip[] randomHitAnimations;
 
     private bool allowMovement = false;
     #endregion variables
@@ -49,6 +55,7 @@ public class Movement : MonoBehaviour
     {
 
         rigidbody = GetComponent<Rigidbody>();
+        
         animator.SetFloat("YVelocity", rigidbody.velocity.y);
     }
 
@@ -117,7 +124,7 @@ public class Movement : MonoBehaviour
 
         Vector3 movement = new Vector3(0, rigidbody.velocity.x, horizontal);
 
-        transform.position += movement * Time.deltaTime * speed * crouchSpeedMod * backwardSpeedMod * slightBoostMod * pullback;
+        transform.position += movement * Time.deltaTime * speed * crouchSpeedMod * backwardSpeedMod * slightBoostMod * pullback * hitStop;
 
         if (dashCdTimer > 0)
         {
@@ -366,14 +373,40 @@ public class Movement : MonoBehaviour
         allowMovement = true;
     }
 
+    private Coroutine delayCoroutine;
+    private void SlowMovement(int playerNumber)
+    {
+        if (this.playerNumber != playerNumber)
+        {
+            return;
+        }
+
+        hitStop = 0.1f;
+
+        if (delayCoroutine != null)
+        {
+            StopCoroutine(delayCoroutine);
+        }
+
+        delayCoroutine = StartCoroutine(delay());
+    }
+
+    IEnumerator delay()
+    {
+        yield return new WaitForSeconds(0.5f);
+        hitStop = 1;
+    }
+
     private void OnEnable()
     {
         Actions.OnCountdownEnd += AllowMovement;
+        Actions.OnPlayerHit += SlowMovement;
     }
 
     private void OnDisable()
     {
         Actions.OnCountdownEnd -= AllowMovement;
+        Actions.OnPlayerHit -= SlowMovement;
     }
 
 }
