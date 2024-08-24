@@ -13,6 +13,7 @@ public class Movement : MonoBehaviour
     public GameObject player;
     public Animator animator;
     public Rigidbody rigidbody;
+    public PlayerHealth playerHealth;
     public int playerNumber;
 
     public float speed;
@@ -160,13 +161,19 @@ public class Movement : MonoBehaviour
             if (!isGrounded)
             {
                 backwardSpeedMod = 1;
+                animator.SetBool("isBlocking", false);
+                isBlocking = false;
                 return;
             }
             backwardSpeedMod = 0.6f;
+            animator.SetBool("isBlocking", true);
+            isBlocking = true;
         }
         else
         {
             backwardSpeedMod = 1;
+            animator.SetBool("isBlocking", false);
+            isBlocking = false;
         }
 
         if (!isGrounded && horizontal > 0)
@@ -175,6 +182,12 @@ public class Movement : MonoBehaviour
         } else
         {
             pullback = 1;
+        }
+
+        if (isSprinting)
+        {
+            isBlocking = false;
+            animator.SetBool("isBlocking", false);
         }
 
         #endregion SpeedMods
@@ -261,7 +274,7 @@ public class Movement : MonoBehaviour
 
     private void Crouch(bool downpressed)
     {
-
+        
         if (!isGrounded)
         {
             crouchSpeedMod = 1;
@@ -276,12 +289,43 @@ public class Movement : MonoBehaviour
             return;
         }
 
-        if (downpressed)
+        if (isBlocking && playerHealth.hitDefended)
         {
-            isCrouching = true;
-            crouchSpeedMod = 0.8f;
-            animator.SetBool("isCrouching", true);
-            animator.Play("Base Layer.Crouch");
+            playerHealth.crouchBlockHit = true;
+            animator.SetBool("Hit", false);
+            animator.Play("Base Layer.CrouchBlock");
+            animator.SetBool("HitDefended", true);
+            Actions.OnPlayerHit.Invoke(1);
+            playerHealth.EndHit();
+        }
+
+        if (playerHealth.hit)
+        {
+            playerHealth.hitDefended = false;
+            animator.SetBool("HitDefended", false);
+            animator.Play("Base Layer.CrouchHit");
+            Invoke("EndHit", 0.5f);
+            Actions.OnPlayerHit.Invoke(1);
+            return;
+        }
+
+        isCrouching = true;
+
+        if (downpressed && isCrouching)
+        {
+            if (playerHealth.crouchBlockHit)
+            {
+                print("crouchblockhit");
+                isCrouching = false;
+                playerHealth.crouchBlockHit = false;
+            } else
+            {
+                print("breahc");
+                isCrouching = true;
+                crouchSpeedMod = 0.8f;
+                animator.SetBool("isCrouching", true);
+                animator.Play("Base Layer.Crouch");
+            }
         }
     }
 
@@ -393,6 +437,10 @@ public class Movement : MonoBehaviour
 
     IEnumerator delay()
     {
+        if (isCrouching)
+        {
+            yield return new WaitForSeconds(0.1f);
+        }
         yield return new WaitForSeconds(0.5f);
         hitStop = 1;
     }

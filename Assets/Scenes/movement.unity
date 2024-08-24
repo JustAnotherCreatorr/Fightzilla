@@ -860,6 +860,7 @@ MonoBehaviour:
   player: {fileID: 375259165}
   animator: {fileID: 955861068}
   rigidbody: {fileID: 375259167}
+  playerHealth: {fileID: 454477895}
   playerNumber: 1
   speed: 5
   gradualIncrease: 5
@@ -994,9 +995,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHealth: 1
+  movement: {fileID: 375259168}
   healthBar: {fileID: 454477894}
   animator: {fileID: 955861068}
   hit: 0
+  hitDefended: 0
+  crouchBlockHit: 0
 --- !u!1 &470914438
 GameObject:
   m_ObjectHideFlags: 0
@@ -1449,7 +1453,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 60
+  m_Text: 100
 --- !u!222 &619406212
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1471,7 +1475,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayText: {fileID: 619406211}
-  countdownLength: 60
+  countdownLength: 100
   startImmediate: 0
   showDecimals: 0
   timeUpText: {fileID: 1701531986}
@@ -3368,10 +3372,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayText: {fileID: 1701531986}
-  countdownLength: 60
+  countdownLength: 100
   startImmediate: 0
   showDecimals: 0
-  timeUpText: {fileID: 0}
+  timeUpText: {fileID: 1701531986}
   Player1: {fileID: 375259165}
 --- !u!114 &1701531986
 MonoBehaviour:
