@@ -24,9 +24,9 @@ public class PlayerHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        bool hPressed = Input.GetKeyDown(KeyCode.H);
+        bool pPressed = Input.GetKeyDown(KeyCode.P);
 
-        TestHealth(hPressed);
+        TestHealth(pPressed);
 
         if (hitDefended)
         {
