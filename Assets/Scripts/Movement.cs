@@ -45,6 +45,7 @@ public class Movement : MonoBehaviour
     private float pullback;
     private float hitStop = 1;
 
+    private float mirrorPlayerFix = 0f;
 
     public AnimationClip[] randomHitAnimations;
 
@@ -54,9 +55,7 @@ public class Movement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
         rigidbody = GetComponent<Rigidbody>();
-        
         animator.SetFloat("YVelocity", rigidbody.velocity.y);
     }
 
@@ -70,13 +69,30 @@ public class Movement : MonoBehaviour
         }
 
         #region movement
-        
 
-        float horizontal = Input.GetAxis("Horizontal");
-        bool shiftPressed = Input.GetKey(KeyCode.RightShift);
-        bool downPressed = Input.GetKey(KeyCode.DownArrow);
-        bool dashPressed = Input.GetKeyDown(KeyCode.Comma);
-        bool upArrowPressed = Input.GetKeyDown(KeyCode.UpArrow);
+
+        float horizontal = 0;
+        bool shiftPressed = false;
+        bool downPressed = false;
+        bool dashPressed = false;
+        bool upArrowPressed = false;
+
+        if (playerNumber == 1)
+        {
+             horizontal = Input.GetAxis("Horizontal");
+             shiftPressed = Input.GetKey(KeyCode.RightShift);
+             downPressed = Input.GetKey(KeyCode.DownArrow);
+             dashPressed = Input.GetKeyDown(KeyCode.Comma);
+             upArrowPressed = Input.GetKeyDown(KeyCode.UpArrow);
+        } else if (playerNumber == 2)
+        {
+            horizontal = Input.GetAxis("Horizontal2");
+            shiftPressed = Input.GetKey(KeyCode.LeftShift);
+            downPressed = Input.GetKey(KeyCode.S);
+            dashPressed = Input.GetKeyDown(KeyCode.Q);
+            upArrowPressed = Input.GetKeyDown(KeyCode.W);
+        }
+
         GetIsGrounded();
 
         Sprint(shiftPressed, horizontal);
@@ -92,12 +108,13 @@ public class Movement : MonoBehaviour
         if (Input.anyKey && horizontal != 0f)
         {
             float posSpeed = Mathf.Abs(animParaSpeed);
+            posSpeed *= -1;
             acceleration = posSpeed + Time.deltaTime + 0.1f;
             float PosHorizontal = Mathf.Abs(horizontal);
             posSpeed = PosHorizontal * acceleration * runAccel;
             holdingDown = true;
             animParaSpeed = posSpeed;
-        }
+        } 
 
         // no keys are being pressed
 
@@ -116,10 +133,41 @@ public class Movement : MonoBehaviour
         if (horizontal > 0)
         {
             animParaSpeed = Mathf.Abs(animParaSpeed);
+            if (playerNumber == 2)
+            {
+                if (isSprinting)
+                {
+                    mirrorPlayerFix = 2f;
+                } else
+                {
+                    mirrorPlayerFix = 1f;
+                }
+
+                float decimalValue = animParaSpeed -= mirrorPlayerFix;
+                animParaSpeed = animParaSpeed += decimalValue;
+            }
         }
         else if (horizontal < 0)
         {
             animParaSpeed = -Mathf.Abs(animParaSpeed);
+
+            if (playerNumber == 2)
+            {
+                if (isSprinting)
+                {
+                    mirrorPlayerFix = -2f;
+                }
+                else
+                {
+                    mirrorPlayerFix = -1f;
+                }
+
+                float decimalValueN = animParaSpeed -= mirrorPlayerFix;
+                animParaSpeed = animParaSpeed += decimalValueN;
+            }
+
+            float decimalValue = animParaSpeed -= mirrorPlayerFix;
+            animParaSpeed = animParaSpeed += decimalValue;
         }
 
         animParaSpeed = Mathf.Clamp(animParaSpeed, maxParaNegativeSpeed, maxParaSpeed);
@@ -137,6 +185,18 @@ public class Movement : MonoBehaviour
 
         animator.SetFloat("YVelocity", rigidbody.velocity.y);
 
+        if (animParaSpeed != 0)
+        {
+            if (horizontal > 0)
+            {
+                animParaSpeed += 1;
+            }
+
+            if (horizontal < 0)
+            {
+                animParaSpeed += -1;
+            }
+        }
 
         #endregion movement
 
@@ -157,7 +217,7 @@ public class Movement : MonoBehaviour
             slightBoostMod = 0.9f;
         }
 
-        if (horizontal < 0)
+        if (horizontal < 0 && playerNumber == 1)
         {
             if (!isGrounded)
             {
@@ -177,10 +237,19 @@ public class Movement : MonoBehaviour
             isBlocking = false;
         }
 
-        if (!isGrounded && horizontal > 0)
+        if (!isGrounded && horizontal > 0 && playerNumber == 1)
         {
             pullback = 0.7f;
         } else
+        {
+            pullback = 1;
+        }
+
+        if (!isGrounded && horizontal < 0 && playerNumber == 2)
+        {
+            pullback = 1.4f;
+        }
+        else
         {
             pullback = 1;
         }
