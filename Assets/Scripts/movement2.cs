@@ -3,10 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Movement : MonoBehaviour
+public class movement2 : MonoBehaviour
 {
-
-
 
     #region variables
 
@@ -56,7 +54,7 @@ public class Movement : MonoBehaviour
     {
 
         rigidbody = GetComponent<Rigidbody>();
-        
+
         animator.SetFloat("YVelocity", rigidbody.velocity.y);
     }
 
@@ -70,13 +68,13 @@ public class Movement : MonoBehaviour
         }
 
         #region movement
-        
 
-        float horizontal = Input.GetAxis("Horizontal");
-        bool shiftPressed = Input.GetKey(KeyCode.RightShift);
-        bool downPressed = Input.GetKey(KeyCode.DownArrow);
-        bool dashPressed = Input.GetKeyDown(KeyCode.Comma);
-        bool upArrowPressed = Input.GetKeyDown(KeyCode.UpArrow);
+
+        float horizontal = Input.GetAxis("Horizontal2");
+        bool shiftPressed = Input.GetKey(KeyCode.LeftShift);
+        bool downPressed = Input.GetKey(KeyCode.S);
+        bool dashPressed = Input.GetKeyDown(KeyCode.Q);
+        bool upArrowPressed = Input.GetKeyDown(KeyCode.W);
         GetIsGrounded();
 
         Sprint(shiftPressed, horizontal);
@@ -180,7 +178,8 @@ public class Movement : MonoBehaviour
         if (!isGrounded && horizontal > 0)
         {
             pullback = 0.7f;
-        } else
+        }
+        else
         {
             pullback = 1;
         }
@@ -212,13 +211,13 @@ public class Movement : MonoBehaviour
     {
         isGrounded = Physics.Raycast(transform.position, Vector3.down, 1f);
         Debug.DrawRay(transform.position, Vector3.down * 1f, Color.black);
-        
+
         if (isGrounded)
         {
             print("if is grounded");
             animator.SetBool("isGrounded", true);
             backwardSpeedMod = 0.6f;
-        } 
+        }
         else
         {
             if (rigidbody.velocity.y < 0)
@@ -256,7 +255,8 @@ public class Movement : MonoBehaviour
             {
                 speed = 15;
 
-            } else
+            }
+            else
             {
                 speed = 10;
             }
@@ -275,7 +275,7 @@ public class Movement : MonoBehaviour
 
     private void Crouch(bool downpressed)
     {
-        
+
         if (!isGrounded)
         {
             crouchSpeedMod = 1;
@@ -319,7 +319,8 @@ public class Movement : MonoBehaviour
                 print("crouchblockhit");
                 isCrouching = false;
                 playerHealth.crouchBlockHit = false;
-            } else
+            }
+            else
             {
                 print("breahc");
                 isCrouching = true;
@@ -387,15 +388,15 @@ public class Movement : MonoBehaviour
             return;
         }
 
-            print("jump");
-            animator.Play("Base Layer.Jumping");
-            backwardSpeedMod = 1f;
-            rigidbody.AddForce(Vector3.up * jumpStrength, ForceMode.Impulse);
-            animator.SetBool("isGrounded", false);
+        print("jump");
+        animator.Play("Base Layer.Jumping");
+        backwardSpeedMod = 1f;
+        rigidbody.AddForce(Vector3.up * jumpStrength, ForceMode.Impulse);
+        animator.SetBool("isGrounded", false);
     }
 
     IEnumerator GradualDecrease()
-     {
+    {
         float posSpeed = Mathf.Abs(animParaSpeed);
 
         while (posSpeed > 0f)
