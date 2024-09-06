@@ -6,11 +6,15 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
 
+
+
     #region variables
 
     public GameObject player;
     public Animator animator;
     public Rigidbody rigidbody;
+    public PlayerHealth playerHealth;
+    public int playerNumber;
 
     public float speed;
     public int gradualIncrease = 5;
@@ -33,12 +37,19 @@ public class Movement : MonoBehaviour
 
     public bool isSprinting;
     public bool isCrouching;
+    public bool isBlocking;
 
     private float backwardSpeedMod;
     private float crouchSpeedMod;
     private float slightBoostMod;
     private float pullback;
+    private float hitStop = 1;
 
+    private float mirrorPlayerFix = 0f;
+
+    public AnimationClip[] randomHitAnimations;
+
+    private bool allowMovement = false;
     #endregion variables
 
     // Start is called before the first frame update
@@ -51,13 +62,37 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (allowMovement == false)
+        {
+            return;
+        }
+
         #region movement
 
-        float horizontal = Input.GetAxis("Horizontal");
-        bool shiftPressed = Input.GetKey(KeyCode.RightShift);
-        bool downPressed = Input.GetKey(KeyCode.DownArrow);
-        bool dashPressed = Input.GetKeyDown(KeyCode.Comma);
-        bool upArrowPressed = Input.GetKeyDown(KeyCode.UpArrow);
+
+        float horizontal = 0;
+        bool shiftPressed = false;
+        bool downPressed = false;
+        bool dashPressed = false;
+        bool upArrowPressed = false;
+
+        if (playerNumber == 1)
+        {
+             horizontal = Input.GetAxis("Horizontal");
+             shiftPressed = Input.GetKey(KeyCode.RightShift);
+             downPressed = Input.GetKey(KeyCode.DownArrow);
+             dashPressed = Input.GetKeyDown(KeyCode.Comma);
+             upArrowPressed = Input.GetKeyDown(KeyCode.UpArrow);
+        } else if (playerNumber == 2)
+        {
+            horizontal = Input.GetAxis("Horizontal2");
+            shiftPressed = Input.GetKey(KeyCode.LeftShift);
+            downPressed = Input.GetKey(KeyCode.S);
+            dashPressed = Input.GetKeyDown(KeyCode.Q);
+            upArrowPressed = Input.GetKeyDown(KeyCode.W);
+        }
+
         GetIsGrounded();
 
         Sprint(shiftPressed, horizontal);
@@ -73,12 +108,13 @@ public class Movement : MonoBehaviour
         if (Input.anyKey && horizontal != 0f)
         {
             float posSpeed = Mathf.Abs(animParaSpeed);
+            posSpeed *= -1;
             acceleration = posSpeed + Time.deltaTime + 0.1f;
             float PosHorizontal = Mathf.Abs(horizontal);
             posSpeed = PosHorizontal * acceleration * runAccel;
             holdingDown = true;
             animParaSpeed = posSpeed;
-        }
+        } 
 
         // no keys are being pressed
 
@@ -97,17 +133,48 @@ public class Movement : MonoBehaviour
         if (horizontal > 0)
         {
             animParaSpeed = Mathf.Abs(animParaSpeed);
+            if (playerNumber == 2)
+            {
+                if (isSprinting)
+                {
+                    mirrorPlayerFix = 2f;
+                } else
+                {
+                    mirrorPlayerFix = 1f;
+                }
+
+                float decimalValue = animParaSpeed -= mirrorPlayerFix;
+                animParaSpeed = animParaSpeed += decimalValue;
+            }
         }
         else if (horizontal < 0)
         {
             animParaSpeed = -Mathf.Abs(animParaSpeed);
+
+            if (playerNumber == 2)
+            {
+                if (isSprinting)
+                {
+                    mirrorPlayerFix = -2f;
+                }
+                else
+                {
+                    mirrorPlayerFix = -1f;
+                }
+
+                float decimalValueN = animParaSpeed -= mirrorPlayerFix;
+                animParaSpeed = animParaSpeed += decimalValueN;
+            }
+
+            float decimalValue = animParaSpeed -= mirrorPlayerFix;
+            animParaSpeed = animParaSpeed += decimalValue;
         }
 
         animParaSpeed = Mathf.Clamp(animParaSpeed, maxParaNegativeSpeed, maxParaSpeed);
 
         Vector3 movement = new Vector3(0, rigidbody.velocity.x, horizontal);
 
-        transform.position += movement * Time.deltaTime * speed * crouchSpeedMod * backwardSpeedMod * slightBoostMod * pullback;
+        transform.position += movement * Time.deltaTime * speed * crouchSpeedMod * backwardSpeedMod * slightBoostMod * pullback * hitStop;
 
         if (dashCdTimer > 0)
         {
@@ -118,6 +185,18 @@ public class Movement : MonoBehaviour
 
         animator.SetFloat("YVelocity", rigidbody.velocity.y);
 
+        if (animParaSpeed != 0)
+        {
+            if (horizontal > 0)
+            {
+                animParaSpeed += 1;
+            }
+
+            if (horizontal < 0)
+            {
+                animParaSpeed += -1;
+            }
+        }
 
         #endregion movement
 
@@ -138,26 +217,47 @@ public class Movement : MonoBehaviour
             slightBoostMod = 0.9f;
         }
 
-        if (horizontal < 0)
+        if (horizontal < 0 && playerNumber == 1)
         {
             if (!isGrounded)
             {
                 backwardSpeedMod = 1;
+                animator.SetBool("isBlocking", false);
+                isBlocking = false;
                 return;
             }
             backwardSpeedMod = 0.6f;
+            animator.SetBool("isBlocking", true);
+            isBlocking = true;
         }
         else
         {
             backwardSpeedMod = 1;
+            animator.SetBool("isBlocking", false);
+            isBlocking = false;
         }
 
-        if (!isGrounded && horizontal > 0)
+        if (!isGrounded && horizontal > 0 && playerNumber == 1)
         {
             pullback = 0.7f;
         } else
         {
             pullback = 1;
+        }
+
+        if (!isGrounded && horizontal < 0 && playerNumber == 2)
+        {
+            pullback = 1.4f;
+        }
+        else
+        {
+            pullback = 1;
+        }
+
+        if (isSprinting)
+        {
+            isBlocking = false;
+            animator.SetBool("isBlocking", false);
         }
 
         #endregion SpeedMods
@@ -244,7 +344,7 @@ public class Movement : MonoBehaviour
 
     private void Crouch(bool downpressed)
     {
-
+        
         if (!isGrounded)
         {
             crouchSpeedMod = 1;
@@ -259,12 +359,43 @@ public class Movement : MonoBehaviour
             return;
         }
 
-        if (downpressed)
+        if (isBlocking && playerHealth.hitDefended)
         {
-            isCrouching = true;
-            crouchSpeedMod = 0.8f;
-            animator.SetBool("isCrouching", true);
-            animator.Play("Base Layer.Crouch");
+            playerHealth.crouchBlockHit = true;
+            animator.SetBool("Hit", false);
+            animator.Play("Base Layer.CrouchBlock");
+            animator.SetBool("HitDefended", true);
+            Actions.OnPlayerHit.Invoke(1);
+            playerHealth.EndHit();
+        }
+
+        if (playerHealth.hit)
+        {
+            playerHealth.hitDefended = false;
+            animator.SetBool("HitDefended", false);
+            animator.Play("Base Layer.CrouchHit");
+            Invoke("EndHit", 0.5f);
+            Actions.OnPlayerHit.Invoke(1);
+            return;
+        }
+
+        isCrouching = true;
+
+        if (downpressed && isCrouching)
+        {
+            if (playerHealth.crouchBlockHit)
+            {
+                print("crouchblockhit");
+                isCrouching = false;
+                playerHealth.crouchBlockHit = false;
+            } else
+            {
+                print("breahc");
+                isCrouching = true;
+                crouchSpeedMod = 0.8f;
+                animator.SetBool("isCrouching", true);
+                animator.Play("Base Layer.Crouch");
+            }
         }
     }
 
@@ -347,6 +478,53 @@ public class Movement : MonoBehaviour
         {
             animParaSpeed = 0f;
         }
-    } 
+
+
+    }
+
+    private void AllowMovement()
+    {
+        allowMovement = true;
+    }
+
+    private Coroutine delayCoroutine;
+    private void SlowMovement(int playerNumber)
+    {
+        if (this.playerNumber != playerNumber)
+        {
+            return;
+        }
+
+        hitStop = 0.1f;
+
+        if (delayCoroutine != null)
+        {
+            StopCoroutine(delayCoroutine);
+        }
+
+        delayCoroutine = StartCoroutine(delay());
+    }
+
+    IEnumerator delay()
+    {
+        if (isCrouching)
+        {
+            yield return new WaitForSeconds(0.1f);
+        }
+        yield return new WaitForSeconds(0.5f);
+        hitStop = 1;
+    }
+
+    private void OnEnable()
+    {
+        Actions.OnCountdownEnd += AllowMovement;
+        Actions.OnPlayerHit += SlowMovement;
+    }
+
+    private void OnDisable()
+    {
+        Actions.OnCountdownEnd -= AllowMovement;
+        Actions.OnPlayerHit -= SlowMovement;
+    }
 
 }
