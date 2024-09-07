@@ -21,15 +21,15 @@ public class Movement : MonoBehaviour
     private float animParaSpeed;
     private float acceleration;
     private bool holdingDown;
-    private float maxParaSpeed = 1;
-    private float maxParaNegativeSpeed = -1;
-    private float runAccel = 1;
+    private float maxParaSpeed = 1f;
+    private float maxParaNegativeSpeed = -1f;
+    private float runAccel = 1f;
 
     public float dashCd;
     private float dashCdTimer;
 
     public Transform orientation;
-    public float dashForce;
+    private float dashForce = 5f;
     public float dashDuration;
 
     public float jumpStrength;
@@ -43,7 +43,7 @@ public class Movement : MonoBehaviour
     private float crouchSpeedMod;
     private float slightBoostMod;
     private float pullback;
-    private float hitStop = 1;
+    private float hitStop = 1f;
 
     private float mirrorPlayerFix = 0f;
 
@@ -299,7 +299,6 @@ public class Movement : MonoBehaviour
         
         if (isGrounded)
         {
-            print("if is grounded");
             animator.SetBool("isGrounded", true);
             backwardSpeedMod = 0.6f;
         } 
@@ -434,11 +433,13 @@ public class Movement : MonoBehaviour
 
         if (!isGrounded)
         {
+            print("airReturn");
             return;
         }
 
         if (isCrouching)
         {
+            print("crouchReturn");
             return;
         }
 
@@ -446,29 +447,43 @@ public class Movement : MonoBehaviour
         {
             if (dashCdTimer > 0)
             {
+                print("timer is above 0");
                 return;
             }
             else dashCdTimer = dashCd;
 
             Vector3 forceToApply = orientation.forward * dashForce;
-            rigidbody.AddForce(forceToApply, ForceMode.Impulse);
+            Debug.Log($"transform: {player.transform.position}");
+            Debug.Log($"{forceToApply}");
+            rigidbody.AddForce(forceToApply * 10, ForceMode.Impulse);
+            print("forceApplied");
             animator.SetBool("dashPressed", true);
             animator.Play("Base Layer.DashForward");
             animator.SetBool("dashPressed", false);
+            print("doneDash");
         }
 
         if (dashPressed && animParaSpeed < 0f)
         {
             if (dashCdTimer > 0)
             {
+                print("timer is above 0");
                 return;
             }
-            else dashCdTimer = dashCd;
+            else
+            {
+                dashCdTimer = dashCd;
+            }
+
             Vector3 forceToApply = orientation.forward * dashForce * -1f;
+            Debug.Log($"transform: {player.transform.position}");
+            Debug.Log($"{forceToApply}");
             rigidbody.AddForce(forceToApply, ForceMode.Impulse);
+            print("forceApplied");
             animator.SetBool("dashPressed", true);
             animator.Play("Base Layer.DashBackward");
             animator.SetBool("dashPressed", false);
+            print("doneDash");
         }
     }
 
@@ -485,8 +500,6 @@ public class Movement : MonoBehaviour
         {
             return;
         }
-
-            print("jump");
             animator.Play("Base Layer.Jumping");
             backwardSpeedMod = 1f;
             rigidbody.AddForce(Vector3.up * jumpStrength, ForceMode.Impulse);
@@ -532,10 +545,10 @@ public class Movement : MonoBehaviour
             StopCoroutine(delayCoroutine);
         }
 
-        delayCoroutine = StartCoroutine(delay());
+        delayCoroutine = StartCoroutine(Delay());
     }
 
-    IEnumerator delay()
+    IEnumerator Delay()
     {
         if (isCrouching)
         {
