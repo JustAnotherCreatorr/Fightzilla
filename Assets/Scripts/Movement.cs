@@ -445,22 +445,24 @@ public class Movement : MonoBehaviour
 
         if (dashPressed && animParaSpeed > 0f)
         {
-            if (dashCdTimer > 0)
-            {
-                print("timer is above 0");
-                return;
-            }
-            else dashCdTimer = dashCd;
 
-            Vector3 forceToApply = orientation.forward * dashForce;
-            Debug.Log($"transform: {player.transform.position}");
-            Debug.Log($"{forceToApply}");
-            rigidbody.AddForce(forceToApply * 10, ForceMode.Impulse);
-            print("forceApplied");
-            animator.SetBool("dashPressed", true);
-            animator.Play("Base Layer.DashForward");
-            animator.SetBool("dashPressed", false);
-            print("doneDash");
+                if (dashCdTimer > 0)
+                {
+                    print("timer is above 0");
+                    return;
+                }
+                else dashCdTimer = dashCd;
+
+                Vector3 forceToApply = orientation.forward * dashForce;
+                Debug.Log($"transform: {orientation}");
+                Debug.Log($"{forceToApply}");
+                rigidbody.AddForce(forceToApply, ForceMode.Impulse);
+                print("forceApplied");
+                animator.SetBool("dashPressed", true);
+                animator.Play("Base Layer.DashForward");
+                animator.SetBool("dashPressed", false);
+                print("doneDash");
+            
         }
 
         if (dashPressed && animParaSpeed < 0f)
