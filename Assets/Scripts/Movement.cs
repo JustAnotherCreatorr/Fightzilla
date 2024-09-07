@@ -208,13 +208,28 @@ public class Movement : MonoBehaviour
             crouchSpeedMod = 0;
         }
 
-        if (horizontal > 0 && !isSprinting && isGrounded)
+        if (playerNumber == 1)
         {
-            slightBoostMod = 1.4f;
-        }
-        else
+            if (horizontal > 0 && !isSprinting && isGrounded)
+            {
+                slightBoostMod = 1.4f;
+            }
+
+            if (horizontal < 0 || isSprinting || !isGrounded)
+            {
+                slightBoostMod = 0.9f;
+            }
+        } else if (playerNumber == 2)
         {
-            slightBoostMod = 0.9f;
+            if (horizontal < 0 && !isSprinting && isGrounded)
+            {
+                slightBoostMod = 1.4f;
+            }
+
+            if (horizontal > 0 || isSprinting || !isGrounded)
+            {
+                slightBoostMod = 0.9f;
+            }
         }
 
         if (horizontal < 0 && playerNumber == 1)
@@ -321,13 +336,28 @@ public class Movement : MonoBehaviour
             maxParaSpeed = 2;
             maxParaNegativeSpeed = -2;
 
-            if (horizontal > 0)
+            if (playerNumber == 1)
             {
-                speed = 15;
+                if (horizontal > 0)
+                {
+                    speed = 15;
+                }
+                
+                if (horizontal < 0)
+                {
+                    speed = 10;
+                }
+            } else if (playerNumber == 2) 
+            {
+                if (horizontal < 0)
+                {
+                    speed = 15;
+                }
 
-            } else
-            {
-                speed = 10;
+                if (horizontal > 0)
+                {
+                    speed = 10;
+                }
             }
 
             runAccel = 1.07f;
