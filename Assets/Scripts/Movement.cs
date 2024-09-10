@@ -99,9 +99,9 @@ public class Movement : MonoBehaviour
 
         Dash(dashPressed);
 
-        Jump(upArrowPressed);
+        //Jump(upArrowPressed);
 
-        Crouch(downPressed);
+        //Crouch(downPressed);
 
         // if right is being pressed
 
@@ -174,6 +174,7 @@ public class Movement : MonoBehaviour
 
         Vector3 movement = new Vector3(0, rigidbody.velocity.x, horizontal);
 
+        Debug.Log($"movement: {movement}, speed: {speed}, crouchMod {crouchSpeedMod}, backwardMod: {backwardSpeedMod}, slightBoost: {slightBoostMod}, pullback: {pullback}, hitstop: {hitStop}");
         transform.position += movement * Time.deltaTime * speed * crouchSpeedMod * backwardSpeedMod * slightBoostMod * pullback * hitStop;
 
         if (dashCdTimer > 0)
