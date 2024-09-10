@@ -877,7 +877,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 120
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &375259168
 MonoBehaviour:
@@ -891,6 +891,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd157cc19f52b2a47ba6293194868ef2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debug: 0
   player: {fileID: 375259165}
   animator: {fileID: 955861068}
   rigidbody: {fileID: 375259167}
@@ -2259,6 +2260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd157cc19f52b2a47ba6293194868ef2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debug: 0
   player: {fileID: 869107091}
   animator: {fileID: 3567059}
   rigidbody: {fileID: 869107095}
@@ -2307,7 +2309,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 120
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!4 &869107096 stripped
 Transform:

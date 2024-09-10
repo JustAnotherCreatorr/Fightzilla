@@ -10,6 +10,8 @@ public class Movement : MonoBehaviour
 
     #region variables
 
+    public bool debug;
+
     public GameObject player;
     public Animator animator;
     public Rigidbody rigidbody;
@@ -41,7 +43,7 @@ public class Movement : MonoBehaviour
 
     private float backwardSpeedMod;
     private float crouchSpeedMod = 1f;
-    private float slightBoostMod;
+    private float slightBoostMod = 1f;
     private float pullback = 1f;
     private float hitStop = 1f;
 
@@ -95,7 +97,7 @@ public class Movement : MonoBehaviour
 
         GetIsGrounded();
 
-        Sprint(shiftPressed, horizontal);
+        //Sprint(shiftPressed, horizontal);
 
         Dash(dashPressed);
 
@@ -174,7 +176,10 @@ public class Movement : MonoBehaviour
 
         Vector3 movement = new Vector3(0, rigidbody.velocity.x, horizontal);
 
-        Debug.Log($"movement: {movement}, speed: {speed}, crouchMod {crouchSpeedMod}, backwardMod: {backwardSpeedMod}, slightBoost: {slightBoostMod}, pullback: {pullback}, hitstop: {hitStop}");
+        if (debug)
+        {
+            Debug.Log($"movement: {movement}, speed: {speed}, crouchMod {crouchSpeedMod}, backwardMod: {backwardSpeedMod}, slightBoost: {slightBoostMod}, pullback: {pullback}, hitstop: {hitStop}");
+        }
         transform.position += movement * Time.deltaTime * speed * crouchSpeedMod * backwardSpeedMod * slightBoostMod * pullback * hitStop;
 
         if (dashCdTimer > 0)
@@ -205,8 +210,8 @@ public class Movement : MonoBehaviour
 
         if (horizontal > 0 && !isCrouching)
         {
-            backwardSpeedMod = 0;
-            crouchSpeedMod = 0;
+            backwardSpeedMod = 1;
+            crouchSpeedMod = 1;
         }
 
         if (playerNumber == 1)
