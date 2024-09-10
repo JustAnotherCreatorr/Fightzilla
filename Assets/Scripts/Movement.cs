@@ -40,9 +40,9 @@ public class Movement : MonoBehaviour
     public bool isBlocking;
 
     private float backwardSpeedMod;
-    private float crouchSpeedMod;
+    private float crouchSpeedMod = 1f;
     private float slightBoostMod;
-    private float pullback;
+    private float pullback = 1f;
     private float hitStop = 1f;
 
     private float mirrorPlayerFix = 0f;
