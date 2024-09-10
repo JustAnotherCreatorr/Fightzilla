@@ -17,7 +17,7 @@ public class Dash : MonoBehaviour
     private float dashCdTimer;
 
     public Transform orientation;
-    public float dashForce = 5f;
+    public float dashForce;
     public float dashDuration;
 
     // Start is called before the first frame update

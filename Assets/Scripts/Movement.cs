@@ -31,7 +31,7 @@ public class Movement : MonoBehaviour
     private float dashCdTimer;
 
     public Transform orientation;
-    private float dashForce = 5f;
+    public float dashForce;
     public float dashDuration;
 
     public float jumpStrength;
@@ -79,31 +79,56 @@ public class Movement : MonoBehaviour
         bool dashPressed = false;
         bool upArrowPressed = false;
 
+        bool cancelSprint = false;
+
         if (playerNumber == 1)
         {
              horizontal = Input.GetAxis("Horizontal");
              shiftPressed = Input.GetKey(KeyCode.RightShift);
-             downPressed = Input.GetKey(KeyCode.DownArrow);
+             cancelSprint = Input.GetKeyUp(KeyCode.RightShift);
+            downPressed = Input.GetKey(KeyCode.DownArrow);
              dashPressed = Input.GetKeyDown(KeyCode.Comma);
              upArrowPressed = Input.GetKeyDown(KeyCode.UpArrow);
-        } else if (playerNumber == 2)
+        }
+        
+        if (playerNumber == 2)
         {
             horizontal = Input.GetAxis("Horizontal2");
             shiftPressed = Input.GetKey(KeyCode.LeftShift);
+            cancelSprint = Input.GetKeyUp(KeyCode.LeftShift);
             downPressed = Input.GetKey(KeyCode.S);
             dashPressed = Input.GetKeyDown(KeyCode.Q);
             upArrowPressed = Input.GetKeyDown(KeyCode.W);
         }
 
+
+
         GetIsGrounded();
 
-        //Sprint(shiftPressed, horizontal);
 
-        Dash(dashPressed);
+        if (shiftPressed)
+        {
+            Sprint(shiftPressed, horizontal);
+        } else if (cancelSprint)
+        {
+            CancelSprint();
+        }
 
-        //Jump(upArrowPressed);
 
-        //Crouch(downPressed);
+        if (dashPressed)
+        {
+            Dash(dashPressed);
+        }
+
+        if (upArrowPressed)
+        {
+            Jump(upArrowPressed);
+        }
+
+        if (downPressed)
+        {
+            Crouch(downPressed);
+        }
 
         // if right is being pressed
 
@@ -367,16 +392,16 @@ public class Movement : MonoBehaviour
 
             runAccel = 1.07f;
         }
-        else
-        {
-            isSprinting = false;
-            maxParaSpeed = 1;
-            maxParaNegativeSpeed = -1;
-            speed = 5;
-            runAccel = 1;
-        }
     }
 
+    public void CancelSprint()
+    {
+        isSprinting = false;
+        maxParaSpeed = 1;
+        maxParaNegativeSpeed = -1;
+        speed = 5;
+        runAccel = 1;
+    }
     private void Crouch(bool downpressed)
     {
         
@@ -436,7 +461,7 @@ public class Movement : MonoBehaviour
 
     public void Dash(bool dashPressed)
     {
-
+        print("Dash");
         if (!isGrounded)
         {
             print("airReturn");
@@ -466,9 +491,6 @@ public class Movement : MonoBehaviour
                 print("forceApplied");
                 animator.SetBool("dashPressed", true);
                 animator.Play("Base Layer.DashForward");
-                animator.SetBool("dashPressed", false);
-                print("doneDash");
-            
         }
 
         if (dashPressed && animParaSpeed < 0f)
