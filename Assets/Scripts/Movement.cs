@@ -80,14 +80,16 @@ public class Movement : MonoBehaviour
         bool upArrowPressed = false;
 
         bool cancelSprint = false;
+        bool cancelCrouch = false;
 
         if (playerNumber == 1)
         {
              horizontal = Input.GetAxis("Horizontal");
              shiftPressed = Input.GetKey(KeyCode.RightShift);
              cancelSprint = Input.GetKeyUp(KeyCode.RightShift);
-            downPressed = Input.GetKey(KeyCode.DownArrow);
-             dashPressed = Input.GetKeyDown(KeyCode.Comma);
+             downPressed = Input.GetKey(KeyCode.DownArrow);
+            cancelCrouch = Input.GetKeyUp(KeyCode.DownArrow);
+            dashPressed = Input.GetKeyDown(KeyCode.Comma);
              upArrowPressed = Input.GetKeyDown(KeyCode.UpArrow);
         }
         
@@ -97,6 +99,7 @@ public class Movement : MonoBehaviour
             shiftPressed = Input.GetKey(KeyCode.LeftShift);
             cancelSprint = Input.GetKeyUp(KeyCode.LeftShift);
             downPressed = Input.GetKey(KeyCode.S);
+            cancelCrouch = Input.GetKeyUp(KeyCode.S);
             dashPressed = Input.GetKeyDown(KeyCode.Q);
             upArrowPressed = Input.GetKeyDown(KeyCode.W);
         }
@@ -114,7 +117,6 @@ public class Movement : MonoBehaviour
             CancelSprint();
         }
 
-
         if (dashPressed)
         {
             Dash(dashPressed);
@@ -128,6 +130,9 @@ public class Movement : MonoBehaviour
         if (downPressed)
         {
             Crouch(downPressed);
+        } else if (cancelCrouch)
+        {
+            CancelCrouch();
         }
 
         // if right is being pressed
@@ -216,18 +221,18 @@ public class Movement : MonoBehaviour
 
         animator.SetFloat("YVelocity", rigidbody.velocity.y);
 
-        if (animParaSpeed != 0)
-        {
-            if (horizontal > 0)
-            {
-                animParaSpeed += 1;
-            }
+        //if (animParaSpeed != 0)
+        //{
+        //    if (horizontal > 0)
+        //    {
+        //        animParaSpeed += 1;
+        //    }
 
-            if (horizontal < 0)
-            {
-                animParaSpeed += -1;
-            }
-        }
+        //    if (horizontal < 0)
+        //    {
+        //        animParaSpeed += -1;
+        //    }
+        //}
 
         #endregion movement
 
@@ -402,20 +407,13 @@ public class Movement : MonoBehaviour
         speed = 5;
         runAccel = 1;
     }
+
     private void Crouch(bool downpressed)
     {
         
         if (!isGrounded)
         {
             crouchSpeedMod = 1;
-            return;
-        }
-
-        if (!downpressed)
-        {
-            isCrouching = false;
-            crouchSpeedMod = 1f;
-            animator.SetBool("isCrouching", false);
             return;
         }
 
@@ -445,18 +443,23 @@ public class Movement : MonoBehaviour
         {
             if (playerHealth.crouchBlockHit)
             {
-                print("crouchblockhit");
                 isCrouching = false;
                 playerHealth.crouchBlockHit = false;
             } else
             {
-                print("breahc");
                 isCrouching = true;
                 crouchSpeedMod = 0.8f;
                 animator.SetBool("isCrouching", true);
                 animator.Play("Base Layer.Crouch");
             }
         }
+    }
+
+    public void CancelCrouch()
+    {
+        isCrouching = false;
+        crouchSpeedMod = 1f;
+        animator.SetBool("isCrouching", false);
     }
 
     public void Dash(bool dashPressed)
@@ -468,59 +471,133 @@ public class Movement : MonoBehaviour
             return;
         }
 
+        print("PAST1");
+
         if (isCrouching)
         {
             print("crouchReturn");
             return;
         }
 
-        if (dashPressed && animParaSpeed > 0f)
-        {
+        print("PAST2");
 
-                if (dashCdTimer > 0)
+        if (dashPressed)
+        {
+            print("PAST3");
+            print(animParaSpeed);
+
+            if (playerNumber == 1)
+            {
+               
+
+                if (dashPressed && animParaSpeed > 0f)
                 {
-                    print("timer is above 0");
-                    return;
+
+                    if (dashCdTimer > 0)
+                    {
+                        print("timer is above 0");
+                        return;
+                    }
+                    else dashCdTimer = dashCd;
+
+                  
+
+                    Vector3 forceToApply = orientation.forward * dashForce;
+                    Debug.Log($"transform: {orientation}");
+                    Debug.Log($"{forceToApply}");
+                    rigidbody.AddForce(forceToApply, ForceMode.Impulse);
+                    print("forceApplied");
+                    animator.SetBool("dashPressed", true);
+                    animator.Play("Base Layer.DashForward");
+
+                    
                 }
-                else dashCdTimer = dashCd;
 
-                Vector3 forceToApply = orientation.forward * dashForce;
-                Debug.Log($"transform: {orientation}");
-                Debug.Log($"{forceToApply}");
-                rigidbody.AddForce(forceToApply, ForceMode.Impulse);
-                print("forceApplied");
-                animator.SetBool("dashPressed", true);
-                animator.Play("Base Layer.DashForward");
-        }
+                if (dashPressed && animParaSpeed < 0f)
+                {
+                    if (dashCdTimer > 0)
+                    {
+                        print("timer is above 0");
+                        return;
+                    }
+                    else
+                    {
+                        dashCdTimer = dashCd;
+                    }
 
-        if (dashPressed && animParaSpeed < 0f)
-        {
-            if (dashCdTimer > 0)
-            {
-                print("timer is above 0");
-                return;
+                    Vector3 forceToApply = orientation.forward * dashForce * -1f;
+                    Debug.Log($"transform: {player.transform.position}");
+                    Debug.Log($"{forceToApply}");
+                    rigidbody.AddForce(forceToApply, ForceMode.Impulse);
+                    print("forceApplied");
+                    animator.SetBool("dashPressed", true);
+                    animator.Play("Base Layer.DashBackward");
+                    animator.SetBool("dashPressed", false);
+                    print("doneDash");
+                }
             }
-            else
+            else if (playerNumber == 2)
             {
-                dashCdTimer = dashCd;
+                print("PAST4");
+
+                if (dashPressed && animParaSpeed > 0f)
+                {
+                    print("PAST5");
+
+                    if (dashCdTimer > 0)
+                    {
+                        print("timer is above 0");
+                        return;
+                    }
+                    else dashCdTimer = dashCd;
+
+                    print("PAST4");
+
+                    Vector3 forceToApply = orientation.forward * dashForce;
+                    Debug.Log($"transform: {orientation}");
+                    Debug.Log($"{forceToApply}");
+                    rigidbody.AddForce(forceToApply, ForceMode.Impulse);
+                    print("forceApplied");
+                    animator.SetBool("dashPressed", true);
+                    animator.Play("Base Layer.DashForward");
+
+                    print("FINISHED");
+                }
+
+                if (dashPressed && animParaSpeed < 0f)
+                {
+                    print("PAST5");
+
+                    if (dashCdTimer > 0)
+                    {
+                        print("timer is above 0");
+                        return;
+                    }
+                    else
+                    {
+                        dashCdTimer = dashCd;
+                    }
+
+                    Vector3 forceToApply = orientation.forward * dashForce * -1f;
+                    Debug.Log($"transform: {player.transform.position}");
+                    Debug.Log($"{forceToApply}");
+                    rigidbody.AddForce(forceToApply, ForceMode.Impulse);
+                    print("forceApplied");
+                    animator.SetBool("dashPressed", true);
+                    animator.Play("Base Layer.DashBackward");
+                    animator.SetBool("dashPressed", false);
+                    print("doneDash");
+
+                }
+
             }
 
-            Vector3 forceToApply = orientation.forward * dashForce * -1f;
-            Debug.Log($"transform: {player.transform.position}");
-            Debug.Log($"{forceToApply}");
-            rigidbody.AddForce(forceToApply, ForceMode.Impulse);
-            print("forceApplied");
-            animator.SetBool("dashPressed", true);
-            animator.Play("Base Layer.DashBackward");
             animator.SetBool("dashPressed", false);
-            print("doneDash");
         }
     }
 
     private void Jump(bool upArrowPressed)
     {
-
-
         if (!isGrounded)
         {
             return;
