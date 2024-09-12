@@ -221,18 +221,18 @@ public class Movement : MonoBehaviour
 
         animator.SetFloat("YVelocity", rigidbody.velocity.y);
 
-        //if (animParaSpeed != 0)
-        //{
-        //    if (horizontal > 0)
-        //    {
-        //        animParaSpeed += 1;
-        //    }
+        if (animParaSpeed != 0)
+        {
+            if (horizontal > 0)
+            {
+                animParaSpeed += 1;
+            }
 
-        //    if (horizontal < 0)
-        //    {
-        //        animParaSpeed += -1;
-        //    }
-        //}
+            if (horizontal < 0)
+            {
+                animParaSpeed += -1;
+            }
+        }
 
         #endregion movement
 
