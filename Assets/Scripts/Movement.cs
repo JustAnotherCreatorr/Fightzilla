@@ -12,8 +12,7 @@ public class Movement : MonoBehaviour
 
     public bool debug;
 
-    public GameObject player1;
-    public GameObject player2;
+    public GameObject otherPlayer;
     public Animator animator;
     public Rigidbody rigidbody;
     public PlayerHealth playerHealth;
@@ -50,7 +49,7 @@ public class Movement : MonoBehaviour
 
     private float mirrorPlayerFix = 0f;
 
-    private float initialLocalScaleZ;
+    private float initialLocalRotationY;
 
     public AnimationClip[] randomHitAnimations;
 
@@ -69,7 +68,7 @@ public class Movement : MonoBehaviour
         animator.SetFloat("YVelocity", rigidbody.velocity.y);
         prevPos = transform.position.z;
         currentPos = transform.position.z;
-        initialLocalScaleZ = transform.localScale.z;
+        initialLocalRotationY = transform.localRotation.y;
     }
 
     // Update is called once per frame
@@ -640,16 +639,23 @@ public class Movement : MonoBehaviour
 
     public void Reverse()
     {
-        if (player2.transform.position.z < player1.transform.position.z || player1.transform.position.z > player2.transform.position.z)
+        // Player 1's initial rotation is 0
+        // Player 2's initial rotation is 180
+
+        if (otherPlayer.transform.position.z < transform.position.z)
         {
-            Vector3 currentScale = transform.localScale;
-            currentScale.z = -initialLocalScaleZ;
-            transform.localScale = currentScale;
-        } else
+            // If player is to the left of the other player
+            Quaternion currentRotation = transform.localRotation;
+            currentRotation.y = initialLocalRotationY == 0 ? 180 : initialLocalRotationY;
+            transform.localRotation = currentRotation;
+
+        }
+        else
         {
-            Vector3 currentScale = transform.localScale;
-            currentScale.z = initialLocalScaleZ;
-            transform.localScale = currentScale;
+            // If player is to the right of the other player
+            Quaternion currentRotation = transform.localRotation;
+            currentRotation.y = initialLocalRotationY == 180 ? 0 : initialLocalRotationY;
+            transform.localRotation = currentRotation;
         }
     }
 
