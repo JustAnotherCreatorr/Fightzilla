@@ -12,7 +12,8 @@ public class Movement : MonoBehaviour
 
     public bool debug;
 
-    public GameObject player;
+    public GameObject player1;
+    public GameObject player2;
     public Animator animator;
     public Rigidbody rigidbody;
     public PlayerHealth playerHealth;
@@ -49,9 +50,16 @@ public class Movement : MonoBehaviour
 
     private float mirrorPlayerFix = 0f;
 
+    private float initialLocalScaleZ;
+
     public AnimationClip[] randomHitAnimations;
 
     private bool allowMovement = false;
+
+    private float prevPos;
+    private float currentPos;
+    private int direction;
+
     #endregion variables
 
     // Start is called before the first frame update
@@ -59,6 +67,9 @@ public class Movement : MonoBehaviour
     {
         rigidbody = GetComponent<Rigidbody>();
         animator.SetFloat("YVelocity", rigidbody.velocity.y);
+        prevPos = transform.position.z;
+        currentPos = transform.position.z;
+        initialLocalScaleZ = transform.localScale.z;
     }
 
     // Update is called once per frame
@@ -107,6 +118,20 @@ public class Movement : MonoBehaviour
 
 
         GetIsGrounded();
+        Reverse();
+
+        prevPos = currentPos;
+        currentPos = transform.position.z;
+
+        if (currentPos > prevPos)
+        {
+            direction = 1;
+        }
+
+        if (currentPos < prevPos)
+        {
+            direction = -1;
+        }
 
 
         if (shiftPressed)
@@ -313,6 +338,8 @@ public class Movement : MonoBehaviour
 
         #endregion SpeedMods
 
+        prevPos = transform.position.z;
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -464,14 +491,11 @@ public class Movement : MonoBehaviour
 
     public void Dash(bool dashPressed)
     {
-        print("Dash");
         if (!isGrounded)
         {
             print("airReturn");
             return;
         }
-
-        print("PAST1");
 
         if (isCrouching)
         {
@@ -479,18 +503,22 @@ public class Movement : MonoBehaviour
             return;
         }
 
-        print("PAST2");
+        if (direction == 0 && playerNumber == 1)
+        {
+            return;
+        }
+
+        if (direction == 0 && playerNumber == 2)
+        {
+            return;
+        }
 
         if (dashPressed)
         {
-            print("PAST3");
-            print(animParaSpeed);
-
             if (playerNumber == 1)
             {
-               
 
-                if (dashPressed && animParaSpeed > 0f)
+                if (dashPressed && direction == 1)
                 {
 
                     if (dashCdTimer > 0)
@@ -500,20 +528,15 @@ public class Movement : MonoBehaviour
                     }
                     else dashCdTimer = dashCd;
 
-                  
-
                     Vector3 forceToApply = orientation.forward * dashForce;
-                    Debug.Log($"transform: {orientation}");
-                    Debug.Log($"{forceToApply}");
+
                     rigidbody.AddForce(forceToApply, ForceMode.Impulse);
-                    print("forceApplied");
                     animator.SetBool("dashPressed", true);
                     animator.Play("Base Layer.DashForward");
-
-                    
+                    animator.SetBool("dashPressed", false);
                 }
 
-                if (dashPressed && animParaSpeed < 0f)
+                if (dashPressed && direction == -1)
                 {
                     if (dashCdTimer > 0)
                     {
@@ -526,24 +549,19 @@ public class Movement : MonoBehaviour
                     }
 
                     Vector3 forceToApply = orientation.forward * dashForce * -1f;
-                    Debug.Log($"transform: {player.transform.position}");
-                    Debug.Log($"{forceToApply}");
+
                     rigidbody.AddForce(forceToApply, ForceMode.Impulse);
-                    print("forceApplied");
                     animator.SetBool("dashPressed", true);
                     animator.Play("Base Layer.DashBackward");
-                    animator.SetBool("dashPressed", false);
-                    print("doneDash");
+                    animator.SetBool("dashPressed", false); 
                 }
             }
             else if (playerNumber == 2)
             {
-                print("PAST4");
-
-                if (dashPressed && animParaSpeed > 0f)
+          
+                if (dashPressed && direction == -1)
                 {
-                    print("PAST5");
-
+                  
                     if (dashCdTimer > 0)
                     {
                         print("timer is above 0");
@@ -551,22 +569,15 @@ public class Movement : MonoBehaviour
                     }
                     else dashCdTimer = dashCd;
 
-                    print("PAST4");
-
                     Vector3 forceToApply = orientation.forward * dashForce;
-                    Debug.Log($"transform: {orientation}");
-                    Debug.Log($"{forceToApply}");
+
                     rigidbody.AddForce(forceToApply, ForceMode.Impulse);
-                    print("forceApplied");
                     animator.SetBool("dashPressed", true);
                     animator.Play("Base Layer.DashForward");
-
-                    print("FINISHED");
                 }
 
-                if (dashPressed && animParaSpeed < 0f)
+                if (dashPressed && direction == 1)
                 {
-                    print("PAST5");
 
                     if (dashCdTimer > 0)
                     {
@@ -579,14 +590,9 @@ public class Movement : MonoBehaviour
                     }
 
                     Vector3 forceToApply = orientation.forward * dashForce * -1f;
-                    Debug.Log($"transform: {player.transform.position}");
-                    Debug.Log($"{forceToApply}");
                     rigidbody.AddForce(forceToApply, ForceMode.Impulse);
-                    print("forceApplied");
                     animator.SetBool("dashPressed", true);
                     animator.Play("Base Layer.DashBackward");
-                    animator.SetBool("dashPressed", false);
-                    print("doneDash");
 
                 }
 
@@ -630,6 +636,21 @@ public class Movement : MonoBehaviour
         }
 
 
+    }
+
+    public void Reverse()
+    {
+        if (player2.transform.position.z < player1.transform.position.z || player1.transform.position.z > player2.transform.position.z)
+        {
+            Vector3 currentScale = transform.localScale;
+            currentScale.z = -initialLocalScaleZ;
+            transform.localScale = currentScale;
+        } else
+        {
+            Vector3 currentScale = transform.localScale;
+            currentScale.z = initialLocalScaleZ;
+            transform.localScale = currentScale;
+        }
     }
 
     private void AllowMovement()
