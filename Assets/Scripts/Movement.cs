@@ -117,7 +117,7 @@ public class Movement : MonoBehaviour
 
 
         GetIsGrounded();
-        Reverse();
+        //Reverse();
 
         prevPos = currentPos;
         currentPos = transform.position.z;
@@ -637,27 +637,53 @@ public class Movement : MonoBehaviour
 
     }
 
-    public void Reverse()
-    {
-        // Player 1's initial rotation is 0
-        // Player 2's initial rotation is 180
+    /// <summary>
+    /// BUG REPORT: Player 2 does not rotate as otherPlayer property for player 1 movement after passing to the other side.
+    /// </summary>
 
-        if (otherPlayer.transform.position.z < transform.position.z)
-        {
-            // If player is to the left of the other player
-            Quaternion currentRotation = transform.localRotation;
-            currentRotation.y = initialLocalRotationY == 0 ? 180 : initialLocalRotationY;
-            transform.localRotation = currentRotation;
+  ////  public void Reverse()
+  //  {
+  //      // Player 1's initial rotation is 0
+  //      // Player 2's initial rotation is 180
 
-        }
-        else
-        {
-            // If player is to the right of the other player
-            Quaternion currentRotation = transform.localRotation;
-            currentRotation.y = initialLocalRotationY == 180 ? 0 : initialLocalRotationY;
-            transform.localRotation = currentRotation;
-        }
-    }
+  //      if (otherPlayer.transform.position.z < transform.position.z)
+  //      {
+
+
+
+  //          // If player is to the left of the other player
+  //          Quaternion currentRotation = transform.localRotation;
+
+  //          if (playerNumber == 1)
+  //          {
+  //              currentRotation.y = initialLocalRotationY == 0 ? 180 : initialLocalRotationY;
+  //          } else if (playerNumber == 2)
+  //          {
+  //              print("Reverse player 2");
+  //              currentRotation.y = initialLocalRotationY == 180 ? 0 : initialLocalRotationY;
+  //          }
+
+  //          transform.localRotation = currentRotation;
+  //      }
+  //      else
+  //      {
+  //          // If player is to the right of the other player
+  //          Quaternion currentRotation = transform.localRotation;
+
+  //          if (playerNumber == 1)
+  //          {
+  //              currentRotation.y = initialLocalRotationY == 180 ? 0 : initialLocalRotationY;
+  //          }
+  //          else if (playerNumber == 2)
+  //          {
+  //              print("Reverse player 2");
+
+  //              currentRotation.y = initialLocalRotationY == 0 ? 180 : initialLocalRotationY;
+  //          }
+
+  //          transform.localRotation = currentRotation;
+  //      }
+  //  }
 
     private void AllowMovement()
     {

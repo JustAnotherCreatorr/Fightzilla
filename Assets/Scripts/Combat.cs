@@ -5,50 +5,62 @@ using UnityEngine;
 public class Combat : MonoBehaviour
 {
 
-    public GameObject player;
+    public int playerNumber;
     public Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
-        animator = player.GetComponent<Animator>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        bool lightPunch = Input.GetKeyDown(KeyCode.H);
-        bool medPunch = Input.GetKeyDown(KeyCode.J);
-        bool heavyPunch = Input.GetKeyDown(KeyCode.K);
-        bool lightKick = Input.GetKeyDown(KeyCode.B);
-        bool medKick = Input.GetKeyDown(KeyCode.N);
-        bool heavyKick = Input.GetKeyDown(KeyCode.M);
+        bool lightPunch = false;
+        bool medPunch = false;
+        bool heavyPunch = false;
+        bool lightKick = false;
+        bool medKick = false;
+        bool heavyKick = false;
 
-        LPunch(lightPunch); 
-        MPunch(medPunch); 
-        HPunch(heavyPunch); 
-        LKick(lightKick); 
-        MKick(medKick); 
-        HKick(heavyKick);
+        if (playerNumber == 1)
+        {
+            lightPunch = Input.GetKeyDown(KeyCode.H);
+            medPunch = Input.GetKeyDown(KeyCode.J);
+            heavyPunch = Input.GetKeyDown(KeyCode.K);
+            lightKick = Input.GetKeyDown(KeyCode.B);
+            medKick = Input.GetKeyDown(KeyCode.N);
+            heavyKick = Input.GetKeyDown(KeyCode.M);
+        }
+
+        if (playerNumber == 2)
+        {
+            lightPunch = Input.GetKeyDown(KeyCode.Alpha1);
+            medPunch = Input.GetKeyDown(KeyCode.Alpha2);
+            heavyPunch = Input.GetKeyDown(KeyCode.Alpha3);
+            lightKick = Input.GetKeyDown(KeyCode.E);
+            medKick = Input.GetKeyDown(KeyCode.R);
+            heavyKick = Input.GetKeyDown(KeyCode.T);
+        }
+
+        if (lightPunch) LPunch(lightPunch);
+        if (medPunch) MPunch(medPunch);
+        if (heavyPunch) HPunch(heavyPunch);
+        if (lightKick) LKick(lightKick);
+        if (medKick) MKick(medKick);
+        if (heavyKick) HKick(heavyKick);
     }
 
     void LPunch(bool lightPunch)
     {
-        if (!Input.GetKeyDown(KeyCode.H))
-        {
-            return; 
-        }
-            animator.SetBool("LPunch", true);
-            animator.Play("Base Layer.LPunch");
-            animator.SetBool("LPunch", false);
+        animator.SetBool("LPunch", true);
+        animator.Play("Base Layer.LPunch");
+        animator.SetBool("LPunch", false);
     }
 
     void MPunch(bool medPunch)
     {
-        if (!Input.GetKeyDown(KeyCode.J))
-        {
-            return;
-        }
         animator.SetBool("MPunch", true);
         animator.Play("Base Layer.MPunch");
         animator.SetBool("MPunch", false);
@@ -56,10 +68,6 @@ public class Combat : MonoBehaviour
 
     void HPunch(bool heavyPunch)
     {
-        if (!Input.GetKeyDown(KeyCode.K))
-        {
-            return;
-        }
         animator.SetBool("HPunch", true);
         animator.Play("Base Layer.HPunch");
         animator.SetBool("HPunch", false);
@@ -67,10 +75,6 @@ public class Combat : MonoBehaviour
 
     void LKick(bool lightKick)
     {
-        if (!Input.GetKeyDown(KeyCode.B))
-        {
-            return;
-        }
         animator.SetBool("LKick", true);
         animator.Play("Base Layer.LKick");
         animator.SetBool("LKick", false);
@@ -78,10 +82,6 @@ public class Combat : MonoBehaviour
 
     void MKick(bool medKick)
     {
-        if (!Input.GetKeyDown(KeyCode.N))
-        {
-            return;
-        }
         animator.SetBool("MKick", true);
         animator.Play("Base Layer.MKick");
         animator.SetBool("MKick", false);
@@ -89,13 +89,9 @@ public class Combat : MonoBehaviour
 
     void HKick(bool heavyKick)
     {
-        if (!Input.GetKeyDown(KeyCode.M))
-        {
-            return;
-        }
         animator.SetBool("HKick", true);
         animator.Play("Base Layer.HKick");
         animator.SetBool("HKick", false);
     }
- 
+
 }
