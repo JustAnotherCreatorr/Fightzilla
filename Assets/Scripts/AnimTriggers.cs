@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class AnimTriggers : MonoBehaviour
 {
+
+    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -11,13 +14,13 @@ public class AnimTriggers : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        
+
     }
 
-    public void CheckHitOpponent(string attackName)
+    public void CheckHitOpponent()
     {
-
+        print("Hit!");
     }
 }
