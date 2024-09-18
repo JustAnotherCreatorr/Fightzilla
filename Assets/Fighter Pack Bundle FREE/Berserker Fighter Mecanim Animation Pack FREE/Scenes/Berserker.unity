@@ -121,6 +121,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!95 &5995227 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 9577182, guid: fbf89d03afc7fb848af45a6cf9c83d98,
+    type: 3}
+  m_PrefabInstance: {fileID: 1573196801}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &345621746 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 477074, guid: fbf89d03afc7fb848af45a6cf9c83d98,
@@ -385,7 +391,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: fbf89d03afc7fb848af45a6cf9c83d98, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1.25
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: fbf89d03afc7fb848af45a6cf9c83d98, type: 3}
       propertyPath: m_LocalPosition.z
@@ -411,6 +417,10 @@ PrefabInstance:
       propertyPath: m_UpdateMode
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: fbf89d03afc7fb848af45a6cf9c83d98, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 5995227}
     - target: {fileID: 11400000, guid: fbf89d03afc7fb848af45a6cf9c83d98, type: 3}
       propertyPath: defaultCamTransform
       value: 
