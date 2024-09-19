@@ -3100,6 +3100,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95f2aded1e17b654faad50cd6e6221c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 375259168}
+  otherPlayer: {fileID: 869107093}
+  playerHealth: {fileID: 454477895}
+  otherPlayerHealth: {fileID: 1218599431}
+  animator: {fileID: 955861068}
+  threshold: 2.87
 --- !u!1 &247570633
 GameObject:
   m_ObjectHideFlags: 0
@@ -3638,18 +3644,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerNumber: 1
   animator: {fileID: 955861068}
---- !u!114 &375259171
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 375259165}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95f2aded1e17b654faad50cd6e6221c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &391929419 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: f534080609e651f49b287786475267cd,
@@ -3946,7 +3940,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8be184e28c96c1748a15829f9c32064d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealth: 1
+  playerHealth: 0
   movement: {fileID: 375259168}
   healthBar: {fileID: 454477894}
   animator: {fileID: 955861068}
@@ -9163,6 +9157,30 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 11400000, guid: fbf89d03afc7fb848af45a6cf9c83d98, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: fbf89d03afc7fb848af45a6cf9c83d98, type: 3}
+--- !u!1 &1174752750 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 177074, guid: fbf89d03afc7fb848af45a6cf9c83d98,
+    type: 3}
+  m_PrefabInstance: {fileID: 1168106963}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1174752752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1174752750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95f2aded1e17b654faad50cd6e6221c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 869107093}
+  otherPlayer: {fileID: 375259168}
+  playerHealth: {fileID: 1218599431}
+  otherPlayerHealth: {fileID: 454477895}
+  animator: {fileID: 3567059}
+  threshold: 2.87
 --- !u!1 &1197085333
 GameObject:
   m_ObjectHideFlags: 0

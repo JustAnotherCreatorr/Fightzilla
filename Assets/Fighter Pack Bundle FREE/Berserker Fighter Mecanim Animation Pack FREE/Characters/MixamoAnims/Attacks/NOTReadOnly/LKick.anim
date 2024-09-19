@@ -61720,8 +61720,8 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0.6666667
-    functionName: CheckHitOpponent
-    data: 
+    functionName: CheckDistance
+    data: LKick
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0

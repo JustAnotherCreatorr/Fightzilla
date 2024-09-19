@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class PlayerHealth : MonoBehaviour
 {
 
-    public float playerHealth;
+    public float playerHealth; 
     public Movement movement;
     public Slider healthBar;
     public Animator animator;
@@ -24,10 +24,6 @@ public class PlayerHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        bool pPressed = Input.GetKeyDown(KeyCode.P);
-
-        TestHealth(pPressed);
-
         if (hitDefended)
         {
             animator.SetBool("HitDefended", true);
@@ -46,6 +42,7 @@ public class PlayerHealth : MonoBehaviour
 
         if (movement.isBlocking && hit)
         {
+            print("BLOCKED");
             animator.SetBool("Hit", false);
             hit = false;
             animator.Play("Base Layer.Block");
@@ -65,17 +62,6 @@ public class PlayerHealth : MonoBehaviour
         Invoke("EndHit", 0.5f);
         Actions.OnPlayerHit.Invoke(1);
     }
-
-    public void TestHealth(bool hPressed)
-    {
-        if (hPressed)
-        {
-            hit = true;
-            animator.SetBool("Hit", true);
-            PlayerHurt();
-        }
-    }
-
     public void EndHit()
     {
         hit = false;
