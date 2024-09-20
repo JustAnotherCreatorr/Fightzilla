@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class AnimTriggers : MonoBehaviour
 {
 
+    public AttackReferences attackReferences;
     public Movement player;
     public Movement otherPlayer;
     public PlayerHealth playerHealth;
@@ -28,13 +29,24 @@ public class AnimTriggers : MonoBehaviour
 
     public void CheckDistance(string attackName)
     {
+        AttackSO currentAttack = null;
+
+        foreach (AttackSO attackSO in attackReferences.attacks)
+        {
+            if (attackSO.attackName == attackName)
+            {
+                currentAttack = attackSO;
+            }
+        }
+
         float distance = Vector3.Distance(player.transform.position, otherPlayer.transform.position);
 
         distance = Mathf.Abs(distance);
 
         if (distance <= threshold)
         {
-            otherPlayerHealth.PlayerHurt();        
+            otherPlayerHealth.hit = true;
+            otherPlayerHealth.PlayerHurt(currentAttack);        
         }
     }
     private void OnDrawGizmosSelected()

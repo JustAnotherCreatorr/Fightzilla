@@ -292,20 +292,54 @@ public class Movement : MonoBehaviour
             }
         }
 
-        if (horizontal < 0 && playerNumber == 1)
+        if (playerNumber == 1)
         {
-            if (!isGrounded)
+            if (horizontal < 0)
+            {
+                if (!isGrounded)
+                {
+                    backwardSpeedMod = 1;
+                    animator.SetBool("isBlocking", false);
+                    isBlocking = false;
+                    return;
+                }
+                backwardSpeedMod = 0.6f;
+                animator.SetBool("isBlocking", true);
+                isBlocking = true;
+            }
+
+            if (horizontal > 0)
             {
                 backwardSpeedMod = 1;
                 animator.SetBool("isBlocking", false);
                 isBlocking = false;
-                return;
             }
-            backwardSpeedMod = 0.6f;
-            animator.SetBool("isBlocking", true);
-            isBlocking = true;
+
+        } else if (playerNumber == 2)
+        {
+            if (horizontal > 0)
+            {
+                if (!isGrounded)
+                {
+                    backwardSpeedMod = 1;
+                    animator.SetBool("isBlocking", false);
+                    isBlocking = false;
+                    return;
+                }
+                backwardSpeedMod = 0.6f;
+                animator.SetBool("isBlocking", true);
+                isBlocking = true;
+
+                if (horizontal < 0)
+                {
+                    backwardSpeedMod = 1;
+                    animator.SetBool("isBlocking", false);
+                    isBlocking = false;
+                }
+            }
         }
-        else
+
+        if (horizontal == 0)
         {
             backwardSpeedMod = 1;
             animator.SetBool("isBlocking", false);
