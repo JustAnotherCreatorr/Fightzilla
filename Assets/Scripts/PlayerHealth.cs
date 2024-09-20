@@ -37,7 +37,7 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    public void PlayerHurt()
+    public void PlayerHurt(AttackSO attackSO)
     {
 
         if (movement.isBlocking && hit)
@@ -58,7 +58,7 @@ public class PlayerHealth : MonoBehaviour
         animator.SetBool("HitDefended", false);
         animator.SetFloat("HitAnimation", Random.Range(0, 4));
         animator.Play("Base Layer.Hit");
-        healthBar.value -= 0.05f;
+        healthBar.value -= attackSO.damage;
         Invoke("EndHit", 0.5f);
         Actions.OnPlayerHit.Invoke(1);
     }
