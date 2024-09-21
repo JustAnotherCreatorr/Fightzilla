@@ -483,7 +483,7 @@ public class Movement : MonoBehaviour
             animator.SetBool("Hit", false);
             animator.Play("Base Layer.CrouchBlock");
             animator.SetBool("HitDefended", true);
-            Actions.OnPlayerHit.Invoke(1);
+            Actions.OnPlayerHit.Invoke(playerNumber);
             playerHealth.EndHit();
         }
 
@@ -493,7 +493,7 @@ public class Movement : MonoBehaviour
             animator.SetBool("HitDefended", false);
             animator.Play("Base Layer.CrouchHit");
             Invoke("EndHit", 0.5f);
-            Actions.OnPlayerHit.Invoke(1);
+            Actions.OnPlayerHit.Invoke(playerNumber);
             return;
         }
 

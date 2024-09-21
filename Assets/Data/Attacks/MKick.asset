@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4773a96f065c7c48bea26faaa55fb67, type: 3}
-  m_Name: LPunch
+  m_Name: MKick
   m_EditorClassIdentifier: 
-  attackName: LPunch
-  damage: 0.04
+  attackName: MKick
+  damage: 0.061

@@ -8,7 +8,7 @@ public class GameTimer : Timer
     public Text timeUpText;
   //  public GameObject gameEndMenu;
     public GameObject Player1;
-    //public GameObject Player2;
+    public GameObject Player2;
 
     private void Start()
     {
@@ -23,7 +23,7 @@ public class GameTimer : Timer
         timeUpText.gameObject.SetActive(true);
       //  gameEndMenu.gameObject.SetActive(true);
         Destroy(Player1);
-        //Destroy(Player2);
+        Destroy(Player2);
     }
 
 

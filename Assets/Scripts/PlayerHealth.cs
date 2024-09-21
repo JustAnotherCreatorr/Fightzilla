@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
-
+    public GameObject player;
     public float playerHealth; 
     public Movement movement;
     public Slider healthBar;
@@ -24,6 +24,12 @@ public class PlayerHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (healthBar.value == 0)
+        {
+            HealthRunOut();
+        }
+
         if (hitDefended)
         {
             animator.SetBool("HitDefended", true);
@@ -48,7 +54,7 @@ public class PlayerHealth : MonoBehaviour
             animator.Play("Base Layer.Block");
             hitDefended = true;
             animator.SetBool("HitDefended", true);
-            Actions.OnPlayerHit.Invoke(1);
+            Actions.OnPlayerHit.Invoke(movement.playerNumber);
             Invoke("EndHit", 0.5f);
             return;
         }
@@ -60,7 +66,7 @@ public class PlayerHealth : MonoBehaviour
         animator.Play("Base Layer.Hit");
         healthBar.value -= attackSO.damage;
         Invoke("EndHit", 0.5f);
-        Actions.OnPlayerHit.Invoke(1);
+        Actions.OnPlayerHit.Invoke(movement.playerNumber);
     }
     public void EndHit()
     {
@@ -73,5 +79,11 @@ public class PlayerHealth : MonoBehaviour
     {
         hitDefended = false;
         animator.SetBool("HitDefended", false);
+    }
+
+
+    public void HealthRunOut()
+    {
+        Destroy(player);
     }
 }

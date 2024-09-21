@@ -744,7 +744,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: fbf89d03afc7fb848af45a6cf9c83d98, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4.72
+      value: -5.07
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: fbf89d03afc7fb848af45a6cf9c83d98, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2290,6 +2290,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 9748f96d00539f348b968c3d905c2dde, type: 2}
+    - target: {fileID: 9180176273537849582, guid: fbf89d03afc7fb848af45a6cf9c83d98,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11400000, guid: fbf89d03afc7fb848af45a6cf9c83d98, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: fbf89d03afc7fb848af45a6cf9c83d98, type: 3}
@@ -3100,7 +3105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95f2aded1e17b654faad50cd6e6221c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackReferences: {fileID: 0}
+  attackReferences: {fileID: 556820050}
   player: {fileID: 375259168}
   otherPlayer: {fileID: 869107093}
   playerHealth: {fileID: 454477895}
@@ -3953,6 +3958,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8be184e28c96c1748a15829f9c32064d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 375259165}
   playerHealth: 0
   movement: {fileID: 375259168}
   healthBar: {fileID: 454477894}
@@ -4464,6 +4470,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attacks:
   - {fileID: 11400000, guid: a088eafe2d9ee654981987eeb7216471, type: 2}
+  - {fileID: 11400000, guid: d9b86a74f0d2ba549ad8fb33af80a213, type: 2}
+  - {fileID: 11400000, guid: 3922f9e6bfd95d64ca584dcdf5537262, type: 2}
+  - {fileID: 11400000, guid: 36b19eb5cb0232d4f81783afbded0395, type: 2}
+  - {fileID: 11400000, guid: 048cb260b1a50a74a99d41e5ccee4ce3, type: 2}
+  - {fileID: 11400000, guid: a9fa94551ead2214ea5cca5a5e6ceff4, type: 2}
 --- !u!4 &556820051
 Transform:
   m_ObjectHideFlags: 0
@@ -4766,6 +4777,7 @@ MonoBehaviour:
   showDecimals: 0
   timeUpText: {fileID: 1701531986}
   Player1: {fileID: 375259165}
+  Player2: {fileID: 869107091}
 --- !u!1 &627024006
 GameObject:
   m_ObjectHideFlags: 0
@@ -7714,7 +7726,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: fbf89d03afc7fb848af45a6cf9c83d98, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 11.4
+      value: 11.58
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: fbf89d03afc7fb848af45a6cf9c83d98, type: 3}
       propertyPath: m_LocalRotation.w
@@ -9224,6 +9236,31 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 12048ea754e6d0f44aa81f84449f65f0, type: 2}
+    - target: {fileID: 4608262283814018841, guid: fbf89d03afc7fb848af45a6cf9c83d98,
+        type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4608262283814018841, guid: fbf89d03afc7fb848af45a6cf9c83d98,
+        type: 3}
+      propertyPath: lengthInSec
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4608262283814018841, guid: fbf89d03afc7fb848af45a6cf9c83d98,
+        type: 3}
+      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[1].time
+      value: 0.23809233
+      objectReference: {fileID: 0}
+    - target: {fileID: 4608262283814018841, guid: fbf89d03afc7fb848af45a6cf9c83d98,
+        type: 3}
+      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[1].value
+      value: 0.061534822
+      objectReference: {fileID: 0}
+    - target: {fileID: 9180176273537849582, guid: fbf89d03afc7fb848af45a6cf9c83d98,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11400000, guid: fbf89d03afc7fb848af45a6cf9c83d98, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: fbf89d03afc7fb848af45a6cf9c83d98, type: 3}
@@ -9245,7 +9282,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95f2aded1e17b654faad50cd6e6221c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackReferences: {fileID: 0}
+  attackReferences: {fileID: 556820050}
   player: {fileID: 869107093}
   otherPlayer: {fileID: 375259168}
   playerHealth: {fileID: 1218599431}
@@ -9435,6 +9472,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8be184e28c96c1748a15829f9c32064d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 869107091}
   playerHealth: 0
   movement: {fileID: 869107093}
   healthBar: {fileID: 1218599430}
@@ -11361,13 +11399,14 @@ GameObject:
   - component: {fileID: 1701531987}
   - component: {fileID: 1701531986}
   - component: {fileID: 1701531985}
+  - component: {fileID: 1701531988}
   m_Layer: 5
   m_Name: timeUpText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1701531984
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11384,8 +11423,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.5, y: 0}
-  m_SizeDelta: {x: 257.6214, y: 52.989944}
+  m_AnchoredPosition: {x: 0.7, y: -22}
+  m_SizeDelta: {x: 835.57513, y: 224.9899}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1701531985
 MonoBehaviour:
@@ -11400,11 +11439,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayText: {fileID: 1701531986}
-  countdownLength: 10000
+  countdownLength: 100
   startImmediate: 0
   showDecimals: 0
   timeUpText: {fileID: 1701531986}
   Player1: {fileID: 375259165}
+  Player2: {fileID: 869107091}
 --- !u!114 &1701531986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11418,7 +11458,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -11426,11 +11466,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 36
+    m_FontSize: 125
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 2
-    m_MaxSize: 40
+    m_MaxSize: 125
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -11448,6 +11488,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1701531983}
   m_CullTransparentMesh: 0
+--- !u!114 &1701531988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1701531983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 2, y: -2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1703114086
 GameObject:
   m_ObjectHideFlags: 0
