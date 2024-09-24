@@ -18,6 +18,8 @@ public class Movement : MonoBehaviour
     public PlayerHealth playerHealth;
     public int playerNumber;
 
+    public Vector3 startingPosition;
+
     public float speed;
     public int gradualIncrease = 5;
     private float animParaSpeed;
@@ -53,7 +55,7 @@ public class Movement : MonoBehaviour
 
     public AnimationClip[] randomHitAnimations;
 
-    private bool allowMovement = false;
+    public bool allowMovement = false;
 
     private float prevPos;
     private float currentPos;
@@ -69,6 +71,7 @@ public class Movement : MonoBehaviour
         prevPos = transform.position.z;
         currentPos = transform.position.z;
         initialLocalRotationY = transform.localRotation.y;
+        startingPosition = transform.position;
     }
 
     // Update is called once per frame

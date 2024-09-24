@@ -6,30 +6,30 @@ using UnityEngine.UI;
 public class PlayerHealth : MonoBehaviour
 {
     public GameObject player;
-    public float playerHealth; 
-    public Movement movement;
+    public GameObject otherPlayer;
+    public Movement playerMovement;
+    public Movement otherPlayerMovement;
     public Slider healthBar;
+    public Slider otherPlayerHealthBar;
     public Animator animator;
     public bool hit;
     public bool hitDefended;
     public bool crouchBlockHit;
+    [SerializeField] private ParticleSystem hurtParticles;
+    [SerializeField] private ParticleSystem deathParticles;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        playerHealth = healthBar.value;
         animator.SetBool("Hit", false);
+        hurtParticles.Stop();
+        deathParticles.Stop();
     }
 
     // Update is called once per frame
     void Update()
     {
-
-        if (healthBar.value == 0)
-        {
-            HealthRunOut();
-        }
-
         if (hitDefended)
         {
             animator.SetBool("HitDefended", true);
@@ -46,27 +46,32 @@ public class PlayerHealth : MonoBehaviour
     public void PlayerHurt(AttackSO attackSO)
     {
 
-        if (movement.isBlocking && hit)
+        if (playerMovement.isBlocking && hit)
         {
-            print("BLOCKED");
             animator.SetBool("Hit", false);
             hit = false;
             animator.Play("Base Layer.Block");
             hitDefended = true;
             animator.SetBool("HitDefended", true);
-            Actions.OnPlayerHit.Invoke(movement.playerNumber);
+            Actions.OnPlayerHit.Invoke(playerMovement.playerNumber);
             Invoke("EndHit", 0.5f);
             return;
         }
 
-
         hitDefended = false;
         animator.SetBool("HitDefended", false);
         animator.SetFloat("HitAnimation", Random.Range(0, 4));
+        hurtParticles.Play();
         animator.Play("Base Layer.Hit");
         healthBar.value -= attackSO.damage;
         Invoke("EndHit", 0.5f);
-        Actions.OnPlayerHit.Invoke(movement.playerNumber);
+        Actions.OnPlayerHit.Invoke(playerMovement.playerNumber);
+
+        if (healthBar.value == 0)
+        {
+            HealthRunOut();
+        }
+
     }
     public void EndHit()
     {
@@ -84,6 +89,25 @@ public class PlayerHealth : MonoBehaviour
 
     public void HealthRunOut()
     {
-        Destroy(player);
+        deathParticles.Play();
+        animator.SetBool("Knockout", true);
+        animator.Play("Defeated");
+        playerMovement.allowMovement = false;
+        otherPlayerMovement.allowMovement = false;
+        Invoke("NextRound", 2f);
+    }
+
+    public void NextRound()
+    {
+        deathParticles.Stop();
+        player.transform.position = playerMovement.startingPosition;
+        otherPlayer.transform.position = otherPlayerMovement.startingPosition;
+        animator.SetBool("NextRound", true);
+        animator.Play("GetUp");
+        animator.SetBool("Knockout", false);
+        animator.SetBool("NextRound", false);
+        healthBar.value = 1f;
+        otherPlayerHealthBar.value = 1f;
+        Actions.OnNextRound.Invoke();
     }
 }

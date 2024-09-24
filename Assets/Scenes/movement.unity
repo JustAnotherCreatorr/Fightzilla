@@ -2290,10 +2290,60 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 9748f96d00539f348b968c3d905c2dde, type: 2}
+    - target: {fileID: 7724159765825094598, guid: fbf89d03afc7fb848af45a6cf9c83d98,
+        type: 3}
+      propertyPath: lengthInSec
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7724159765825094598, guid: fbf89d03afc7fb848af45a6cf9c83d98,
+        type: 3}
+      propertyPath: EmissionModule.m_BurstCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7724159765825094598, guid: fbf89d03afc7fb848af45a6cf9c83d98,
+        type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7724159765825094598, guid: fbf89d03afc7fb848af45a6cf9c83d98,
+        type: 3}
+      propertyPath: ShapeModule.randomDirectionAmount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7724159765825094598, guid: fbf89d03afc7fb848af45a6cf9c83d98,
+        type: 3}
+      propertyPath: EmissionModule.m_Bursts.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7724159765825094598, guid: fbf89d03afc7fb848af45a6cf9c83d98,
+        type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 7724159765825094598, guid: fbf89d03afc7fb848af45a6cf9c83d98,
+        type: 3}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].cycleCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7724159765825094598, guid: fbf89d03afc7fb848af45a6cf9c83d98,
+        type: 3}
+      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[1].time
+      value: 0.2838895
+      objectReference: {fileID: 0}
+    - target: {fileID: 7724159765825094598, guid: fbf89d03afc7fb848af45a6cf9c83d98,
+        type: 3}
+      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[1].value
+      value: 0.015380859
+      objectReference: {fileID: 0}
+    - target: {fileID: 7724159765825094598, guid: fbf89d03afc7fb848af45a6cf9c83d98,
+        type: 3}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.scalar
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 9180176273537849582, guid: fbf89d03afc7fb848af45a6cf9c83d98,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11400000, guid: fbf89d03afc7fb848af45a6cf9c83d98, type: 3}
@@ -3606,6 +3656,7 @@ MonoBehaviour:
   rigidbody: {fileID: 375259167}
   playerHealth: {fileID: 454477895}
   playerNumber: 1
+  startingPosition: {x: 0, y: 0, z: 0}
   speed: 5
   gradualIncrease: 5
   dashCd: 0.8
@@ -3622,6 +3673,7 @@ MonoBehaviour:
   - {fileID: -203655887218126122, guid: 6a03bf3a31949f2439f79bf2c5de2ca2, type: 3}
   - {fileID: -203655887218126122, guid: 76ec7f2f246912744ba3fcdc9ba3d0cf, type: 3}
   - {fileID: -203655887218126122, guid: 4fcdf34950908e04cbeddd8fcbc212a5, type: 3}
+  allowMovement: 0
 --- !u!136 &375259169
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3959,13 +4011,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 375259165}
-  playerHealth: 0
-  movement: {fileID: 375259168}
+  otherPlayer: {fileID: 869107091}
+  playerMovement: {fileID: 375259168}
+  otherPlayerMovement: {fileID: 869107093}
   healthBar: {fileID: 454477894}
+  otherPlayerHealthBar: {fileID: 1218599430}
   animator: {fileID: 955861068}
   hit: 0
   hitDefended: 0
   crouchBlockHit: 0
+  hurtParticles: {fileID: 1546798057}
+  deathParticles: {fileID: 1170549355}
 --- !u!1 &470914438
 GameObject:
   m_ObjectHideFlags: 0
@@ -6091,6 +6147,7 @@ MonoBehaviour:
   rigidbody: {fileID: 869107095}
   playerHealth: {fileID: 1218599431}
   playerNumber: 2
+  startingPosition: {x: 0, y: 0, z: 0}
   speed: 5
   gradualIncrease: 5
   dashCd: 0.8
@@ -6107,6 +6164,7 @@ MonoBehaviour:
   - {fileID: -203655887218126122, guid: 6a03bf3a31949f2439f79bf2c5de2ca2, type: 3}
   - {fileID: -203655887218126122, guid: 76ec7f2f246912744ba3fcdc9ba3d0cf, type: 3}
   - {fileID: -203655887218126122, guid: 4fcdf34950908e04cbeddd8fcbc212a5, type: 3}
+  allowMovement: 0
 --- !u!136 &869107094
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -7381,6 +7439,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1097627358}
   m_CullTransparentMesh: 0
+--- !u!198 &1108168011 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 4608262283814018841, guid: fbf89d03afc7fb848af45a6cf9c83d98,
+    type: 3}
+  m_PrefabInstance: {fileID: 1168106963}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1112138396
 GameObject:
   m_ObjectHideFlags: 0
@@ -9259,11 +9323,17 @@ PrefabInstance:
     - target: {fileID: 9180176273537849582, guid: fbf89d03afc7fb848af45a6cf9c83d98,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11400000, guid: fbf89d03afc7fb848af45a6cf9c83d98, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: fbf89d03afc7fb848af45a6cf9c83d98, type: 3}
+--- !u!198 &1170549355 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 7724159765825094598, guid: fbf89d03afc7fb848af45a6cf9c83d98,
+    type: 3}
+  m_PrefabInstance: {fileID: 48614930}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1174752750 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 177074, guid: fbf89d03afc7fb848af45a6cf9c83d98,
@@ -9473,13 +9543,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 869107091}
-  playerHealth: 0
-  movement: {fileID: 869107093}
+  otherPlayer: {fileID: 375259165}
+  playerMovement: {fileID: 869107093}
+  otherPlayerMovement: {fileID: 375259168}
   healthBar: {fileID: 1218599430}
+  otherPlayerHealthBar: {fileID: 454477894}
   animator: {fileID: 3567059}
   hit: 0
   hitDefended: 0
   crouchBlockHit: 0
+  hurtParticles: {fileID: 1108168011}
+  deathParticles: {fileID: 1342502929}
 --- !u!1 &1237826624
 GameObject:
   m_ObjectHideFlags: 0
@@ -9968,6 +10042,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1298559269}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!198 &1342502929 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 7724159765825094598, guid: fbf89d03afc7fb848af45a6cf9c83d98,
+    type: 3}
+  m_PrefabInstance: {fileID: 1168106963}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1349771874
 GameObject:
   m_ObjectHideFlags: 0
@@ -10760,6 +10840,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1528313666}
   m_CullTransparentMesh: 0
+--- !u!198 &1546798057 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 4608262283814018841, guid: fbf89d03afc7fb848af45a6cf9c83d98,
+    type: 3}
+  m_PrefabInstance: {fileID: 48614930}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1547529768
 GameObject:
   m_ObjectHideFlags: 0

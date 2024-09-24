@@ -10,7 +10,29 @@ public class CountdownTimer : Timer
     {
         Actions.OnCountdownEnd?.Invoke();
         displayText.text = ("START!");
-        Destroy(gameObject, 0.5f);
+        //Destroy(gameObject, 0.5f);
+        Invoke("EraseTimer", 0.5f);
+    }
+
+    private void EraseTimer()
+    {
+        gameObject.SetActive(false);
+    }
+
+    private void ResetTimer()
+    {
+        countdownLength = 3f;
+        gameObject.SetActive(true);
+    }
+
+    private void OnEnable()
+    {
+        Actions.OnNextRound += ResetTimer;
+    }
+
+    private void OnDisable()
+    {
+        
     }
 
 }
