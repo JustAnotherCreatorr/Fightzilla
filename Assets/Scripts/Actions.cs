@@ -7,4 +7,5 @@ public static class Actions
     public static Action OnCountdownEnd;
     public static Action<int> OnPlayerHit;
     public static Action OnNextRound;
+    public static Action<GameController.GameStates> OnGameStateChange;
 }

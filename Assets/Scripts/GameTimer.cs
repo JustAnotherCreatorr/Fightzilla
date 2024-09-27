@@ -9,6 +9,7 @@ public class GameTimer : Timer
     //public GameObject gameEndMenu;
     public GameObject Player1;
     public GameObject Player2;
+    public CountdownTimer countdownTimer;
 
     private void Start()
     {
@@ -48,6 +49,6 @@ public class GameTimer : Timer
     private void OnDisable()
     {
         Actions.OnCountdownEnd -= StartGameTimer;
-        //Actions.OnNextRound -= ResetGameTimer;
+        Actions.OnNextRound -= ResetGameTimer;
     }
 }

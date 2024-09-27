@@ -16,6 +16,7 @@ public class PlayerHealth : MonoBehaviour
     public bool hitDefended;
     public bool crouchBlockHit;
     [SerializeField] private ParticleSystem hurtParticles;
+    [SerializeField] private ParticleSystem blockParticles;
     [SerializeField] private ParticleSystem deathParticles;
 
 
@@ -25,6 +26,7 @@ public class PlayerHealth : MonoBehaviour
         animator.SetBool("Hit", false);
         hurtParticles.Stop();
         deathParticles.Stop();
+        blockParticles.Stop();
     }
 
     // Update is called once per frame
@@ -51,6 +53,7 @@ public class PlayerHealth : MonoBehaviour
             animator.SetBool("Hit", false);
             hit = false;
             animator.Play("Base Layer.Block");
+            blockParticles.Play();
             hitDefended = true;
             animator.SetBool("HitDefended", true);
             Actions.OnPlayerHit.Invoke(playerMovement.playerNumber);
@@ -90,24 +93,24 @@ public class PlayerHealth : MonoBehaviour
     public void HealthRunOut()
     {
         deathParticles.Play();
-        animator.SetBool("Knockout", true);
         animator.Play("Defeated");
-        playerMovement.allowMovement = false;
-        otherPlayerMovement.allowMovement = false;
-        Invoke("NextRound", 2f);
+        print("healthGone");
+        FindObjectOfType<GameController>().SetGameState(GameController.GameStates.nextRoundSetup);
     }
 
-    public void NextRound()
+    private void SetupNextRound()
     {
-        deathParticles.Stop();
-        player.transform.position = playerMovement.startingPosition;
-        otherPlayer.transform.position = otherPlayerMovement.startingPosition;
-        animator.SetBool("NextRound", true);
-        animator.Play("GetUp");
-        animator.SetBool("Knockout", false);
-        animator.SetBool("NextRound", false);
         healthBar.value = 1f;
-        otherPlayerHealthBar.value = 1f;
-        Actions.OnNextRound.Invoke();
     }
+
+    private void OnEnable()
+    {
+        Actions.OnNextRound += SetupNextRound;
+    }
+
+    private void OnDisable()
+    {
+        Actions.OnNextRound -= SetupNextRound;
+    }
+
 }

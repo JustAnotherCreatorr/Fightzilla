@@ -95,7 +95,7 @@ public class Movement : MonoBehaviour
         bool cancelSprint = false;
         bool cancelCrouch = false;
 
-        if (playerNumber == 1)
+        if (playerNumber == 2)
         {
              horizontal = Input.GetAxis("Horizontal");
              shiftPressed = Input.GetKey(KeyCode.RightShift);
@@ -106,7 +106,7 @@ public class Movement : MonoBehaviour
              upArrowPressed = Input.GetKeyDown(KeyCode.UpArrow);
         }
         
-        if (playerNumber == 2)
+        if (playerNumber == 1)
         {
             horizontal = Input.GetAxis("Horizontal2");
             shiftPressed = Input.GetKey(KeyCode.LeftShift);
@@ -755,16 +755,29 @@ public class Movement : MonoBehaviour
         hitStop = 1;
     }
 
+    private void SetupNextRound()
+    {
+        allowMovement = false;
+        transform.position = startingPosition;
+
+        animator.SetBool("NextRound", true);
+        animator.Play("GetUp");
+        animator.SetBool("Knockout", false);
+        animator.SetBool("NextRound", false);
+    }
+
     private void OnEnable()
     {
         Actions.OnCountdownEnd += AllowMovement;
         Actions.OnPlayerHit += SlowMovement;
+        Actions.OnNextRound += SetupNextRound;
     }
 
     private void OnDisable()
     {
         Actions.OnCountdownEnd -= AllowMovement;
         Actions.OnPlayerHit -= SlowMovement;
+        Actions.OnNextRound -= SetupNextRound;
     }
 
 }

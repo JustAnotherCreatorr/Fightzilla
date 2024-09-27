@@ -5,7 +5,7 @@ using System;
 
 public class CountdownTimer : Timer
 {
-
+    public bool CDTimerDestroyed;
     protected override void EndTimer()
     {
         Actions.OnCountdownEnd?.Invoke();
@@ -16,13 +16,14 @@ public class CountdownTimer : Timer
 
     private void EraseTimer()
     {
-        gameObject.SetActive(false);
+        displayText.text = string.Empty;
+        CDTimerDestroyed = true;
     }
 
     private void ResetTimer()
     {
         countdownLength = 3f;
-        gameObject.SetActive(true);
+        CDTimerDestroyed = false;
     }
 
     private void OnEnable()
@@ -32,7 +33,7 @@ public class CountdownTimer : Timer
 
     private void OnDisable()
     {
-        
+       Actions.OnNextRound -= ResetTimer;
     }
 
 }

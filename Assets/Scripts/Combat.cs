@@ -7,6 +7,9 @@ public class Combat : MonoBehaviour
 
     public int playerNumber;
     public Animator animator;
+    public string chosenAttack;
+    public bool animInPlay;
+    private float delayLength;
 
     // Start is called before the first frame update
     void Start()
@@ -24,7 +27,7 @@ public class Combat : MonoBehaviour
         bool medKick = false;
         bool heavyKick = false;
 
-        if (playerNumber == 1)
+        if (playerNumber == 2)
         {
             lightPunch = Input.GetKeyDown(KeyCode.H);
             medPunch = Input.GetKeyDown(KeyCode.J);
@@ -34,7 +37,7 @@ public class Combat : MonoBehaviour
             heavyKick = Input.GetKeyDown(KeyCode.M);
         }
 
-        if (playerNumber == 2)
+        if (playerNumber == 1)
         {
             lightPunch = Input.GetKeyDown(KeyCode.Alpha1);
             medPunch = Input.GetKeyDown(KeyCode.Alpha2);
@@ -42,6 +45,12 @@ public class Combat : MonoBehaviour
             lightKick = Input.GetKeyDown(KeyCode.E);
             medKick = Input.GetKeyDown(KeyCode.R);
             heavyKick = Input.GetKeyDown(KeyCode.T);
+        }
+
+        if (delayLength > 0)
+        {
+            delayLength -= Time.deltaTime;
+            return;
         }
 
         if (lightPunch) LPunch(lightPunch);
@@ -52,46 +61,56 @@ public class Combat : MonoBehaviour
         if (heavyKick) HKick(heavyKick);
     }
 
-    void LPunch(bool lightPunch)
+    private void LPunch(bool lightPunch)
     {
         animator.SetBool("LPunch", true);
         animator.Play("Base Layer.LPunch");
         animator.SetBool("LPunch", false);
+        delayLength = AnimLength.GetAnimLength(animator, "LPunch");
+        print(delayLength);
     }
 
-    void MPunch(bool medPunch)
+    private void MPunch(bool medPunch)
     {
         animator.SetBool("MPunch", true);
         animator.Play("Base Layer.MPunch");
         animator.SetBool("MPunch", false);
+        delayLength = AnimLength.GetAnimLength(animator, "MPunch");
+        print(delayLength);
     }
 
-    void HPunch(bool heavyPunch)
+    private void HPunch(bool heavyPunch)
     {
         animator.SetBool("HPunch", true);
         animator.Play("Base Layer.HPunch");
-        animator.SetBool("HPunch", false);
+        delayLength = AnimLength.GetAnimLength(animator, "HPunch");
+        print(delayLength);
     }
 
-    void LKick(bool lightKick)
+    private void LKick(bool lightKick)
     {
         animator.SetBool("LKick", true);
         animator.Play("Base Layer.LKick");
         animator.SetBool("LKick", false);
+        delayLength = AnimLength.GetAnimLength(animator, "LKick");
+        print(delayLength);
     }
 
-    void MKick(bool medKick)
+    private void MKick(bool medKick)
     {
         animator.SetBool("MKick", true);
         animator.Play("Base Layer.MKick");
         animator.SetBool("MKick", false);
+        delayLength = AnimLength.GetAnimLength(animator, "MKick");
+        print(delayLength);
     }
 
-    void HKick(bool heavyKick)
+    private void HKick(bool heavyKick)
     {
         animator.SetBool("HKick", true);
         animator.Play("Base Layer.HKick");
         animator.SetBool("HKick", false);
+        delayLength = AnimLength.GetAnimLength(animator, "HKick");
+        print(delayLength);
     }
-
 }
