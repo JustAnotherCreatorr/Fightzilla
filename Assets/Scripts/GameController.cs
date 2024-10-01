@@ -7,7 +7,8 @@ public class GameController : MonoBehaviour
     public enum GameStates
     {beforeStart, inPlay, nextRoundSetup}
 
-
+    public Movement Player1;
+    public Movement Player2;
 
     public GameStates currentGameState { get; private set; }
 
@@ -27,10 +28,14 @@ public class GameController : MonoBehaviour
 
             case GameStates.inPlay:
 
+
+
                 break;
 
             case GameStates.nextRoundSetup:
 
+                Player1.allowMovement = false;
+                Player2.allowMovement = false;
                 Invoke("Delay", 3.5f);
 
                 break;
@@ -43,8 +48,6 @@ public class GameController : MonoBehaviour
 
         currentGameState = gameState;
         Actions.OnGameStateChange?.Invoke(gameState);
-
-        
     }
 
     public void Delay()

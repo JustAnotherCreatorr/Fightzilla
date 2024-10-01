@@ -757,7 +757,7 @@ public class Movement : MonoBehaviour
 
     private void SetupNextRound()
     {
-        allowMovement = false;
+        
         transform.position = startingPosition;
 
         animator.SetBool("NextRound", true);

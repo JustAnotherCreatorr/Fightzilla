@@ -18,6 +18,11 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private ParticleSystem hurtParticles;
     [SerializeField] private ParticleSystem blockParticles;
     [SerializeField] private ParticleSystem deathParticles;
+    public Color fullHP;
+    public Color nearFullHP;
+    public Color halfHP;
+    public Color lowHP;
+    public Color critical;
 
 
     // Start is called before the first frame update
@@ -32,6 +37,9 @@ public class PlayerHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        CheckColor();
+
         if (hitDefended)
         {
             animator.SetBool("HitDefended", true);
@@ -93,7 +101,9 @@ public class PlayerHealth : MonoBehaviour
     public void HealthRunOut()
     {
         deathParticles.Play();
+        animator.SetBool("Knockout", true);
         animator.Play("Defeated");
+        animator.SetBool("Knockout", false);
         print("healthGone");
         FindObjectOfType<GameController>().SetGameState(GameController.GameStates.nextRoundSetup);
     }
@@ -101,6 +111,7 @@ public class PlayerHealth : MonoBehaviour
     private void SetupNextRound()
     {
         healthBar.value = 1f;
+        healthBar.gameObject.transform.Find("Fill Area").Find("Fill").GetComponent<Image>().color = fullHP;
     }
 
     private void OnEnable()
@@ -111,6 +122,29 @@ public class PlayerHealth : MonoBehaviour
     private void OnDisable()
     {
         Actions.OnNextRound -= SetupNextRound;
+    }
+
+    private void CheckColor()
+    {
+        if (healthBar.value <= 0.75f && healthBar.value >= 0.5f)
+        {
+            healthBar.gameObject.transform.Find("Fill Area").Find("Fill").GetComponent<Image>().color = nearFullHP;
+        }
+
+        if (healthBar.value <= 0.50f && healthBar.value >= 0.3f)
+        {
+            healthBar.gameObject.transform.Find("Fill Area").Find("Fill").GetComponent<Image>().color = halfHP;
+        }
+
+        if (healthBar.value <= 0.25f && healthBar.value >= 0.1f)
+        {
+            healthBar.gameObject.transform.Find("Fill Area").Find("Fill").GetComponent<Image>().color = lowHP;
+        }
+
+        if (healthBar.value <= 0.1f)
+        {
+            healthBar.gameObject.transform.Find("Fill Area").Find("Fill").GetComponent<Image>().color = critical;
+        }
     }
 
 }

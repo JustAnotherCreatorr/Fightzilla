@@ -12,6 +12,7 @@ public class CountdownTimer : Timer
         displayText.text = ("START!");
         //Destroy(gameObject, 0.5f);
         Invoke("EraseTimer", 0.5f);
+        FindObjectOfType<GameController>().SetGameState(GameController.GameStates.inPlay);
     }
 
     private void EraseTimer()

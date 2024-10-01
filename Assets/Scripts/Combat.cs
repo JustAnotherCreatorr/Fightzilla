@@ -67,6 +67,7 @@ public class Combat : MonoBehaviour
         animator.Play("Base Layer.LPunch");
         animator.SetBool("LPunch", false);
         delayLength = AnimLength.GetAnimLength(animator, "LPunch");
+        delayLength -= 0.1f;
         print(delayLength);
     }
 
@@ -76,6 +77,7 @@ public class Combat : MonoBehaviour
         animator.Play("Base Layer.MPunch");
         animator.SetBool("MPunch", false);
         delayLength = AnimLength.GetAnimLength(animator, "MPunch");
+        delayLength -= 0.3f;
         print(delayLength);
     }
 
@@ -83,7 +85,9 @@ public class Combat : MonoBehaviour
     {
         animator.SetBool("HPunch", true);
         animator.Play("Base Layer.HPunch");
+        animator.SetBool("HPunch", false);
         delayLength = AnimLength.GetAnimLength(animator, "HPunch");
+        delayLength -= 0.5f;
         print(delayLength);
     }
 
@@ -93,6 +97,7 @@ public class Combat : MonoBehaviour
         animator.Play("Base Layer.LKick");
         animator.SetBool("LKick", false);
         delayLength = AnimLength.GetAnimLength(animator, "LKick");
+        delayLength -= 1f;
         print(delayLength);
     }
 
@@ -102,6 +107,7 @@ public class Combat : MonoBehaviour
         animator.Play("Base Layer.MKick");
         animator.SetBool("MKick", false);
         delayLength = AnimLength.GetAnimLength(animator, "MKick");
+        delayLength -= 1f;
         print(delayLength);
     }
 
@@ -111,6 +117,7 @@ public class Combat : MonoBehaviour
         animator.Play("Base Layer.HKick");
         animator.SetBool("HKick", false);
         delayLength = AnimLength.GetAnimLength(animator, "HKick");
+        delayLength -= 0.9f;
         print(delayLength);
     }
 }
