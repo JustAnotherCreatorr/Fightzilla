@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4340463, g: 0.47108704, b: 0.5078537, a: 1}
+  m_IndirectSpecularColor: {r: 0.4340462, g: 0.47108686, b: 0.50785315, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -740,7 +740,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: fbf89d03afc7fb848af45a6cf9c83d98, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.244
+      value: 0.23
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: fbf89d03afc7fb848af45a6cf9c83d98, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3316,6 +3316,8 @@ MonoBehaviour:
   otherPlayerHealth: {fileID: 1218599431}
   animator: {fileID: 955861068}
   threshold: 2.57
+  facingEnemy: 0
+  raycastStart: {fileID: 993354092}
 --- !u!1 &247570633
 GameObject:
   m_ObjectHideFlags: 0
@@ -3441,6 +3443,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player1: {fileID: 375259168}
   Player2: {fileID: 869107093}
+  combat1: {fileID: 375259170}
+  combat2: {fileID: 869107092}
+  gameBegun: 0
 --- !u!4 &260444068
 Transform:
   m_ObjectHideFlags: 0
@@ -3850,10 +3855,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug: 0
+  player: {fileID: 0}
   otherPlayer: {fileID: 869107091}
   animator: {fileID: 955861068}
   rigidbody: {fileID: 375259167}
   playerHealth: {fileID: 454477895}
+  gameTimer: {fileID: 619406213}
+  combat: {fileID: 375259170}
+  gameController: {fileID: 260444067}
   playerNumber: 1
   startingPosition: {x: 0, y: 0, z: 0}
   speed: 5
@@ -3903,6 +3912,7 @@ MonoBehaviour:
   animator: {fileID: 955861068}
   chosenAttack: 
   animInPlay: 0
+  allowCombat: 0
 --- !u!114 &375259171
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4227,7 +4237,7 @@ MonoBehaviour:
   fullHP: {r: 0.0627451, g: 0.39607844, b: 0, a: 1}
   nearFullHP: {r: 0.05724907, g: 1, b: 0, a: 1}
   halfHP: {r: 1, g: 0.83232033, b: 0, a: 1}
-  lowHP: {r: 1, g: 0.40866065, b: 0, a: 1}
+  lowHP: {r: 1, g: 0.40784317, b: 0, a: 1}
   critical: {r: 0.735849, g: 0, b: 0, a: 1}
 --- !u!1 &470914438
 GameObject:
@@ -4752,6 +4762,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &579036752 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2023166480243171189, guid: fbf89d03afc7fb848af45a6cf9c83d98,
+    type: 3}
+  m_PrefabInstance: {fileID: 1168106963}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &586935163
 GameObject:
   m_ObjectHideFlags: 0
@@ -5012,7 +5028,6 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: '100
 
-
 '
 --- !u!222 &619406212
 CanvasRenderer:
@@ -5042,6 +5057,7 @@ MonoBehaviour:
   Player1: {fileID: 375259165}
   Player2: {fileID: 869107091}
   countdownTimer: {fileID: 0}
+  timeUp: 0
 --- !u!1 &627024006
 GameObject:
   m_ObjectHideFlags: 0
@@ -6413,6 +6429,7 @@ MonoBehaviour:
   animator: {fileID: 3567059}
   chosenAttack: 
   animInPlay: 0
+  allowCombat: 0
 --- !u!114 &869107093
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6426,10 +6443,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug: 0
+  player: {fileID: 0}
   otherPlayer: {fileID: 375259165}
   animator: {fileID: 3567059}
   rigidbody: {fileID: 869107095}
   playerHealth: {fileID: 1218599431}
+  gameTimer: {fileID: 619406213}
+  combat: {fileID: 869107092}
+  gameController: {fileID: 260444067}
   playerNumber: 2
   startingPosition: {x: 0, y: 0, z: 0}
   speed: 5
@@ -7213,6 +7234,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 980603011}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &993354092 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2023166480243171189, guid: fbf89d03afc7fb848af45a6cf9c83d98,
+    type: 3}
+  m_PrefabInstance: {fileID: 48614930}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1047390855
 GameObject:
   m_ObjectHideFlags: 0
@@ -9869,6 +9896,8 @@ MonoBehaviour:
   otherPlayerHealth: {fileID: 454477895}
   animator: {fileID: 3567059}
   threshold: 2.57
+  facingEnemy: 0
+  raycastStart: {fileID: 579036752}
 --- !u!1 &1197085333
 GameObject:
   m_ObjectHideFlags: 0
@@ -11383,7 +11412,7 @@ RectTransform:
   m_GameObject: {fileID: 1528313666}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.01, y: 1.07, z: 1}
   m_Children: []
   m_Father: {fileID: 1218599429}
   m_RootOrder: 0
@@ -12075,7 +12104,6 @@ GameObject:
   - component: {fileID: 1701531984}
   - component: {fileID: 1701531987}
   - component: {fileID: 1701531986}
-  - component: {fileID: 1701531985}
   - component: {fileID: 1701531988}
   m_Layer: 5
   m_Name: timeUpText
@@ -12103,26 +12131,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0.7, y: -22}
   m_SizeDelta: {x: 835.57513, y: 224.9899}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1701531985
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1701531983}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 867c6863723ea7c4ab21f4b9ceb7b4e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  displayText: {fileID: 1701531986}
-  countdownLength: 100
-  startImmediate: 0
-  showDecimals: 0
-  timeUpText: {fileID: 1701531986}
-  Player1: {fileID: 375259165}
-  Player2: {fileID: 869107091}
-  countdownTimer: {fileID: 0}
 --- !u!114 &1701531986
 MonoBehaviour:
   m_ObjectHideFlags: 0
