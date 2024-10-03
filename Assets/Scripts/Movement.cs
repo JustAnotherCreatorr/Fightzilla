@@ -12,10 +12,14 @@ public class Movement : MonoBehaviour
 
     public bool debug;
 
+    public GameObject player;
     public GameObject otherPlayer;
     public Animator animator;
     public Rigidbody rigidbody;
     public PlayerHealth playerHealth;
+    public GameTimer gameTimer;
+    public Combat combat;
+    public GameController gameController;
     public int playerNumber;
 
     public Vector3 startingPosition;
@@ -134,7 +138,6 @@ public class Movement : MonoBehaviour
         {
             direction = -1;
         }
-
 
         if (shiftPressed)
         {
@@ -722,9 +725,10 @@ public class Movement : MonoBehaviour
   //      }
   //  }
 
-    private void AllowMovement()
+    private void AllowPlay()
     {
         allowMovement = true;
+        combat.allowCombat = true;
     }
 
     private Coroutine delayCoroutine;
@@ -757,25 +761,34 @@ public class Movement : MonoBehaviour
 
     private void SetupNextRound()
     {
-        
         transform.position = startingPosition;
 
+        gameTimer.timeUpText.gameObject.SetActive(false);
+
         animator.SetBool("NextRound", true);
-        animator.Play("GetUp");
+
         animator.SetBool("Knockout", false);
         animator.SetBool("NextRound", false);
+
+        if (gameTimer.timeUp)
+        {
+            return;
+        }
+       
+        animator.Play("GetUp");
+        
     }
 
     private void OnEnable()
     {
-        Actions.OnCountdownEnd += AllowMovement;
+        Actions.OnCountdownEnd += AllowPlay;
         Actions.OnPlayerHit += SlowMovement;
         Actions.OnNextRound += SetupNextRound;
     }
 
     private void OnDisable()
     {
-        Actions.OnCountdownEnd -= AllowMovement;
+        Actions.OnCountdownEnd -= AllowPlay;
         Actions.OnPlayerHit -= SlowMovement;
         Actions.OnNextRound -= SetupNextRound;
     }

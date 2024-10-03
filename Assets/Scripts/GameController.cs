@@ -9,6 +9,9 @@ public class GameController : MonoBehaviour
 
     public Movement Player1;
     public Movement Player2;
+    public Combat combat1;
+    public Combat combat2;
+    public bool gameBegun;
 
     public GameStates currentGameState { get; private set; }
 
@@ -28,14 +31,18 @@ public class GameController : MonoBehaviour
 
             case GameStates.inPlay:
 
-
+                gameBegun = true;
 
                 break;
 
             case GameStates.nextRoundSetup:
 
+                gameBegun = false;
+
                 Player1.allowMovement = false;
                 Player2.allowMovement = false;
+                combat1.allowCombat = false;
+                combat2.allowCombat = false;
                 Invoke("Delay", 3.5f);
 
                 break;

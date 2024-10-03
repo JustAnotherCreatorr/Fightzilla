@@ -10,6 +10,7 @@ public class GameTimer : Timer
     public GameObject Player1;
     public GameObject Player2;
     public CountdownTimer countdownTimer;
+    public bool timeUp;
 
     private void Start()
     {
@@ -22,19 +23,24 @@ public class GameTimer : Timer
     {
 
         timeUpText.gameObject.SetActive(true);
-      //  gameEndMenu.gameObject.SetActive(true);
-        Destroy(Player1);
-        Destroy(Player2);
+        //  gameEndMenu.gameObject.SetActive(true);
+        Player1.SetActive(false);
+        Player2.SetActive(false);
+        timeUp = true;
+       // FindObjectOfType<GameController>().SetGameState(GameController.GameStates.nextRoundSetup);
     }
 
 
     private void StartGameTimer()
     {
         runTimer = true;
+        timeUp = false;
     }
 
     private void ResetGameTimer()
     {
+        Player1.SetActive(true);
+        Player2.SetActive(true);
         countdownLength = 100;
         displayText.text = ("100");
         runTimer = false;

@@ -10,6 +10,7 @@ public class Combat : MonoBehaviour
     public string chosenAttack;
     public bool animInPlay;
     private float delayLength;
+    public bool allowCombat;
 
     // Start is called before the first frame update
     void Start()
@@ -50,6 +51,11 @@ public class Combat : MonoBehaviour
         if (delayLength > 0)
         {
             delayLength -= Time.deltaTime;
+            return;
+        }
+
+        if (allowCombat == false)
+        {
             return;
         }
 

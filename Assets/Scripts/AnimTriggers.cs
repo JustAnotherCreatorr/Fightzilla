@@ -13,7 +13,8 @@ public class AnimTriggers : MonoBehaviour
     public PlayerHealth otherPlayerHealth;
     public Animator animator;
     public float threshold;
-
+    public bool facingEnemy;
+    public GameObject raycastStart;
 
     // Start is called before the first frame update
     void Start()
@@ -22,9 +23,19 @@ public class AnimTriggers : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
+        if (player.playerNumber == 1)
+        {
+            facingEnemy = Physics.Raycast(raycastStart.transform.position, Vector3.forward, 35f);
+            Debug.DrawRay(raycastStart.transform.position, Vector3.forward * 35f, Color.black);
+        }
 
+        if (player.playerNumber == 2)
+        {
+            facingEnemy = Physics.Raycast(raycastStart.transform.position, Vector3.back, 35f);
+            Debug.DrawRay(raycastStart.transform.position, Vector3.back * 35f, Color.black);
+        }
     }
 
     public void CheckDistance(string attackName)
@@ -45,6 +56,11 @@ public class AnimTriggers : MonoBehaviour
 
         if (distance <= threshold)
         {
+            if (!facingEnemy)
+            {
+                return;
+            }
+
             otherPlayerHealth.hit = true;
             otherPlayerHealth.PlayerHurt(currentAttack);        
         }
