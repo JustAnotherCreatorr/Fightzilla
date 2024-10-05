@@ -15,6 +15,9 @@ public class PlayerHealth : MonoBehaviour
     public bool hit;
     public bool hitDefended;
     public bool crouchBlockHit;
+    public int losses = 0;
+    public GameObject otherPlayerWinSymbol1;
+    public GameObject otherPlayerWinSymbol2;
     [SerializeField] private ParticleSystem hurtParticles;
     [SerializeField] private ParticleSystem blockParticles;
     [SerializeField] private ParticleSystem deathParticles;
@@ -105,6 +108,8 @@ public class PlayerHealth : MonoBehaviour
         animator.Play("Defeated");
         animator.SetBool("Knockout", false);
         print("healthGone");
+        losses += 1;
+        LossUpdate();
         FindObjectOfType<GameController>().SetGameState(GameController.GameStates.nextRoundSetup);
     }
 
@@ -144,6 +149,19 @@ public class PlayerHealth : MonoBehaviour
         if (healthBar.value <= 0.1f)
         {
             healthBar.gameObject.transform.Find("Fill Area").Find("Fill").GetComponent<Image>().color = critical;
+        }
+    }
+
+    private void LossUpdate()
+    {
+        if (losses >= 1)
+        { 
+            otherPlayerWinSymbol1.SetActive(true);
+        }
+
+        if (losses >= 2)
+        {
+            otherPlayerWinSymbol2.SetActive(true);
         }
     }
 
