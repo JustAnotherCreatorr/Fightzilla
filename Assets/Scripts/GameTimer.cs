@@ -10,6 +10,8 @@ public class GameTimer : Timer
     public GameObject Player1;
     public GameObject Player2;
     public CountdownTimer countdownTimer;
+    public PlayerHealthUIManager p1;
+    public PlayerHealthUIManager p2;
     public bool timeUp;
 
     private void Start()
@@ -27,7 +29,9 @@ public class GameTimer : Timer
         Player1.SetActive(false);
         Player2.SetActive(false);
         timeUp = true;
-       // FindObjectOfType<GameController>().SetGameState(GameController.GameStates.nextRoundSetup);
+        p1.HealthCompare();
+        p2.HealthCompare();
+        FindObjectOfType<GameController>().SetGameState(GameController.GameStates.nextRoundSetup);
     }
 
 

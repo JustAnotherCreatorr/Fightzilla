@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerHealth : MonoBehaviour
+public class PlayerHealthUIManager : MonoBehaviour
 {
     public GameObject player;
     public GameObject otherPlayer;
@@ -26,7 +26,11 @@ public class PlayerHealth : MonoBehaviour
     public Color halfHP;
     public Color lowHP;
     public Color critical;
-
+    public Outline GEMplayerWon;
+    public Color p1Win;
+    public Color p2Win;
+    public Text whichPlayerWin;
+    public GameObject winningPlayer;
 
     // Start is called before the first frame update
     void Start()
@@ -113,6 +117,17 @@ public class PlayerHealth : MonoBehaviour
         FindObjectOfType<GameController>().SetGameState(GameController.GameStates.nextRoundSetup);
     }
 
+    public void HealthCompare()
+    {
+
+        if (healthBar.value < otherPlayerHealthBar.value)
+        {
+            losses += 1;
+        }
+
+        LossUpdate();
+    }
+
     private void SetupNextRound()
     {
         healthBar.value = 1f;
@@ -157,11 +172,32 @@ public class PlayerHealth : MonoBehaviour
         if (losses >= 1)
         { 
             otherPlayerWinSymbol1.SetActive(true);
+            otherPlayer = winningPlayer;
+            GameEndMenu();
         }
 
         if (losses >= 2)
         {
             otherPlayerWinSymbol2.SetActive(true);
+            //otherPlayer = winningPlayer;
+            //GameEndMenu();
+        }
+    }
+
+    private void GameEndMenu()
+    {
+        if (otherPlayer == winningPlayer && playerMovement.playerNumber == 1)
+        {
+            whichPlayerWin.color = p2Win;
+            whichPlayerWin.text = "Player 2 wins!";
+            GEMplayerWon.effectColor = p2Win;
+        }
+
+        if (otherPlayer == winningPlayer && playerMovement.playerNumber == 2)
+        {
+            whichPlayerWin.color = p1Win;
+            whichPlayerWin.text = "Player 1 wins!";
+            GEMplayerWon.effectColor = p1Win;
         }
     }
 

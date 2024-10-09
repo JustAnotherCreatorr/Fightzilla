@@ -16,7 +16,7 @@ public class Movement : MonoBehaviour
     public GameObject otherPlayer;
     public Animator animator;
     public Rigidbody rigidbody;
-    public PlayerHealth playerHealth;
+    public PlayerHealthUIManager playerHealth;
     public GameTimer gameTimer;
     public Combat combat;
     public GameController gameController;

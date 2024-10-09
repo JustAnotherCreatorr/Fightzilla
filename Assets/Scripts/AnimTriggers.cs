@@ -9,8 +9,8 @@ public class AnimTriggers : MonoBehaviour
     public AttackReferences attackReferences;
     public Movement player;
     public Movement otherPlayer;
-    public PlayerHealth playerHealth;
-    public PlayerHealth otherPlayerHealth;
+    public PlayerHealthUIManager playerHealth;
+    public PlayerHealthUIManager otherPlayerHealth;
     public Animator animator;
     public float threshold;
     public bool facingEnemy;
