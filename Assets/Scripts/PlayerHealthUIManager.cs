@@ -7,6 +7,7 @@ public class PlayerHealthUIManager : MonoBehaviour
 {
     public GameObject player;
     public GameObject otherPlayer;
+    public GameController gc;
     public Movement playerMovement;
     public Movement otherPlayerMovement;
     public Slider healthBar;
@@ -31,6 +32,8 @@ public class PlayerHealthUIManager : MonoBehaviour
     public Color p2Win;
     public Text whichPlayerWin;
     public GameObject winningPlayer;
+    public Text extraMessage;
+    public GameObject GEM;
 
     // Start is called before the first frame update
     void Start()
@@ -130,7 +133,17 @@ public class PlayerHealthUIManager : MonoBehaviour
 
     private void SetupNextRound()
     {
+        if (losses == 0)
+        {
+            otherPlayerWinSymbol1.SetActive(false);
+            otherPlayerWinSymbol2.SetActive(false);
+        }
+
         healthBar.value = 1f;
+        GEM.SetActive(false);
+        hurtParticles.Stop();
+        deathParticles.Stop();
+        blockParticles.Stop();
         healthBar.gameObject.transform.Find("Fill Area").Find("Fill").GetComponent<Image>().color = fullHP;
     }
 
@@ -172,15 +185,13 @@ public class PlayerHealthUIManager : MonoBehaviour
         if (losses >= 1)
         { 
             otherPlayerWinSymbol1.SetActive(true);
-            otherPlayer = winningPlayer;
-            GameEndMenu();
         }
 
         if (losses >= 2)
         {
             otherPlayerWinSymbol2.SetActive(true);
-            //otherPlayer = winningPlayer;
-            //GameEndMenu();
+            otherPlayer = winningPlayer;
+            GameEndMenu();
         }
     }
 
@@ -188,16 +199,20 @@ public class PlayerHealthUIManager : MonoBehaviour
     {
         if (otherPlayer == winningPlayer && playerMovement.playerNumber == 1)
         {
+            GEM.SetActive(true);
             whichPlayerWin.color = p2Win;
             whichPlayerWin.text = "Player 2 wins!";
             GEMplayerWon.effectColor = p2Win;
+            extraMessage.text = "The fight never ends!";
         }
 
         if (otherPlayer == winningPlayer && playerMovement.playerNumber == 2)
         {
+            GEM.SetActive(true);
             whichPlayerWin.color = p1Win;
             whichPlayerWin.text = "Player 1 wins!";
             GEMplayerWon.effectColor = p1Win;
+            extraMessage.text = "The fight never ends!";
         }
     }
 

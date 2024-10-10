@@ -396,7 +396,7 @@ GameObject:
   - component: {fileID: 32452211}
   - component: {fileID: 32452210}
   m_Layer: 5
-  m_Name: playerWinMessage (1)
+  m_Name: extraMessage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3177,6 +3177,9 @@ MonoBehaviour:
   Player2: {fileID: 869107093}
   combat1: {fileID: 375259170}
   combat2: {fileID: 869107092}
+  ph1: {fileID: 454477895}
+  ph2: {fileID: 1218599431}
+  gameTimer: {fileID: 619406213}
 --- !u!4 &260444068
 Transform:
   m_ObjectHideFlags: 0
@@ -3461,7 +3464,7 @@ Light:
     serializedVersion: 2
     m_Bits: 512
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 2
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 0
@@ -3719,7 +3722,7 @@ Light:
     serializedVersion: 2
     m_Bits: 512
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 2
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 0
@@ -4138,6 +4141,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 375259165}
   otherPlayer: {fileID: 869107091}
+  gc: {fileID: 0}
   playerMovement: {fileID: 375259168}
   otherPlayerMovement: {fileID: 869107093}
   healthBar: {fileID: 454477894}
@@ -4162,6 +4166,8 @@ MonoBehaviour:
   p2Win: {r: 0, g: 0.14357328, b: 1, a: 1}
   whichPlayerWin: {fileID: 1082408039}
   winningPlayer: {fileID: 0}
+  extraMessage: {fileID: 32452210}
+  GEM: {fileID: 1887370575}
 --- !u!1 &470914438
 GameObject:
   m_ObjectHideFlags: 0
@@ -7112,6 +7118,7 @@ GameObject:
   - component: {fileID: 1024462656}
   - component: {fileID: 1024462655}
   - component: {fileID: 1024462654}
+  - component: {fileID: 1024462658}
   m_Layer: 5
   m_Name: MainMenu
   m_TagString: Untagged
@@ -7196,7 +7203,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1024462656}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1024462658}
+        m_MethodName: MainMenuPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1024462656
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7234,6 +7252,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1024462652}
   m_CullTransparentMesh: 0
+--- !u!114 &1024462658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1024462652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 213668e84c9fee347911b39e5b1564a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentScene: 0
+  ui: {fileID: 454477895}
+  ui2: {fileID: 1218599431}
 --- !u!1 &1047390855
 GameObject:
   m_ObjectHideFlags: 0
@@ -10072,7 +10105,7 @@ Light:
     serializedVersion: 2
     m_Bits: 512
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 2
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 0
@@ -10186,6 +10219,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 869107091}
   otherPlayer: {fileID: 375259165}
+  gc: {fileID: 0}
   playerMovement: {fileID: 869107093}
   otherPlayerMovement: {fileID: 375259168}
   healthBar: {fileID: 1218599430}
@@ -10210,6 +10244,8 @@ MonoBehaviour:
   p2Win: {r: 0, g: 0.004989147, b: 1, a: 1}
   whichPlayerWin: {fileID: 1082408039}
   winningPlayer: {fileID: 0}
+  extraMessage: {fileID: 32452210}
+  GEM: {fileID: 1887370575}
 --- !u!1 &1237826624
 GameObject:
   m_ObjectHideFlags: 0
@@ -13547,7 +13583,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1887370576
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14551,9 +14587,10 @@ GameObject:
   - component: {fileID: 2061226331}
   - component: {fileID: 2061226330}
   - component: {fileID: 2061226329}
+  - component: {fileID: 2061226333}
   m_Layer: 5
   m_Name: PlayAgain
-  m_TagString: Untagged
+  m_TagString: PA
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14635,7 +14672,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2061226331}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2061226333}
+        m_MethodName: OnMouseDown
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2061226331
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14673,6 +14721,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2061226327}
   m_CullTransparentMesh: 0
+--- !u!114 &2061226333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2061226327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 213668e84c9fee347911b39e5b1564a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentScene: 0
+  ui: {fileID: 454477895}
+  ui2: {fileID: 1218599431}
 --- !u!1 &2067343897
 GameObject:
   m_ObjectHideFlags: 0

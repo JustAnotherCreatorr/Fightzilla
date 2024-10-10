@@ -390,6 +390,7 @@ public class Movement : MonoBehaviour
         }
         else
         {
+            print("groundingFloor");
             animator.SetBool("isGrounded", false);
         }
     }
@@ -406,8 +407,9 @@ public class Movement : MonoBehaviour
         } 
         else
         {
+
             if (rigidbody.velocity.y < 0)
-            {
+            {    
                 animator.SetTrigger("isFalling");
                 animator.Play("Base Layer.Falling");
             }
