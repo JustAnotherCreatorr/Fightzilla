@@ -66,6 +66,8 @@ public class GameController : MonoBehaviour
 
             case GameStates.gameOver:
 
+                Actions.OnGameOver.Invoke();
+
                 break;
 
             default:
@@ -83,7 +85,4 @@ public class GameController : MonoBehaviour
         gameTimer.timeUpText.gameObject.SetActive(false);
         Actions.OnNextRound.Invoke();
     }
-
-
-
 }

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class GameTimer : Timer
 {
     public Text timeUpText;
-    //public GameObject gameEndMenu;
+    //public GameObject gameEndMenu
     public GameObject Player1;
     public GameObject Player2;
     public CountdownTimer countdownTimer;
@@ -37,6 +37,7 @@ public class GameTimer : Timer
 
     private void StartGameTimer()
     {
+        print("C");
         runTimer = true;
         timeUp = false;
     }
@@ -45,8 +46,19 @@ public class GameTimer : Timer
     {
         Player1.SetActive(true);
         Player2.SetActive(true);
+        p1.hurtParticles.Stop();
+        p1.deathParticles.Stop();
+        p1.blockParticles.Stop();
+        p2.hurtParticles.Stop();
+        p2.deathParticles.Stop();
+        p2.blockParticles.Stop();
         countdownLength = 100;
         displayText.text = ("100");
+        runTimer = false;
+    }
+
+    private void StopGameTimer()
+    {
         runTimer = false;
     }
 
@@ -54,11 +66,13 @@ public class GameTimer : Timer
     {
         Actions.OnCountdownEnd += StartGameTimer;
         Actions.OnNextRound += ResetGameTimer;
+        Actions.OnGameOver += StopGameTimer;
     }
 
     private void OnDisable()
     {
         Actions.OnCountdownEnd -= StartGameTimer;
         Actions.OnNextRound -= ResetGameTimer;
+        Actions.OnGameOver -= StopGameTimer;
     }
 }

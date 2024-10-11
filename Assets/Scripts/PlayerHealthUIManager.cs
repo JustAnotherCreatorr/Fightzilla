@@ -19,9 +19,9 @@ public class PlayerHealthUIManager : MonoBehaviour
     public int losses = 0;
     public GameObject otherPlayerWinSymbol1;
     public GameObject otherPlayerWinSymbol2;
-    [SerializeField] private ParticleSystem hurtParticles;
-    [SerializeField] private ParticleSystem blockParticles;
-    [SerializeField] private ParticleSystem deathParticles;
+    public ParticleSystem hurtParticles;
+    public ParticleSystem blockParticles;
+    public ParticleSystem deathParticles;
     public Color fullHP;
     public Color nearFullHP;
     public Color halfHP;

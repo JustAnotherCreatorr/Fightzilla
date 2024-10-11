@@ -6,6 +6,12 @@ TagManager:
   tags:
   - groundingFloor
   - PA
+  - p2m
+  - p2c
+  - p1m
+  - p1c
+  - mainButton
+  - cButton
   layers:
   - Default
   - TransparentFX

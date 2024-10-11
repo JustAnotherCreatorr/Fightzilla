@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class SceneManager2 : MonoBehaviour
 {
@@ -35,14 +36,15 @@ public class SceneManager2 : MonoBehaviour
 
     public void MainMenuPressed()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(0);
     }
 
     public void CheckSSPress()
     {
-        if (Input.anyKey && currentScene == 1)
+        if (Input.GetKeyDown(KeyCode.Space) && currentScene == 0)
         {
-            SceneManager.LoadScene(0);
+            EventSystem.current.SetSelectedGameObject(null);
+            SceneManager.LoadScene(1);
         }
     }
 

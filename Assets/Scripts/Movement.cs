@@ -763,7 +763,6 @@ public class Movement : MonoBehaviour
 
     private void SetupNextRound()
     {
-        transform.position = startingPosition;
 
         gameTimer.timeUpText.gameObject.SetActive(false);
 
@@ -778,6 +777,8 @@ public class Movement : MonoBehaviour
         }
        
         animator.Play("GetUp");
+        print("anything");
+        transform.position = startingPosition;
         
     }
 
