@@ -21,13 +21,12 @@ public class GameController : MonoBehaviour
     {
         if (currentGameState != GameStates.inPlay)
         {
-            print("e");
+     
             Player1.isGrounded = true;
             Player1.animator.SetBool("isGrounded", true);
             Player2.isGrounded = true;
             Player2.animator.SetBool("isGrounded", true);
         }
-
     }
 
     public void SetGameState(GameStates gameState)
@@ -36,10 +35,13 @@ public class GameController : MonoBehaviour
         {
             return;
         }
+
+
         switch(gameState)
         {
             case GameStates.beforeStart:
 
+                ClampCheck();
 
                 break;
 
@@ -60,6 +62,7 @@ public class GameController : MonoBehaviour
                     return;
                 }
 
+
                 Invoke("Delay", 3.5f);
 
                 break;
@@ -71,7 +74,6 @@ public class GameController : MonoBehaviour
                 break;
 
             default:
-                Debug.LogError($"State not recognized.");
 
                 break;
         }
@@ -83,6 +85,14 @@ public class GameController : MonoBehaviour
     public void Delay()
     {
         gameTimer.timeUpText.gameObject.SetActive(false);
+        SetGameState(GameStates.beforeStart);
         Actions.OnNextRound.Invoke();
+    }
+
+
+    public void ClampCheck()
+    {
+        Player1.transform.position = Player1.startingPosition;
+        Player2.transform.position = Player2.startingPosition;
     }
 }

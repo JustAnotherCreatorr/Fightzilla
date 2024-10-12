@@ -5035,7 +5035,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 5
+  m_Text: '100
+
+'
 --- !u!222 &619406212
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5057,7 +5059,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayText: {fileID: 619406211}
-  countdownLength: 5
+  countdownLength: 100
   startImmediate: 0
   showDecimals: 0
   timeUpText: {fileID: 1701531986}
@@ -5066,6 +5068,9 @@ MonoBehaviour:
   countdownTimer: {fileID: 1547529773}
   p1: {fileID: 454477895}
   p2: {fileID: 1218599431}
+  player1: {fileID: 375259168}
+  player2: {fileID: 869107093}
+  gameController: {fileID: 260444067}
   timeUp: 0
 --- !u!1 &627024006
 GameObject:

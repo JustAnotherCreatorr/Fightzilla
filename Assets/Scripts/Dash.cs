@@ -54,14 +54,13 @@ public class Dash : MonoBehaviour
             else dashCdTimer = dashCd;
 
             Vector3 forceToApply = orientation.forward * dashForce;
-            Debug.Log($"transform: {orientation}");
-            Debug.Log($"{forceToApply}");
+        
             rigidbody.AddForce(forceToApply, ForceMode.Impulse);
-            print("forceApplied");
+        
             animator.SetBool("dashPressed", true);
             animator.Play("Base Layer.DashForward");
             animator.SetBool("dashPressed", false);
-            print("doneDash");
+         
 
         }
 
@@ -78,14 +77,13 @@ public class Dash : MonoBehaviour
             }
 
             Vector3 forceToApply = orientation.forward * dashForce * -1f;
-            Debug.Log($"transform: {player.transform.position}");
-            Debug.Log($"{forceToApply}");
+           
             rigidbody.AddForce(forceToApply, ForceMode.Impulse);
-            print("forceApplied");
+        
             animator.SetBool("dashPressed", true);
             animator.Play("Base Layer.DashBackward");
             animator.SetBool("dashPressed", false);
-            print("doneDash");
+        
         }
     }
 }

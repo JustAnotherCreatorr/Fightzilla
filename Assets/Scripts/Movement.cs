@@ -121,8 +121,6 @@ public class Movement : MonoBehaviour
             upArrowPressed = Input.GetKeyDown(KeyCode.W);
         }
 
-
-
         GetIsGrounded();
         //Reverse();
 
@@ -390,7 +388,6 @@ public class Movement : MonoBehaviour
         }
         else
         {
-            print("groundingFloor");
             animator.SetBool("isGrounded", false);
         }
     }
@@ -773,14 +770,12 @@ public class Movement : MonoBehaviour
 
         if (gameTimer.timeUp)
         {
-            return;
+            //return;
         }
        
         animator.Play("GetUp");
-        print("anything");
-        transform.position = startingPosition;
-        
     }
+
 
     private void OnEnable()
     {

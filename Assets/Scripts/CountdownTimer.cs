@@ -8,11 +8,8 @@ public class CountdownTimer : Timer
     public bool CDTimerDestroyed;
     protected override void EndTimer()
     {
-        print("A");
         Actions.OnCountdownEnd?.Invoke();
-        print("B");
         displayText.text = ("START!");
-        //Destroy(gameObject, 0.5f);
         Invoke("EraseTimer", 0.5f);
         FindObjectOfType<GameController>().SetGameState(GameController.GameStates.inPlay);
     }

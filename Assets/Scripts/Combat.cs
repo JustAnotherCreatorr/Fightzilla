@@ -74,7 +74,7 @@ public class Combat : MonoBehaviour
         animator.SetBool("LPunch", false);
         delayLength = AnimLength.GetAnimLength(animator, "LPunch");
         delayLength -= 0.1f;
-        print(delayLength);
+        
     }
 
     private void MPunch(bool medPunch)
@@ -84,7 +84,7 @@ public class Combat : MonoBehaviour
         animator.SetBool("MPunch", false);
         delayLength = AnimLength.GetAnimLength(animator, "MPunch");
         delayLength -= 0.3f;
-        print(delayLength);
+       
     }
 
     private void HPunch(bool heavyPunch)
@@ -94,7 +94,7 @@ public class Combat : MonoBehaviour
         animator.SetBool("HPunch", false);
         delayLength = AnimLength.GetAnimLength(animator, "HPunch");
         delayLength -= 0.5f;
-        print(delayLength);
+       
     }
 
     private void LKick(bool lightKick)
@@ -104,7 +104,7 @@ public class Combat : MonoBehaviour
         animator.SetBool("LKick", false);
         delayLength = AnimLength.GetAnimLength(animator, "LKick");
         delayLength -= 1f;
-        print(delayLength);
+     
     }
 
     private void MKick(bool medKick)
@@ -114,7 +114,7 @@ public class Combat : MonoBehaviour
         animator.SetBool("MKick", false);
         delayLength = AnimLength.GetAnimLength(animator, "MKick");
         delayLength -= 1f;
-        print(delayLength);
+    
     }
 
     private void HKick(bool heavyKick)
@@ -124,6 +124,6 @@ public class Combat : MonoBehaviour
         animator.SetBool("HKick", false);
         delayLength = AnimLength.GetAnimLength(animator, "HKick");
         delayLength -= 0.9f;
-        print(delayLength);
+       
     }
 }
