@@ -21,7 +21,6 @@ public class GameController : MonoBehaviour
     {
         if (currentGameState != GameStates.inPlay)
         {
-     
             Player1.isGrounded = true;
             Player1.animator.SetBool("isGrounded", true);
             Player2.isGrounded = true;
@@ -38,6 +37,7 @@ public class GameController : MonoBehaviour
 
 
         switch(gameState)
+
         {
             case GameStates.beforeStart:
 
