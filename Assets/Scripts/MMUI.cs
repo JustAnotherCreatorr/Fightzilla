@@ -12,7 +12,6 @@ public class MMUI : MonoBehaviour
     public GameObject p2combatText;
     public GameObject credits;
     public bool alreadyOpen;
-    public bool CalreadyOpen;
 
     // Start is called before the first frame update
     void Start()
@@ -67,15 +66,13 @@ public class MMUI : MonoBehaviour
 
         if (gameObject.tag == "cButton")
         {
-            if (CalreadyOpen)
-            {
-                credits.SetActive(false);
-                CalreadyOpen = false;
-                return;
-            }
-
             credits.SetActive(true);
-            CalreadyOpen = true;
         }
+
+        if (gameObject.tag == "x")
+        {
+            credits.SetActive(false);
+        }
+
     }
 }

@@ -6,6 +6,8 @@ using System;
 public class CountdownTimer : Timer
 {
     public bool CDTimerDestroyed;
+    public AudioManager audioManager;
+
     protected override void EndTimer()
     {
         Actions.OnCountdownEnd?.Invoke();
@@ -24,6 +26,7 @@ public class CountdownTimer : Timer
     {
         countdownLength = 3f;
         CDTimerDestroyed = false;
+        audioManager.PlaySFX(audioManager.countdown);
     }
 
     private void OnEnable()

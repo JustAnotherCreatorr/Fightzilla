@@ -9,6 +9,7 @@ public class SceneManager2 : MonoBehaviour
     public int currentScene;
     public PlayerHealthUIManager ui;
     public PlayerHealthUIManager ui2;
+    public AudioManager audioManager;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +28,7 @@ public class SceneManager2 : MonoBehaviour
     {
         if (gameObject.tag == "PA")
         {
+            audioManager.PlaySFX(audioManager.beep);
             ui.losses = 0;
             ui2.losses = 0;
             FindObjectOfType<GameController>().SetGameState(GameController.GameStates.nextRoundSetup);
@@ -36,6 +38,7 @@ public class SceneManager2 : MonoBehaviour
 
     public void MainMenuPressed()
     {
+        audioManager.PlaySFX(audioManager.beep);
         SceneManager.LoadScene(0);
     }
 
@@ -44,6 +47,7 @@ public class SceneManager2 : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && currentScene == 0)
         {
             EventSystem.current.SetSelectedGameObject(null);
+            audioManager.PlaySFX(audioManager.beep);
             SceneManager.LoadScene(1);
         }
     }

@@ -12,11 +12,16 @@ public class PlayerHealthUIManager : MonoBehaviour
     public Movement otherPlayerMovement;
     public Slider healthBar;
     public Slider otherPlayerHealthBar;
+    public AudioManager audioManager;
+
+
     public Animator animator;
     public bool hit;
     public bool hitDefended;
     public bool crouchBlockHit;
     public int losses = 0;
+
+
     public GameObject otherPlayerWinSymbol1;
     public GameObject otherPlayerWinSymbol2;
     public ParticleSystem hurtParticles;
@@ -70,6 +75,8 @@ public class PlayerHealthUIManager : MonoBehaviour
         {
             animator.SetBool("Hit", false);
             hit = false;
+            //VERY QUIET
+            audioManager.PlaySFX(audioManager.block);
             animator.Play("Base Layer.Block");
             blockParticles.Play();
             hitDefended = true;
@@ -83,6 +90,7 @@ public class PlayerHealthUIManager : MonoBehaviour
         animator.SetBool("HitDefended", false);
         animator.SetFloat("HitAnimation", Random.Range(0, 4));
         hurtParticles.Play();
+        audioManager.PlaySFX(audioManager.hurt);
         animator.Play("Base Layer.Hit");
         healthBar.value -= attackSO.damage;
         Invoke("EndHit", 0.5f);
@@ -111,6 +119,8 @@ public class PlayerHealthUIManager : MonoBehaviour
     public void HealthRunOut()
     {
         deathParticles.Play();
+        //VERY QUIET
+        audioManager.PlaySFX(audioManager.KO);
         animator.SetBool("Knockout", true);
         animator.Play("Defeated");
         animator.SetBool("Knockout", false);
@@ -192,6 +202,7 @@ public class PlayerHealthUIManager : MonoBehaviour
             otherPlayerWinSymbol2.SetActive(true);
             otherPlayer = winningPlayer;
             GameEndMenu();
+            audioManager.PlaySFX(audioManager.win);
         }
     }
 

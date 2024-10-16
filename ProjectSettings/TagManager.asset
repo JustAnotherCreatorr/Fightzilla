@@ -12,6 +12,7 @@ TagManager:
   - p1c
   - mainButton
   - cButton
+  - x
   layers:
   - Default
   - TransparentFX
