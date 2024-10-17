@@ -15,7 +15,7 @@ public abstract class Timer : MonoBehaviour
     protected bool runTimer;
 
 
-    private void Start()
+    protected virtual void Start()
     {
         if (startImmediate)
         {

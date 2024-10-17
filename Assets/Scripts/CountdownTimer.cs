@@ -8,6 +8,12 @@ public class CountdownTimer : Timer
     public bool CDTimerDestroyed;
     public AudioManager audioManager;
 
+    protected override void Start()
+    {
+        base.Start();
+        audioManager.PlaySFX(audioManager.countdown);
+    }
+
     protected override void EndTimer()
     {
         Actions.OnCountdownEnd?.Invoke();
