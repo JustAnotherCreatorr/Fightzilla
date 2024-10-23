@@ -4193,7 +4193,7 @@ MonoBehaviour:
   healthBar: {fileID: 454477894}
   otherPlayerHealthBar: {fileID: 1218599430}
   audioManager: {fileID: 1915404626}
-  gameTimer: {fileID: 0}
+  gameTimer: {fileID: 619406213}
   bf: {fileID: 62987793}
   animator: {fileID: 955861068}
   hit: 0
@@ -10608,7 +10608,7 @@ MonoBehaviour:
   healthBar: {fileID: 1218599430}
   otherPlayerHealthBar: {fileID: 454477894}
   audioManager: {fileID: 1915404626}
-  gameTimer: {fileID: 0}
+  gameTimer: {fileID: 619406213}
   bf: {fileID: 62987793}
   animator: {fileID: 3567059}
   hit: 0

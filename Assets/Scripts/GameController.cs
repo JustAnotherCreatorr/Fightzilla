@@ -76,7 +76,6 @@ public class GameController : MonoBehaviour
 
             case GameStates.gameOver:
 
-                Actions.OnGameOver.Invoke();
 
                 break;
 
