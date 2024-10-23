@@ -773,7 +773,6 @@ public class Movement : MonoBehaviour
             //return;
         }
        
-        animator.Play("GetUp");
     }
 
 

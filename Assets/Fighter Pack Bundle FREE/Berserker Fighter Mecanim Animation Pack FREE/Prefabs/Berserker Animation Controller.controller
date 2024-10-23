@@ -1999,7 +1999,7 @@ AnimatorStateMachine:
     m_Position: {x: -130, y: -620, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 110219304}
-    m_Position: {x: -260, y: -710, z: 0}
+    m_Position: {x: -200, y: -720, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 110248825}
     m_Position: {x: -370, y: -720, z: 0}
