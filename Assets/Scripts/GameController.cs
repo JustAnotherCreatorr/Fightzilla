@@ -19,6 +19,13 @@ public class GameController : MonoBehaviour
 
     private void Update()
     {
+
+        if (ph1.losses == 2 || ph2.losses == 2)
+        {
+            SetGameState(GameStates.gameOver);
+            return;
+        }
+
         if (currentGameState != GameStates.inPlay)
         {
             Player1.isGrounded = true;

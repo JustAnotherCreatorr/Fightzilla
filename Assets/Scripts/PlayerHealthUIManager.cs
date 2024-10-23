@@ -13,6 +13,8 @@ public class PlayerHealthUIManager : MonoBehaviour
     public Slider healthBar;
     public Slider otherPlayerHealthBar;
     public AudioManager audioManager;
+    public GameTimer gameTimer;
+    public BugFix bf;
 
 
     public Animator animator;
@@ -75,7 +77,6 @@ public class PlayerHealthUIManager : MonoBehaviour
         {
             animator.SetBool("Hit", false);
             hit = false;
-            //VERY QUIET
             audioManager.PlaySFX(audioManager.block);
             animator.Play("Base Layer.Block");
             blockParticles.Play();
@@ -118,13 +119,12 @@ public class PlayerHealthUIManager : MonoBehaviour
 
     public void HealthRunOut()
     {
+        bf.timer.fix = false;
         deathParticles.Play();
-        //VERY QUIET
         audioManager.PlaySFX(audioManager.KO);
         animator.SetBool("Knockout", true);
         animator.Play("Defeated");
         animator.SetBool("Knockout", false);
-        print("healthGone");
         losses += 1;
         LossUpdate();
         FindObjectOfType<GameController>().SetGameState(GameController.GameStates.nextRoundSetup);
@@ -203,6 +203,7 @@ public class PlayerHealthUIManager : MonoBehaviour
             otherPlayer = winningPlayer;
             GameEndMenu();
             audioManager.PlaySFX(audioManager.win);
+            FindObjectOfType<GameController>().SetGameState(GameController.GameStates.gameOver);
         }
     }
 

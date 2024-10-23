@@ -2350,6 +2350,50 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 11400000, guid: fbf89d03afc7fb848af45a6cf9c83d98, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: fbf89d03afc7fb848af45a6cf9c83d98, type: 3}
+--- !u!1 &62987792
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 62987794}
+  - component: {fileID: 62987793}
+  m_Layer: 0
+  m_Name: bugFix
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &62987793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 62987792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b68045bd9187a2b41b8b761942a0ed4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timer: {fileID: 619406213}
+--- !u!4 &62987794
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 62987792}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -30.425539, y: 8.084377, z: -6.1973658}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &90149430
 GameObject:
   m_ObjectHideFlags: 0
@@ -4149,6 +4193,8 @@ MonoBehaviour:
   healthBar: {fileID: 454477894}
   otherPlayerHealthBar: {fileID: 1218599430}
   audioManager: {fileID: 1915404626}
+  gameTimer: {fileID: 0}
+  bf: {fileID: 62987793}
   animator: {fileID: 955861068}
   hit: 0
   hitDefended: 0
@@ -5061,6 +5107,7 @@ MonoBehaviour:
   countdownLength: 100
   startImmediate: 0
   showDecimals: 0
+  fix: 1
   timeUpText: {fileID: 1701531986}
   Player1: {fileID: 375259165}
   Player2: {fileID: 869107091}
@@ -10561,6 +10608,8 @@ MonoBehaviour:
   healthBar: {fileID: 1218599430}
   otherPlayerHealthBar: {fileID: 454477894}
   audioManager: {fileID: 1915404626}
+  gameTimer: {fileID: 0}
+  bf: {fileID: 62987793}
   animator: {fileID: 3567059}
   hit: 0
   hitDefended: 0
@@ -11703,6 +11752,7 @@ MonoBehaviour:
   countdownLength: 3
   startImmediate: 1
   showDecimals: 0
+  fix: 1
   CDTimerDestroyed: 0
   audioManager: {fileID: 1915404626}
 --- !u!1 &1547871839

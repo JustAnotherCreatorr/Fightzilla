@@ -13,6 +13,7 @@ public abstract class Timer : MonoBehaviour
     [SerializeField] protected bool startImmediate;
     [SerializeField] protected bool showDecimals;
     protected bool runTimer;
+    public bool fix = true;
 
 
     protected virtual void Start()
@@ -28,6 +29,11 @@ public abstract class Timer : MonoBehaviour
     {
 
         if (runTimer == false)
+        {
+            return;
+        }
+
+        if (fix == false)
         {
             return;
         }

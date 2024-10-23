@@ -23,7 +23,6 @@ public class GameTimer : Timer
       //  gameEndMenu.gameObject.SetActive(false);
     }
 
-
     protected override void EndTimer()
     {
 
@@ -40,13 +39,14 @@ public class GameTimer : Timer
 
     private void StartGameTimer()
     {
-      
+        gameObject.SetActive(true);
         runTimer = true;
         timeUp = false;
     }
 
     private void ResetGameTimer()
     {
+        fix = true;
         Player1.SetActive(true);
         Player2.SetActive(true);
         p1.hurtParticles.Stop();
@@ -60,22 +60,23 @@ public class GameTimer : Timer
         runTimer = false;
     }
 
-    private void StopGameTimer()
-    {
-        runTimer = false;
-    }
+    //private void StopGameTimer()
+    //{
+    //    runTimer = false;
+    //    print("Stopped");
+    //}
 
     private void OnEnable()
     {
         Actions.OnCountdownEnd += StartGameTimer;
         Actions.OnNextRound += ResetGameTimer;
-        Actions.OnGameOver += StopGameTimer;
+       // Actions.OnGameOver += StopGameTimer;
     }
 
     private void OnDisable()
     {
         Actions.OnCountdownEnd -= StartGameTimer;
         Actions.OnNextRound -= ResetGameTimer;
-        Actions.OnGameOver -= StopGameTimer;
+       // Actions.OnGameOver -= StopGameTimer;
     }
 }
