@@ -21,7 +21,13 @@ public class RestrictMovement : MonoBehaviour
         currentPos.y = Mathf.Clamp(transform.position.y, 0, 4);
         transform.position = currentPos;
 
-        currentPos.z = Mathf.Clamp(transform.position.z, -9, 16.52f);
+        float depth = Mathf.Abs(Camera.main.transform.position.x) + transform.position.x;
+
+        Vector3 minPos = Camera.main.ViewportToWorldPoint(new Vector3 (0.1f, 0, depth));
+
+        Vector3 maxPos = Camera.main.ViewportToWorldPoint(new Vector3 (0.9f, 0, depth));
+
+        currentPos.z = Mathf.Clamp(transform.position.z, minPos.z, maxPos.z);
         transform.position = currentPos;
 
     }
