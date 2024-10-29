@@ -4210,6 +4210,7 @@ MonoBehaviour:
   audioManager: {fileID: 1915404626}
   gameTimer: {fileID: 619406213}
   bf: {fileID: 62987793}
+  OP: {fileID: 1218599431}
   animator: {fileID: 955861068}
   hit: 0
   hitDefended: 0
@@ -4228,6 +4229,7 @@ MonoBehaviour:
   GEMplayerWon: {fileID: 2022048656}
   p1Win: {r: 1, g: 0, b: 0, a: 1}
   p2Win: {r: 0, g: 0.14357328, b: 1, a: 1}
+  draw: {r: 0, g: 0, b: 0, a: 0}
   whichPlayerWin: {fileID: 1082408039}
   winningPlayer: {fileID: 0}
   extraMessage: {fileID: 32452210}
@@ -10625,6 +10627,7 @@ MonoBehaviour:
   audioManager: {fileID: 1915404626}
   gameTimer: {fileID: 619406213}
   bf: {fileID: 62987793}
+  OP: {fileID: 454477895}
   animator: {fileID: 3567059}
   hit: 0
   hitDefended: 0
@@ -10643,6 +10646,7 @@ MonoBehaviour:
   GEMplayerWon: {fileID: 2022048656}
   p1Win: {r: 1, g: 0, b: 0, a: 1}
   p2Win: {r: 0, g: 0.004989147, b: 1, a: 1}
+  draw: {r: 0, g: 0, b: 0, a: 0}
   whichPlayerWin: {fileID: 1082408039}
   winningPlayer: {fileID: 0}
   extraMessage: {fileID: 32452210}
