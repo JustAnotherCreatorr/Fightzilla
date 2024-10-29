@@ -15,6 +15,7 @@ public class PlayerHealthUIManager : MonoBehaviour
     public AudioManager audioManager;
     public GameTimer gameTimer;
     public BugFix bf;
+    public PlayerHealthUIManager OP;
 
 
     public Animator animator;
@@ -37,6 +38,7 @@ public class PlayerHealthUIManager : MonoBehaviour
     public Outline GEMplayerWon;
     public Color p1Win;
     public Color p2Win;
+    public Color draw;
     public Text whichPlayerWin;
     public GameObject winningPlayer;
     public Text extraMessage;
@@ -103,6 +105,12 @@ public class PlayerHealthUIManager : MonoBehaviour
         }
 
     }
+
+    public void DrawTest()
+    {
+
+    }
+
     public void EndHit()
     {
         hit = false;
@@ -224,6 +232,15 @@ public class PlayerHealthUIManager : MonoBehaviour
             whichPlayerWin.color = p1Win;
             whichPlayerWin.text = "Player 1 wins!";
             GEMplayerWon.effectColor = p1Win;
+            extraMessage.text = "The fight never ends!";
+        }
+
+        if (losses == 2 && OP.losses == 2)
+        {
+            GEM.SetActive(true);
+            whichPlayerWin.color = draw;
+            whichPlayerWin.text = "DRAW!";
+            GEMplayerWon.effectColor = draw;
             extraMessage.text = "The fight never ends!";
         }
     }
