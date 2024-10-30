@@ -56,7 +56,6 @@ public class PlayerHealthUIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         CheckColor();
 
         if (hitDefended)
