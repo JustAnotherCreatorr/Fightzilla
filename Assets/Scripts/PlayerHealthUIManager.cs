@@ -105,11 +105,6 @@ public class PlayerHealthUIManager : MonoBehaviour
 
     }
 
-    public void DrawTest()
-    {
-
-    }
-
     public void EndHit()
     {
         hit = false;
@@ -216,6 +211,15 @@ public class PlayerHealthUIManager : MonoBehaviour
 
     private void GameEndMenu()
     {
+        if (losses == 2 && OP.losses == 2)
+        {
+            GEM.SetActive(true);
+            whichPlayerWin.color = draw;
+            whichPlayerWin.text = "DRAW!";
+            GEMplayerWon.effectColor = draw;
+            extraMessage.text = "The fight never ends!";
+        }
+
         if (otherPlayer == winningPlayer && playerMovement.playerNumber == 1)
         {
             GEM.SetActive(true);
@@ -231,15 +235,6 @@ public class PlayerHealthUIManager : MonoBehaviour
             whichPlayerWin.color = p1Win;
             whichPlayerWin.text = "Player 1 wins!";
             GEMplayerWon.effectColor = p1Win;
-            extraMessage.text = "The fight never ends!";
-        }
-
-        if (losses == 2 && OP.losses == 2)
-        {
-            GEM.SetActive(true);
-            whichPlayerWin.color = draw;
-            whichPlayerWin.text = "DRAW!";
-            GEMplayerWon.effectColor = draw;
             extraMessage.text = "The fight never ends!";
         }
     }
