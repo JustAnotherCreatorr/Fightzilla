@@ -3834,9 +3834,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug: 0
-  player: {fileID: 0}
+  player: {fileID: 375259165}
   otherPlayer: {fileID: 869107091}
   animator: {fileID: 955861068}
+  animTriggers: {fileID: 239235192}
   rigidbody: {fileID: 375259167}
   playerHealth: {fileID: 454477895}
   gameTimer: {fileID: 619406213}
@@ -3850,6 +3851,7 @@ MonoBehaviour:
   orientation: {fileID: 375259166}
   dashForce: 3
   dashDuration: 0.25
+  dashDirection: 0
   jumpStrength: 8
   isGrounded: 0
   isSprinting: 0
@@ -6647,9 +6649,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug: 0
-  player: {fileID: 0}
+  player: {fileID: 869107091}
   otherPlayer: {fileID: 375259165}
   animator: {fileID: 3567059}
+  animTriggers: {fileID: 1174752752}
   rigidbody: {fileID: 869107095}
   playerHealth: {fileID: 1218599431}
   gameTimer: {fileID: 619406213}
@@ -6663,6 +6666,7 @@ MonoBehaviour:
   orientation: {fileID: 869107096}
   dashForce: 5
   dashDuration: 0.25
+  dashDirection: 0
   jumpStrength: 8
   isGrounded: 0
   isSprinting: 0

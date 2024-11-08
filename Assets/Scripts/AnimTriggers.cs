@@ -27,14 +27,14 @@ public class AnimTriggers : MonoBehaviour
     {
         if (player.playerNumber == 1)
         {
-            facingEnemy = Physics.Raycast(raycastStart.transform.position, Vector3.forward, 35f);
-            Debug.DrawRay(raycastStart.transform.position, Vector3.forward * 35f, Color.black);
+            facingEnemy = Physics.Raycast(raycastStart.transform.position, transform.forward, 35f);
+            Debug.DrawRay(raycastStart.transform.position, transform.forward * 35f, Color.black);
         }
 
         if (player.playerNumber == 2)
         {
-            facingEnemy = Physics.Raycast(raycastStart.transform.position, Vector3.back, 35f);
-            Debug.DrawRay(raycastStart.transform.position, Vector3.back * 35f, Color.black);
+            facingEnemy = Physics.Raycast(raycastStart.transform.position, transform.forward, 35f);
+            Debug.DrawRay(raycastStart.transform.position, transform.forward * 35f, Color.black);
         }
     }
 

@@ -15,6 +15,7 @@ public class Movement : MonoBehaviour
     public GameObject player;
     public GameObject otherPlayer;
     public Animator animator;
+    public AnimTriggers animTriggers;
     public Rigidbody rigidbody;
     public PlayerHealthUIManager playerHealth;
     public GameTimer gameTimer;
@@ -39,6 +40,7 @@ public class Movement : MonoBehaviour
     public Transform orientation;
     public float dashForce;
     public float dashDuration;
+    public int dashDirection = 1;
 
     public float jumpStrength;
     public bool isGrounded = true;
@@ -54,8 +56,6 @@ public class Movement : MonoBehaviour
     private float hitStop = 1f;
 
     private float mirrorPlayerFix = 0f;
-
-    private float initialLocalRotationY;
 
     public AnimationClip[] randomHitAnimations;
 
@@ -74,7 +74,6 @@ public class Movement : MonoBehaviour
         animator.SetFloat("YVelocity", rigidbody.velocity.y);
         prevPos = transform.position.z;
         currentPos = transform.position.z;
-        initialLocalRotationY = transform.localRotation.y;
         startingPosition = transform.position;
     }
 
@@ -95,6 +94,7 @@ public class Movement : MonoBehaviour
         bool downPressed = false;
         bool dashPressed = false;
         bool upArrowPressed = false;
+        bool reversePressed = false;
 
         bool cancelSprint = false;
         bool cancelCrouch = false;
@@ -108,6 +108,7 @@ public class Movement : MonoBehaviour
             cancelCrouch = Input.GetKeyUp(KeyCode.DownArrow);
             dashPressed = Input.GetKeyDown(KeyCode.Comma);
              upArrowPressed = Input.GetKeyDown(KeyCode.UpArrow);
+             reversePressed = Input.GetKeyDown(KeyCode.Keypad9);
         }
         
         if (playerNumber == 1)
@@ -119,10 +120,10 @@ public class Movement : MonoBehaviour
             cancelCrouch = Input.GetKeyUp(KeyCode.S);
             dashPressed = Input.GetKeyDown(KeyCode.Q);
             upArrowPressed = Input.GetKeyDown(KeyCode.W);
+            reversePressed = Input.GetKeyDown(KeyCode.F);
         }
 
         GetIsGrounded();
-        //Reverse();
 
         prevPos = currentPos;
         currentPos = transform.position.z;
@@ -161,6 +162,11 @@ public class Movement : MonoBehaviour
         } else if (cancelCrouch)
         {
             CancelCrouch();
+        }
+
+        if (reversePressed)
+        {
+            Reverse(reversePressed);
         }
 
         // if right is being pressed
@@ -566,7 +572,7 @@ public class Movement : MonoBehaviour
                     }
                     else dashCdTimer = dashCd;
 
-                    Vector3 forceToApply = orientation.forward * dashForce;
+                    Vector3 forceToApply = orientation.forward * dashForce * dashDirection;
 
                     rigidbody.AddForce(forceToApply, ForceMode.Impulse);
                     animator.SetBool("dashPressed", true);
@@ -574,7 +580,7 @@ public class Movement : MonoBehaviour
                     animator.SetBool("dashPressed", false);
                 }
 
-                if (dashPressed && direction == -1)
+                if (dashPressed)
                 {
                     if (dashCdTimer > 0)
                     {
@@ -586,7 +592,7 @@ public class Movement : MonoBehaviour
                         dashCdTimer = dashCd;
                     }
 
-                    Vector3 forceToApply = orientation.forward * dashForce * -1f;
+                    Vector3 forceToApply = orientation.forward * dashForce * dashDirection;
 
                     rigidbody.AddForce(forceToApply, ForceMode.Impulse);
                     animator.SetBool("dashPressed", true);
@@ -680,49 +686,39 @@ public class Movement : MonoBehaviour
     /// BUG REPORT: Player 2 does not rotate as otherPlayer property for player 1 movement after passing to the other side.
     /// </summary>
 
-  ////  public void Reverse()
-  //  {
-  //      // Player 1's initial rotation is 0
-  //      // Player 2's initial rotation is 180
+  public void Reverse(bool reversePressed)
+    {
+        // Player 1's initial rotation is 0
+        // Player 2's initial rotation is 180
 
-  //      if (otherPlayer.transform.position.z < transform.position.z)
-  //      {
+        // if (otherPlayer.transform.position.z<transform.position.z)
+        //{
+        // If player is to the left of the other player
 
+        Vector3 currentRotation = transform.eulerAngles;
 
+        dashDirection *= -1;
 
-  //          // If player is to the left of the other player
-  //          Quaternion currentRotation = transform.localRotation;
+        currentRotation.y = transform.localEulerAngles.y == 0 ? 180 : 0;
+        transform.eulerAngles = currentRotation;
+        // }
+        //   else
+        //    {
+        // If player is to the right of the other player
+        //     Quaternion currentRotation = transform.localRotation;
 
-  //          if (playerNumber == 1)
-  //          {
-  //              currentRotation.y = initialLocalRotationY == 0 ? 180 : initialLocalRotationY;
-  //          } else if (playerNumber == 2)
-  //          {
-  //              print("Reverse player 2");
-  //              currentRotation.y = initialLocalRotationY == 180 ? 0 : initialLocalRotationY;
-  //          }
-
-  //          transform.localRotation = currentRotation;
-  //      }
-  //      else
-  //      {
-  //          // If player is to the right of the other player
-  //          Quaternion currentRotation = transform.localRotation;
-
-  //          if (playerNumber == 1)
-  //          {
-  //              currentRotation.y = initialLocalRotationY == 180 ? 0 : initialLocalRotationY;
-  //          }
-  //          else if (playerNumber == 2)
-  //          {
-  //              print("Reverse player 2");
-
-  //              currentRotation.y = initialLocalRotationY == 0 ? 180 : initialLocalRotationY;
-  //          }
-
-  //          transform.localRotation = currentRotation;
-  //      }
-  //  }
+        //      if (playerNumber == 1)
+        //      {
+        //          currentRotation.y = initialLocalRotationY == 180 ? 0 : initialLocalRotationY;
+        //      }
+        //      else if (playerNumber == 2)
+        //      {
+        //          print("Reverse player 2");
+        //          currentRotation.y = initialLocalRotationY == 0 ? 180 : initialLocalRotationY;
+        //      }
+        //          transform.localRotation = currentRotation;
+        //}
+    }
 
     private void AllowPlay()
     {
