@@ -25,7 +25,6 @@ public class GameTimer : Timer
 
     protected override void EndTimer()
     {
-
         timeUpText.gameObject.SetActive(true);
         //  gameEndMenu.gameObject.SetActive(true);
         Player1.SetActive(false);

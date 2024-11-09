@@ -48,6 +48,8 @@ public class GameController : MonoBehaviour
         {
             case GameStates.beforeStart:
 
+                ph1.GEMActive = false;
+                ph2.GEMActive = false;
                 ClampCheck();
 
                 break;
@@ -57,6 +59,9 @@ public class GameController : MonoBehaviour
                 break;
 
             case GameStates.nextRoundSetup:
+
+                ph1.settingUpNR = true;
+                ph2.settingUpNR = true;
 
                 Player1.allowMovement = false;
                 Player2.allowMovement = false;
@@ -92,6 +97,8 @@ public class GameController : MonoBehaviour
     {
         gameTimer.timeUpText.gameObject.SetActive(false);
         SetGameState(GameStates.beforeStart);
+        ph1.settingUpNR = false;
+        ph2.settingUpNR = false;
         Actions.OnNextRound.Invoke();
     }
 

@@ -16,6 +16,7 @@ public class PlayerHealthUIManager : MonoBehaviour
     public GameTimer gameTimer;
     public BugFix bf;
     public PlayerHealthUIManager OP;
+    public CountdownTimer CT;
 
 
     public Animator animator;
@@ -39,10 +40,16 @@ public class PlayerHealthUIManager : MonoBehaviour
     public Color p1Win;
     public Color p2Win;
     public Color draw;
+    public Color blank;
     public Text whichPlayerWin;
     public GameObject winningPlayer;
     public Text extraMessage;
     public GameObject GEM;
+    public bool gameDone;
+    public GameObject resume;
+    public bool paused;
+    public bool GEMActive;
+    public bool settingUpNR;
 
     // Start is called before the first frame update
     void Start()
@@ -56,6 +63,9 @@ public class PlayerHealthUIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        bool spacePressed = Input.GetKeyDown(KeyCode.P);
+        Paused(spacePressed);
+
         CheckColor();
 
         if (hitDefended)
@@ -211,6 +221,8 @@ public class PlayerHealthUIManager : MonoBehaviour
 
     private void GameEndMenu()
     {
+        GEMActive = true;
+
         if (losses == 2 && OP.losses == 2)
         {
             GEM.SetActive(true);
@@ -237,6 +249,50 @@ public class PlayerHealthUIManager : MonoBehaviour
             GEMplayerWon.effectColor = p1Win;
             extraMessage.text = "The fight never ends!";
         }
+    }
+
+    public void Paused(bool spacePressed)
+    {
+        if (CT.end == false)
+        {
+            return;
+        }
+
+        if (GEMActive)
+        {
+            return;
+        }
+
+        if (!spacePressed)
+        {
+            return;
+        }
+
+        if (gameDone)
+        {
+            return;
+        }
+
+        if (settingUpNR)
+        {
+            return;
+        }
+
+        whichPlayerWin.color = blank;
+        GEMplayerWon.effectColor = blank;
+        paused = true;
+        GEM.SetActive(true);
+        whichPlayerWin.text = "Paused";
+        extraMessage.text = "";
+        resume.SetActive(true);
+    }
+
+    public void Resume()
+    {
+        paused = false;
+        OP.paused = false;
+        GEM.SetActive(false);
+        resume.SetActive(false);
     }
 
 }

@@ -80,6 +80,18 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (playerHealth.paused)
+        {
+            CancelSprint();
+            CancelCrouch();
+            rigidbody.useGravity = false;
+            return;
+        }
+
+        if (!playerHealth.paused)
+        {
+            rigidbody.useGravity = true;
+        }
 
         if (allowMovement == false)
         {
@@ -141,6 +153,7 @@ public class Movement : MonoBehaviour
         if (shiftPressed)
         {
             Sprint(shiftPressed, horizontal);
+
         } else if (cancelSprint)
         {
             CancelSprint();

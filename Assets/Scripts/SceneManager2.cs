@@ -32,6 +32,8 @@ public class SceneManager2 : MonoBehaviour
             ui.losses = 0;
             ui2.losses = 0;
             FindObjectOfType<GameController>().SetGameState(GameController.GameStates.nextRoundSetup);
+            ui.resume.SetActive(false);
+            ui2.resume.SetActive(false);
             ui.extraMessage.text = "Preparing the ring...";
         }
     }

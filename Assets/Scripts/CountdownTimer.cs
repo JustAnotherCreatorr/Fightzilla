@@ -7,6 +7,8 @@ public class CountdownTimer : Timer
 {
     public bool CDTimerDestroyed;
     public AudioManager audioManager;
+    public bool end = false;
+    public PlayerHealthUIManager op;
 
     protected override void Start()
     {
@@ -16,6 +18,9 @@ public class CountdownTimer : Timer
 
     protected override void EndTimer()
     {
+        phum.settingUpNR = false;
+        op.settingUpNR = false;
+        end = true;
         Actions.OnCountdownEnd?.Invoke();
         displayText.text = ("START!");
         Invoke("EraseTimer", 0.5f);
@@ -30,6 +35,7 @@ public class CountdownTimer : Timer
 
     private void ResetTimer()
     {
+        end = false;
         countdownLength = 3f;
         CDTimerDestroyed = false;
         audioManager.PlaySFX(audioManager.countdown);
