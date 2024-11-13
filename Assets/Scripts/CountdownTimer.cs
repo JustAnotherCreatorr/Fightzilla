@@ -33,9 +33,10 @@ public class CountdownTimer : Timer
         CDTimerDestroyed = true;
     }
 
-    private void ResetTimer()
+    public void ResetTimer()
     {
         end = false;
+        displayText.text = "3";
         countdownLength = 3f;
         CDTimerDestroyed = false;
         audioManager.PlaySFX(audioManager.countdown);

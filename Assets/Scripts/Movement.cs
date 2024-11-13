@@ -40,7 +40,6 @@ public class Movement : MonoBehaviour
     public Transform orientation;
     public float dashForce;
     public float dashDuration;
-    public int dashDirection = 1;
 
     public float jumpStrength;
     public bool isGrounded = true;
@@ -71,6 +70,7 @@ public class Movement : MonoBehaviour
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
+        DirectionCheck();
         animator.SetFloat("YVelocity", rigidbody.velocity.y);
         prevPos = transform.position.z;
         currentPos = transform.position.z;
@@ -199,6 +199,7 @@ public class Movement : MonoBehaviour
 
         if (!Input.anyKey && holdingDown)
         {
+             
             if (horizontal != 0f)
             {
                 // Debug.Log("A key was released");
@@ -212,6 +213,7 @@ public class Movement : MonoBehaviour
         if (horizontal > 0)
         {
             animParaSpeed = Mathf.Abs(animParaSpeed);
+
             if (playerNumber == 2)
             {
                 if (isSprinting)
@@ -434,6 +436,19 @@ public class Movement : MonoBehaviour
         return isGrounded;
     }
 
+    public void DirectionCheck()
+    {
+        if (playerNumber == 1)
+        {
+            direction = 1;
+        }
+
+        if (playerNumber == 2)
+        {
+            direction = -1;
+        }
+    }
+
     private void Sprint(bool shiftPressed, float horizontal)
     {
 
@@ -585,7 +600,7 @@ public class Movement : MonoBehaviour
                     }
                     else dashCdTimer = dashCd;
 
-                    Vector3 forceToApply = orientation.forward * dashForce * dashDirection;
+                    Vector3 forceToApply = orientation.forward * dashForce * direction;
 
                     rigidbody.AddForce(forceToApply, ForceMode.Impulse);
                     animator.SetBool("dashPressed", true);
@@ -605,7 +620,7 @@ public class Movement : MonoBehaviour
                         dashCdTimer = dashCd;
                     }
 
-                    Vector3 forceToApply = orientation.forward * dashForce * dashDirection;
+                    Vector3 forceToApply = orientation.forward * dashForce * direction;
 
                     rigidbody.AddForce(forceToApply, ForceMode.Impulse);
                     animator.SetBool("dashPressed", true);
@@ -678,20 +693,24 @@ public class Movement : MonoBehaviour
 
     IEnumerator GradualDecrease()
      {
-        float posSpeed = Mathf.Abs(animParaSpeed);
+        float posSpeed = animParaSpeed;
+        print(posSpeed);
 
         while (posSpeed > 0f)
         {
+            print("dec");
             posSpeed -= 0.4f * Time.deltaTime * gradualIncrease;
             animParaSpeed = posSpeed;
             yield return new WaitForEndOfFrame();
         }
 
-        if (posSpeed < 0f && !Input.GetKey(KeyCode.LeftArrow))
+        while (posSpeed < 0f)
         {
-            animParaSpeed = 0f;
+            print("inc");
+            posSpeed += 0.4f * Time.deltaTime * gradualIncrease;
+            animParaSpeed = posSpeed;
+            yield return new WaitForEndOfFrame();
         }
-
 
     }
 
@@ -710,10 +729,11 @@ public class Movement : MonoBehaviour
 
         Vector3 currentRotation = transform.eulerAngles;
 
-        dashDirection *= -1;
+        direction *= 1;
 
         currentRotation.y = transform.localEulerAngles.y == 0 ? 180 : 0;
         transform.eulerAngles = currentRotation;
+
         // }
         //   else
         //    {
@@ -772,10 +792,22 @@ public class Movement : MonoBehaviour
 
         gameTimer.timeUpText.gameObject.SetActive(false);
 
-        animator.SetBool("NextRound", true);
+        if (playerNumber == 1)
+        {
+            Vector3 regularRo = transform.localEulerAngles;
+            regularRo.y = 0;
+            transform.localEulerAngles = regularRo;
+        }
+
+
+        if (playerNumber == 2)
+        {
+            Vector3 regularRo = transform.localEulerAngles;
+            regularRo.y = 180;
+            transform.localEulerAngles = regularRo;
+        }
 
         animator.SetBool("Knockout", false);
-        animator.SetBool("NextRound", false);
 
         if (gameTimer.timeUp)
         {

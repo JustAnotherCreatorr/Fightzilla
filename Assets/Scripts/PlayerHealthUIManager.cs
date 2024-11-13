@@ -50,6 +50,7 @@ public class PlayerHealthUIManager : MonoBehaviour
     public bool paused;
     public bool GEMActive;
     public bool settingUpNR;
+    public GameObject PA;
 
     // Start is called before the first frame update
     void Start()
@@ -226,6 +227,8 @@ public class PlayerHealthUIManager : MonoBehaviour
         if (losses == 2 && OP.losses == 2)
         {
             GEM.SetActive(true);
+            PA.SetActive(true);
+            resume.SetActive(false);
             whichPlayerWin.color = draw;
             whichPlayerWin.text = "DRAW!";
             GEMplayerWon.effectColor = draw;
@@ -235,6 +238,8 @@ public class PlayerHealthUIManager : MonoBehaviour
         if (otherPlayer == winningPlayer && playerMovement.playerNumber == 1)
         {
             GEM.SetActive(true);
+            PA.SetActive(true);
+            resume.SetActive(false);
             whichPlayerWin.color = p2Win;
             whichPlayerWin.text = "Player 2 wins!";
             GEMplayerWon.effectColor = p2Win;
@@ -244,6 +249,8 @@ public class PlayerHealthUIManager : MonoBehaviour
         if (otherPlayer == winningPlayer && playerMovement.playerNumber == 2)
         {
             GEM.SetActive(true);
+            PA.SetActive(true);
+            resume.SetActive(false);
             whichPlayerWin.color = p1Win;
             whichPlayerWin.text = "Player 1 wins!";
             GEMplayerWon.effectColor = p1Win;
@@ -282,8 +289,9 @@ public class PlayerHealthUIManager : MonoBehaviour
         GEMplayerWon.effectColor = blank;
         paused = true;
         GEM.SetActive(true);
+        PA.SetActive(false);
         whichPlayerWin.text = "Paused";
-        extraMessage.text = "";
+        extraMessage.text = "The fight never ends!";
         resume.SetActive(true);
     }
 

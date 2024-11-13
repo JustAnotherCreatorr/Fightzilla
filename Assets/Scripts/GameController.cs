@@ -14,6 +14,7 @@ public class GameController : MonoBehaviour
     public PlayerHealthUIManager ph1;
     public PlayerHealthUIManager ph2;
     public GameTimer gameTimer;
+    public CountdownTimer ct;
 
     public GameStates currentGameState { get; private set; }
 
@@ -50,6 +51,7 @@ public class GameController : MonoBehaviour
 
                 ph1.GEMActive = false;
                 ph2.GEMActive = false;
+                ct.ResetTimer();
                 ClampCheck();
 
                 break;

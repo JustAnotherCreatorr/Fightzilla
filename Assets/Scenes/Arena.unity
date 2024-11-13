@@ -3241,6 +3241,7 @@ MonoBehaviour:
   ph1: {fileID: 454477895}
   ph2: {fileID: 1218599431}
   gameTimer: {fileID: 619406213}
+  ct: {fileID: 1547529773}
 --- !u!4 &260444068
 Transform:
   m_ObjectHideFlags: 0
@@ -3849,9 +3850,8 @@ MonoBehaviour:
   gradualIncrease: 5
   dashCd: 0.8
   orientation: {fileID: 375259166}
-  dashForce: 3
+  dashForce: 5
   dashDuration: 0.25
-  dashDirection: 0
   jumpStrength: 8
   isGrounded: 0
   isSprinting: 0
@@ -4244,6 +4244,7 @@ MonoBehaviour:
   paused: 0
   GEMActive: 0
   settingUpNR: 0
+  PA: {fileID: 2061226327}
 --- !u!1 &470914438
 GameObject:
   m_ObjectHideFlags: 0
@@ -6676,7 +6677,6 @@ MonoBehaviour:
   orientation: {fileID: 869107096}
   dashForce: 5
   dashDuration: 0.25
-  dashDirection: 0
   jumpStrength: 8
   isGrounded: 0
   isSprinting: 0
@@ -7344,7 +7344,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1015045162}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
@@ -7354,7 +7354,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -42, y: -106}
+  m_AnchoredPosition: {x: -278, y: 48}
   m_SizeDelta: {x: 208.18811, y: 48}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1015045164
@@ -10913,6 +10913,7 @@ MonoBehaviour:
   paused: 0
   GEMActive: 0
   settingUpNR: 0
+  PA: {fileID: 2061226327}
 --- !u!1 &1237826624
 GameObject:
   m_ObjectHideFlags: 0
