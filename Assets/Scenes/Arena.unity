@@ -3838,6 +3838,8 @@ MonoBehaviour:
   player: {fileID: 375259165}
   otherPlayer: {fileID: 869107091}
   animator: {fileID: 955861068}
+  OGanim: {fileID: 9100000, guid: 8f2f5123e7b753b44ad9b59d61095cb5, type: 2}
+  reverseAnim: {fileID: 9100000, guid: 1a5a5105d04762f4ca51391cd4b58e39, type: 2}
   animTriggers: {fileID: 239235192}
   rigidbody: {fileID: 375259167}
   playerHealth: {fileID: 454477895}
@@ -3848,6 +3850,7 @@ MonoBehaviour:
   startingPosition: {x: 0, y: 0, z: 0}
   speed: 5
   gradualIncrease: 5
+  reversed: 0
   dashCd: 0.8
   orientation: {fileID: 375259166}
   dashForce: 5
@@ -6663,6 +6666,8 @@ MonoBehaviour:
   player: {fileID: 869107091}
   otherPlayer: {fileID: 375259165}
   animator: {fileID: 3567059}
+  OGanim: {fileID: 9100000, guid: 1a5a5105d04762f4ca51391cd4b58e39, type: 2}
+  reverseAnim: {fileID: 9100000, guid: 8f2f5123e7b753b44ad9b59d61095cb5, type: 2}
   animTriggers: {fileID: 1174752752}
   rigidbody: {fileID: 869107095}
   playerHealth: {fileID: 1218599431}
@@ -6673,6 +6678,7 @@ MonoBehaviour:
   startingPosition: {x: 0, y: 0, z: 0}
   speed: 5
   gradualIncrease: 5
+  reversed: 0
   dashCd: 0.8
   orientation: {fileID: 869107096}
   dashForce: 5
@@ -10605,6 +10611,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 9577182, guid: fbf89d03afc7fb848af45a6cf9c83d98, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 1a5a5105d04762f4ca51391cd4b58e39, type: 2}
     - target: {fileID: 9577182, guid: fbf89d03afc7fb848af45a6cf9c83d98, type: 3}
       propertyPath: m_ApplyRootMotion
       value: 0
