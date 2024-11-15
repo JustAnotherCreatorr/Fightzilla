@@ -199,15 +199,12 @@ public class Movement : MonoBehaviour
 
         if (!Input.anyKey && holdingDown)
         {
-             
             if (horizontal != 0f)
             {
-                // Debug.Log("A key was released");
                 holdingDown = false;
                 acceleration = 0f;
                 StartCoroutine(GradualDecrease());
             }
-
         }
 
         if (horizontal > 0)
@@ -219,7 +216,8 @@ public class Movement : MonoBehaviour
                 if (isSprinting)
                 {
                     mirrorPlayerFix = 2f;
-                } else
+                }
+                else
                 {
                     mirrorPlayerFix = 1f;
                 }
@@ -698,7 +696,6 @@ public class Movement : MonoBehaviour
 
         while (posSpeed > 0f)
         {
-            print("dec");
             posSpeed -= 0.4f * Time.deltaTime * gradualIncrease;
             animParaSpeed = posSpeed;
             yield return new WaitForEndOfFrame();
@@ -706,7 +703,6 @@ public class Movement : MonoBehaviour
 
         while (posSpeed < 0f)
         {
-            print("inc");
             posSpeed += 0.4f * Time.deltaTime * gradualIncrease;
             animParaSpeed = posSpeed;
             yield return new WaitForEndOfFrame();
