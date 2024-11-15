@@ -6,8 +6,6 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
 
-
-
     #region variables
 
     public bool debug;
@@ -15,6 +13,8 @@ public class Movement : MonoBehaviour
     public GameObject player;
     public GameObject otherPlayer;
     public Animator animator;
+    public RuntimeAnimatorController OGanim;
+    public RuntimeAnimatorController reverseAnim;
     public AnimTriggers animTriggers;
     public Rigidbody rigidbody;
     public PlayerHealthUIManager playerHealth;
@@ -33,6 +33,7 @@ public class Movement : MonoBehaviour
     private float maxParaSpeed = 1f;
     private float maxParaNegativeSpeed = -1f;
     private float runAccel = 1f;
+    public bool reversed = false;
 
     public float dashCd;
     private float dashCdTimer;
@@ -71,7 +72,6 @@ public class Movement : MonoBehaviour
     {
         rigidbody = GetComponent<Rigidbody>();
         DirectionCheck();
-        animator.SetFloat("YVelocity", rigidbody.velocity.y);
         prevPos = transform.position.z;
         currentPos = transform.position.z;
         startingPosition = transform.position;
@@ -186,13 +186,27 @@ public class Movement : MonoBehaviour
 
         if (Input.anyKey && horizontal != 0f)
         {
-            float posSpeed = Mathf.Abs(animParaSpeed);
-            posSpeed *= -1;
-            acceleration = posSpeed + Time.deltaTime + 0.1f;
-            float PosHorizontal = Mathf.Abs(horizontal);
-            posSpeed = PosHorizontal * acceleration * runAccel;
-            holdingDown = true;
-            animParaSpeed = posSpeed;
+            if (playerNumber == 1)
+            {
+                float posSpeed = Mathf.Abs(animParaSpeed);
+                posSpeed *= -1;
+                acceleration = posSpeed + Time.deltaTime + 0.1f;
+                float PosHorizontal = Mathf.Abs(horizontal);
+                posSpeed = PosHorizontal * acceleration * runAccel;
+                holdingDown = true;
+                animParaSpeed = posSpeed;
+            }
+
+            if (playerNumber == 2)
+            {
+                float posSpeed = -Mathf.Abs(animParaSpeed);
+                posSpeed *= -1;
+                acceleration = posSpeed - Time.deltaTime - 0.1f;
+                float PosHorizontal = -Mathf.Abs(horizontal);
+                posSpeed = PosHorizontal * acceleration * runAccel;
+                holdingDown = true;
+                animParaSpeed = posSpeed;
+            }
         } 
 
         // no keys are being pressed
@@ -222,8 +236,10 @@ public class Movement : MonoBehaviour
                     mirrorPlayerFix = 1f;
                 }
 
-                float decimalValue = animParaSpeed -= mirrorPlayerFix;
-                animParaSpeed = animParaSpeed += decimalValue;
+                //float decimalValue = animParaSpeed -= mirrorPlayerFix;
+                //animParaSpeed = animParaSpeed += decimalValue;
+                //animParaSpeed -= Time.deltaTime;
+                //print("decimalvalue = " + decimalValue);
             }
         }
         else if (horizontal < 0)
@@ -241,13 +257,15 @@ public class Movement : MonoBehaviour
                     mirrorPlayerFix = -1f;
                 }
 
-                float decimalValueN = animParaSpeed -= mirrorPlayerFix;
-                animParaSpeed = animParaSpeed += decimalValueN;
+                //float decimalValueN = animParaSpeed -= mirrorPlayerFix;
+                //animParaSpeed = animParaSpeed += decimalValueN;
+                //animParaSpeed += Time.deltaTime;
             }
 
-            float decimalValue = animParaSpeed -= mirrorPlayerFix;
-            animParaSpeed = animParaSpeed += decimalValue;
+            //float decimalValue = animParaSpeed -= mirrorPlayerFix;
+            //animParaSpeed = animParaSpeed += decimalValue;
         }
+
 
         animParaSpeed = Mathf.Clamp(animParaSpeed, maxParaNegativeSpeed, maxParaSpeed);
 
@@ -265,8 +283,6 @@ public class Movement : MonoBehaviour
         }
 
         animator.SetFloat("MoveSpeed", animParaSpeed);
-
-        animator.SetFloat("YVelocity", rigidbody.velocity.y);
 
         if (animParaSpeed != 0)
         {
@@ -293,30 +309,78 @@ public class Movement : MonoBehaviour
 
         if (playerNumber == 1)
         {
+            if (reversed)
+            {
+                if (horizontal < 0 && !isSprinting && isGrounded)
+                {
+                    slightBoostMod = 1.4f;
+                }
+
+                if (horizontal > 0 || isSprinting || !isGrounded)
+                {
+                    slightBoostMod = 0.9f;
+                }
+
+                if (!isGrounded && horizontal < 0 && playerNumber == 2)
+                {
+                    pullback = 1.4f;
+                }
+                else
+                {
+                    pullback = 1;
+                }
+
+                if (horizontal > 0)
+                {
+                    if (!isGrounded)
+                    {
+                        backwardSpeedMod = 1;
+                        animator.SetBool("isBlocking", false);
+                        isBlocking = false;
+                        return;
+                    }
+                    backwardSpeedMod = 0.6f;
+                    animator.SetBool("isBlocking", true);
+                    isBlocking = true;
+                }
+
+                if (horizontal < 0)
+                {
+                    backwardSpeedMod = 1;
+                    animator.SetBool("isBlocking", false);
+                    isBlocking = false;
+                }
+                return;
+            }
+
             if (horizontal > 0 && !isSprinting && isGrounded)
             {
                 slightBoostMod = 1.4f;
             }
 
+
             if (horizontal < 0 || isSprinting || !isGrounded)
             {
                 slightBoostMod = 0.9f;
             }
-        } else if (playerNumber == 2)
-        {
-            if (horizontal < 0 && !isSprinting && isGrounded)
+
+            if (horizontal > 0)
             {
-                slightBoostMod = 1.4f;
+                backwardSpeedMod = 1;
+                animator.SetBool("isBlocking", false);
+                isBlocking = false;
             }
 
-            if (horizontal > 0 || isSprinting || !isGrounded)
+            if (!isGrounded && horizontal > 0 && playerNumber == 1)
             {
-                slightBoostMod = 0.9f;
+                pullback = 0.7f;
             }
-        }
+            else
+            {
+                pullback = 1;
+            }
 
-        if (playerNumber == 1)
-        {
+            
             if (horizontal < 0)
             {
                 if (!isGrounded)
@@ -331,15 +395,73 @@ public class Movement : MonoBehaviour
                 isBlocking = true;
             }
 
-            if (horizontal > 0)
-            {
-                backwardSpeedMod = 1;
-                animator.SetBool("isBlocking", false);
-                isBlocking = false;
-            }
-
         } else if (playerNumber == 2)
         {
+            if (reversed)
+            {
+                if (horizontal > 0 && !isSprinting && isGrounded)
+                {
+                    slightBoostMod = 1.4f;
+                }
+
+
+                if (horizontal < 0 || isSprinting || !isGrounded)
+                {
+                    slightBoostMod = 0.9f;
+                }
+
+                if (horizontal > 0)
+                {
+                    backwardSpeedMod = 1;
+                    animator.SetBool("isBlocking", false);
+                    isBlocking = false;
+                }
+
+                if (!isGrounded && horizontal > 0 && playerNumber == 1)
+                {
+                    pullback = 0.7f;
+                }
+                else
+                {
+                    pullback = 1;
+                }
+
+
+                if (horizontal < 0)
+                {
+                    if (!isGrounded)
+                    {
+                        backwardSpeedMod = 1;
+                        animator.SetBool("isBlocking", false);
+                        isBlocking = false;
+                        return;
+                    }
+                    backwardSpeedMod = 0.6f;
+                    animator.SetBool("isBlocking", true);
+                    isBlocking = true;
+                }
+                return;
+            }
+
+            if (horizontal < 0 && !isSprinting && isGrounded)
+            {
+                slightBoostMod = 1.4f;
+            }
+
+            if (horizontal > 0 || isSprinting || !isGrounded)
+            {
+                slightBoostMod = 0.9f;
+            }
+
+            if (!isGrounded && horizontal < 0 && playerNumber == 2)
+            {
+                pullback = 1.4f;
+            }
+            else
+            {
+                pullback = 1;
+            }
+
             if (horizontal > 0)
             {
                 if (!isGrounded)
@@ -352,13 +474,13 @@ public class Movement : MonoBehaviour
                 backwardSpeedMod = 0.6f;
                 animator.SetBool("isBlocking", true);
                 isBlocking = true;
+            }
 
-                if (horizontal < 0)
-                {
-                    backwardSpeedMod = 1;
-                    animator.SetBool("isBlocking", false);
-                    isBlocking = false;
-                }
+            if (horizontal < 0)
+            {
+                backwardSpeedMod = 1;
+                animator.SetBool("isBlocking", false);
+                isBlocking = false;
             }
         }
 
@@ -369,22 +491,6 @@ public class Movement : MonoBehaviour
             isBlocking = false;
         }
 
-        if (!isGrounded && horizontal > 0 && playerNumber == 1)
-        {
-            pullback = 0.7f;
-        } else
-        {
-            pullback = 1;
-        }
-
-        if (!isGrounded && horizontal < 0 && playerNumber == 2)
-        {
-            pullback = 1.4f;
-        }
-        else
-        {
-            pullback = 1;
-        }
 
         if (isSprinting)
         {
@@ -397,20 +503,6 @@ public class Movement : MonoBehaviour
         prevPos = transform.position.z;
 
     }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "groundingFloor")
-        {
-            animator.SetBool("isGrounded", true);
-            animator.Play("Base Layer.Blend Tree");
-        }
-        else
-        {
-            animator.SetBool("isGrounded", false);
-        }
-    }
-
     private bool GetIsGrounded()
     {
         isGrounded = Physics.Raycast(transform.position, Vector3.down, 1f);
@@ -418,19 +510,18 @@ public class Movement : MonoBehaviour
         
         if (isGrounded)
         {
-            animator.SetBool("isGrounded", true);
+            //animator.SetBool("isGrounded", true);
             backwardSpeedMod = 0.6f;
         } 
         else
         {
-
-            if (rigidbody.velocity.y < 0)
-            {    
-                animator.SetTrigger("isFalling");
-                animator.Play("Base Layer.Falling");
-            }
+            animator.SetTrigger("isFalling");
+            animator.Play("Base Layer.Falling"); 
         }
 
+        print(isGrounded);
+
+        animator.SetBool("isGrounded", isGrounded);
         return isGrounded;
     }
 
@@ -468,8 +559,25 @@ public class Movement : MonoBehaviour
             maxParaSpeed = 2;
             maxParaNegativeSpeed = -2;
 
+            runAccel = 1.07f;
+
             if (playerNumber == 1)
             {
+                if (reversed)
+                {
+                    if (horizontal < 0)
+                    {
+                        speed = 15;
+                    }
+
+                    if (horizontal > 0)
+                    {
+                        speed = 10;
+                    }
+
+                    return;
+                }
+
                 if (horizontal > 0)
                 {
                     speed = 15;
@@ -479,8 +587,24 @@ public class Movement : MonoBehaviour
                 {
                     speed = 10;
                 }
+
             } else if (playerNumber == 2) 
             {
+                if (reversed)
+                {
+                    if (horizontal > 0)
+                    {
+                        speed = 15;
+                    }
+
+                    if (horizontal < 0)
+                    {
+                        speed = 10;
+                    }
+
+                    return;
+                }
+
                 if (horizontal < 0)
                 {
                     speed = 15;
@@ -491,8 +615,6 @@ public class Movement : MonoBehaviour
                     speed = 10;
                 }
             }
-
-            runAccel = 1.07f;
         }
     }
 
@@ -683,7 +805,8 @@ public class Movement : MonoBehaviour
         {
             return;
         }
-            animator.Play("Base Layer.Jumping");
+            animator.SetTrigger("Jump");
+            animator.Play("Jumping");
             backwardSpeedMod = 1f;
             rigidbody.AddForce(Vector3.up * jumpStrength, ForceMode.Impulse);
             animator.SetBool("isGrounded", false);
@@ -692,7 +815,6 @@ public class Movement : MonoBehaviour
     IEnumerator GradualDecrease()
      {
         float posSpeed = animParaSpeed;
-        print(posSpeed);
 
         while (posSpeed > 0f)
         {
@@ -723,12 +845,25 @@ public class Movement : MonoBehaviour
         //{
         // If player is to the left of the other player
 
+        reversed = !reversed;
+
         Vector3 currentRotation = transform.eulerAngles;
 
-        direction *= 1;
+        direction *= -1;
 
         currentRotation.y = transform.localEulerAngles.y == 0 ? 180 : 0;
         transform.eulerAngles = currentRotation;
+
+        if (animator.runtimeAnimatorController == OGanim)
+        {
+            animator.runtimeAnimatorController = reverseAnim;
+            return;
+        }
+
+        if (animator.runtimeAnimatorController == reverseAnim)
+        {
+            animator.runtimeAnimatorController = OGanim;
+        }
 
         // }
         //   else
