@@ -122,9 +122,9 @@ public class Movement : MonoBehaviour
              cancelSprint = Input.GetKeyUp(KeyCode.RightShift);
              downPressed = Input.GetKey(KeyCode.DownArrow);
             cancelCrouch = Input.GetKeyUp(KeyCode.DownArrow);
-            dashPressed = Input.GetKeyDown(KeyCode.Comma);
+            dashPressed = Input.GetKeyDown(KeyCode.Slash);
              upArrowPressed = Input.GetKeyDown(KeyCode.UpArrow);
-             reversePressed = Input.GetKeyDown(KeyCode.Keypad9);
+             reversePressed = Input.GetKeyDown(KeyCode.Return);
         }
         
         if (playerNumber == 1)
@@ -134,7 +134,7 @@ public class Movement : MonoBehaviour
             cancelSprint = Input.GetKeyUp(KeyCode.LeftShift);
             downPressed = Input.GetKey(KeyCode.S);
             cancelCrouch = Input.GetKeyUp(KeyCode.S);
-            dashPressed = Input.GetKeyDown(KeyCode.Q);
+            dashPressed = Input.GetKeyDown(KeyCode.E);
             upArrowPressed = Input.GetKeyDown(KeyCode.W);
             reversePressed = Input.GetKeyDown(KeyCode.F);
         }

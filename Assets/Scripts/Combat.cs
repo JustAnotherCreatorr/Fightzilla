@@ -31,22 +31,22 @@ public class Combat : MonoBehaviour
 
         if (playerNumber == 2)
         {
-            lightPunch = Input.GetKeyDown(KeyCode.H);
-            medPunch = Input.GetKeyDown(KeyCode.J);
-            heavyPunch = Input.GetKeyDown(KeyCode.K);
-            lightKick = Input.GetKeyDown(KeyCode.B);
-            medKick = Input.GetKeyDown(KeyCode.N);
-            heavyKick = Input.GetKeyDown(KeyCode.M);
+            lightPunch = Input.GetKeyDown(KeyCode.Keypad4);
+            medPunch = Input.GetKeyDown(KeyCode.Keypad5);
+            heavyPunch = Input.GetKeyDown(KeyCode.Keypad6);
+            lightKick = Input.GetKeyDown(KeyCode.Keypad7);
+            medKick = Input.GetKeyDown(KeyCode.Keypad8);
+            heavyKick = Input.GetKeyDown(KeyCode.Keypad9);
         }
 
         if (playerNumber == 1)
         {
-            lightPunch = Input.GetKeyDown(KeyCode.Alpha1);
-            medPunch = Input.GetKeyDown(KeyCode.Alpha2);
-            heavyPunch = Input.GetKeyDown(KeyCode.Alpha3);
-            lightKick = Input.GetKeyDown(KeyCode.E);
-            medKick = Input.GetKeyDown(KeyCode.R);
-            heavyKick = Input.GetKeyDown(KeyCode.T);
+            lightPunch = Input.GetKeyDown(KeyCode.Alpha4);
+            medPunch = Input.GetKeyDown(KeyCode.Alpha5);
+            heavyPunch = Input.GetKeyDown(KeyCode.Alpha6);
+            lightKick = Input.GetKeyDown(KeyCode.R);
+            medKick = Input.GetKeyDown(KeyCode.T);
+            heavyKick = Input.GetKeyDown(KeyCode.Y);
         }
 
         if (delayLength > 0)
