@@ -510,16 +510,16 @@ public class Movement : MonoBehaviour
         
         if (isGrounded)
         {
-            //animator.SetBool("isGrounded", true);
+            animator.SetBool("isGrounded", true);
             backwardSpeedMod = 0.6f;
         } 
         else
         {
-            animator.SetTrigger("isFalling");
-            animator.Play("Base Layer.Falling"); 
+            //animator.SetTrigger("isFalling");
+            //animator.Play("Base Layer.Falling"); 
         }
 
-        print(isGrounded);
+       // print(isGrounded);
 
         animator.SetBool("isGrounded", isGrounded);
         return isGrounded;
@@ -806,7 +806,7 @@ public class Movement : MonoBehaviour
             return;
         }
             animator.SetTrigger("Jump");
-            animator.Play("Jumping");
+            //animator.Play("Jumping");
             backwardSpeedMod = 1f;
             rigidbody.AddForce(Vector3.up * jumpStrength, ForceMode.Impulse);
             animator.SetBool("isGrounded", false);
