@@ -66,13 +66,7 @@ public class MMUI : MonoBehaviour
 
         if (gameObject.tag == "cButton")
         {
-            credits.SetActive(true);
+            print("Credits");
         }
-
-        if (gameObject.tag == "x")
-        {
-            credits.SetActive(false);
-        }
-
     }
 }
