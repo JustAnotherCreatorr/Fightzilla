@@ -24,6 +24,7 @@ public class Movement : MonoBehaviour
     public int playerNumber;
 
     public Vector3 startingPosition;
+    public Vector3 pausePos;
 
     public float speed;
     public int gradualIncrease = 5;
@@ -80,16 +81,19 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (playerHealth.paused)
         {
             CancelSprint();
             CancelCrouch();
+            Time.timeScale = 0;
             rigidbody.useGravity = false;
             return;
         }
 
         if (!playerHealth.paused)
         {
+            Time.timeScale = 1;
             rigidbody.useGravity = true;
         }
 
@@ -1036,6 +1040,10 @@ public class Movement : MonoBehaviour
        
     }
 
+    public void PausePos()
+    {
+        pausePos = transform.position;
+    }
 
     private void OnEnable()
     {

@@ -3848,6 +3848,7 @@ MonoBehaviour:
   gameController: {fileID: 260444067}
   playerNumber: 1
   startingPosition: {x: 0, y: 0, z: 0}
+  pausePos: {x: 0, y: 0, z: 0}
   speed: 5
   gradualIncrease: 5
   reversed: 0
@@ -6676,6 +6677,7 @@ MonoBehaviour:
   gameController: {fileID: 260444067}
   playerNumber: 2
   startingPosition: {x: 0, y: 0, z: 0}
+  pausePos: {x: 0, y: 0, z: 0}
   speed: 5
   gradualIncrease: 5
   reversed: 0
@@ -14718,6 +14720,8 @@ MonoBehaviour:
   win: {fileID: 8300000, guid: c03b6156fc8e6bd4fad329fe4076d31d, type: 3}
   beep: {fileID: 8300000, guid: eecef399a75bc2443ba37e1939b5e6cc, type: 3}
   sceneManager: {fileID: 1818944468}
+  p1: {fileID: 454477895}
+  p2: {fileID: 1218599431}
 --- !u!4 &1915404627
 Transform:
   m_ObjectHideFlags: 0

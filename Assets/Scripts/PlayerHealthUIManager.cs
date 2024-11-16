@@ -285,9 +285,13 @@ public class PlayerHealthUIManager : MonoBehaviour
             return;
         }
 
+        playerMovement.allowMovement = false;
+        otherPlayerMovement.allowMovement = false;
         whichPlayerWin.color = blank;
         GEMplayerWon.effectColor = blank;
         paused = true;
+        OP.paused = true;
+        audioManager.PauseAudio();
         GEM.SetActive(true);
         PA.SetActive(false);
         whichPlayerWin.text = "Paused";
@@ -297,8 +301,11 @@ public class PlayerHealthUIManager : MonoBehaviour
 
     public void Resume()
     {
+        playerMovement.allowMovement = true;
+        otherPlayerMovement.allowMovement = true;
         paused = false;
         OP.paused = false;
+        audioManager.ResumeAudio();
         GEM.SetActive(false);
         resume.SetActive(false);
     }

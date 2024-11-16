@@ -17,6 +17,8 @@ public class AudioManager : MonoBehaviour
     public AudioClip beep;
 
     public SceneManager2 sceneManager;
+    public PlayerHealthUIManager p1;
+    public PlayerHealthUIManager p2;
 
     // Start is called before the first frame update
     void Start()
@@ -40,11 +42,21 @@ public class AudioManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void PlaySFX(AudioClip clip)
     {
         SFXSource.PlayOneShot(clip);
+    }
+
+    public void PauseAudio()
+    {
+        musicSource.Pause();
+    }
+
+    public void ResumeAudio()
+    {
+        musicSource.Play();
     }
 }
