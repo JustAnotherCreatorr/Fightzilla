@@ -8267,8 +8267,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1977609194}
-        m_MethodName: OnMouseDown
+      - m_Target: {fileID: 1691594329}
+        m_MethodName: CreditPressed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

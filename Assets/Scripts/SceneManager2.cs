@@ -54,4 +54,10 @@ public class SceneManager2 : MonoBehaviour
         }
     }
 
+    public void CreditPressed()
+    {
+        audioManager.PlaySFX(audioManager.beep);
+        SceneManager.LoadScene(2);
+    }
+
 }
