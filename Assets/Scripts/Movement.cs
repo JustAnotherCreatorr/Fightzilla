@@ -695,12 +695,7 @@ public class Movement : MonoBehaviour
             return;
         }
 
-        if (direction == 0 && playerNumber == 1)
-        {
-            return;
-        }
-
-        if (direction == 0 && playerNumber == 2)
+        if (direction == 0)
         {
             return;
         }
@@ -709,6 +704,25 @@ public class Movement : MonoBehaviour
         {
             if (playerNumber == 1)
             {
+                if (dashPressed && direction == 1 && reversed)
+                {
+                    if (dashCdTimer > 0)
+                    {
+                        print("timer is above 0");
+                        return;
+                    }
+                    else
+                    {
+                        dashCdTimer = dashCd;
+                    }
+
+                    Vector3 forceToApply = orientation.forward * dashForce * direction;
+
+                    rigidbody.AddForce(forceToApply, ForceMode.Impulse);
+                    animator.SetBool("dashPressed", true);
+                    animator.Play("Base Layer.DashBackward");
+                    animator.SetBool("dashPressed", false);
+                }
 
                 if (dashPressed && direction == 1)
                 {
@@ -728,7 +742,25 @@ public class Movement : MonoBehaviour
                     animator.SetBool("dashPressed", false);
                 }
 
-                if (dashPressed)
+                if (dashPressed && direction == -1 && reversed)
+                {
+
+                    if (dashCdTimer > 0)
+                    {
+                        print("timer is above 0");
+                        return;
+                    }
+                    else dashCdTimer = dashCd;
+
+                    Vector3 forceToApply = orientation.forward * dashForce * direction;
+
+                    rigidbody.AddForce(forceToApply, ForceMode.Impulse);
+                    animator.SetBool("dashPressed", true);
+                    animator.Play("Base Layer.DashForward");
+                    animator.SetBool("dashPressed", false);
+                }
+
+                if (dashPressed && direction == -1)
                 {
                     if (dashCdTimer > 0)
                     {
@@ -750,10 +782,28 @@ public class Movement : MonoBehaviour
             }
             else if (playerNumber == 2)
             {
-          
+                if (dashPressed && direction == -1 && reversed)
+                {
+                    if (dashCdTimer > 0)
+                    {
+                        print("timer is above 0");
+                        return;
+                    }
+                    else
+                    {
+                        dashCdTimer = dashCd;
+                    }
+
+                    Vector3 forceToApply = orientation.forward * dashForce * direction;
+
+                    rigidbody.AddForce(forceToApply, ForceMode.Impulse);
+                    animator.SetBool("dashPressed", true);
+                    animator.Play("Base Layer.DashBackward");
+                    animator.SetBool("dashPressed", false);
+                }
+
                 if (dashPressed && direction == -1)
                 {
-                  
                     if (dashCdTimer > 0)
                     {
                         print("timer is above 0");
@@ -766,11 +816,45 @@ public class Movement : MonoBehaviour
                     rigidbody.AddForce(forceToApply, ForceMode.Impulse);
                     animator.SetBool("dashPressed", true);
                     animator.Play("Base Layer.DashForward");
+                    animator.SetBool("dashPressed", false);
+                }
+
+                if (dashPressed && direction == -1)
+                {
+                    if (dashCdTimer > 0)
+                    {
+                        print("timer is above 0");
+                        return;
+                    }
+                    else dashCdTimer = dashCd;
+
+                    Vector3 forceToApply = orientation.forward * dashForce;
+
+                    rigidbody.AddForce(forceToApply, ForceMode.Impulse);
+                    animator.SetBool("dashPressed", true);
+                    animator.Play("Base Layer.DashForward");
+                    animator.SetBool("dashPressed", false);
+                }
+
+                if (dashPressed && direction == 1 && reversed)
+                {
+                    if (dashCdTimer > 0)
+                    {
+                        print("timer is above 0");
+                        return;
+                    }
+                    else dashCdTimer = dashCd;
+
+                    Vector3 forceToApply = orientation.forward * dashForce;
+
+                    rigidbody.AddForce(forceToApply, ForceMode.Impulse);
+                    animator.SetBool("dashPressed", true);
+                    animator.Play("Base Layer.DashForward");
+                    animator.SetBool("dashPressed", false);
                 }
 
                 if (dashPressed && direction == 1)
                 {
-
                     if (dashCdTimer > 0)
                     {
                         print("timer is above 0");
@@ -785,7 +869,7 @@ public class Movement : MonoBehaviour
                     rigidbody.AddForce(forceToApply, ForceMode.Impulse);
                     animator.SetBool("dashPressed", true);
                     animator.Play("Base Layer.DashBackward");
-
+                    animator.SetBool("dashPressed", false);
                 }
 
             }
@@ -850,6 +934,11 @@ public class Movement : MonoBehaviour
         Vector3 currentRotation = transform.eulerAngles;
 
         direction *= -1;
+
+        if (playerNumber == 1)
+        {
+            dashForce *= -1;
+        }
 
         currentRotation.y = transform.localEulerAngles.y == 0 ? 180 : 0;
         transform.eulerAngles = currentRotation;
