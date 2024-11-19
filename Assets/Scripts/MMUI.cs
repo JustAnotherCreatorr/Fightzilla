@@ -12,17 +12,25 @@ public class MMUI : MonoBehaviour
     public GameObject p2combatText;
     public GameObject credits;
     public bool alreadyOpen;
+    public ParticleSystem pc;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        print("A");
+
+        if (gameObject.tag == "cButton")
+        {
+            print("B");
+            pc.Stop();
+            pc.Play();
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+    
     }
 
     public void OnMouseDown()

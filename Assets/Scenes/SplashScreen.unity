@@ -359,7 +359,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &216364173
 GameObject:
@@ -511,6 +511,7 @@ MonoBehaviour:
   p2combatText: {fileID: 49868769}
   credits: {fileID: 0}
   alreadyOpen: 0
+  pc: {fileID: 0}
 --- !u!1 &222172095
 GameObject:
   m_ObjectHideFlags: 0
@@ -1076,6 +1077,7 @@ MonoBehaviour:
   p2combatText: {fileID: 49868769}
   credits: {fileID: 0}
   alreadyOpen: 0
+  pc: {fileID: 0}
 --- !u!1 &466168487
 GameObject:
   m_ObjectHideFlags: 0
@@ -1495,6 +1497,7 @@ MonoBehaviour:
   p2combatText: {fileID: 49868769}
   credits: {fileID: 0}
   alreadyOpen: 0
+  pc: {fileID: 0}
 --- !u!1 &596647730
 GameObject:
   m_ObjectHideFlags: 0
@@ -2022,6 +2025,7 @@ MonoBehaviour:
   p2combatText: {fileID: 0}
   credits: {fileID: 0}
   alreadyOpen: 0
+  pc: {fileID: 784192316}
 --- !u!1 &749310240
 GameObject:
   m_ObjectHideFlags: 0
@@ -2114,7 +2118,7 @@ GameObject:
   - component: {fileID: 784192316}
   - component: {fileID: 784192315}
   m_Layer: 0
-  m_Name: Particle System
+  m_Name: MainMenuParticles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2191,7 +2195,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 784192314}
   serializedVersion: 6
-  lengthInSec: 10
+  lengthInSec: 6.2
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -2199,7 +2203,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -6850,10 +6854,10 @@ Transform:
   m_GameObject: {fileID: 784192314}
   m_LocalRotation: {x: 0.05048722, y: -0.61082405, z: 0.78746974, w: 0.06508774}
   m_LocalPosition: {x: -0.14, y: 0.11, z: -2.65}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.99999994, y: 1, z: 0.99999994}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 75.6, y: 0, z: 170.55}
 --- !u!1 &797067495
 GameObject:
@@ -7559,7 +7563,7 @@ RectTransform:
   - {fileID: 651362708}
   - {fileID: 814690264}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -8051,6 +8055,7 @@ MonoBehaviour:
   p2combatText: {fileID: 49868769}
   credits: {fileID: 0}
   alreadyOpen: 0
+  pc: {fileID: 0}
 --- !u!1 &1912265230
 GameObject:
   m_ObjectHideFlags: 0
@@ -8334,6 +8339,7 @@ MonoBehaviour:
   p2combatText: {fileID: 0}
   credits: {fileID: 0}
   alreadyOpen: 0
+  pc: {fileID: 784192316}
 --- !u!1 &2013470871
 GameObject:
   m_ObjectHideFlags: 0

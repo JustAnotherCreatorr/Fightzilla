@@ -1032,6 +1032,8 @@ public class Movement : MonoBehaviour
         }
 
         animator.SetBool("Knockout", false);
+        animator.Play("Base Layer.Blend Tree");
+      
 
         if (gameTimer.timeUp)
         {

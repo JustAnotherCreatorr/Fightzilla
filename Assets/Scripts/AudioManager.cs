@@ -9,6 +9,7 @@ public class AudioManager : MonoBehaviour
 
     public AudioClip Fighting;
     public AudioClip MainMenu;
+    public AudioClip Credits;
     public AudioClip hurt;
     public AudioClip block;
     public AudioClip KO;

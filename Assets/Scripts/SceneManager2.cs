@@ -60,4 +60,9 @@ public class SceneManager2 : MonoBehaviour
         SceneManager.LoadScene(2);
     }
 
+    public void Back()
+    {
+        SceneManager.LoadScene(0);
+    }
+
 }
