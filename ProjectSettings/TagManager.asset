@@ -13,6 +13,9 @@ TagManager:
   - mainButton
   - cButton
   - x
+  - models
+  - textures
+  - Animations
   layers:
   - Default
   - TransparentFX
