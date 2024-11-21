@@ -122,7 +122,7 @@ public class Movement : MonoBehaviour
              cancelSprint = Input.GetKeyUp(KeyCode.RightShift);
              downPressed = Input.GetKey(KeyCode.DownArrow);
             cancelCrouch = Input.GetKeyUp(KeyCode.DownArrow);
-            dashPressed = Input.GetKeyDown(KeyCode.Slash);
+            dashPressed = Input.GetKeyDown(KeyCode.Keypad0);
              upArrowPressed = Input.GetKeyDown(KeyCode.UpArrow);
              reversePressed = Input.GetKeyDown(KeyCode.Return);
         }
@@ -184,6 +184,11 @@ public class Movement : MonoBehaviour
         if (reversePressed)
         {
             Reverse(reversePressed);
+        }
+
+        if (prevPos == currentPos && !isCrouching && isGrounded)
+        {
+            StartCoroutine(GradualDecrease());
         }
 
         // if right is being pressed
@@ -269,7 +274,6 @@ public class Movement : MonoBehaviour
             //float decimalValue = animParaSpeed -= mirrorPlayerFix;
             //animParaSpeed = animParaSpeed += decimalValue;
         }
-
 
         animParaSpeed = Mathf.Clamp(animParaSpeed, maxParaNegativeSpeed, maxParaSpeed);
 
@@ -700,6 +704,11 @@ public class Movement : MonoBehaviour
         }
 
         if (direction == 0)
+        {
+            return;
+        }
+
+        if (isSprinting)
         {
             return;
         }

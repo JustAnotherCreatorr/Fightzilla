@@ -17,6 +17,8 @@ public class PlayerHealthUIManager : MonoBehaviour
     public BugFix bf;
     public PlayerHealthUIManager OP;
     public CountdownTimer CT;
+    public AnimTriggers playerAT;
+    public AnimTriggers otherPlayerAT;
 
 
     public Animator animator;
@@ -69,12 +71,23 @@ public class PlayerHealthUIManager : MonoBehaviour
 
         CheckColor();
 
+        if (playerAT.facingEnemy == false)
+        {
+            playerMovement.isBlocking = false;
+        }
+
         if (hitDefended)
         {
             animator.SetBool("HitDefended", true);
             hit = false;
             animator.SetBool("Hit", false);
         }    
+
+        if (hit == false)
+        {
+            animator.SetBool("Hit", false);
+            animator.SetBool("HitDefended", true);
+        }
 
         if (crouchBlockHit)
         {
