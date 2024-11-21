@@ -269,24 +269,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Numpad4 - Light Punch
-
-
-    Numpad5 - Medium Punch
-
-
-    Numpad6 - Heavy
-    Punch
-
-
-    Numpad7 - Light Kick
-
-
-    Numpad8 - Medium Kick
-
-
-    Numpad9 -
-    Heavy Kick'
+  m_Text: "Light Punch - Numpad 4 \n\nMedium Punch - Numpad 5 \n\nHeavy Punch - Numpad
+    6\n\nLight Kick - Numpad 7\n\nMedium Kick - Numpad 8\n\nHeavy Kick - Numpad 9"
 --- !u!222 &49868772
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -511,7 +495,6 @@ MonoBehaviour:
   p2combatText: {fileID: 49868769}
   credits: {fileID: 0}
   alreadyOpen: 0
-  pc: {fileID: 0}
 --- !u!1 &222172095
 GameObject:
   m_ObjectHideFlags: 0
@@ -1077,7 +1060,6 @@ MonoBehaviour:
   p2combatText: {fileID: 49868769}
   credits: {fileID: 0}
   alreadyOpen: 0
-  pc: {fileID: 0}
 --- !u!1 &466168487
 GameObject:
   m_ObjectHideFlags: 0
@@ -1322,6 +1304,7 @@ MonoBehaviour:
   SFXSource: {fileID: 1291640359}
   Fighting: {fileID: 8300000, guid: c97d53794d6ea0446b55f3b392d07f2e, type: 3}
   MainMenu: {fileID: 8300000, guid: 475b23cb4b90ed44bb855e34d826effa, type: 3}
+  Credits: {fileID: 0}
   hurt: {fileID: 8300000, guid: 7c698653e90c6a94d84870513c2ae0dd, type: 3}
   block: {fileID: 8300000, guid: a609b869421525347b311fa6394fa5e9, type: 3}
   KO: {fileID: 8300000, guid: 0a77898ce3c40fe4ab06de2ad29bd288, type: 3}
@@ -1497,7 +1480,6 @@ MonoBehaviour:
   p2combatText: {fileID: 49868769}
   credits: {fileID: 0}
   alreadyOpen: 0
-  pc: {fileID: 0}
 --- !u!1 &596647730
 GameObject:
   m_ObjectHideFlags: 0
@@ -1533,7 +1515,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -521, y: -151}
+  m_AnchoredPosition: {x: -521, y: -143}
   m_SizeDelta: {x: 645.6352, y: 455.7669}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &596647732
@@ -1557,7 +1539,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: e3265ab4bf004d28a9537516768c1c75, type: 3}
-    m_FontSize: 40
+    m_FontSize: 35
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 2
@@ -1583,7 +1565,8 @@ MonoBehaviour:
 
     Dash - E
 
-'
+
+    Reverse - F'
 --- !u!222 &596647733
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2025,7 +2008,6 @@ MonoBehaviour:
   p2combatText: {fileID: 0}
   credits: {fileID: 0}
   alreadyOpen: 0
-  pc: {fileID: 784192316}
 --- !u!1 &749310240
 GameObject:
   m_ObjectHideFlags: 0
@@ -2203,8 +2185,8 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 1
   prewarm: 0
-  playOnAwake: 0
-  useUnscaledTime: 0
+  playOnAwake: 1
+  useUnscaledTime: 1
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
   startDelay:
@@ -7056,7 +7038,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -589, y: 260.2}
+  m_AnchoredPosition: {x: -589, y: 272}
   m_SizeDelta: {x: 455.90076, y: 145.5347}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &833295293
@@ -7291,7 +7273,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 572, y: 260.2}
+  m_AnchoredPosition: {x: 578, y: 272}
   m_SizeDelta: {x: 455.90076, y: 145.5347}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1167316757
@@ -7656,23 +7638,23 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '4 - Light Punch
+  m_Text: 'Light Punch - 4
 
 
-    5 - Medium Punch
+    Medium Punch - 5
 
 
-    6 - Heavy Punch
+    Heavy Punch - 6
 
 
-    R -
-    Light Kick
+    Light
+    Kick - R
 
 
-    T - Medium Kick
+    Medium Kick - T
 
 
-    Y - Heavy Kick'
+    Heavy Kick - Y'
 --- !u!222 &1623439799
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8055,7 +8037,6 @@ MonoBehaviour:
   p2combatText: {fileID: 49868769}
   credits: {fileID: 0}
   alreadyOpen: 0
-  pc: {fileID: 0}
 --- !u!1 &1912265230
 GameObject:
   m_ObjectHideFlags: 0
@@ -8339,7 +8320,6 @@ MonoBehaviour:
   p2combatText: {fileID: 0}
   credits: {fileID: 0}
   alreadyOpen: 0
-  pc: {fileID: 784192316}
 --- !u!1 &2013470871
 GameObject:
   m_ObjectHideFlags: 0
@@ -8399,7 +8379,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: e3265ab4bf004d28a9537516768c1c75, type: 3}
-    m_FontSize: 40
+    m_FontSize: 35
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 2
@@ -8411,7 +8391,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "Move - \u2190 and \u2192\n\nJump - \u2191\n\nCrouch - (HOLD) \u2193 \n\nSprint
-    - (HOLD) Right Shift\n\nDash - Slash \n"
+    - (HOLD) Right Shift\n\nDash - Numpad 0\n\nReverse - Return \n"
 --- !u!222 &2013470874
 CanvasRenderer:
   m_ObjectHideFlags: 0

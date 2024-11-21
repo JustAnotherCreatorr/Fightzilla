@@ -32,7 +32,7 @@ public class CreditsUI : MonoBehaviour
     {
         
     }
-    // font 15 st
+    
     public void OnMouseDown()
     {
         if (gameObject.tag == "models")
@@ -59,7 +59,7 @@ public class CreditsUI : MonoBehaviour
                 ST.SetActive(true);
                 anims.SetActive(false);
                 buttontext1.text = "Animations";
-                buttontext1.fontSize = 19;
+                buttontext1.fontSize = 73;
                 switched1 = !switched1;
                 return;
             }
@@ -67,7 +67,7 @@ public class CreditsUI : MonoBehaviour
             ST.SetActive(false);
             anims.SetActive(true);
             buttontext1.text = "Special Thanks";
-            buttontext1.fontSize = 15;
+            buttontext1.fontSize = 61;
             switched1 = !switched1;
         }
 
