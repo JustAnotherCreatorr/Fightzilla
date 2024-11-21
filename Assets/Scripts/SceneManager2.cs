@@ -62,6 +62,7 @@ public class SceneManager2 : MonoBehaviour
 
     public void Back()
     {
+        audioManager.PlaySFX(audioManager.beep);
         SceneManager.LoadScene(0);
     }
 

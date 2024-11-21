@@ -17,6 +17,8 @@ public class CreditsUI : MonoBehaviour
     public Text buttontext1;
     public Text buttontext2;
 
+    public AudioManager audioManager;
+
     public bool switched = false;
     public bool switched1 = false;
     public bool switched2 = false;
