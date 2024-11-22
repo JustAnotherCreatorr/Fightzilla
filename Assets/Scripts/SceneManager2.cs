@@ -36,6 +36,7 @@ public class SceneManager2 : MonoBehaviour
             ui2.resume.SetActive(false);
             ui.extraMessage.text = "Preparing the ring...";
         }
+
     }
 
     public void MainMenuPressed()
@@ -62,7 +63,6 @@ public class SceneManager2 : MonoBehaviour
 
     public void Back()
     {
-        audioManager.PlaySFX(audioManager.beep);
         SceneManager.LoadScene(0);
     }
 

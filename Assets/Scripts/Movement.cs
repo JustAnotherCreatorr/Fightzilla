@@ -576,11 +576,13 @@ public class Movement : MonoBehaviour
                     if (horizontal < 0)
                     {
                         speed = 15;
+                        animParaSpeed = 2;
                     }
 
                     if (horizontal > 0)
                     {
                         speed = 10;
+                        animParaSpeed = -2;
                     }
 
                     return;
@@ -589,11 +591,14 @@ public class Movement : MonoBehaviour
                 if (horizontal > 0)
                 {
                     speed = 15;
+                    animParaSpeed = 2;
                 }
                 
                 if (horizontal < 0)
                 {
                     speed = 10;
+                    animParaSpeed = -2;
+
                 }
 
             } else if (playerNumber == 2) 
@@ -603,12 +608,14 @@ public class Movement : MonoBehaviour
                     if (horizontal > 0)
                     {
                         speed = 15;
+                        animParaSpeed = 2;
                     }
 
                     if (horizontal < 0)
                     {
                         speed = 10;
-                    }
+                        animParaSpeed = -2;
+                    } 
 
                     return;
                 }
@@ -616,11 +623,13 @@ public class Movement : MonoBehaviour
                 if (horizontal < 0)
                 {
                     speed = 15;
+                    animParaSpeed = 2;
                 }
 
                 if (horizontal > 0)
                 {
                     speed = 10;
+                    animParaSpeed = -2;
                 }
             }
         }
