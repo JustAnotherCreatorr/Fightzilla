@@ -1039,6 +1039,7 @@ public class Movement : MonoBehaviour
             Vector3 regularRo = transform.localEulerAngles;
             regularRo.y = 0;
             transform.localEulerAngles = regularRo;
+            dashForce = 5;
         }
 
 
@@ -1048,6 +1049,9 @@ public class Movement : MonoBehaviour
             regularRo.y = 180;
             transform.localEulerAngles = regularRo;
         }
+
+        animator.runtimeAnimatorController = OGanim;
+        reversed = false;
 
         animator.SetBool("Knockout", false);
         animator.Play("Base Layer.Blend Tree");
