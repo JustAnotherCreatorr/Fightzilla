@@ -35,6 +35,7 @@ public class Movement : MonoBehaviour
     private float maxParaNegativeSpeed = -1f;
     private float runAccel = 1f;
     public bool reversed = false;
+    public bool correctDir = true;
 
     public float dashCd;
     private float dashCdTimer;
@@ -102,6 +103,7 @@ public class Movement : MonoBehaviour
             return;
         }
 
+
         #region movement
 
 
@@ -124,7 +126,7 @@ public class Movement : MonoBehaviour
             cancelCrouch = Input.GetKeyUp(KeyCode.DownArrow);
             dashPressed = Input.GetKeyDown(KeyCode.Keypad0);
              upArrowPressed = Input.GetKeyDown(KeyCode.UpArrow);
-             reversePressed = Input.GetKeyDown(KeyCode.Return);
+           //  reversePressed = Input.GetKeyDown(KeyCode.Return);
         }
         
         if (playerNumber == 1)
@@ -136,7 +138,7 @@ public class Movement : MonoBehaviour
             cancelCrouch = Input.GetKeyUp(KeyCode.S);
             dashPressed = Input.GetKeyDown(KeyCode.E);
             upArrowPressed = Input.GetKeyDown(KeyCode.W);
-            reversePressed = Input.GetKeyDown(KeyCode.F);
+            //reversePressed = Input.GetKeyDown(KeyCode.F);
         }
 
         GetIsGrounded();
@@ -179,11 +181,6 @@ public class Movement : MonoBehaviour
         } else if (cancelCrouch)
         {
             CancelCrouch();
-        }
-
-        if (reversePressed)
-        {
-            Reverse(reversePressed);
         }
 
         if (prevPos == currentPos && !isCrouching && isGrounded)
@@ -304,6 +301,7 @@ public class Movement : MonoBehaviour
                 animParaSpeed += -1;
             }
         }
+
 
         #endregion movement
 
@@ -510,7 +508,70 @@ public class Movement : MonoBehaviour
 
         prevPos = transform.position.z;
 
+        #region reverseChecking
+
+        if (otherPlayer.transform.position.z < transform.position.z && playerNumber == 1)
+        {
+            correctDir = false;
+        }
+
+        if (otherPlayer.transform.position.z > transform.position.z && playerNumber == 2)
+        {
+            correctDir = false;
+        }
+
+        if (otherPlayer.transform.position.z < transform.position.z && playerNumber == 2 && reversed)
+        {
+            correctDir = false;
+        }
+
+        if (otherPlayer.transform.position.z > transform.position.z && playerNumber == 1 && reversed)
+        {
+            correctDir = false;
+        }
+
+        if (otherPlayer.transform.position.z < transform.position.z && playerNumber == 2)
+        {
+            correctDir = true;
+        }
+
+        if (otherPlayer.transform.position.z > transform.position.z && playerNumber == 1)
+        {
+            correctDir = true;
+        }
+
+        if (otherPlayer.transform.position.z < transform.position.z && playerNumber == 1 && reversed)
+        {
+            correctDir = true;
+        }
+
+        if (otherPlayer.transform.position.z > transform.position.z && playerNumber == 2 && reversed)
+        {
+            correctDir = true;
+        }
+
+        print(correctDir);
+        if (!correctDir)
+        {
+            print("B");
+            Reverse();
+        }
+        #endregion reverseChecking
     }
+
+    public void DirectionCheck()
+    {
+        if (playerNumber == 1)
+        {
+            direction = 1;
+        }
+
+        if (playerNumber == 2)
+        {
+            direction = -1;
+        }
+    }
+
     private bool GetIsGrounded()
     {
         isGrounded = Physics.Raycast(transform.position, Vector3.down, 1f);
@@ -533,18 +594,7 @@ public class Movement : MonoBehaviour
         return isGrounded;
     }
 
-    public void DirectionCheck()
-    {
-        if (playerNumber == 1)
-        {
-            direction = 1;
-        }
-
-        if (playerNumber == 2)
-        {
-            direction = -1;
-        }
-    }
+    
 
     private void Sprint(bool shiftPressed, float horizontal)
     {
@@ -937,21 +987,23 @@ public class Movement : MonoBehaviour
         }
 
     }
-
     /// <summary>
     /// BUG REPORT: Player 2 does not rotate as otherPlayer property for player 1 movement after passing to the other side.
     /// </summary>
 
-  public void Reverse(bool reversePressed)
+  public void Reverse()
     {
         // Player 1's initial rotation is 0
         // Player 2's initial rotation is 180
+        if (correctDir)
+        {
+            print("C");
+            return;
+        }
 
-        // if (otherPlayer.transform.position.z<transform.position.z)
-        //{
-        // If player is to the left of the other player
-
+        print("D");
         reversed = !reversed;
+        correctDir = true;
 
         Vector3 currentRotation = transform.eulerAngles;
 
