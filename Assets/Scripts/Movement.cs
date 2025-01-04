@@ -106,57 +106,47 @@ public class Movement : MonoBehaviour
         #region reverseChecking
 
         if (otherPlayer.transform.position.z < transform.position.z && playerNumber == 1 && !reversed)
-        {
-            print("Outcome1");
+        { 
             correctDir = false;
         }
 
         if (otherPlayer.transform.position.z > transform.position.z && playerNumber == 2 && !reversed)
-        {
-            print("Outcome2");
-            correctDir = false;
+        { 
+           correctDir = false;
         }
 
         if (otherPlayer.transform.position.z < transform.position.z && playerNumber == 2 && reversed)
         {
-            print("Outcome3");
             correctDir = false;
         }
 
         if (otherPlayer.transform.position.z > transform.position.z && playerNumber == 1 && reversed)
         {
-            print("Outcome4");
             correctDir = false;
         }
 
         if (otherPlayer.transform.position.z < transform.position.z && playerNumber == 2 && !reversed)
         {
-            print("Outcome5");
             correctDir = true;
         }
 
         if (otherPlayer.transform.position.z > transform.position.z && playerNumber == 1 && !reversed)
         {
-            print("Outcome6");
             correctDir = true;
         }
 
         if (otherPlayer.transform.position.z < transform.position.z && playerNumber == 1 && reversed)
         {
-            print("Outcome7");
             correctDir = true;
         }
 
         if (otherPlayer.transform.position.z > transform.position.z && playerNumber == 2 && reversed)
         {
-            print("Outcome8");
             correctDir = true;
         }
 
-        print(correctDir);
         if (!correctDir)
         {
-            print("B");
             Reverse();
         }
         #endregion reverseChecking
@@ -601,8 +591,6 @@ public class Movement : MonoBehaviour
         return isGrounded;
     }
 
-    
-
     private void Sprint(bool shiftPressed, float horizontal)
     {
 
@@ -994,21 +982,16 @@ public class Movement : MonoBehaviour
         }
 
     }
-    /// <summary>
-    /// BUG REPORT: Player 2 does not rotate as otherPlayer property for player 1 movement after passing to the other side.
-    /// </summary>
-
-  public void Reverse()
+   
+    public void Reverse()
     {
         // Player 1's initial rotation is 0
         // Player 2's initial rotation is 180
         if (correctDir)
         {
-            print("C");
             return;
         }
 
-        print("D");
         reversed = !reversed;
         correctDir = true;
 
