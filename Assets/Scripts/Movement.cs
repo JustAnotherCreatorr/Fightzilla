@@ -103,6 +103,63 @@ public class Movement : MonoBehaviour
             return;
         }
 
+        #region reverseChecking
+
+        if (otherPlayer.transform.position.z < transform.position.z && playerNumber == 1 && !reversed)
+        {
+            print("Outcome1");
+            correctDir = false;
+        }
+
+        if (otherPlayer.transform.position.z > transform.position.z && playerNumber == 2 && !reversed)
+        {
+            print("Outcome2");
+            correctDir = false;
+        }
+
+        if (otherPlayer.transform.position.z < transform.position.z && playerNumber == 2 && reversed)
+        {
+            print("Outcome3");
+            correctDir = false;
+        }
+
+        if (otherPlayer.transform.position.z > transform.position.z && playerNumber == 1 && reversed)
+        {
+            print("Outcome4");
+            correctDir = false;
+        }
+
+        if (otherPlayer.transform.position.z < transform.position.z && playerNumber == 2 && !reversed)
+        {
+            print("Outcome5");
+            correctDir = true;
+        }
+
+        if (otherPlayer.transform.position.z > transform.position.z && playerNumber == 1 && !reversed)
+        {
+            print("Outcome6");
+            correctDir = true;
+        }
+
+        if (otherPlayer.transform.position.z < transform.position.z && playerNumber == 1 && reversed)
+        {
+            print("Outcome7");
+            correctDir = true;
+        }
+
+        if (otherPlayer.transform.position.z > transform.position.z && playerNumber == 2 && reversed)
+        {
+            print("Outcome8");
+            correctDir = true;
+        }
+
+        print(correctDir);
+        if (!correctDir)
+        {
+            print("B");
+            Reverse();
+        }
+        #endregion reverseChecking
 
         #region movement
 
@@ -507,56 +564,6 @@ public class Movement : MonoBehaviour
         #endregion SpeedMods
 
         prevPos = transform.position.z;
-
-        #region reverseChecking
-
-        if (otherPlayer.transform.position.z < transform.position.z && playerNumber == 1)
-        {
-            correctDir = false;
-        }
-
-        if (otherPlayer.transform.position.z > transform.position.z && playerNumber == 2)
-        {
-            correctDir = false;
-        }
-
-        if (otherPlayer.transform.position.z < transform.position.z && playerNumber == 2 && reversed)
-        {
-            correctDir = false;
-        }
-
-        if (otherPlayer.transform.position.z > transform.position.z && playerNumber == 1 && reversed)
-        {
-            correctDir = false;
-        }
-
-        if (otherPlayer.transform.position.z < transform.position.z && playerNumber == 2)
-        {
-            correctDir = true;
-        }
-
-        if (otherPlayer.transform.position.z > transform.position.z && playerNumber == 1)
-        {
-            correctDir = true;
-        }
-
-        if (otherPlayer.transform.position.z < transform.position.z && playerNumber == 1 && reversed)
-        {
-            correctDir = true;
-        }
-
-        if (otherPlayer.transform.position.z > transform.position.z && playerNumber == 2 && reversed)
-        {
-            correctDir = true;
-        }
-
-        print(correctDir);
-        if (!correctDir)
-        {
-            print("B");
-            Reverse();
-        }
-        #endregion reverseChecking
     }
 
     public void DirectionCheck()
