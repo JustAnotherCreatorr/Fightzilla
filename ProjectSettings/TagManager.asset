@@ -16,6 +16,7 @@ TagManager:
   - models
   - textures
   - Animations
+  - Void
   layers:
   - Default
   - TransparentFX

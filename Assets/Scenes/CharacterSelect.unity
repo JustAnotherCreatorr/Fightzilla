@@ -1719,7 +1719,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   display: {fileID: 401718857}
-  characterName: 
+  characterName: Mercury
   characterColor: {r: 1, g: 0.24705882, b: 0.5803922, a: 0}
 --- !u!1 &1772360927
 GameObject:
