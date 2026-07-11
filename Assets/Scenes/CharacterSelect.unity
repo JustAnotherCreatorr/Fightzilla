@@ -510,6 +510,8 @@ MonoBehaviour:
   display: {fileID: 401718857}
   characterName: Viridian
   characterColor: {r: 0.09411765, g: 1, b: 0.043137256, a: 0}
+  hoverOutline: {fileID: 0}
+  panelOutline: {fileID: 690123208}
 --- !u!1 &823379226
 GameObject:
   m_ObjectHideFlags: 0
@@ -616,6 +618,8 @@ MonoBehaviour:
   display: {fileID: 401718857}
   characterName: Null
   characterColor: {r: 1, g: 1, b: 1, a: 0}
+  hoverOutline: {fileID: 0}
+  panelOutline: {fileID: 823379230}
 --- !u!1 &839290000
 GameObject:
   m_ObjectHideFlags: 0
@@ -892,6 +896,8 @@ MonoBehaviour:
   display: {fileID: 401718857}
   characterName: Sloane
   characterColor: {r: 1, g: 0.972549, b: 0.047058824, a: 0}
+  hoverOutline: {fileID: 0}
+  panelOutline: {fileID: 964775283}
 --- !u!1 &1102644310
 GameObject:
   m_ObjectHideFlags: 0
@@ -998,6 +1004,8 @@ MonoBehaviour:
   display: {fileID: 401718857}
   characterName: Void
   characterColor: {r: 0, g: 0, b: 0, a: 0}
+  hoverOutline: {fileID: 0}
+  panelOutline: {fileID: 1102644314}
 --- !u!1 &1141278509
 GameObject:
   m_ObjectHideFlags: 0
@@ -1196,6 +1204,8 @@ MonoBehaviour:
   display: {fileID: 401718857}
   characterName: Jin
   characterColor: {r: 0.75686276, g: 0.23921569, b: 1, a: 0}
+  hoverOutline: {fileID: 0}
+  panelOutline: {fileID: 1302365711}
 --- !u!1 &1434557269
 GameObject:
   m_ObjectHideFlags: 0
@@ -1302,6 +1312,8 @@ MonoBehaviour:
   display: {fileID: 401718857}
   characterName: Caelus
   characterColor: {r: 0, g: 0.63529414, b: 1, a: 0}
+  hoverOutline: {fileID: 0}
+  panelOutline: {fileID: 1434557273}
 --- !u!1 &1477638017
 GameObject:
   m_ObjectHideFlags: 0
@@ -1444,6 +1456,8 @@ MonoBehaviour:
   display: {fileID: 401718857}
   characterName: Berserker
   characterColor: {r: 1, g: 0.050980393, b: 0.03137255, a: 0}
+  hoverOutline: {fileID: 0}
+  panelOutline: {fileID: 1536932429}
 --- !u!1 &1659491537
 GameObject:
   m_ObjectHideFlags: 0
@@ -1588,7 +1602,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 13.800049, y: -29.600037}
+  m_AnchoredPosition: {x: 13.800049, y: -29.600098}
   m_SizeDelta: {x: 81.199936, y: -59.199875}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1722909025
@@ -1721,6 +1735,8 @@ MonoBehaviour:
   display: {fileID: 401718857}
   characterName: Mercury
   characterColor: {r: 1, g: 0.24705882, b: 0.5803922, a: 0}
+  hoverOutline: {fileID: 0}
+  panelOutline: {fileID: 1764289626}
 --- !u!1 &1772360927
 GameObject:
   m_ObjectHideFlags: 0
@@ -1827,6 +1843,8 @@ MonoBehaviour:
   display: {fileID: 401718857}
   characterName: Sumo
   characterColor: {r: 1, g: 0.40392157, b: 0.0627451, a: 0}
+  hoverOutline: {fileID: 0}
+  panelOutline: {fileID: 1772360931}
 --- !u!1 &1984119455
 GameObject:
   m_ObjectHideFlags: 0
