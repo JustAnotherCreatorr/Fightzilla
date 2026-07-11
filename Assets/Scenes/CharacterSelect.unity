@@ -416,6 +416,7 @@ GameObject:
   - component: {fileID: 690123207}
   - component: {fileID: 690123206}
   - component: {fileID: 690123208}
+  - component: {fileID: 690123209}
   m_Layer: 5
   m_Name: Green
   m_TagString: Untagged
@@ -494,6 +495,21 @@ MonoBehaviour:
   m_EffectColor: {r: 0.4, g: 0.14117648, b: 0.011764706, a: 0.5}
   m_EffectDistance: {x: 12.1, y: 11.42}
   m_UseGraphicAlpha: 1
+--- !u!114 &690123209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 690123204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c85b390979e6f7e44a6688c392c43b10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  display: {fileID: 401718857}
+  characterName: Viridian
+  characterColor: {r: 0.09411765, g: 1, b: 0.043137256, a: 0}
 --- !u!1 &823379226
 GameObject:
   m_ObjectHideFlags: 0
@@ -506,6 +522,7 @@ GameObject:
   - component: {fileID: 823379229}
   - component: {fileID: 823379228}
   - component: {fileID: 823379230}
+  - component: {fileID: 823379231}
   m_Layer: 5
   m_Name: White
   m_TagString: Untagged
@@ -584,6 +601,21 @@ MonoBehaviour:
   m_EffectColor: {r: 0.4, g: 0.14117648, b: 0.011764706, a: 0.5}
   m_EffectDistance: {x: 12.1, y: 11.42}
   m_UseGraphicAlpha: 1
+--- !u!114 &823379231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 823379226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c85b390979e6f7e44a6688c392c43b10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  display: {fileID: 401718857}
+  characterName: Null
+  characterColor: {r: 1, g: 1, b: 1, a: 0}
 --- !u!1 &839290000
 GameObject:
   m_ObjectHideFlags: 0
@@ -766,6 +798,7 @@ GameObject:
   - component: {fileID: 964775282}
   - component: {fileID: 964775281}
   - component: {fileID: 964775283}
+  - component: {fileID: 964775284}
   m_Layer: 5
   m_Name: Yellow
   m_TagString: Untagged
@@ -844,6 +877,21 @@ MonoBehaviour:
   m_EffectColor: {r: 0.4, g: 0.14117648, b: 0.011764706, a: 0.5}
   m_EffectDistance: {x: 12.1, y: 11.42}
   m_UseGraphicAlpha: 1
+--- !u!114 &964775284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 964775279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c85b390979e6f7e44a6688c392c43b10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  display: {fileID: 401718857}
+  characterName: Sloane
+  characterColor: {r: 1, g: 0.972549, b: 0.047058824, a: 0}
 --- !u!1 &1102644310
 GameObject:
   m_ObjectHideFlags: 0
@@ -856,6 +904,7 @@ GameObject:
   - component: {fileID: 1102644313}
   - component: {fileID: 1102644312}
   - component: {fileID: 1102644314}
+  - component: {fileID: 1102644315}
   m_Layer: 5
   m_Name: Void
   m_TagString: Untagged
@@ -934,6 +983,21 @@ MonoBehaviour:
   m_EffectColor: {r: 0.4, g: 0.14117648, b: 0.011764706, a: 0.5}
   m_EffectDistance: {x: 12.1, y: 11.42}
   m_UseGraphicAlpha: 1
+--- !u!114 &1102644315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1102644310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c85b390979e6f7e44a6688c392c43b10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  display: {fileID: 401718857}
+  characterName: Void
+  characterColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &1141278509
 GameObject:
   m_ObjectHideFlags: 0
@@ -1038,6 +1102,7 @@ GameObject:
   - component: {fileID: 1302365710}
   - component: {fileID: 1302365709}
   - component: {fileID: 1302365711}
+  - component: {fileID: 1302365712}
   m_Layer: 5
   m_Name: Grape
   m_TagString: Untagged
@@ -1116,6 +1181,21 @@ MonoBehaviour:
   m_EffectColor: {r: 0.4, g: 0.14117648, b: 0.011764706, a: 0.5}
   m_EffectDistance: {x: 12.1, y: 11.42}
   m_UseGraphicAlpha: 1
+--- !u!114 &1302365712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1302365707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c85b390979e6f7e44a6688c392c43b10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  display: {fileID: 401718857}
+  characterName: Jin
+  characterColor: {r: 0.75686276, g: 0.23921569, b: 1, a: 0}
 --- !u!1 &1434557269
 GameObject:
   m_ObjectHideFlags: 0
@@ -1128,6 +1208,7 @@ GameObject:
   - component: {fileID: 1434557272}
   - component: {fileID: 1434557271}
   - component: {fileID: 1434557273}
+  - component: {fileID: 1434557274}
   m_Layer: 5
   m_Name: Blue
   m_TagString: Untagged
@@ -1206,6 +1287,21 @@ MonoBehaviour:
   m_EffectColor: {r: 0.4, g: 0.14117648, b: 0.011764706, a: 0.5}
   m_EffectDistance: {x: 12.1, y: 11.42}
   m_UseGraphicAlpha: 1
+--- !u!114 &1434557274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1434557269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c85b390979e6f7e44a6688c392c43b10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  display: {fileID: 401718857}
+  characterName: Caelus
+  characterColor: {r: 0, g: 0.63529414, b: 1, a: 0}
 --- !u!1 &1477638017
 GameObject:
   m_ObjectHideFlags: 0
@@ -1254,6 +1350,7 @@ GameObject:
   - component: {fileID: 1536932428}
   - component: {fileID: 1536932427}
   - component: {fileID: 1536932429}
+  - component: {fileID: 1536932430}
   m_Layer: 5
   m_Name: Red
   m_TagString: Untagged
@@ -1332,6 +1429,21 @@ MonoBehaviour:
   m_EffectColor: {r: 0.4, g: 0.14117648, b: 0.011764706, a: 0.5}
   m_EffectDistance: {x: 12.1, y: 11.42}
   m_UseGraphicAlpha: 1
+--- !u!114 &1536932430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1536932425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c85b390979e6f7e44a6688c392c43b10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  display: {fileID: 401718857}
+  characterName: Berserker
+  characterColor: {r: 1, g: 0.050980393, b: 0.03137255, a: 0}
 --- !u!1 &1659491537
 GameObject:
   m_ObjectHideFlags: 0
@@ -1515,6 +1627,7 @@ GameObject:
   - component: {fileID: 1764289625}
   - component: {fileID: 1764289624}
   - component: {fileID: 1764289626}
+  - component: {fileID: 1764289627}
   m_Layer: 5
   m_Name: Pink
   m_TagString: Untagged
@@ -1593,6 +1706,21 @@ MonoBehaviour:
   m_EffectColor: {r: 0.4, g: 0.14117648, b: 0.011764706, a: 0.5}
   m_EffectDistance: {x: 12.1, y: 11.42}
   m_UseGraphicAlpha: 1
+--- !u!114 &1764289627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1764289622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c85b390979e6f7e44a6688c392c43b10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  display: {fileID: 401718857}
+  characterName: 
+  characterColor: {r: 1, g: 0.24705882, b: 0.5803922, a: 0}
 --- !u!1 &1772360927
 GameObject:
   m_ObjectHideFlags: 0
@@ -1605,6 +1733,7 @@ GameObject:
   - component: {fileID: 1772360930}
   - component: {fileID: 1772360929}
   - component: {fileID: 1772360931}
+  - component: {fileID: 1772360932}
   m_Layer: 5
   m_Name: Orange
   m_TagString: Untagged
@@ -1683,6 +1812,21 @@ MonoBehaviour:
   m_EffectColor: {r: 0.4, g: 0.14117648, b: 0.011764706, a: 0.5}
   m_EffectDistance: {x: 12.1, y: 11.42}
   m_UseGraphicAlpha: 1
+--- !u!114 &1772360932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1772360927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c85b390979e6f7e44a6688c392c43b10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  display: {fileID: 401718857}
+  characterName: Sumo
+  characterColor: {r: 1, g: 0.40392157, b: 0.0627451, a: 0}
 --- !u!1 &1984119455
 GameObject:
   m_ObjectHideFlags: 0
