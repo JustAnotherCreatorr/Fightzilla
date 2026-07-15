@@ -11,7 +11,9 @@ public class HoverPanel : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     private int UInumber;
     public string characterName;
     public Color characterColor;
-    public Image hoverOutline;
+    public Color hoverPanelColor;
+    public Color defaultPanelColor;
+    public GameObject hoverOutline;
     public Outline panelOutline;
 
     // Start is called before the first frame update
@@ -30,10 +32,14 @@ public class HoverPanel : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     {
         string colorCode = ColorUtility.ToHtmlStringRGB(characterColor);
         display.text = $"Player {UInumber}: <color=#{colorCode}>{characterName}</color>";
+        panelOutline.effectColor = hoverPanelColor;
+        hoverOutline.SetActive(true);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         display.text = $"Player {UInumber}:";
+        panelOutline.effectColor = defaultPanelColor;
+        hoverOutline.SetActive(false);
     }
 }
