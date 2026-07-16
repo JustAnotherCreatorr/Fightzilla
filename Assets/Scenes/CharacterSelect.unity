@@ -625,7 +625,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c85b390979e6f7e44a6688c392c43b10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  confirmedP1: 0
+  currentDisplay: {fileID: 0}
   display: {fileID: 401718857}
+  otherDisplay: {fileID: 839290002}
   characterName: Viridian
   characterColor: {r: 0.09411765, g: 1, b: 0.043137256, a: 0}
   hoverPanelColor: {r: 1, g: 1, b: 1, a: 0}
@@ -809,7 +812,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c85b390979e6f7e44a6688c392c43b10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  confirmedP1: 0
+  currentDisplay: {fileID: 0}
   display: {fileID: 401718857}
+  otherDisplay: {fileID: 839290002}
   characterName: Null
   characterColor: {r: 1, g: 1, b: 1, a: 0}
   hoverPanelColor: {r: 1, g: 1, b: 1, a: 0}
@@ -1089,7 +1095,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c85b390979e6f7e44a6688c392c43b10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  confirmedP1: 0
+  currentDisplay: {fileID: 0}
   display: {fileID: 401718857}
+  otherDisplay: {fileID: 839290002}
   characterName: Sloane
   characterColor: {r: 1, g: 0.972549, b: 0.047058824, a: 0}
   hoverPanelColor: {r: 1, g: 1, b: 1, a: 0}
@@ -1273,7 +1282,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c85b390979e6f7e44a6688c392c43b10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  confirmedP1: 0
+  currentDisplay: {fileID: 0}
   display: {fileID: 401718857}
+  otherDisplay: {fileID: 839290002}
   characterName: Void
   characterColor: {r: 0, g: 0, b: 0, a: 0}
   hoverPanelColor: {r: 1, g: 1, b: 1, a: 0}
@@ -1623,7 +1635,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c85b390979e6f7e44a6688c392c43b10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  confirmedP1: 0
+  currentDisplay: {fileID: 0}
   display: {fileID: 401718857}
+  otherDisplay: {fileID: 839290002}
   characterName: Jin
   characterColor: {r: 0.75686276, g: 0.23921569, b: 1, a: 0}
   hoverPanelColor: {r: 1, g: 1, b: 1, a: 0}
@@ -1807,7 +1822,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c85b390979e6f7e44a6688c392c43b10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  confirmedP1: 0
+  currentDisplay: {fileID: 0}
   display: {fileID: 401718857}
+  otherDisplay: {fileID: 839290002}
   characterName: Caelus
   characterColor: {r: 0, g: 0.63529414, b: 1, a: 0}
   hoverPanelColor: {r: 1, g: 1, b: 1, a: 0}
@@ -1863,6 +1881,7 @@ GameObject:
   - component: {fileID: 1536932427}
   - component: {fileID: 1536932429}
   - component: {fileID: 1536932430}
+  - component: {fileID: 1536932431}
   m_Layer: 5
   m_Name: Red
   m_TagString: Untagged
@@ -1953,13 +1972,70 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c85b390979e6f7e44a6688c392c43b10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  confirmedP1: 0
+  currentDisplay: {fileID: 0}
   display: {fileID: 401718857}
+  otherDisplay: {fileID: 839290002}
   characterName: Berserker
   characterColor: {r: 1, g: 0.050980393, b: 0.03137255, a: 0}
   hoverPanelColor: {r: 1, g: 1, b: 1, a: 0}
   defaultPanelColor: {r: 0.4, g: 0.14117648, b: 0.011764706, a: 0.5019608}
   hoverOutline: {fileID: 1953078977}
   panelOutline: {fileID: 1536932429}
+--- !u!114 &1536932431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1536932425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1536932427}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1536932430}
+        m_MethodName: OnMouseDown
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1564390310
 GameObject:
   m_ObjectHideFlags: 0
@@ -2309,7 +2385,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c85b390979e6f7e44a6688c392c43b10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  confirmedP1: 0
+  currentDisplay: {fileID: 0}
   display: {fileID: 401718857}
+  otherDisplay: {fileID: 839290002}
   characterName: Mercury
   characterColor: {r: 1, g: 0.24705882, b: 0.5803922, a: 0}
   hoverPanelColor: {r: 1, g: 1, b: 1, a: 0}
@@ -2419,7 +2498,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c85b390979e6f7e44a6688c392c43b10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  confirmedP1: 0
+  currentDisplay: {fileID: 0}
   display: {fileID: 401718857}
+  otherDisplay: {fileID: 839290002}
   characterName: Sumo
   characterColor: {r: 1, g: 0.40392157, b: 0.0627451, a: 0}
   hoverPanelColor: {r: 1, g: 1, b: 1, a: 0}
@@ -2511,7 +2593,6 @@ GameObject:
   - component: {fileID: 1953078980}
   - component: {fileID: 1953078979}
   - component: {fileID: 1953078978}
-  - component: {fileID: 1953078981}
   m_Layer: 0
   m_Name: RH
   m_TagString: Untagged
@@ -2575,60 +2656,6 @@ RectTransform:
   m_AnchoredPosition: {x: -276.4001, y: 141.74506}
   m_SizeDelta: {x: 257.80734, y: 165.69804}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1953078981
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1953078977}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 1953078978}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1536932425}
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &1984119455
 GameObject:
   m_ObjectHideFlags: 0
