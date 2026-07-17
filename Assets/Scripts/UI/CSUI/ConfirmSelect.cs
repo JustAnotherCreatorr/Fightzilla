@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class P1ConfirmSelect : MonoBehaviour
+public class ConfirmSelect : MonoBehaviour
 {
-    public static P1ConfirmSelect Instance { get; private set; }
+    public static ConfirmSelect Instance { get; private set; }
     public bool confirmedP1;
     public bool confirmedP2;
 
