@@ -9,7 +9,7 @@ public class HoverPanel : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 {
     public int UInumber;
 
-    public bool confirmedP1;
+    public bool isSelected;
 
     public TMP_Text currentDisplay;
     public TMP_Text display;
@@ -19,6 +19,10 @@ public class HoverPanel : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     public Color characterColor;
     public Color hoverPanelColor;
     public Color defaultPanelColor;
+    public Color selectedColor;
+
+    public Color trueColor1;
+    public Color trueColor2;
 
     public GameObject selectedCharacter;
 
@@ -32,7 +36,7 @@ public class HoverPanel : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     {
         UInumber = 1;
         currentDisplay = display;
-        confirmedP1 = false;
+        isSelected = false;
     }
 
     // Update is called once per frame
@@ -42,6 +46,7 @@ public class HoverPanel : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         {
             currentDisplay = otherDisplay;
             UInumber = 2;
+            selectedColor = trueColor2;
         }
     }
 
@@ -68,12 +73,24 @@ public class HoverPanel : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         panelOutline.effectColor = defaultPanelColor;
         hoverOutline.SetActive(false);
 
-        if (currentDisplay == display && !confirmedP1)
+        if (p1Confirm.confirmedP1 && isSelected)
+        {
+            panelOutline.effectColor = hoverPanelColor;
+            hoverOutline.SetActive(true);
+        } 
+
+        if (p1Confirm.confirmedP1 && !isSelected)
+        {
+            panelOutline.effectColor = defaultPanelColor;
+            hoverOutline.SetActive(false);
+        }
+
+        if (currentDisplay == display && !p1Confirm.confirmedP1)
         {
             display.text = $"Player {UInumber}:";
         }
 
-        if (currentDisplay == otherDisplay && confirmedP1)
+        if (currentDisplay == otherDisplay && !p1Confirm.confirmedP1)
         {
             otherDisplay.text = $"Player {UInumber}:";
         }
@@ -81,10 +98,16 @@ public class HoverPanel : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     }
 
     public void OnMouseDown(HoverPanel hoverPanel)
-    { 
-        selectedCharacter = hoverPanel.gameObject;
-        P1ConfirmSelect.Instance.ChangeCurrentPlayerSelecting(this);
-        currentDisplay = otherDisplay;
-        UInumber = 2;
+    {
+        if (!p1Confirm.confirmedP1)
+        {
+            isSelected = true;
+            panelOutline.effectColor = hoverPanelColor;
+            hoverOutline.GetComponent<Image>().color = trueColor1;
+            selectedCharacter = hoverPanel.gameObject;
+            P1ConfirmSelect.Instance.ChangeCurrentPlayerSelecting(this);
+            currentDisplay = otherDisplay;
+            UInumber = 2;
+        }
     }
 }

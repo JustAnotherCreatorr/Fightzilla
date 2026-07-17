@@ -13,6 +13,8 @@ public class P1ConfirmSelect : MonoBehaviour
         {
             Instance = this;
         }
+
+        confirmedP1 = false;
     }
 
     // Update is called once per frame
@@ -23,10 +25,8 @@ public class P1ConfirmSelect : MonoBehaviour
 
     public void ChangeCurrentPlayerSelecting(HoverPanel hoverPanel)
     {
-        Debug.Log("ccps");
         if (hoverPanel.currentDisplay == hoverPanel.display)
         {
-            Debug.Log("calledIF");
             confirmedP1 = true;
         }
     }
