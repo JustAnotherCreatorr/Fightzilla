@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 49023650}
   - component: {fileID: 49023649}
   m_Layer: 0
-  m_Name: OH
+  m_Name: SH
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -305,6 +305,50 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &354735391
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 354735393}
+  - component: {fileID: 354735392}
+  m_Layer: 0
+  m_Name: GameController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &354735392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 354735391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c499b6378820e4a4e910c80d5d22a03f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  confirmedP1: 0
+--- !u!4 &354735393
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 354735391}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 328.81863, y: 245.10205, z: -3.84375}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &401718855
 GameObject:
   m_ObjectHideFlags: 0
@@ -535,8 +579,9 @@ GameObject:
   - component: {fileID: 690123206}
   - component: {fileID: 690123208}
   - component: {fileID: 690123209}
+  - component: {fileID: 690123210}
   m_Layer: 5
-  m_Name: Green
+  m_Name: Viridian
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -625,6 +670,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c85b390979e6f7e44a6688c392c43b10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UInumber: 0
   confirmedP1: 0
   currentDisplay: {fileID: 0}
   display: {fileID: 401718857}
@@ -633,8 +679,64 @@ MonoBehaviour:
   characterColor: {r: 0.09411765, g: 1, b: 0.043137256, a: 0}
   hoverPanelColor: {r: 1, g: 1, b: 1, a: 0}
   defaultPanelColor: {r: 0.4, g: 0.14117648, b: 0.011764706, a: 0.5019608}
+  selectedCharacter: {fileID: 0}
   hoverOutline: {fileID: 1946092783}
   panelOutline: {fileID: 690123208}
+  p1Confirm: {fileID: 354735392}
+--- !u!114 &690123210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 690123204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 690123206}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 690123209}
+        m_MethodName: OnMouseDown
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 690123209}
+          m_ObjectArgumentAssemblyTypeName: HoverPanel, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &714558623
 GameObject:
   m_ObjectHideFlags: 0
@@ -722,8 +824,9 @@ GameObject:
   - component: {fileID: 823379228}
   - component: {fileID: 823379230}
   - component: {fileID: 823379231}
+  - component: {fileID: 823379232}
   m_Layer: 5
-  m_Name: White
+  m_Name: Null
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -812,6 +915,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c85b390979e6f7e44a6688c392c43b10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UInumber: 0
   confirmedP1: 0
   currentDisplay: {fileID: 0}
   display: {fileID: 401718857}
@@ -820,8 +924,64 @@ MonoBehaviour:
   characterColor: {r: 1, g: 1, b: 1, a: 0}
   hoverPanelColor: {r: 1, g: 1, b: 1, a: 0}
   defaultPanelColor: {r: 0.4, g: 0.14117648, b: 0.011764706, a: 0.5019608}
+  selectedCharacter: {fileID: 0}
   hoverOutline: {fileID: 1089977116}
   panelOutline: {fileID: 823379230}
+  p1Confirm: {fileID: 354735392}
+--- !u!114 &823379232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 823379226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 823379228}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 823379231}
+        m_MethodName: OnMouseDown
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 823379231}
+          m_ObjectArgumentAssemblyTypeName: HoverPanel, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &839290000
 GameObject:
   m_ObjectHideFlags: 0
@@ -1005,8 +1165,9 @@ GameObject:
   - component: {fileID: 964775281}
   - component: {fileID: 964775283}
   - component: {fileID: 964775284}
+  - component: {fileID: 964775285}
   m_Layer: 5
-  m_Name: Yellow
+  m_Name: Naser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1095,16 +1256,73 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c85b390979e6f7e44a6688c392c43b10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UInumber: 0
   confirmedP1: 0
   currentDisplay: {fileID: 0}
   display: {fileID: 401718857}
   otherDisplay: {fileID: 839290002}
-  characterName: Sloane
+  characterName: Naser
   characterColor: {r: 1, g: 0.972549, b: 0.047058824, a: 0}
   hoverPanelColor: {r: 1, g: 1, b: 1, a: 0}
   defaultPanelColor: {r: 0.4, g: 0.14117648, b: 0.011764706, a: 0.5019608}
+  selectedCharacter: {fileID: 0}
   hoverOutline: {fileID: 1248523792}
   panelOutline: {fileID: 964775283}
+  p1Confirm: {fileID: 354735392}
+--- !u!114 &964775285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 964775279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 964775281}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 964775284}
+        m_MethodName: OnMouseDown
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 964775284}
+          m_ObjectArgumentAssemblyTypeName: HoverPanel, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1089977116
 GameObject:
   m_ObjectHideFlags: 0
@@ -1117,7 +1335,7 @@ GameObject:
   - component: {fileID: 1089977118}
   - component: {fileID: 1089977117}
   m_Layer: 0
-  m_Name: WH
+  m_Name: NH
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1192,6 +1410,7 @@ GameObject:
   - component: {fileID: 1102644312}
   - component: {fileID: 1102644314}
   - component: {fileID: 1102644315}
+  - component: {fileID: 1102644316}
   m_Layer: 5
   m_Name: Void
   m_TagString: Untagged
@@ -1282,6 +1501,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c85b390979e6f7e44a6688c392c43b10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UInumber: 0
   confirmedP1: 0
   currentDisplay: {fileID: 0}
   display: {fileID: 401718857}
@@ -1290,8 +1510,64 @@ MonoBehaviour:
   characterColor: {r: 0, g: 0, b: 0, a: 0}
   hoverPanelColor: {r: 1, g: 1, b: 1, a: 0}
   defaultPanelColor: {r: 0.4, g: 0.14117648, b: 0.011764706, a: 0.5019608}
+  selectedCharacter: {fileID: 0}
   hoverOutline: {fileID: 714558623}
   panelOutline: {fileID: 1102644314}
+  p1Confirm: {fileID: 354735392}
+--- !u!114 &1102644316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1102644310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1102644312}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1102644315}
+        m_MethodName: OnMouseDown
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1102644315}
+          m_ObjectArgumentAssemblyTypeName: HoverPanel, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1121246855
 GameObject:
   m_ObjectHideFlags: 0
@@ -1304,7 +1580,7 @@ GameObject:
   - component: {fileID: 1121246857}
   - component: {fileID: 1121246856}
   m_Layer: 0
-  m_Name: GH
+  m_Name: SiH
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1470,7 +1746,7 @@ GameObject:
   - component: {fileID: 1248523794}
   - component: {fileID: 1248523793}
   m_Layer: 0
-  m_Name: YH
+  m_Name: NaH
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1545,8 +1821,9 @@ GameObject:
   - component: {fileID: 1302365709}
   - component: {fileID: 1302365711}
   - component: {fileID: 1302365712}
+  - component: {fileID: 1302365713}
   m_Layer: 5
-  m_Name: Grape
+  m_Name: Sin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1635,16 +1912,73 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c85b390979e6f7e44a6688c392c43b10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UInumber: 0
   confirmedP1: 0
   currentDisplay: {fileID: 0}
   display: {fileID: 401718857}
   otherDisplay: {fileID: 839290002}
-  characterName: Jin
+  characterName: Sin
   characterColor: {r: 0.75686276, g: 0.23921569, b: 1, a: 0}
   hoverPanelColor: {r: 1, g: 1, b: 1, a: 0}
   defaultPanelColor: {r: 0.4, g: 0.14117648, b: 0.011764706, a: 0.5019608}
+  selectedCharacter: {fileID: 0}
   hoverOutline: {fileID: 1121246855}
   panelOutline: {fileID: 1302365711}
+  p1Confirm: {fileID: 354735392}
+--- !u!114 &1302365713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1302365707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1302365709}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1302365712}
+        m_MethodName: OnMouseDown
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: HoverPanel, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1399062675
 GameObject:
   m_ObjectHideFlags: 0
@@ -1657,7 +1991,7 @@ GameObject:
   - component: {fileID: 1399062677}
   - component: {fileID: 1399062676}
   m_Layer: 0
-  m_Name: BH
+  m_Name: WH
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1732,8 +2066,9 @@ GameObject:
   - component: {fileID: 1434557271}
   - component: {fileID: 1434557273}
   - component: {fileID: 1434557274}
+  - component: {fileID: 1434557275}
   m_Layer: 5
-  m_Name: Blue
+  m_Name: Wave
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1822,16 +2157,73 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c85b390979e6f7e44a6688c392c43b10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UInumber: 0
   confirmedP1: 0
   currentDisplay: {fileID: 0}
   display: {fileID: 401718857}
   otherDisplay: {fileID: 839290002}
-  characterName: Caelus
+  characterName: Wave
   characterColor: {r: 0, g: 0.63529414, b: 1, a: 0}
   hoverPanelColor: {r: 1, g: 1, b: 1, a: 0}
   defaultPanelColor: {r: 0.4, g: 0.14117648, b: 0.011764706, a: 0.5019608}
+  selectedCharacter: {fileID: 0}
   hoverOutline: {fileID: 1399062675}
   panelOutline: {fileID: 1434557273}
+  p1Confirm: {fileID: 354735392}
+--- !u!114 &1434557275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1434557269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1434557271}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1434557274}
+        m_MethodName: OnMouseDown
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1434557274}
+          m_ObjectArgumentAssemblyTypeName: HoverPanel, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1477638017
 GameObject:
   m_ObjectHideFlags: 0
@@ -1883,7 +2275,7 @@ GameObject:
   - component: {fileID: 1536932430}
   - component: {fileID: 1536932431}
   m_Layer: 5
-  m_Name: Red
+  m_Name: Berserker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1972,6 +2364,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c85b390979e6f7e44a6688c392c43b10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UInumber: 0
   confirmedP1: 0
   currentDisplay: {fileID: 0}
   display: {fileID: 401718857}
@@ -1980,8 +2373,10 @@ MonoBehaviour:
   characterColor: {r: 1, g: 0.050980393, b: 0.03137255, a: 0}
   hoverPanelColor: {r: 1, g: 1, b: 1, a: 0}
   defaultPanelColor: {r: 0.4, g: 0.14117648, b: 0.011764706, a: 0.5019608}
+  selectedCharacter: {fileID: 0}
   hoverOutline: {fileID: 1953078977}
   panelOutline: {fileID: 1536932429}
+  p1Confirm: {fileID: 354735392}
 --- !u!114 &1536932431
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2027,10 +2422,10 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1536932430}
         m_MethodName: OnMouseDown
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1536932430}
+          m_ObjectArgumentAssemblyTypeName: HoverPanel, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2048,7 +2443,7 @@ GameObject:
   - component: {fileID: 1564390312}
   - component: {fileID: 1564390311}
   m_Layer: 0
-  m_Name: PH
+  m_Name: MH
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2295,8 +2690,9 @@ GameObject:
   - component: {fileID: 1764289624}
   - component: {fileID: 1764289626}
   - component: {fileID: 1764289627}
+  - component: {fileID: 1764289628}
   m_Layer: 5
-  m_Name: Pink
+  m_Name: Mercury
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2385,6 +2781,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c85b390979e6f7e44a6688c392c43b10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UInumber: 0
   confirmedP1: 0
   currentDisplay: {fileID: 0}
   display: {fileID: 401718857}
@@ -2393,8 +2790,64 @@ MonoBehaviour:
   characterColor: {r: 1, g: 0.24705882, b: 0.5803922, a: 0}
   hoverPanelColor: {r: 1, g: 1, b: 1, a: 0}
   defaultPanelColor: {r: 0.4, g: 0.14117648, b: 0.011764706, a: 0.5019608}
+  selectedCharacter: {fileID: 0}
   hoverOutline: {fileID: 1564390310}
   panelOutline: {fileID: 1764289626}
+  p1Confirm: {fileID: 354735392}
+--- !u!114 &1764289628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1764289622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1764289624}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1764289627}
+        m_MethodName: OnMouseDown
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1764289627}
+          m_ObjectArgumentAssemblyTypeName: HoverPanel, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1772360927
 GameObject:
   m_ObjectHideFlags: 0
@@ -2408,8 +2861,9 @@ GameObject:
   - component: {fileID: 1772360929}
   - component: {fileID: 1772360931}
   - component: {fileID: 1772360932}
+  - component: {fileID: 1772360933}
   m_Layer: 5
-  m_Name: Orange
+  m_Name: Sumo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2498,6 +2952,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c85b390979e6f7e44a6688c392c43b10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UInumber: 0
   confirmedP1: 0
   currentDisplay: {fileID: 0}
   display: {fileID: 401718857}
@@ -2506,8 +2961,64 @@ MonoBehaviour:
   characterColor: {r: 1, g: 0.40392157, b: 0.0627451, a: 0}
   hoverPanelColor: {r: 1, g: 1, b: 1, a: 0}
   defaultPanelColor: {r: 0.4, g: 0.14117648, b: 0.011764706, a: 0.5019608}
+  selectedCharacter: {fileID: 0}
   hoverOutline: {fileID: 49023648}
   panelOutline: {fileID: 1772360931}
+  p1Confirm: {fileID: 354735392}
+--- !u!114 &1772360933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1772360927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1772360929}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1772360932}
+        m_MethodName: OnMouseDown
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1772360932}
+          m_ObjectArgumentAssemblyTypeName: HoverPanel, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1946092783
 GameObject:
   m_ObjectHideFlags: 0
@@ -2520,7 +3031,7 @@ GameObject:
   - component: {fileID: 1946092785}
   - component: {fileID: 1946092784}
   m_Layer: 0
-  m_Name: GH
+  m_Name: ViH
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2594,7 +3105,7 @@ GameObject:
   - component: {fileID: 1953078979}
   - component: {fileID: 1953078978}
   m_Layer: 0
-  m_Name: RH
+  m_Name: BH
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

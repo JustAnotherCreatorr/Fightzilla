@@ -7,7 +7,7 @@ using TMPro;
 
 public class HoverPanel : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    private int UInumber;
+    public int UInumber;
 
     public bool confirmedP1;
 
@@ -20,8 +20,12 @@ public class HoverPanel : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     public Color hoverPanelColor;
     public Color defaultPanelColor;
 
+    public GameObject selectedCharacter;
+
     public GameObject hoverOutline;
     public Outline panelOutline;
+
+    public P1ConfirmSelect p1Confirm;
 
     // Start is called before the first frame update
     void Start()
@@ -34,7 +38,11 @@ public class HoverPanel : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     // Update is called once per frame
     void Update()
     {
-        
+        if (p1Confirm.confirmedP1)
+        {
+            currentDisplay = otherDisplay;
+            UInumber = 2;
+        }
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -72,15 +80,11 @@ public class HoverPanel : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 
     }
 
-    public void OnMouseDown()
-    {
-        Debug.Log("OMD");
-        if (currentDisplay == display)
-        {
-            Debug.Log("passedIF");
-            confirmedP1 = true;
-            currentDisplay = otherDisplay;
-            UInumber = 2;
-        }
+    public void OnMouseDown(HoverPanel hoverPanel)
+    { 
+        selectedCharacter = hoverPanel.gameObject;
+        P1ConfirmSelect.Instance.ChangeCurrentPlayerSelecting(this);
+        currentDisplay = otherDisplay;
+        UInumber = 2;
     }
 }
