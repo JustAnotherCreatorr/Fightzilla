@@ -6,6 +6,7 @@ public class P1ConfirmSelect : MonoBehaviour
 {
     public static P1ConfirmSelect Instance { get; private set; }
     public bool confirmedP1;
+    public bool confirmedP2;
 
     void Awake()
     {
@@ -15,6 +16,7 @@ public class P1ConfirmSelect : MonoBehaviour
         }
 
         confirmedP1 = false;
+        confirmedP2 = false;
     }
 
     // Update is called once per frame
@@ -25,6 +27,11 @@ public class P1ConfirmSelect : MonoBehaviour
 
     public void ChangeCurrentPlayerSelecting(HoverPanel hoverPanel)
     {
+        if (hoverPanel.currentDisplay == hoverPanel.otherDisplay)
+        {
+            confirmedP2 = true;
+        }
+
         if (hoverPanel.currentDisplay == hoverPanel.display)
         {
             confirmedP1 = true;

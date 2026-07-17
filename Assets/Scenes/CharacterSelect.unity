@@ -335,6 +335,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   confirmedP1: 0
+  confirmedP2: 0
 --- !u!4 &354735393
 Transform:
   m_ObjectHideFlags: 0
@@ -671,7 +672,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UInumber: 0
-  confirmedP1: 0
+  isSelected1: 0
+  isSelected2: 0
   currentDisplay: {fileID: 0}
   display: {fileID: 401718857}
   otherDisplay: {fileID: 839290002}
@@ -679,7 +681,11 @@ MonoBehaviour:
   characterColor: {r: 0.09411765, g: 1, b: 0.043137256, a: 0}
   hoverPanelColor: {r: 1, g: 1, b: 1, a: 0}
   defaultPanelColor: {r: 0.4, g: 0.14117648, b: 0.011764706, a: 0.5019608}
+  selectedColor: {r: 0, g: 0, b: 0, a: 0}
+  trueColor1: {r: 1, g: 0.050980393, b: 0.03137255, a: 1}
+  trueColor2: {r: 0, g: 0.63529414, b: 1, a: 1}
   selectedCharacter: {fileID: 0}
+  selectedCharacter2: {fileID: 0}
   hoverOutline: {fileID: 1946092783}
   panelOutline: {fileID: 690123208}
   p1Confirm: {fileID: 354735392}
@@ -916,7 +922,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UInumber: 0
-  confirmedP1: 0
+  isSelected1: 0
+  isSelected2: 0
   currentDisplay: {fileID: 0}
   display: {fileID: 401718857}
   otherDisplay: {fileID: 839290002}
@@ -924,7 +931,11 @@ MonoBehaviour:
   characterColor: {r: 1, g: 1, b: 1, a: 0}
   hoverPanelColor: {r: 1, g: 1, b: 1, a: 0}
   defaultPanelColor: {r: 0.4, g: 0.14117648, b: 0.011764706, a: 0.5019608}
+  selectedColor: {r: 0, g: 0, b: 0, a: 0}
+  trueColor1: {r: 1, g: 0.050980393, b: 0.03137255, a: 1}
+  trueColor2: {r: 0, g: 0.63529414, b: 1, a: 1}
   selectedCharacter: {fileID: 0}
+  selectedCharacter2: {fileID: 0}
   hoverOutline: {fileID: 1089977116}
   panelOutline: {fileID: 823379230}
   p1Confirm: {fileID: 354735392}
@@ -1257,7 +1268,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UInumber: 0
-  confirmedP1: 0
+  isSelected1: 0
+  isSelected2: 0
   currentDisplay: {fileID: 0}
   display: {fileID: 401718857}
   otherDisplay: {fileID: 839290002}
@@ -1265,7 +1277,11 @@ MonoBehaviour:
   characterColor: {r: 1, g: 0.972549, b: 0.047058824, a: 0}
   hoverPanelColor: {r: 1, g: 1, b: 1, a: 0}
   defaultPanelColor: {r: 0.4, g: 0.14117648, b: 0.011764706, a: 0.5019608}
+  selectedColor: {r: 0, g: 0, b: 0, a: 0}
+  trueColor1: {r: 1, g: 0.050980393, b: 0.03137255, a: 1}
+  trueColor2: {r: 0, g: 0.63529414, b: 1, a: 1}
   selectedCharacter: {fileID: 0}
+  selectedCharacter2: {fileID: 0}
   hoverOutline: {fileID: 1248523792}
   panelOutline: {fileID: 964775283}
   p1Confirm: {fileID: 354735392}
@@ -1502,7 +1518,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UInumber: 0
-  confirmedP1: 0
+  isSelected1: 0
+  isSelected2: 0
   currentDisplay: {fileID: 0}
   display: {fileID: 401718857}
   otherDisplay: {fileID: 839290002}
@@ -1510,7 +1527,11 @@ MonoBehaviour:
   characterColor: {r: 0, g: 0, b: 0, a: 0}
   hoverPanelColor: {r: 1, g: 1, b: 1, a: 0}
   defaultPanelColor: {r: 0.4, g: 0.14117648, b: 0.011764706, a: 0.5019608}
+  selectedColor: {r: 0, g: 0, b: 0, a: 0}
+  trueColor1: {r: 1, g: 0.050980393, b: 0.03137255, a: 1}
+  trueColor2: {r: 0, g: 0.63529414, b: 1, a: 1}
   selectedCharacter: {fileID: 0}
+  selectedCharacter2: {fileID: 0}
   hoverOutline: {fileID: 714558623}
   panelOutline: {fileID: 1102644314}
   p1Confirm: {fileID: 354735392}
@@ -1913,7 +1934,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UInumber: 0
-  confirmedP1: 0
+  isSelected1: 0
+  isSelected2: 0
   currentDisplay: {fileID: 0}
   display: {fileID: 401718857}
   otherDisplay: {fileID: 839290002}
@@ -1921,7 +1943,11 @@ MonoBehaviour:
   characterColor: {r: 0.75686276, g: 0.23921569, b: 1, a: 0}
   hoverPanelColor: {r: 1, g: 1, b: 1, a: 0}
   defaultPanelColor: {r: 0.4, g: 0.14117648, b: 0.011764706, a: 0.5019608}
+  selectedColor: {r: 0, g: 0, b: 0, a: 0}
+  trueColor1: {r: 1, g: 0.050980393, b: 0.03137255, a: 1}
+  trueColor2: {r: 0, g: 0.63529414, b: 1, a: 1}
   selectedCharacter: {fileID: 0}
+  selectedCharacter2: {fileID: 0}
   hoverOutline: {fileID: 1121246855}
   panelOutline: {fileID: 1302365711}
   p1Confirm: {fileID: 354735392}
@@ -1972,7 +1998,7 @@ MonoBehaviour:
         m_MethodName: OnMouseDown
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgument: {fileID: 1302365712}
           m_ObjectArgumentAssemblyTypeName: HoverPanel, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -2158,7 +2184,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UInumber: 0
-  confirmedP1: 0
+  isSelected1: 0
+  isSelected2: 0
   currentDisplay: {fileID: 0}
   display: {fileID: 401718857}
   otherDisplay: {fileID: 839290002}
@@ -2166,7 +2193,11 @@ MonoBehaviour:
   characterColor: {r: 0, g: 0.63529414, b: 1, a: 0}
   hoverPanelColor: {r: 1, g: 1, b: 1, a: 0}
   defaultPanelColor: {r: 0.4, g: 0.14117648, b: 0.011764706, a: 0.5019608}
+  selectedColor: {r: 0, g: 0, b: 0, a: 0}
+  trueColor1: {r: 1, g: 0.050980393, b: 0.03137255, a: 1}
+  trueColor2: {r: 0, g: 0.63529414, b: 1, a: 1}
   selectedCharacter: {fileID: 0}
+  selectedCharacter2: {fileID: 0}
   hoverOutline: {fileID: 1399062675}
   panelOutline: {fileID: 1434557273}
   p1Confirm: {fileID: 354735392}
@@ -2365,7 +2396,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UInumber: 0
-  confirmedP1: 0
+  isSelected1: 0
+  isSelected2: 0
   currentDisplay: {fileID: 0}
   display: {fileID: 401718857}
   otherDisplay: {fileID: 839290002}
@@ -2373,7 +2405,11 @@ MonoBehaviour:
   characterColor: {r: 1, g: 0.050980393, b: 0.03137255, a: 0}
   hoverPanelColor: {r: 1, g: 1, b: 1, a: 0}
   defaultPanelColor: {r: 0.4, g: 0.14117648, b: 0.011764706, a: 0.5019608}
+  selectedColor: {r: 0, g: 0, b: 0, a: 0}
+  trueColor1: {r: 1, g: 0.050980393, b: 0.03137255, a: 1}
+  trueColor2: {r: 0, g: 0.63529414, b: 1, a: 1}
   selectedCharacter: {fileID: 0}
+  selectedCharacter2: {fileID: 0}
   hoverOutline: {fileID: 1953078977}
   panelOutline: {fileID: 1536932429}
   p1Confirm: {fileID: 354735392}
@@ -2782,7 +2818,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UInumber: 0
-  confirmedP1: 0
+  isSelected1: 0
+  isSelected2: 0
   currentDisplay: {fileID: 0}
   display: {fileID: 401718857}
   otherDisplay: {fileID: 839290002}
@@ -2790,7 +2827,11 @@ MonoBehaviour:
   characterColor: {r: 1, g: 0.24705882, b: 0.5803922, a: 0}
   hoverPanelColor: {r: 1, g: 1, b: 1, a: 0}
   defaultPanelColor: {r: 0.4, g: 0.14117648, b: 0.011764706, a: 0.5019608}
+  selectedColor: {r: 0, g: 0, b: 0, a: 0}
+  trueColor1: {r: 1, g: 0.050980393, b: 0.03137255, a: 1}
+  trueColor2: {r: 0, g: 0.63529414, b: 1, a: 1}
   selectedCharacter: {fileID: 0}
+  selectedCharacter2: {fileID: 0}
   hoverOutline: {fileID: 1564390310}
   panelOutline: {fileID: 1764289626}
   p1Confirm: {fileID: 354735392}
@@ -2953,7 +2994,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UInumber: 0
-  confirmedP1: 0
+  isSelected1: 0
+  isSelected2: 0
   currentDisplay: {fileID: 0}
   display: {fileID: 401718857}
   otherDisplay: {fileID: 839290002}
@@ -2961,7 +3003,11 @@ MonoBehaviour:
   characterColor: {r: 1, g: 0.40392157, b: 0.0627451, a: 0}
   hoverPanelColor: {r: 1, g: 1, b: 1, a: 0}
   defaultPanelColor: {r: 0.4, g: 0.14117648, b: 0.011764706, a: 0.5019608}
+  selectedColor: {r: 0, g: 0, b: 0, a: 0}
+  trueColor1: {r: 1, g: 0.050980393, b: 0.03137255, a: 1}
+  trueColor2: {r: 0, g: 0.63529414, b: 1, a: 1}
   selectedCharacter: {fileID: 0}
+  selectedCharacter2: {fileID: 0}
   hoverOutline: {fileID: 49023648}
   panelOutline: {fileID: 1772360931}
   p1Confirm: {fileID: 354735392}

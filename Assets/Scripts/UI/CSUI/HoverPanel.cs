@@ -9,7 +9,8 @@ public class HoverPanel : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 {
     public int UInumber;
 
-    public bool isSelected;
+    public bool isSelected1;
+    public bool isSelected2;
 
     public TMP_Text currentDisplay;
     public TMP_Text display;
@@ -25,6 +26,7 @@ public class HoverPanel : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     public Color trueColor2;
 
     public GameObject selectedCharacter;
+    public GameObject selectedCharacter2;
 
     public GameObject hoverOutline;
     public Outline panelOutline;
@@ -36,7 +38,7 @@ public class HoverPanel : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     {
         UInumber = 1;
         currentDisplay = display;
-        isSelected = false;
+        isSelected1 = false;
     }
 
     // Update is called once per frame
@@ -73,13 +75,13 @@ public class HoverPanel : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         panelOutline.effectColor = defaultPanelColor;
         hoverOutline.SetActive(false);
 
-        if (p1Confirm.confirmedP1 && isSelected)
+        if (p1Confirm.confirmedP1 && isSelected1)
         {
             panelOutline.effectColor = hoverPanelColor;
             hoverOutline.SetActive(true);
         } 
 
-        if (p1Confirm.confirmedP1 && !isSelected)
+        if (p1Confirm.confirmedP1 && !isSelected1)
         {
             panelOutline.effectColor = defaultPanelColor;
             hoverOutline.SetActive(false);
@@ -90,7 +92,7 @@ public class HoverPanel : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
             display.text = $"Player {UInumber}:";
         }
 
-        if (currentDisplay == otherDisplay && !p1Confirm.confirmedP1)
+        if (currentDisplay == otherDisplay && p1Confirm.confirmedP1)
         {
             otherDisplay.text = $"Player {UInumber}:";
         }
@@ -101,13 +103,20 @@ public class HoverPanel : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     {
         if (!p1Confirm.confirmedP1)
         {
-            isSelected = true;
-            panelOutline.effectColor = hoverPanelColor;
+            isSelected1 = true;
             hoverOutline.GetComponent<Image>().color = trueColor1;
             selectedCharacter = hoverPanel.gameObject;
             P1ConfirmSelect.Instance.ChangeCurrentPlayerSelecting(this);
             currentDisplay = otherDisplay;
             UInumber = 2;
+        }
+
+        if (p1Confirm.confirmedP1 && !isSelected1)
+        {
+            isSelected2 = true;
+            hoverOutline.GetComponent<Image>().color = trueColor2;
+            selectedCharacter2 = hoverPanel.gameObject;
+            P1ConfirmSelect.Instance.ChangeCurrentPlayerSelecting(this);
         }
     }
 }
