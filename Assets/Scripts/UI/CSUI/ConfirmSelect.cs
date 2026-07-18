@@ -8,7 +8,6 @@ public class ConfirmSelect : MonoBehaviour
 
     public bool confirmedP1;
     public bool confirmedP2;
-
     public GameObject selectedCharacter;
     public GameObject selectedCharacter2;
 
@@ -18,27 +17,19 @@ public class ConfirmSelect : MonoBehaviour
         {
             Instance = this;
         }
-
         confirmedP1 = false;
         confirmedP2 = false;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ConfirmPlayer1(GameObject character)
     {
-        
+        selectedCharacter = character;
+        confirmedP1 = true;
     }
 
-    public void ChangeCurrentPlayerSelecting(HoverPanel hoverPanel)
+    public void ConfirmPlayer2(GameObject character)
     {
-        if (hoverPanel.currentDisplay == hoverPanel.otherDisplay)
-        {
-            confirmedP2 = true;
-        }
-
-        if (hoverPanel.currentDisplay == hoverPanel.display)
-        {
-            confirmedP1 = true;
-        }
+        selectedCharacter2 = character;
+        confirmedP2 = true;
     }
 }

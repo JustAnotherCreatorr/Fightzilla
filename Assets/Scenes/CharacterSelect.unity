@@ -317,6 +317,7 @@ GameObject:
   - component: {fileID: 347376362}
   - component: {fileID: 347376361}
   - component: {fileID: 347376360}
+  - component: {fileID: 347376363}
   m_Layer: 0
   m_Name: Back1
   m_TagString: Untagged
@@ -387,8 +388,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: 
+      - m_Target: {fileID: 347376363}
+        m_MethodName: OnMouseDown
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -435,6 +436,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 347376358}
   m_CullTransparentMesh: 0
+--- !u!114 &347376363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 347376358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5360d66b4623424ba7089c1c05cc5de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerNumber: 1
 --- !u!1 &354735391
 GameObject:
   m_ObjectHideFlags: 0
@@ -711,6 +725,7 @@ GameObject:
   - component: {fileID: 500665551}
   - component: {fileID: 500665550}
   - component: {fileID: 500665549}
+  - component: {fileID: 500665552}
   m_Layer: 0
   m_Name: Back2
   m_TagString: Untagged
@@ -781,8 +796,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: 
+      - m_Target: {fileID: 500665552}
+        m_MethodName: OnMouseDown
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -829,6 +844,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 500665547}
   m_CullTransparentMesh: 0
+--- !u!114 &500665552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 500665547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5360d66b4623424ba7089c1c05cc5de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerNumber: 2
 --- !u!1 &637767665
 GameObject:
   m_ObjectHideFlags: 0
@@ -1052,17 +1080,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c85b390979e6f7e44a6688c392c43b10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UInumber: 0
   isSelected1: 0
   isSelected2: 0
-  currentDisplay: {fileID: 0}
   display: {fileID: 401718857}
   otherDisplay: {fileID: 839290002}
   characterName: Viridian
   characterColor: {r: 0.09411765, g: 1, b: 0.043137256, a: 0}
   hoverPanelColor: {r: 1, g: 1, b: 1, a: 0}
   defaultPanelColor: {r: 0.4, g: 0.14117648, b: 0.011764706, a: 0.5019608}
-  selectedColor: {r: 0, g: 0, b: 0, a: 0}
   trueColor1: {r: 1, g: 0.050980393, b: 0.03137255, a: 1}
   trueColor2: {r: 0, g: 0.63529414, b: 1, a: 1}
   hoverOutline: {fileID: 1946092783}
@@ -1300,17 +1325,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c85b390979e6f7e44a6688c392c43b10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UInumber: 0
   isSelected1: 0
   isSelected2: 0
-  currentDisplay: {fileID: 0}
   display: {fileID: 401718857}
   otherDisplay: {fileID: 839290002}
   characterName: Null
   characterColor: {r: 1, g: 1, b: 1, a: 0}
   hoverPanelColor: {r: 1, g: 1, b: 1, a: 0}
   defaultPanelColor: {r: 0.4, g: 0.14117648, b: 0.011764706, a: 0.5019608}
-  selectedColor: {r: 0, g: 0, b: 0, a: 0}
   trueColor1: {r: 1, g: 0.050980393, b: 0.03137255, a: 1}
   trueColor2: {r: 0, g: 0.63529414, b: 1, a: 1}
   hoverOutline: {fileID: 1089977116}
@@ -1723,17 +1745,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c85b390979e6f7e44a6688c392c43b10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UInumber: 0
   isSelected1: 0
   isSelected2: 0
-  currentDisplay: {fileID: 0}
   display: {fileID: 401718857}
   otherDisplay: {fileID: 839290002}
   characterName: Naser
   characterColor: {r: 1, g: 0.972549, b: 0.047058824, a: 0}
   hoverPanelColor: {r: 1, g: 1, b: 1, a: 0}
   defaultPanelColor: {r: 0.4, g: 0.14117648, b: 0.011764706, a: 0.5019608}
-  selectedColor: {r: 0, g: 0, b: 0, a: 0}
   trueColor1: {r: 1, g: 0.050980393, b: 0.03137255, a: 1}
   trueColor2: {r: 0, g: 0.63529414, b: 1, a: 1}
   hoverOutline: {fileID: 1248523792}
@@ -1971,17 +1990,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c85b390979e6f7e44a6688c392c43b10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UInumber: 0
   isSelected1: 0
   isSelected2: 0
-  currentDisplay: {fileID: 0}
   display: {fileID: 401718857}
   otherDisplay: {fileID: 839290002}
   characterName: Void
   characterColor: {r: 0, g: 0, b: 0, a: 0}
   hoverPanelColor: {r: 1, g: 1, b: 1, a: 0}
   defaultPanelColor: {r: 0.4, g: 0.14117648, b: 0.011764706, a: 0.5019608}
-  selectedColor: {r: 0, g: 0, b: 0, a: 0}
   trueColor1: {r: 1, g: 0.050980393, b: 0.03137255, a: 1}
   trueColor2: {r: 0, g: 0.63529414, b: 1, a: 1}
   hoverOutline: {fileID: 714558623}
@@ -2385,17 +2401,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c85b390979e6f7e44a6688c392c43b10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UInumber: 0
   isSelected1: 0
   isSelected2: 0
-  currentDisplay: {fileID: 0}
   display: {fileID: 401718857}
   otherDisplay: {fileID: 839290002}
   characterName: Sin
   characterColor: {r: 0.75686276, g: 0.23921569, b: 1, a: 0}
   hoverPanelColor: {r: 1, g: 1, b: 1, a: 0}
   defaultPanelColor: {r: 0.4, g: 0.14117648, b: 0.011764706, a: 0.5019608}
-  selectedColor: {r: 0, g: 0, b: 0, a: 0}
   trueColor1: {r: 1, g: 0.050980393, b: 0.03137255, a: 1}
   trueColor2: {r: 0, g: 0.63529414, b: 1, a: 1}
   hoverOutline: {fileID: 1121246855}
@@ -2633,17 +2646,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c85b390979e6f7e44a6688c392c43b10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UInumber: 0
   isSelected1: 0
   isSelected2: 0
-  currentDisplay: {fileID: 0}
   display: {fileID: 401718857}
   otherDisplay: {fileID: 839290002}
   characterName: Wave
   characterColor: {r: 0, g: 0.63529414, b: 1, a: 0}
   hoverPanelColor: {r: 1, g: 1, b: 1, a: 0}
   defaultPanelColor: {r: 0.4, g: 0.14117648, b: 0.011764706, a: 0.5019608}
-  selectedColor: {r: 0, g: 0, b: 0, a: 0}
   trueColor1: {r: 1, g: 0.050980393, b: 0.03137255, a: 1}
   trueColor2: {r: 0, g: 0.63529414, b: 1, a: 1}
   hoverOutline: {fileID: 1399062675}
@@ -2844,17 +2854,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c85b390979e6f7e44a6688c392c43b10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UInumber: 0
   isSelected1: 0
   isSelected2: 0
-  currentDisplay: {fileID: 0}
   display: {fileID: 401718857}
   otherDisplay: {fileID: 839290002}
   characterName: Berserker
   characterColor: {r: 1, g: 0.050980393, b: 0.03137255, a: 0}
   hoverPanelColor: {r: 1, g: 1, b: 1, a: 0}
   defaultPanelColor: {r: 0.4, g: 0.14117648, b: 0.011764706, a: 0.5019608}
-  selectedColor: {r: 0, g: 0, b: 0, a: 0}
   trueColor1: {r: 1, g: 0.050980393, b: 0.03137255, a: 1}
   trueColor2: {r: 0, g: 0.63529414, b: 1, a: 1}
   hoverOutline: {fileID: 1953078977}
@@ -3421,17 +3428,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c85b390979e6f7e44a6688c392c43b10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UInumber: 0
   isSelected1: 0
   isSelected2: 0
-  currentDisplay: {fileID: 0}
   display: {fileID: 401718857}
   otherDisplay: {fileID: 839290002}
   characterName: Mercury
   characterColor: {r: 1, g: 0.24705882, b: 0.5803922, a: 0}
   hoverPanelColor: {r: 1, g: 1, b: 1, a: 0}
   defaultPanelColor: {r: 0.4, g: 0.14117648, b: 0.011764706, a: 0.5019608}
-  selectedColor: {r: 0, g: 0, b: 0, a: 0}
   trueColor1: {r: 1, g: 0.050980393, b: 0.03137255, a: 1}
   trueColor2: {r: 0, g: 0.63529414, b: 1, a: 1}
   hoverOutline: {fileID: 1564390310}
@@ -3595,17 +3599,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c85b390979e6f7e44a6688c392c43b10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UInumber: 0
   isSelected1: 0
   isSelected2: 0
-  currentDisplay: {fileID: 0}
   display: {fileID: 401718857}
   otherDisplay: {fileID: 839290002}
   characterName: Sumo
   characterColor: {r: 1, g: 0.40392157, b: 0.0627451, a: 0}
   hoverPanelColor: {r: 1, g: 1, b: 1, a: 0}
   defaultPanelColor: {r: 0.4, g: 0.14117648, b: 0.011764706, a: 0.5019608}
-  selectedColor: {r: 0, g: 0, b: 0, a: 0}
   trueColor1: {r: 1, g: 0.050980393, b: 0.03137255, a: 1}
   trueColor2: {r: 0, g: 0.63529414, b: 1, a: 1}
   hoverOutline: {fileID: 49023648}
