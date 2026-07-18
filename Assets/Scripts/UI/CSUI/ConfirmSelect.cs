@@ -5,8 +5,12 @@ using UnityEngine;
 public class ConfirmSelect : MonoBehaviour
 {
     public static ConfirmSelect Instance { get; private set; }
+
     public bool confirmedP1;
     public bool confirmedP2;
+
+    public GameObject selectedCharacter;
+    public GameObject selectedCharacter2;
 
     void Awake()
     {
