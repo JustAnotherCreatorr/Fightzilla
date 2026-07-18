@@ -19,7 +19,6 @@ public class Back : MonoBehaviour
             ConfirmSelect.Instance.confirmedP1 = false;
             ConfirmSelect.Instance.selectedCharacter = null;
 
-            // Player 1 backing out means both players need to reselect.
             if (ConfirmSelect.Instance.confirmedP2)
             {
                 HoverPanel hoverPanel2 = ConfirmSelect.Instance.selectedCharacter2.GetComponent<HoverPanel>();
@@ -30,7 +29,14 @@ public class Back : MonoBehaviour
 
                 ConfirmSelect.Instance.selectedCharacter2 = null;
                 ConfirmSelect.Instance.confirmedP2 = false;
+
+                if (ConfirmSelect.Instance.button2 != null)
+                {
+                    ConfirmSelect.Instance.button2.SetActive(false);
+                }
             }
+
+            gameObject.SetActive(false);
         }
 
         if (playerNumber == 2 && ConfirmSelect.Instance.confirmedP2)
@@ -43,6 +49,8 @@ public class Back : MonoBehaviour
 
             ConfirmSelect.Instance.selectedCharacter2 = null;
             ConfirmSelect.Instance.confirmedP2 = false;
+            gameObject.SetActive(false);
         }
     }
 }
+

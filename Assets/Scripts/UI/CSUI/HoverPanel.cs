@@ -35,7 +35,11 @@ public class HoverPanel : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         panelOutline.effectColor = hoverPanelColor;
         hoverOutline.SetActive(true);
 
-        // Whose turn is it, globally? Every panel checks the same source of truth.
+        if (isSelected1 || isSelected2)
+        {
+            return;
+        }
+      
         if (!confirmSelect.confirmedP1)
         {
             display.text = $"Player 1: <color=#{colorCode}>{characterName}</color>";
@@ -75,6 +79,11 @@ public class HoverPanel : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     public void OnMouseDown(HoverPanel hoverPanel)
     {
         if (confirmSelect.confirmedP1 && confirmSelect.confirmedP2)
+        {
+            return;
+        }
+
+        if (isSelected1 || isSelected2)
         {
             return;
         }
