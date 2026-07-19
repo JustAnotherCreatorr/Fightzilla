@@ -14,6 +14,8 @@ public class ConfirmSelect : MonoBehaviour
     public GameObject button1;
     public GameObject button2;
 
+    public GameObject startButton;
+
     void Awake()
     {
         if (Instance == null)
@@ -39,5 +41,6 @@ public class ConfirmSelect : MonoBehaviour
         selectedCharacter2 = character;
         confirmedP2 = true;
         if (button2 != null) button2.SetActive(true);
+        startButton.SetActive(true);
     }
 }

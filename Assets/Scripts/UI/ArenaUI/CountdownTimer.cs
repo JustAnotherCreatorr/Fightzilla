@@ -22,7 +22,7 @@ public class CountdownTimer : Timer
         op.settingUpNR = false;
         end = true;
         Actions.OnCountdownEnd?.Invoke();
-        displayText.text = ("START!");
+        displayText.text = ("FIGHT!");
         Invoke("EraseTimer", 0.5f);
         FindObjectOfType<GameController>().SetGameState(GameController.GameStates.inPlay);
     }

@@ -6,6 +6,8 @@ public class Back : MonoBehaviour
 {
     public int playerNumber;
 
+    public GameObject startButton;
+
     public void OnMouseDown()
     {
         if (playerNumber == 1 && ConfirmSelect.Instance.confirmedP1)
@@ -51,6 +53,9 @@ public class Back : MonoBehaviour
             ConfirmSelect.Instance.confirmedP2 = false;
             gameObject.SetActive(false);
         }
+
+        startButton.SetActive(false);
+
     }
 }
 

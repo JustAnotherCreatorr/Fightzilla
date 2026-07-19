@@ -449,6 +449,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerNumber: 1
+  startButton: {fileID: 637767665}
 --- !u!1 &354735391
 GameObject:
   m_ObjectHideFlags: 0
@@ -484,6 +485,7 @@ MonoBehaviour:
   selectedCharacter2: {fileID: 0}
   button1: {fileID: 347376358}
   button2: {fileID: 500665547}
+  startButton: {fileID: 637767665}
 --- !u!4 &354735393
 Transform:
   m_ObjectHideFlags: 0
@@ -859,6 +861,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerNumber: 2
+  startButton: {fileID: 637767665}
 --- !u!1 &637767665
 GameObject:
   m_ObjectHideFlags: 0
@@ -877,7 +880,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &637767666
 RectTransform:
   m_ObjectHideFlags: 0
