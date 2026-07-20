@@ -15,6 +15,8 @@ public class HoverPanel : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 
     public string characterName;
     public Color characterColor;
+    public Material characterMaterial;
+
     public Color hoverPanelColor;
     public Color defaultPanelColor;
     public Color trueColor1;
@@ -93,12 +95,14 @@ public class HoverPanel : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
             isSelected1 = true;
             hoverOutline.GetComponent<Image>().color = trueColor1;
             confirmSelect.ConfirmPlayer1(hoverPanel.gameObject);
+            InitializeFight.Instance.SetPlayer1Material(characterMaterial);
         }
         else if (!confirmSelect.confirmedP2)
         {
             isSelected2 = true;
             hoverOutline.GetComponent<Image>().color = trueColor2;
             confirmSelect.ConfirmPlayer2(hoverPanel.gameObject);
+            InitializeFight.Instance.SetPlayer2Material(characterMaterial);
         }
     }
 }

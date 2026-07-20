@@ -22,6 +22,7 @@ public class ConfirmSelect : MonoBehaviour
         {
             Instance = this;
         }
+
         confirmedP1 = false;
         confirmedP2 = false;
 
