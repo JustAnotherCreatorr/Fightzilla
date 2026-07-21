@@ -96,6 +96,8 @@ public class HoverPanel : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
             hoverOutline.GetComponent<Image>().color = trueColor1;
             confirmSelect.ConfirmPlayer1(hoverPanel.gameObject);
             InitializeFight.Instance.SetPlayer1Material(characterMaterial);
+            InitializeFight.Instance.SetPlayer1Color(characterColor);
+            InitializeFight.Instance.SetPlayer1Name(characterName);
         }
         else if (!confirmSelect.confirmedP2)
         {
@@ -103,6 +105,8 @@ public class HoverPanel : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
             hoverOutline.GetComponent<Image>().color = trueColor2;
             confirmSelect.ConfirmPlayer2(hoverPanel.gameObject);
             InitializeFight.Instance.SetPlayer2Material(characterMaterial);
+            InitializeFight.Instance.SetPlayer2Color(characterColor);
+            InitializeFight.Instance.SetPlayer2Name(characterName);
         }
     }
 }

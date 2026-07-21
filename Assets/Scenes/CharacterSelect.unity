@@ -495,6 +495,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player1Material: {fileID: 0}
   player2Material: {fileID: 0}
+  player1Color: {r: 0, g: 0, b: 0, a: 0}
+  player2Color: {r: 0, g: 0, b: 0, a: 0}
+  player1Name: 
+  player2Name: 
 --- !u!1 &401718855
 GameObject:
   m_ObjectHideFlags: 0
@@ -1109,7 +1113,7 @@ MonoBehaviour:
   display: {fileID: 401718857}
   otherDisplay: {fileID: 839290002}
   characterName: Viridian
-  characterColor: {r: 0.09411765, g: 1, b: 0.043137256, a: 0}
+  characterColor: {r: 0.09411765, g: 1, b: 0.043137256, a: 1}
   characterMaterial: {fileID: 2100000, guid: be99092f4f5f6174ebd8aed03824f32c, type: 2}
   hoverPanelColor: {r: 1, g: 1, b: 1, a: 0}
   defaultPanelColor: {r: 0.4, g: 0.14117648, b: 0.011764706, a: 0.5019608}
@@ -1355,7 +1359,7 @@ MonoBehaviour:
   display: {fileID: 401718857}
   otherDisplay: {fileID: 839290002}
   characterName: Null
-  characterColor: {r: 1, g: 1, b: 1, a: 0}
+  characterColor: {r: 1, g: 1, b: 1, a: 1}
   characterMaterial: {fileID: 2100000, guid: 9748f96d00539f348b968c3d905c2dde, type: 2}
   hoverPanelColor: {r: 1, g: 1, b: 1, a: 0}
   defaultPanelColor: {r: 0.4, g: 0.14117648, b: 0.011764706, a: 0.5019608}
@@ -1776,7 +1780,7 @@ MonoBehaviour:
   display: {fileID: 401718857}
   otherDisplay: {fileID: 839290002}
   characterName: Naser
-  characterColor: {r: 1, g: 0.972549, b: 0.047058824, a: 0}
+  characterColor: {r: 1, g: 0.972549, b: 0.047058824, a: 1}
   characterMaterial: {fileID: 2100000, guid: fa8274c56098b5f47aa20e92edf9d622, type: 2}
   hoverPanelColor: {r: 1, g: 1, b: 1, a: 0}
   defaultPanelColor: {r: 0.4, g: 0.14117648, b: 0.011764706, a: 0.5019608}
@@ -2072,7 +2076,7 @@ MonoBehaviour:
   display: {fileID: 401718857}
   otherDisplay: {fileID: 839290002}
   characterName: Void
-  characterColor: {r: 0, g: 0, b: 0, a: 0}
+  characterColor: {r: 0, g: 0, b: 0, a: 1}
   characterMaterial: {fileID: 2100000, guid: ba3b99f42b2bfe041bb26243b00facb7, type: 2}
   hoverPanelColor: {r: 1, g: 1, b: 1, a: 0}
   defaultPanelColor: {r: 0.4, g: 0.14117648, b: 0.011764706, a: 0.5019608}
@@ -2484,7 +2488,7 @@ MonoBehaviour:
   display: {fileID: 401718857}
   otherDisplay: {fileID: 839290002}
   characterName: Sin
-  characterColor: {r: 0.75686276, g: 0.23921569, b: 1, a: 0}
+  characterColor: {r: 0.75686276, g: 0.23921569, b: 1, a: 1}
   characterMaterial: {fileID: 2100000, guid: 07a24fc9eec435847878e5ac2c6aa658, type: 2}
   hoverPanelColor: {r: 1, g: 1, b: 1, a: 0}
   defaultPanelColor: {r: 0.4, g: 0.14117648, b: 0.011764706, a: 0.5019608}
@@ -2730,7 +2734,7 @@ MonoBehaviour:
   display: {fileID: 401718857}
   otherDisplay: {fileID: 839290002}
   characterName: Wave
-  characterColor: {r: 0, g: 0.63529414, b: 1, a: 0}
+  characterColor: {r: 0, g: 0.63529414, b: 1, a: 1}
   characterMaterial: {fileID: 2100000, guid: c0ad56c2a4626ec408dccd48a6c83723, type: 2}
   hoverPanelColor: {r: 1, g: 1, b: 1, a: 0}
   defaultPanelColor: {r: 0.4, g: 0.14117648, b: 0.011764706, a: 0.5019608}
@@ -2939,7 +2943,7 @@ MonoBehaviour:
   display: {fileID: 401718857}
   otherDisplay: {fileID: 839290002}
   characterName: Berserker
-  characterColor: {r: 1, g: 0.050980393, b: 0.03137255, a: 0}
+  characterColor: {r: 1, g: 0.050980393, b: 0.03137255, a: 1}
   characterMaterial: {fileID: 2100000, guid: a1f1511e4110840458febc85ee55dcbf, type: 2}
   hoverPanelColor: {r: 1, g: 1, b: 1, a: 0}
   defaultPanelColor: {r: 0.4, g: 0.14117648, b: 0.011764706, a: 0.5019608}
@@ -3514,7 +3518,7 @@ MonoBehaviour:
   display: {fileID: 401718857}
   otherDisplay: {fileID: 839290002}
   characterName: Mercury
-  characterColor: {r: 1, g: 0.24705882, b: 0.5803922, a: 0}
+  characterColor: {r: 1, g: 0.24705882, b: 0.5803922, a: 1}
   characterMaterial: {fileID: 2100000, guid: e532e349787bff743899f8f8f3ca4b05, type: 2}
   hoverPanelColor: {r: 1, g: 1, b: 1, a: 0}
   defaultPanelColor: {r: 0.4, g: 0.14117648, b: 0.011764706, a: 0.5019608}
@@ -3686,7 +3690,7 @@ MonoBehaviour:
   display: {fileID: 401718857}
   otherDisplay: {fileID: 839290002}
   characterName: Sumo
-  characterColor: {r: 1, g: 0.40392157, b: 0.0627451, a: 0}
+  characterColor: {r: 1, g: 0.40392157, b: 0.0627451, a: 1}
   characterMaterial: {fileID: 2100000, guid: f1862135945698b40907bd2690eadca5, type: 2}
   hoverPanelColor: {r: 1, g: 1, b: 1, a: 0}
   defaultPanelColor: {r: 0.4, g: 0.14117648, b: 0.011764706, a: 0.5019608}
