@@ -4306,7 +4306,9 @@ MonoBehaviour:
   winningPlayer: {fileID: 0}
   resume: {fileID: 1015045162}
   PA: {fileID: 2061226327}
+  PAtext: {fileID: 590692490}
   mainMenuButton: {fileID: 1024462652}
+  MMtext: {fileID: 1945102962}
   draw: {r: 0.22745098, g: 0.22745098, b: 0.22745098, a: 1}
   blank: {r: 1, g: 1, b: 1, a: 1}
   normalButtonColor: {r: 0.34117648, g: 0.34117648, b: 0.34117648, a: 1}
@@ -4887,7 +4889,7 @@ GameObject:
   - component: {fileID: 590692493}
   - component: {fileID: 590692492}
   m_Layer: 5
-  m_Name: Text
+  m_Name: PAText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5303,7 +5305,7 @@ Transform:
   m_LocalScale: {x: 48, y: 2, z: 50}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &637505453
 GameObject:
@@ -6452,7 +6454,7 @@ Transform:
   m_LocalScale: {x: 48, y: 2, z: 50}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &757212348
 GameObject:
@@ -9157,7 +9159,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: fbf89d03afc7fb848af45a6cf9c83d98, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: fbf89d03afc7fb848af45a6cf9c83d98, type: 3}
       propertyPath: m_LocalScale.x
@@ -11002,7 +11004,9 @@ MonoBehaviour:
   winningPlayer: {fileID: 0}
   resume: {fileID: 1015045162}
   PA: {fileID: 2061226327}
+  PAtext: {fileID: 590692490}
   mainMenuButton: {fileID: 1024462652}
+  MMtext: {fileID: 1945102962}
   draw: {r: 0.22745098, g: 0.22745098, b: 0.22745098, a: 1}
   blank: {r: 1, g: 1, b: 1, a: 1}
   normalButtonColor: {r: 0.34117648, g: 0.34117648, b: 0.34117648, a: 1}
@@ -13070,7 +13074,7 @@ RectTransform:
   - {fileID: 1887370576}
   - {fileID: 1015045163}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -13289,7 +13293,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1767646391
 GameObject:
@@ -14923,7 +14927,7 @@ GameObject:
   - component: {fileID: 1945102965}
   - component: {fileID: 1945102964}
   m_Layer: 5
-  m_Name: Text
+  m_Name: MMText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

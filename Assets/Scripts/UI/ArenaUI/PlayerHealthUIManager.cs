@@ -52,7 +52,9 @@ public class PlayerHealthUIManager : MonoBehaviour
     public GameObject winningPlayer;
     public GameObject resume;
     public GameObject PA;
+    public GameObject PAtext;
     public GameObject mainMenuButton;
+    public GameObject MMtext;
     public Color draw;
     public Color blank;
     public Color normalButtonColor;
@@ -261,9 +263,14 @@ public class PlayerHealthUIManager : MonoBehaviour
             GEMplayerWon.effectColor = InitializeFight.Instance.player2Color;
             bool p2IsVoid = InitializeFight.Instance.player2Name == "Void";
             GEMbox.GetComponent<Image>().color = p2IsVoid ? Color.white : Color.black;
+            PAtext.GetComponent<Text>().color = p2IsVoid ? Color.black : Color.white;
+            PA.GetComponent<Outline>().effectColor = p2IsVoid ? Color.black : Color.white;
+            MMtext.GetComponent<Text>().color = p2IsVoid ? Color.black : Color.white;
+            mainMenuButton.GetComponent<Outline>().effectColor = p2IsVoid ? Color.black : Color.white;
             Color p2ButtonIconColor = p2IsVoid ? Color.black : normalButtonColor;
             PA.GetComponent<Image>().color = p2ButtonIconColor;
             mainMenuButton.GetComponent<Image>().color = p2ButtonIconColor;
+            PA.GetComponent<Image>().color = p2IsVoid ? Color.white : normalButtonColor;
             extraMessage.text = "Dare to fight again?";
         }
 
@@ -277,9 +284,15 @@ public class PlayerHealthUIManager : MonoBehaviour
             GEMplayerWon.effectColor = InitializeFight.Instance.player1Color;
             bool p1IsVoid = InitializeFight.Instance.player1Name == "Void";
             GEMbox.GetComponent<Image>().color = p1IsVoid ? Color.white : Color.black;
+            PAtext.GetComponent<Text>().color = p1IsVoid ? Color.black : Color.white;
+            PA.GetComponent<Outline>().effectColor = p1IsVoid ? Color.black : Color.white;
+            MMtext.GetComponent<Text>().color = p1IsVoid ? Color.black : Color.white;
+            mainMenuButton.GetComponent<Outline>().effectColor = p1IsVoid ? Color.black : Color.white;
             Color p1ButtonIconColor = p1IsVoid ? Color.black : normalButtonColor;
             PA.GetComponent<Image>().color = p1ButtonIconColor;
             mainMenuButton.GetComponent<Image>().color = p1ButtonIconColor;
+            PA.GetComponent<Image>().color = p1IsVoid ? Color.white : Color.black;
+            mainMenuButton.GetComponent<Image>().color = p1IsVoid ? Color.white : normalButtonColor;
             extraMessage.text = "Dare to fight again?";
         }
     }
