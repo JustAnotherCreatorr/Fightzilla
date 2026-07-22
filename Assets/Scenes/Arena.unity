@@ -420,7 +420,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -49.54, y: -321}
+  m_AnchoredPosition: {x: -49.54, y: -318}
   m_SizeDelta: {x: 999.9998, y: 489.21594}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &32452210
@@ -455,7 +455,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: The fight never ends!
+  m_Text: Dare to fight again?
 --- !u!222 &32452211
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4270,45 +4270,46 @@ MonoBehaviour:
   gc: {fileID: 260444067}
   playerMovement: {fileID: 375259168}
   otherPlayerMovement: {fileID: 869107093}
-  healthBar: {fileID: 454477894}
-  otherPlayerHealthBar: {fileID: 1218599430}
-  audioManager: {fileID: 1915404626}
-  gameTimer: {fileID: 619406213}
-  bf: {fileID: 62987793}
-  OP: {fileID: 1218599431}
-  CT: {fileID: 1547529773}
   playerAT: {fileID: 239235192}
   otherPlayerAT: {fileID: 1174752752}
-  animator: {fileID: 955861068}
-  hit: 0
-  hitDefended: 0
-  crouchBlockHit: 0
-  losses: 0
-  otherPlayerWinSymbol1: {fileID: 1823573155}
-  otherPlayerWinSymbol2: {fileID: 1075313450}
-  hurtParticles: {fileID: 1546798057}
-  blockParticles: {fileID: 210753205}
-  deathParticles: {fileID: 1170549355}
+  OP: {fileID: 1218599431}
+  healthBar: {fileID: 454477894}
+  otherPlayerHealthBar: {fileID: 1218599430}
   fullHP: {r: 0.0627451, g: 0.39607844, b: 0, a: 1}
   nearFullHP: {r: 0.05724907, g: 1, b: 0, a: 1}
   halfHP: {r: 1, g: 0.83232033, b: 0, a: 1}
   lowHP: {r: 1, g: 0.40784317, b: 0, a: 1}
   critical: {r: 0.735849, g: 0, b: 0, a: 1}
-  GEMplayerWon: {fileID: 2022048656}
-  p1Win: {r: 1, g: 0, b: 0, a: 1}
-  p2Win: {r: 0, g: 0.14357328, b: 1, a: 1}
-  draw: {r: 0.2264151, g: 0.2264151, b: 0.2264151, a: 1}
-  blank: {r: 1, g: 1, b: 1, a: 1}
-  whichPlayerWin: {fileID: 1082408039}
-  winningPlayer: {fileID: 0}
-  extraMessage: {fileID: 32452210}
-  GEM: {fileID: 1887370575}
+  audioManager: {fileID: 1915404626}
+  gameTimer: {fileID: 619406213}
+  bf: {fileID: 62987793}
+  CT: {fileID: 1547529773}
+  animator: {fileID: 955861068}
+  hit: 0
+  hitDefended: 0
+  crouchBlockHit: 0
+  losses: 0
   gameDone: 0
-  resume: {fileID: 1015045162}
   paused: 0
   GEMActive: 0
   settingUpNR: 0
+  otherPlayerWinSymbol1: {fileID: 1823573155}
+  otherPlayerWinSymbol2: {fileID: 1075313450}
+  hurtParticles: {fileID: 1546798057}
+  blockParticles: {fileID: 210753205}
+  deathParticles: {fileID: 1170549355}
+  GEM: {fileID: 1887370575}
+  GEMbox: {fileID: 2022048654}
+  GEMplayerWon: {fileID: 2022048656}
+  whichPlayerWin: {fileID: 1082408039}
+  extraMessage: {fileID: 32452210}
+  winningPlayer: {fileID: 0}
+  resume: {fileID: 1015045162}
   PA: {fileID: 2061226327}
+  mainMenuButton: {fileID: 1024462652}
+  draw: {r: 0.22745098, g: 0.22745098, b: 0.22745098, a: 1}
+  blank: {r: 1, g: 1, b: 1, a: 1}
+  normalButtonColor: {r: 0.34117648, g: 0.34117648, b: 0.34117648, a: 1}
 --- !u!1 &470914438
 GameObject:
   m_ObjectHideFlags: 0
@@ -7586,7 +7587,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 190, y: 48}
+  m_AnchoredPosition: {x: 190, y: 44.000023}
   m_SizeDelta: {x: 208.18811, y: 48}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1024462654
@@ -8290,7 +8291,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -49.54, y: 20}
+  m_AnchoredPosition: {x: -43, y: 4}
   m_SizeDelta: {x: 999.9998, y: 489.21594}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1086920492
@@ -10965,45 +10966,46 @@ MonoBehaviour:
   gc: {fileID: 260444067}
   playerMovement: {fileID: 869107093}
   otherPlayerMovement: {fileID: 375259168}
-  healthBar: {fileID: 1218599430}
-  otherPlayerHealthBar: {fileID: 454477894}
-  audioManager: {fileID: 1915404626}
-  gameTimer: {fileID: 619406213}
-  bf: {fileID: 62987793}
-  OP: {fileID: 454477895}
-  CT: {fileID: 1547529773}
   playerAT: {fileID: 1174752752}
   otherPlayerAT: {fileID: 239235192}
-  animator: {fileID: 3567059}
-  hit: 0
-  hitDefended: 0
-  crouchBlockHit: 0
-  losses: 0
-  otherPlayerWinSymbol1: {fileID: 233923917}
-  otherPlayerWinSymbol2: {fileID: 1277177443}
-  hurtParticles: {fileID: 1108168011}
-  blockParticles: {fileID: 2051098947}
-  deathParticles: {fileID: 1342502929}
+  OP: {fileID: 454477895}
+  healthBar: {fileID: 1218599430}
+  otherPlayerHealthBar: {fileID: 454477894}
   fullHP: {r: 0.0627451, g: 0.39607844, b: 0, a: 1}
   nearFullHP: {r: 0.05724907, g: 1, b: 0, a: 1}
   halfHP: {r: 1, g: 0.83232033, b: 0, a: 1}
   lowHP: {r: 1, g: 0.40866065, b: 0, a: 1}
   critical: {r: 0.735849, g: 0, b: 0, a: 1}
-  GEMplayerWon: {fileID: 2022048656}
-  p1Win: {r: 1, g: 0, b: 0, a: 1}
-  p2Win: {r: 0, g: 0.004989147, b: 1, a: 1}
-  draw: {r: 0.1792453, g: 0.1792453, b: 0.1792453, a: 1}
-  blank: {r: 1, g: 1, b: 1, a: 1}
-  whichPlayerWin: {fileID: 1082408039}
-  winningPlayer: {fileID: 0}
-  extraMessage: {fileID: 32452210}
-  GEM: {fileID: 1887370575}
+  audioManager: {fileID: 1915404626}
+  gameTimer: {fileID: 619406213}
+  bf: {fileID: 62987793}
+  CT: {fileID: 1547529773}
+  animator: {fileID: 3567059}
+  hit: 0
+  hitDefended: 0
+  crouchBlockHit: 0
+  losses: 0
   gameDone: 0
-  resume: {fileID: 1015045162}
   paused: 0
   GEMActive: 0
   settingUpNR: 0
+  otherPlayerWinSymbol1: {fileID: 233923917}
+  otherPlayerWinSymbol2: {fileID: 1277177443}
+  hurtParticles: {fileID: 1108168011}
+  blockParticles: {fileID: 2051098947}
+  deathParticles: {fileID: 1342502929}
+  GEM: {fileID: 1887370575}
+  GEMbox: {fileID: 2022048654}
+  GEMplayerWon: {fileID: 2022048656}
+  whichPlayerWin: {fileID: 1082408039}
+  extraMessage: {fileID: 32452210}
+  winningPlayer: {fileID: 0}
+  resume: {fileID: 1015045162}
   PA: {fileID: 2061226327}
+  mainMenuButton: {fileID: 1024462652}
+  draw: {r: 0.22745098, g: 0.22745098, b: 0.22745098, a: 1}
+  blank: {r: 1, g: 1, b: 1, a: 1}
+  normalButtonColor: {r: 0.34117648, g: 0.34117648, b: 0.34117648, a: 1}
 --- !u!1 &1237826624
 GameObject:
   m_ObjectHideFlags: 0
@@ -15507,7 +15509,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -278, y: 48}
+  m_AnchoredPosition: {x: -278, y: 44}
   m_SizeDelta: {x: 208.18811, y: 48}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2061226329

@@ -10,49 +10,52 @@ public class PlayerHealthUIManager : MonoBehaviour
     public GameController gc;
     public Movement playerMovement;
     public Movement otherPlayerMovement;
-    public Slider healthBar;
-    public Slider otherPlayerHealthBar;
-    public AudioManager audioManager;
-    public GameTimer gameTimer;
-    public BugFix bf;
-    public PlayerHealthUIManager OP;
-    public CountdownTimer CT;
     public AnimTriggers playerAT;
     public AnimTriggers otherPlayerAT;
+    public PlayerHealthUIManager OP;
 
-
-    public Animator animator;
-    public bool hit;
-    public bool hitDefended;
-    public bool crouchBlockHit;
-    public int losses = 0;
-
-
-    public GameObject otherPlayerWinSymbol1;
-    public GameObject otherPlayerWinSymbol2;
-    public ParticleSystem hurtParticles;
-    public ParticleSystem blockParticles;
-    public ParticleSystem deathParticles;
+    public Slider healthBar;
+    public Slider otherPlayerHealthBar;
     public Color fullHP;
     public Color nearFullHP;
     public Color halfHP;
     public Color lowHP;
     public Color critical;
-    public Outline GEMplayerWon;
-    public Color p1Win;
-    public Color p2Win;
-    public Color draw;
-    public Color blank;
-    public Text whichPlayerWin;
-    public GameObject winningPlayer;
-    public Text extraMessage;
-    public GameObject GEM;
+
+    public AudioManager audioManager;
+    public GameTimer gameTimer;
+    public BugFix bf;
+    public CountdownTimer CT;
+    public Animator animator;
+
+    public bool hit;
+    public bool hitDefended;
+    public bool crouchBlockHit;
+    public int losses = 0;
     public bool gameDone;
-    public GameObject resume;
     public bool paused;
     public bool GEMActive;
     public bool settingUpNR;
+
+    public GameObject otherPlayerWinSymbol1;
+    public GameObject otherPlayerWinSymbol2;
+
+    public ParticleSystem hurtParticles;
+    public ParticleSystem blockParticles;
+    public ParticleSystem deathParticles;
+
+    public GameObject GEM;
+    public GameObject GEMbox;
+    public Outline GEMplayerWon;
+    public Text whichPlayerWin;
+    public Text extraMessage;
+    public GameObject winningPlayer;
+    public GameObject resume;
     public GameObject PA;
+    public GameObject mainMenuButton;
+    public Color draw;
+    public Color blank;
+    public Color normalButtonColor;
 
     // Start is called before the first frame update
     void Start()
@@ -253,10 +256,15 @@ public class PlayerHealthUIManager : MonoBehaviour
             GEM.SetActive(true);
             PA.SetActive(true);
             resume.SetActive(false);
-            whichPlayerWin.color = p2Win;
+            whichPlayerWin.color = InitializeFight.Instance.player2Color;
             whichPlayerWin.text = "Player 2 wins!";
-            GEMplayerWon.effectColor = p2Win;
-            extraMessage.text = "The fight never ends!";
+            GEMplayerWon.effectColor = InitializeFight.Instance.player2Color;
+            bool p2IsVoid = InitializeFight.Instance.player2Name == "Void";
+            GEMbox.GetComponent<Image>().color = p2IsVoid ? Color.white : Color.black;
+            Color p2ButtonIconColor = p2IsVoid ? Color.black : normalButtonColor;
+            PA.GetComponent<Image>().color = p2ButtonIconColor;
+            mainMenuButton.GetComponent<Image>().color = p2ButtonIconColor;
+            extraMessage.text = "Dare to fight again?";
         }
 
         if (otherPlayer == winningPlayer && playerMovement.playerNumber == 2)
@@ -264,10 +272,15 @@ public class PlayerHealthUIManager : MonoBehaviour
             GEM.SetActive(true);
             PA.SetActive(true);
             resume.SetActive(false);
-            whichPlayerWin.color = p1Win;
+            whichPlayerWin.color = InitializeFight.Instance.player1Color;
             whichPlayerWin.text = "Player 1 wins!";
-            GEMplayerWon.effectColor = p1Win;
-            extraMessage.text = "The fight never ends!";
+            GEMplayerWon.effectColor = InitializeFight.Instance.player1Color;
+            bool p1IsVoid = InitializeFight.Instance.player1Name == "Void";
+            GEMbox.GetComponent<Image>().color = p1IsVoid ? Color.white : Color.black;
+            Color p1ButtonIconColor = p1IsVoid ? Color.black : normalButtonColor;
+            PA.GetComponent<Image>().color = p1ButtonIconColor;
+            mainMenuButton.GetComponent<Image>().color = p1ButtonIconColor;
+            extraMessage.text = "Dare to fight again?";
         }
     }
 
