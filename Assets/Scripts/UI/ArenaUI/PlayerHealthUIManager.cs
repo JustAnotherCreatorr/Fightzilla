@@ -333,6 +333,10 @@ public class PlayerHealthUIManager : MonoBehaviour
         audioManager.PauseAudio();
         GEM.SetActive(true);
         PA.SetActive(false);
+        GEMbox.GetComponent<Image>().color = Color.black;
+        mainMenuButton.GetComponent<Image>().color = normalButtonColor;
+        mainMenuButton.GetComponent<Outline>().effectColor = Color.white;
+        MMtext.GetComponent<Text>().color = Color.white;
         whichPlayerWin.text = "Paused";
         extraMessage.text = "The fight never ends!";
         resume.SetActive(true);
