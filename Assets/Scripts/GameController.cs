@@ -11,8 +11,9 @@ public class GameController : MonoBehaviour
     public Movement Player2;
     public Combat combat1;
     public Combat combat2;
-    public PlayerHealthUIManager ph1;
-    public PlayerHealthUIManager ph2;
+    public PlayerHealthManager ph1;
+    public PlayerHealthManager ph2;
+    public GameEndMenuManager gameEndMenuManager;
     public GameTimer gameTimer;
     public CountdownTimer ct;
 
@@ -49,8 +50,7 @@ public class GameController : MonoBehaviour
         {
             case GameStates.beforeStart:
 
-                ph1.GEMActive = false;
-                ph2.GEMActive = false;
+                gameEndMenuManager.GEMActive = false;
                 ct.ResetTimer();
                 ClampCheck();
 
@@ -62,8 +62,7 @@ public class GameController : MonoBehaviour
 
             case GameStates.nextRoundSetup:
 
-                ph1.settingUpNR = true;
-                ph2.settingUpNR = true;
+                gameEndMenuManager.settingUpNR = true;
 
                 Player1.allowMovement = false;
                 Player2.allowMovement = false;
@@ -99,8 +98,7 @@ public class GameController : MonoBehaviour
     {
         gameTimer.timeUpText.gameObject.SetActive(false);
         SetGameState(GameStates.beforeStart);
-        ph1.settingUpNR = false;
-        ph2.settingUpNR = false;
+        gameEndMenuManager.settingUpNR = false;
         Actions.OnNextRound.Invoke();
     }
 

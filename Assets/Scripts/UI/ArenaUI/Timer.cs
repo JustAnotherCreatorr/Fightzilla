@@ -14,7 +14,8 @@ public abstract class Timer : MonoBehaviour
     [SerializeField] protected bool showDecimals;
     protected bool runTimer;
     public bool fix = true;
-    public PlayerHealthUIManager phum;
+    public PauseMenu pm;
+    public GameEndMenuManager gemm;
 
 
     protected virtual void Start()
@@ -28,7 +29,7 @@ public abstract class Timer : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (phum.paused)
+        if (pm.paused)
         {
             return;
         }

@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-
     #region variables
 
     public bool debug;
@@ -17,7 +16,8 @@ public class Movement : MonoBehaviour
     public RuntimeAnimatorController reverseAnim;
     public AnimTriggers animTriggers;
     public Rigidbody rigidbody;
-    public PlayerHealthUIManager playerHealth;
+    public PlayerHealthManager playerHealth;
+    public PauseMenu pauseMenuManager;
     public GameTimer gameTimer;
     public Combat combat;
     public GameController gameController;
@@ -83,7 +83,7 @@ public class Movement : MonoBehaviour
     void Update()
     {
 
-        if (playerHealth.paused)
+        if (pauseMenuManager.paused)
         {
             CancelSprint();
             CancelCrouch();
@@ -92,7 +92,7 @@ public class Movement : MonoBehaviour
             return;
         }
 
-        if (!playerHealth.paused)
+        if (!pauseMenuManager.paused)
         {
             Time.timeScale = 1;
             rigidbody.useGravity = true;
@@ -106,13 +106,13 @@ public class Movement : MonoBehaviour
         #region reverseChecking
 
         if (otherPlayer.transform.position.z < transform.position.z && playerNumber == 1 && !reversed)
-        { 
+        {
             correctDir = false;
         }
 
         if (otherPlayer.transform.position.z > transform.position.z && playerNumber == 2 && !reversed)
-        { 
-           correctDir = false;
+        {
+            correctDir = false;
         }
 
         if (otherPlayer.transform.position.z < transform.position.z && playerNumber == 2 && reversed)
@@ -166,16 +166,16 @@ public class Movement : MonoBehaviour
 
         if (playerNumber == 2)
         {
-             horizontal = Input.GetAxis("Horizontal");
-             shiftPressed = Input.GetKey(KeyCode.RightShift);
-             cancelSprint = Input.GetKeyUp(KeyCode.RightShift);
-             downPressed = Input.GetKey(KeyCode.DownArrow);
+            horizontal = Input.GetAxis("Horizontal");
+            shiftPressed = Input.GetKey(KeyCode.RightShift);
+            cancelSprint = Input.GetKeyUp(KeyCode.RightShift);
+            downPressed = Input.GetKey(KeyCode.DownArrow);
             cancelCrouch = Input.GetKeyUp(KeyCode.DownArrow);
             dashPressed = Input.GetKeyDown(KeyCode.Keypad0);
-             upArrowPressed = Input.GetKeyDown(KeyCode.UpArrow);
-           //  reversePressed = Input.GetKeyDown(KeyCode.Return);
+            upArrowPressed = Input.GetKeyDown(KeyCode.UpArrow);
+            //  reversePressed = Input.GetKeyDown(KeyCode.Return);
         }
-        
+
         if (playerNumber == 1)
         {
             horizontal = Input.GetAxis("Horizontal2");
@@ -207,7 +207,8 @@ public class Movement : MonoBehaviour
         {
             Sprint(shiftPressed, horizontal);
 
-        } else if (cancelSprint)
+        }
+        else if (cancelSprint)
         {
             CancelSprint();
         }
@@ -225,7 +226,8 @@ public class Movement : MonoBehaviour
         if (downPressed)
         {
             Crouch(downPressed);
-        } else if (cancelCrouch)
+        }
+        else if (cancelCrouch)
         {
             CancelCrouch();
         }
@@ -260,7 +262,7 @@ public class Movement : MonoBehaviour
                 holdingDown = true;
                 animParaSpeed = posSpeed;
             }
-        } 
+        }
 
         // no keys are being pressed
 
@@ -433,7 +435,7 @@ public class Movement : MonoBehaviour
                 pullback = 1;
             }
 
-            
+
             if (horizontal < 0)
             {
                 if (!isGrounded)
@@ -448,7 +450,8 @@ public class Movement : MonoBehaviour
                 isBlocking = true;
             }
 
-        } else if (playerNumber == 2)
+        }
+        else if (playerNumber == 2)
         {
             if (reversed)
             {
@@ -573,19 +576,19 @@ public class Movement : MonoBehaviour
     {
         isGrounded = Physics.Raycast(transform.position, Vector3.down, 1f);
         Debug.DrawRay(transform.position, Vector3.down * 1f, Color.black);
-        
+
         if (isGrounded)
         {
             animator.SetBool("isGrounded", true);
             backwardSpeedMod = 0.6f;
-        } 
+        }
         else
         {
             //animator.SetTrigger("isFalling");
             //animator.Play("Base Layer.Falling"); 
         }
 
-       // print(isGrounded);
+        // print(isGrounded);
 
         animator.SetBool("isGrounded", isGrounded);
         return isGrounded;
@@ -638,7 +641,7 @@ public class Movement : MonoBehaviour
                     speed = 15;
                     animParaSpeed = 2;
                 }
-                
+
                 if (horizontal < 0)
                 {
                     speed = 10;
@@ -646,7 +649,8 @@ public class Movement : MonoBehaviour
 
                 }
 
-            } else if (playerNumber == 2) 
+            }
+            else if (playerNumber == 2)
             {
                 if (reversed)
                 {
@@ -660,7 +664,7 @@ public class Movement : MonoBehaviour
                     {
                         speed = 10;
                         animParaSpeed = -2;
-                    } 
+                    }
 
                     return;
                 }
@@ -691,7 +695,7 @@ public class Movement : MonoBehaviour
 
     private void Crouch(bool downpressed)
     {
-        
+
         if (!isGrounded)
         {
             crouchSpeedMod = 1;
@@ -726,7 +730,8 @@ public class Movement : MonoBehaviour
             {
                 isCrouching = false;
                 playerHealth.crouchBlockHit = false;
-            } else
+            }
+            else
             {
                 isCrouching = true;
                 crouchSpeedMod = 0.8f;
@@ -844,7 +849,7 @@ public class Movement : MonoBehaviour
                     rigidbody.AddForce(forceToApply, ForceMode.Impulse);
                     animator.SetBool("dashPressed", true);
                     animator.Play("Base Layer.DashBackward");
-                    animator.SetBool("dashPressed", false); 
+                    animator.SetBool("dashPressed", false);
                 }
             }
             else if (playerNumber == 2)
@@ -956,15 +961,15 @@ public class Movement : MonoBehaviour
         {
             return;
         }
-            animator.SetTrigger("Jump");
-            //animator.Play("Jumping");
-            backwardSpeedMod = 1f;
-            rigidbody.AddForce(Vector3.up * jumpStrength, ForceMode.Impulse);
-            animator.SetBool("isGrounded", false);
+        animator.SetTrigger("Jump");
+        //animator.Play("Jumping");
+        backwardSpeedMod = 1f;
+        rigidbody.AddForce(Vector3.up * jumpStrength, ForceMode.Impulse);
+        animator.SetBool("isGrounded", false);
     }
 
     IEnumerator GradualDecrease()
-     {
+    {
         float posSpeed = animParaSpeed;
 
         while (posSpeed > 0f)
@@ -982,7 +987,7 @@ public class Movement : MonoBehaviour
         }
 
     }
-   
+
     public void Reverse()
     {
         // Player 1's initial rotation is 0
@@ -1097,13 +1102,13 @@ public class Movement : MonoBehaviour
 
         animator.SetBool("Knockout", false);
         animator.Play("Base Layer.Blend Tree");
-      
+
 
         if (gameTimer.timeUp)
         {
             //return;
         }
-       
+
     }
 
     public void PausePos()

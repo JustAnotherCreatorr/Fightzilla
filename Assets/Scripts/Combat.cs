@@ -11,7 +11,7 @@ public class Combat : MonoBehaviour
     public bool animInPlay;
     private float delayLength;
     public bool allowCombat;
-    public PlayerHealthUIManager phum;
+    public PauseMenu pm;
 
     // Start is called before the first frame update
     void Start()
@@ -60,7 +60,7 @@ public class Combat : MonoBehaviour
             return;
         }
 
-        if (phum.paused)
+        if (pm.paused)
         {
             return;
         }
