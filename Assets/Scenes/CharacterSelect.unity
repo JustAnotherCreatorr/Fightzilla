@@ -1119,6 +1119,7 @@ MonoBehaviour:
   defaultPanelColor: {r: 0.4, g: 0.14117648, b: 0.011764706, a: 0.5019608}
   trueColor1: {r: 1, g: 0.050980393, b: 0.03137255, a: 1}
   trueColor2: {r: 0, g: 0.63529414, b: 1, a: 1}
+  defaultHoverOutlineColor: {r: 1, g: 1, b: 1, a: 1}
   hoverOutline: {fileID: 1946092783}
   panelOutline: {fileID: 690123208}
   confirmSelect: {fileID: 1018787864}
@@ -1365,6 +1366,7 @@ MonoBehaviour:
   defaultPanelColor: {r: 0.4, g: 0.14117648, b: 0.011764706, a: 0.5019608}
   trueColor1: {r: 1, g: 0.050980393, b: 0.03137255, a: 1}
   trueColor2: {r: 0, g: 0.63529414, b: 1, a: 1}
+  defaultHoverOutlineColor: {r: 1, g: 1, b: 1, a: 1}
   hoverOutline: {fileID: 1089977116}
   panelOutline: {fileID: 823379230}
   confirmSelect: {fileID: 1018787864}
@@ -1786,6 +1788,7 @@ MonoBehaviour:
   defaultPanelColor: {r: 0.4, g: 0.14117648, b: 0.011764706, a: 0.5019608}
   trueColor1: {r: 1, g: 0.050980393, b: 0.03137255, a: 1}
   trueColor2: {r: 0, g: 0.63529414, b: 1, a: 1}
+  defaultHoverOutlineColor: {r: 1, g: 1, b: 1, a: 1}
   hoverOutline: {fileID: 1248523792}
   panelOutline: {fileID: 964775283}
   confirmSelect: {fileID: 1018787864}
@@ -2082,6 +2085,7 @@ MonoBehaviour:
   defaultPanelColor: {r: 0.4, g: 0.14117648, b: 0.011764706, a: 0.5019608}
   trueColor1: {r: 1, g: 0.050980393, b: 0.03137255, a: 1}
   trueColor2: {r: 0, g: 0.63529414, b: 1, a: 1}
+  defaultHoverOutlineColor: {r: 1, g: 1, b: 1, a: 1}
   hoverOutline: {fileID: 714558623}
   panelOutline: {fileID: 1102644314}
   confirmSelect: {fileID: 1018787864}
@@ -2494,6 +2498,7 @@ MonoBehaviour:
   defaultPanelColor: {r: 0.4, g: 0.14117648, b: 0.011764706, a: 0.5019608}
   trueColor1: {r: 1, g: 0.050980393, b: 0.03137255, a: 1}
   trueColor2: {r: 0, g: 0.63529414, b: 1, a: 1}
+  defaultHoverOutlineColor: {r: 1, g: 1, b: 1, a: 1}
   hoverOutline: {fileID: 1121246855}
   panelOutline: {fileID: 1302365711}
   confirmSelect: {fileID: 1018787864}
@@ -2740,6 +2745,7 @@ MonoBehaviour:
   defaultPanelColor: {r: 0.4, g: 0.14117648, b: 0.011764706, a: 0.5019608}
   trueColor1: {r: 1, g: 0.050980393, b: 0.03137255, a: 1}
   trueColor2: {r: 0, g: 0.63529414, b: 1, a: 1}
+  defaultHoverOutlineColor: {r: 1, g: 1, b: 1, a: 1}
   hoverOutline: {fileID: 1399062675}
   panelOutline: {fileID: 1434557273}
   confirmSelect: {fileID: 1018787864}
@@ -2949,6 +2955,7 @@ MonoBehaviour:
   defaultPanelColor: {r: 0.4, g: 0.14117648, b: 0.011764706, a: 0.5019608}
   trueColor1: {r: 1, g: 0.050980393, b: 0.03137255, a: 1}
   trueColor2: {r: 0, g: 0.63529414, b: 1, a: 1}
+  defaultHoverOutlineColor: {r: 1, g: 1, b: 1, a: 1}
   hoverOutline: {fileID: 1953078977}
   panelOutline: {fileID: 1536932429}
   confirmSelect: {fileID: 1018787864}
@@ -3524,6 +3531,7 @@ MonoBehaviour:
   defaultPanelColor: {r: 0.4, g: 0.14117648, b: 0.011764706, a: 0.5019608}
   trueColor1: {r: 1, g: 0.050980393, b: 0.03137255, a: 1}
   trueColor2: {r: 0, g: 0.63529414, b: 1, a: 1}
+  defaultHoverOutlineColor: {r: 1, g: 1, b: 1, a: 1}
   hoverOutline: {fileID: 1564390310}
   panelOutline: {fileID: 1764289626}
   confirmSelect: {fileID: 1018787864}
@@ -3696,6 +3704,7 @@ MonoBehaviour:
   defaultPanelColor: {r: 0.4, g: 0.14117648, b: 0.011764706, a: 0.5019608}
   trueColor1: {r: 1, g: 0.050980393, b: 0.03137255, a: 1}
   trueColor2: {r: 0, g: 0.63529414, b: 1, a: 1}
+  defaultHoverOutlineColor: {r: 1, g: 1, b: 1, a: 1}
   hoverOutline: {fileID: 49023648}
   panelOutline: {fileID: 1772360931}
   confirmSelect: {fileID: 1018787864}

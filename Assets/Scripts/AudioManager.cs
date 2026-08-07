@@ -18,8 +18,8 @@ public class AudioManager : MonoBehaviour
     public AudioClip beep;
 
     public SceneManager2 sceneManager;
-    public PlayerHealthUIManager p1;
-    public PlayerHealthUIManager p2;
+    public PlayerHealthManager p1;
+    public PlayerHealthManager p2;
 
     // Start is called before the first frame update
     void Start()

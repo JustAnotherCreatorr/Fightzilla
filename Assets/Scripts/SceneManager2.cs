@@ -7,23 +7,21 @@ using UnityEngine.EventSystems;
 public class SceneManager2 : MonoBehaviour
 {
     public int currentScene;
-    public PlayerHealthUIManager ui;
-    public PlayerHealthUIManager ui2;
+    public PlayerHealthManager ui;
+    public PlayerHealthManager ui2;
+    public GameEndMenuManager gameEndMenuManager;
     public AudioManager audioManager;
 
-    // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
-    // Update is called once per frame
     void Update()
     {
         currentScene = SceneManager.GetActiveScene().buildIndex;
         CheckSSPress();
     }
-
     public void OnMouseDown()
     {
         if (gameObject.tag == "PA")
@@ -32,19 +30,15 @@ public class SceneManager2 : MonoBehaviour
             ui.losses = 0;
             ui2.losses = 0;
             FindObjectOfType<GameController>().SetGameState(GameController.GameStates.nextRoundSetup);
-            ui.resume.SetActive(false);
-            ui2.resume.SetActive(false);
-            ui.extraMessage.text = "Preparing the ring...";
+            gameEndMenuManager.resume.SetActive(false);
+            gameEndMenuManager.extraMessage.text = "Preparing the ring...";
         }
-
     }
-
     public void MainMenuPressed()
     {
         audioManager.PlaySFX(audioManager.beep);
         SceneManager.LoadScene(0);
     }
-
     public void CheckSSPress()
     {
         if (Input.GetKeyDown(KeyCode.Space) && currentScene == 0)
@@ -54,16 +48,13 @@ public class SceneManager2 : MonoBehaviour
             SceneManager.LoadScene(1);
         }
     }
-
     public void CreditPressed()
     {
         audioManager.PlaySFX(audioManager.beep);
         SceneManager.LoadScene(3);
     }
-
     public void Back()
     {
         SceneManager.LoadScene(0);
     }
-
 }

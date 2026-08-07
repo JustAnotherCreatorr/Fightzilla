@@ -3232,6 +3232,7 @@ GameObject:
   - component: {fileID: 260444067}
   - component: {fileID: 260444069}
   - component: {fileID: 260444070}
+  - component: {fileID: 260444071}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -3314,6 +3315,36 @@ MonoBehaviour:
   F3: {fileID: 1823573155}
   F4: {fileID: 1075313450}
   characterName2: {fileID: 863168785}
+--- !u!114 &260444071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 260444066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6187f316505b90b4686f0fe719fd8d46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  paused: 0
+  CT: {fileID: 1547529773}
+  gameDone: 0
+  GEM: {fileID: 1887370575}
+  GEMbox: {fileID: 2022048654}
+  PA: {fileID: 2061226327}
+  resume: {fileID: 1015045162}
+  whichPlayerWin: {fileID: 1082408039}
+  extraMessage: {fileID: 32452210}
+  GEMplayerWon: {fileID: 2022048656}
+  blank: {r: 1, g: 1, b: 1, a: 1}
+  mainMenuButton: {fileID: 1024462652}
+  MMtext: {fileID: 1945102962}
+  normalButtonColor: {r: 0.34117648, g: 0.34117648, b: 0.34117648, a: 1}
+  audioManager: {fileID: 1915404626}
+  playerMovement: {fileID: 375259168}
+  otherPlayerMovement: {fileID: 869107093}
+  gameEndMenuManager: {fileID: 1887370577}
 --- !u!1 &299502946
 GameObject:
   m_ObjectHideFlags: 0
@@ -3901,7 +3932,7 @@ MonoBehaviour:
   animTriggers: {fileID: 239235192}
   rigidbody: {fileID: 375259167}
   playerHealth: {fileID: 454477895}
-  pauseMenuManager: {fileID: 1887370578}
+  pauseMenuManager: {fileID: 0}
   gameTimer: {fileID: 619406213}
   combat: {fileID: 375259170}
   gameController: {fileID: 260444067}
@@ -3958,7 +3989,7 @@ MonoBehaviour:
   chosenAttack: 
   animInPlay: 0
   allowCombat: 0
-  pm: {fileID: 1887370578}
+  pm: {fileID: 0}
 --- !u!114 &375259171
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5188,7 +5219,7 @@ MonoBehaviour:
   startImmediate: 0
   showDecimals: 0
   fix: 1
-  pm: {fileID: 1887370578}
+  pm: {fileID: 0}
   gemm: {fileID: 1887370577}
   timeUpText: {fileID: 1701531986}
   Player1: {fileID: 375259165}
@@ -6699,7 +6730,7 @@ MonoBehaviour:
   chosenAttack: 
   animInPlay: 0
   allowCombat: 0
-  pm: {fileID: 1887370578}
+  pm: {fileID: 0}
 --- !u!114 &869107093
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6721,7 +6752,7 @@ MonoBehaviour:
   animTriggers: {fileID: 1174752752}
   rigidbody: {fileID: 869107095}
   playerHealth: {fileID: 1218599432}
-  pauseMenuManager: {fileID: 1887370578}
+  pauseMenuManager: {fileID: 0}
   gameTimer: {fileID: 619406213}
   combat: {fileID: 869107092}
   gameController: {fileID: 260444067}
@@ -7431,6 +7462,7 @@ MonoBehaviour:
   currentScene: 0
   ui: {fileID: 0}
   ui2: {fileID: 0}
+  gameEndMenuManager: {fileID: 0}
   audioManager: {fileID: 1915404626}
 --- !u!114 &1015045165
 MonoBehaviour:
@@ -7700,6 +7732,7 @@ MonoBehaviour:
   currentScene: 0
   ui: {fileID: 0}
   ui2: {fileID: 0}
+  gameEndMenuManager: {fileID: 0}
   audioManager: {fileID: 1915404626}
 --- !u!1 &1047390855
 GameObject:
@@ -12101,7 +12134,7 @@ MonoBehaviour:
   startImmediate: 1
   showDecimals: 0
   fix: 1
-  pm: {fileID: 1887370578}
+  pm: {fileID: 0}
   gemm: {fileID: 1887370577}
   CDTimerDestroyed: 0
   audioManager: {fileID: 1915404626}
@@ -13829,6 +13862,7 @@ MonoBehaviour:
   currentScene: 0
   ui: {fileID: 0}
   ui2: {fileID: 0}
+  gameEndMenuManager: {fileID: 0}
   audioManager: {fileID: 0}
 --- !u!4 &1818944469
 Transform:
@@ -14457,7 +14491,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1887370576}
   - component: {fileID: 1887370577}
-  - component: {fileID: 1887370578}
   m_Layer: 5
   m_Name: GEM
   m_TagString: Untagged
@@ -14515,36 +14548,6 @@ MonoBehaviour:
   normalButtonColor: {r: 0.34117648, g: 0.34117648, b: 0.34117648, a: 1}
   GEMActive: 0
   settingUpNR: 0
---- !u!114 &1887370578
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1887370575}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6187f316505b90b4686f0fe719fd8d46, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  paused: 0
-  CT: {fileID: 1547529773}
-  gameDone: 0
-  GEM: {fileID: 1887370575}
-  GEMbox: {fileID: 2022048654}
-  PA: {fileID: 2061226327}
-  resume: {fileID: 1015045162}
-  whichPlayerWin: {fileID: 1082408039}
-  extraMessage: {fileID: 32452210}
-  GEMplayerWon: {fileID: 2022048656}
-  blank: {r: 1, g: 1, b: 1, a: 1}
-  mainMenuButton: {fileID: 1024462652}
-  MMtext: {fileID: 1945102962}
-  normalButtonColor: {r: 0.34117648, g: 0.34117648, b: 0.34117648, a: 1}
-  audioManager: {fileID: 1915404626}
-  playerMovement: {fileID: 375259168}
-  otherPlayerMovement: {fileID: 869107093}
-  gameEndMenuManager: {fileID: 1887370577}
 --- !u!1 &1891378157
 GameObject:
   m_ObjectHideFlags: 0
@@ -14833,8 +14836,8 @@ MonoBehaviour:
   win: {fileID: 8300000, guid: c03b6156fc8e6bd4fad329fe4076d31d, type: 3}
   beep: {fileID: 8300000, guid: eecef399a75bc2443ba37e1939b5e6cc, type: 3}
   sceneManager: {fileID: 1818944468}
-  p1: {fileID: 0}
-  p2: {fileID: 0}
+  p1: {fileID: 454477895}
+  p2: {fileID: 1218599432}
 --- !u!4 &1915404627
 Transform:
   m_ObjectHideFlags: 0
@@ -15665,6 +15668,7 @@ MonoBehaviour:
   currentScene: 0
   ui: {fileID: 0}
   ui2: {fileID: 0}
+  gameEndMenuManager: {fileID: 0}
   audioManager: {fileID: 1915404626}
 --- !u!1 &2067343897
 GameObject:

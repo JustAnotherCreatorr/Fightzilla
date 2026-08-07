@@ -7,20 +7,22 @@ using TMPro;
 
 public class HoverPanel : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
+    // isSelectedX means "this specific panel is the one player X picked".
+    // This is fine to keep per-panel since it's really about THIS panel.
     public bool isSelected1;
     public bool isSelected2;
 
-    public TMP_Text display;     
-    public TMP_Text otherDisplay; 
+    public TMP_Text display;      // Player 1's display text
+    public TMP_Text otherDisplay; // Player 2's display text
 
     public string characterName;
     public Color characterColor;
     public Material characterMaterial;
-
     public Color hoverPanelColor;
     public Color defaultPanelColor;
     public Color trueColor1;
     public Color trueColor2;
+    public Color defaultHoverOutlineColor;
 
     public GameObject hoverOutline;
     public Outline panelOutline;
@@ -33,15 +35,17 @@ public class HoverPanel : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
             return;
         }
 
-        string colorCode = ColorUtility.ToHtmlStringRGB(characterColor);
-        panelOutline.effectColor = hoverPanelColor;
-        hoverOutline.SetActive(true);
-
+        // Don't show "available to pick" feedback on a panel that's already taken.
         if (isSelected1 || isSelected2)
         {
             return;
         }
-      
+
+        string colorCode = ColorUtility.ToHtmlStringRGB(characterColor);
+        panelOutline.effectColor = hoverPanelColor;
+        hoverOutline.SetActive(true);
+
+        // Whose turn is it, globally? Every panel checks the same source of truth.
         if (!confirmSelect.confirmedP1)
         {
             display.text = $"Player 1: <color=#{colorCode}>{characterName}</color>";
@@ -57,6 +61,7 @@ public class HoverPanel : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         panelOutline.effectColor = defaultPanelColor;
         hoverOutline.SetActive(false);
 
+        // If this panel is the locked-in pick for a confirmed player, keep it highlighted.
         if (confirmSelect.confirmedP1 && isSelected1)
         {
             panelOutline.effectColor = hoverPanelColor;
@@ -78,6 +83,9 @@ public class HoverPanel : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         }
     }
 
+    // Keeping the original signature/parameter — this is almost certainly wired
+    // in the Inspector via an EventTrigger's PointerClick with a static parameter
+    // pointing at this exact method, so changing the signature breaks that binding.
     public void OnMouseDown(HoverPanel hoverPanel)
     {
         if (confirmSelect.confirmedP1 && confirmSelect.confirmedP2)
@@ -85,6 +93,7 @@ public class HoverPanel : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
             return;
         }
 
+        // A panel already claimed by one player can't be picked by the other.
         if (isSelected1 || isSelected2)
         {
             return;
