@@ -1688,7 +1688,7 @@ GameObject:
   - component: {fileID: 964775284}
   - component: {fileID: 964775285}
   m_Layer: 5
-  m_Name: Naser
+  m_Name: Hunter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1781,7 +1781,7 @@ MonoBehaviour:
   isSelected2: 0
   display: {fileID: 401718857}
   otherDisplay: {fileID: 839290002}
-  characterName: Naser
+  characterName: Hunter
   characterColor: {r: 1, g: 0.972549, b: 0.047058824, a: 1}
   characterMaterial: {fileID: 2100000, guid: fa8274c56098b5f47aa20e92edf9d622, type: 2}
   hoverPanelColor: {r: 1, g: 1, b: 1, a: 0}
@@ -3604,7 +3604,7 @@ GameObject:
   - component: {fileID: 1772360932}
   - component: {fileID: 1772360933}
   m_Layer: 5
-  m_Name: Sumo
+  m_Name: Tank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3697,7 +3697,7 @@ MonoBehaviour:
   isSelected2: 0
   display: {fileID: 401718857}
   otherDisplay: {fileID: 839290002}
-  characterName: Sumo
+  characterName: Tank
   characterColor: {r: 1, g: 0.40392157, b: 0.0627451, a: 1}
   characterMaterial: {fileID: 2100000, guid: f1862135945698b40907bd2690eadca5, type: 2}
   hoverPanelColor: {r: 1, g: 1, b: 1, a: 0}

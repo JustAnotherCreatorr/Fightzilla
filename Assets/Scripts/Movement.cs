@@ -582,13 +582,6 @@ public class Movement : MonoBehaviour
             animator.SetBool("isGrounded", true);
             backwardSpeedMod = 0.6f;
         }
-        else
-        {
-            //animator.SetTrigger("isFalling");
-            //animator.Play("Base Layer.Falling"); 
-        }
-
-        // print(isGrounded);
 
         animator.SetBool("isGrounded", isGrounded);
         return isGrounded;
@@ -1015,12 +1008,23 @@ public class Movement : MonoBehaviour
         if (animator.runtimeAnimatorController == OGanim)
         {
             animator.runtimeAnimatorController = reverseAnim;
+
+            if (!isGrounded)
+            {
+                animator.Play("Base Layer.Falling");
+            }
+
             return;
         }
 
         if (animator.runtimeAnimatorController == reverseAnim)
         {
             animator.runtimeAnimatorController = OGanim;
+
+            if (!isGrounded)
+            {
+                animator.Play("Base Layer.Falling");
+            }
         }
 
         // }
