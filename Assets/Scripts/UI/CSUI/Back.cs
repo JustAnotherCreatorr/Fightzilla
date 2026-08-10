@@ -1,11 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class Back : MonoBehaviour
 {
     public int playerNumber;
-
     public GameObject startButton;
 
     public void OnMouseDown()
@@ -15,9 +14,9 @@ public class Back : MonoBehaviour
             HoverPanel hoverPanel = ConfirmSelect.Instance.selectedCharacter.GetComponent<HoverPanel>();
             hoverPanel.isSelected1 = false;
             hoverPanel.hoverOutline.SetActive(false);
+            hoverPanel.hoverOutline.GetComponent<Image>().color = hoverPanel.defaultHoverOutlineColor;
             hoverPanel.panelOutline.effectColor = hoverPanel.defaultPanelColor;
             hoverPanel.display.text = "Player 1:";
-
             ConfirmSelect.Instance.confirmedP1 = false;
             ConfirmSelect.Instance.selectedCharacter = null;
 
@@ -26,9 +25,9 @@ public class Back : MonoBehaviour
                 HoverPanel hoverPanel2 = ConfirmSelect.Instance.selectedCharacter2.GetComponent<HoverPanel>();
                 hoverPanel2.isSelected2 = false;
                 hoverPanel2.hoverOutline.SetActive(false);
+                hoverPanel2.hoverOutline.GetComponent<Image>().color = hoverPanel2.defaultHoverOutlineColor;
                 hoverPanel2.panelOutline.effectColor = hoverPanel2.defaultPanelColor;
                 hoverPanel2.otherDisplay.text = "Player 2:";
-
                 ConfirmSelect.Instance.selectedCharacter2 = null;
                 ConfirmSelect.Instance.confirmedP2 = false;
 
@@ -46,16 +45,14 @@ public class Back : MonoBehaviour
             HoverPanel hoverPanel2 = ConfirmSelect.Instance.selectedCharacter2.GetComponent<HoverPanel>();
             hoverPanel2.isSelected2 = false;
             hoverPanel2.hoverOutline.SetActive(false);
+            hoverPanel2.hoverOutline.GetComponent<Image>().color = hoverPanel2.defaultHoverOutlineColor;
             hoverPanel2.panelOutline.effectColor = hoverPanel2.defaultPanelColor;
             hoverPanel2.otherDisplay.text = "Player 2:";
-
             ConfirmSelect.Instance.selectedCharacter2 = null;
             ConfirmSelect.Instance.confirmedP2 = false;
             gameObject.SetActive(false);
         }
-
         startButton.SetActive(false);
-
     }
 }
 

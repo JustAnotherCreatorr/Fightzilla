@@ -35,7 +35,6 @@ public class PauseMenu : MonoBehaviour
 
     public void Paused(bool spacePressed)
     {
-        print("mic check");
         if (CT.end == false)
         {
             return;
@@ -45,25 +44,21 @@ public class PauseMenu : MonoBehaviour
         {
             return;
         }
-        print("mic check 2");
-
+    
         if (!spacePressed)
         {
             return;
         }
-        print("mic check 3");
 
         if (gameDone)
         {
             return;
         }
-        print("mic check 4");
 
         if (gameEndMenuManager.settingUpNR)
         {
             return;
         }
-        print("mic check 5");
 
         playerMovement.allowMovement = false;
         otherPlayerMovement.allowMovement = false;

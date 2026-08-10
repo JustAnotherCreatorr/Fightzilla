@@ -3932,7 +3932,7 @@ MonoBehaviour:
   animTriggers: {fileID: 239235192}
   rigidbody: {fileID: 375259167}
   playerHealth: {fileID: 454477895}
-  pauseMenuManager: {fileID: 0}
+  pauseMenuManager: {fileID: 260444071}
   gameTimer: {fileID: 619406213}
   combat: {fileID: 375259170}
   gameController: {fileID: 260444067}
@@ -3989,7 +3989,7 @@ MonoBehaviour:
   chosenAttack: 
   animInPlay: 0
   allowCombat: 0
-  pm: {fileID: 0}
+  pm: {fileID: 260444071}
 --- !u!114 &375259171
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5219,7 +5219,7 @@ MonoBehaviour:
   startImmediate: 0
   showDecimals: 0
   fix: 1
-  pm: {fileID: 0}
+  pm: {fileID: 260444071}
   gemm: {fileID: 1887370577}
   timeUpText: {fileID: 1701531986}
   Player1: {fileID: 375259165}
@@ -6730,7 +6730,7 @@ MonoBehaviour:
   chosenAttack: 
   animInPlay: 0
   allowCombat: 0
-  pm: {fileID: 0}
+  pm: {fileID: 260444071}
 --- !u!114 &869107093
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6752,7 +6752,7 @@ MonoBehaviour:
   animTriggers: {fileID: 1174752752}
   rigidbody: {fileID: 869107095}
   playerHealth: {fileID: 1218599432}
-  pauseMenuManager: {fileID: 0}
+  pauseMenuManager: {fileID: 260444071}
   gameTimer: {fileID: 619406213}
   combat: {fileID: 869107092}
   gameController: {fileID: 260444067}
@@ -7522,7 +7522,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 260444071}
         m_MethodName: Resume
         m_Mode: 1
         m_Arguments:
@@ -12134,7 +12134,7 @@ MonoBehaviour:
   startImmediate: 1
   showDecimals: 0
   fix: 1
-  pm: {fileID: 0}
+  pm: {fileID: 260444071}
   gemm: {fileID: 1887370577}
   CDTimerDestroyed: 0
   audioManager: {fileID: 1915404626}
