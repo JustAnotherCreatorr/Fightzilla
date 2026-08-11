@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1302,8 +1302,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicSource: {fileID: 797067496}
   SFXSource: {fileID: 1291640359}
-  Fighting: {fileID: 8300000, guid: c97d53794d6ea0446b55f3b392d07f2e, type: 3}
-  MainMenu: {fileID: 8300000, guid: 475b23cb4b90ed44bb855e34d826effa, type: 3}
+  Fighting: {fileID: 8300000, guid: 475b23cb4b90ed44bb855e34d826effa, type: 3}
+  MainMenu: {fileID: 8300000, guid: c97d53794d6ea0446b55f3b392d07f2e, type: 3}
   Credits: {fileID: 0}
   hurt: {fileID: 8300000, guid: 7c698653e90c6a94d84870513c2ae0dd, type: 3}
   block: {fileID: 8300000, guid: a609b869421525347b311fa6394fa5e9, type: 3}
@@ -2125,6 +2125,7 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 10308, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7566,6 +7567,7 @@ MonoBehaviour:
   currentScene: 0
   ui: {fileID: 0}
   ui2: {fileID: 0}
+  gameEndMenuManager: {fileID: 0}
   audioManager: {fileID: 536810845}
 --- !u!1 &1623439796
 GameObject:
@@ -7694,6 +7696,7 @@ MonoBehaviour:
   currentScene: 0
   ui: {fileID: 0}
   ui2: {fileID: 0}
+  gameEndMenuManager: {fileID: 0}
   audioManager: {fileID: 536810845}
 --- !u!4 &1691594330
 Transform:

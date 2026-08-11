@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -423,7 +423,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 508, y: -280}
+  m_AnchoredPosition: {x: 508, y: -325}
   m_SizeDelta: {x: 631.2, y: 167.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &71964148
@@ -445,19 +445,16 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Hit Sound - Pixabay itself
+  m_text: '
+
+    Hit/KO/Beep - Pixabay itself
 
     Block Sound - RibhavAgrawal
 
-    KO Sound
-    - Pixabay itself
+    Win
+    Sound - Make_More_Sound
 
-    Win Sound - Make_More_Sound
-
-    Countdown Sound - transcendedlifting
-
-    Beep
-    - Pixabay itself'
+    Countdown Sound - transcendedlifting'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3db4e461b1b42a2418127ce61462df72, type: 2}
   m_sharedMaterial: {fileID: -3102832871261658990, guid: 3db4e461b1b42a2418127ce61462df72,
@@ -485,15 +482,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 51
-  m_fontSizeBase: 51
+  m_fontSize: 56.54
+  m_fontSizeBase: 56.54
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 512
+  m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -860,6 +857,7 @@ MonoBehaviour:
   currentScene: 0
   ui: {fileID: 0}
   ui2: {fileID: 0}
+  gameEndMenuManager: {fileID: 0}
   audioManager: {fileID: 1538179407}
 --- !u!114 &224016867
 MonoBehaviour:
@@ -1725,7 +1723,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 528, y: -110}
+  m_AnchoredPosition: {x: 528, y: -198}
   m_SizeDelta: {x: 630.4, y: 153}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &680408597
@@ -4370,7 +4368,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 12, y: 45}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1819325422

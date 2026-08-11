@@ -25,17 +25,15 @@ public class AudioManager : MonoBehaviour
     void Start()
     {
 
-        //these are mixed up for some reason, but work
-
         if (sceneManager.currentScene == 0)
         {
-            musicSource.clip = Fighting;
+            musicSource.clip = MainMenu;
             musicSource.Play();
         }
 
         if (sceneManager.currentScene == 1)
         {
-            musicSource.clip = MainMenu;
+            musicSource.clip = Fighting;
             musicSource.Play();
         }
     }
