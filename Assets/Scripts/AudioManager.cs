@@ -8,7 +8,8 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioSource SFXSource;
 
     public AudioClip Fighting;
-    public AudioClip MainMenu;
+    public AudioClip SplashScreen;
+    public AudioClip CharSelect;
     public AudioClip Credits;
     public AudioClip hurt;
     public AudioClip block;
@@ -21,27 +22,32 @@ public class AudioManager : MonoBehaviour
     public PlayerHealthManager p1;
     public PlayerHealthManager p2;
 
+
     // Start is called before the first frame update
     void Start()
     {
-
-        if (sceneManager.currentScene == 0)
+        if (sceneManager.currentScene == 2)
         {
-            musicSource.clip = MainMenu;
-            musicSource.Play();
+            musicSource.clip = Fighting;
         }
 
         if (sceneManager.currentScene == 1)
         {
-            musicSource.clip = Fighting;
-            musicSource.Play();
+            musicSource.clip = CharSelect;
         }
+
+        if (sceneManager.currentScene == 0)
+        {
+            musicSource.clip = SplashScreen;
+        }
+
+        musicSource.Play();
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
     public void PlaySFX(AudioClip clip)

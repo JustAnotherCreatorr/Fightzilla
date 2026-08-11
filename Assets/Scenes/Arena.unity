@@ -4213,9 +4213,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
-  m_Height: 2.635597
+  m_Height: 2.5371408
   m_Direction: 1
-  m_Center: {x: 0, y: 1.2247823, z: 0}
+  m_Center: {x: 0, y: 1.2740104, z: 0}
 --- !u!114 &375259170
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7033,9 +7033,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
-  m_Height: 2.635597
+  m_Height: 2.5627134
   m_Direction: 1
-  m_Center: {x: 0, y: 1.2247823, z: 0}
+  m_Center: {x: -0, y: 1.2612242, z: 0}
 --- !u!54 &869107095
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7974,9 +7974,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentScene: 0
-  ui: {fileID: 0}
-  ui2: {fileID: 0}
-  gameEndMenuManager: {fileID: 0}
+  ui: {fileID: 454477895}
+  ui2: {fileID: 1218599432}
+  gameEndMenuManager: {fileID: 1887370577}
   audioManager: {fileID: 1915404626}
 --- !u!1 &1047390855
 GameObject:
@@ -14348,10 +14348,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentScene: 0
-  ui: {fileID: 0}
-  ui2: {fileID: 0}
-  gameEndMenuManager: {fileID: 0}
-  audioManager: {fileID: 0}
+  ui: {fileID: 454477895}
+  ui2: {fileID: 1218599432}
+  gameEndMenuManager: {fileID: 1887370577}
+  audioManager: {fileID: 1915404626}
 --- !u!4 &1818944469
 Transform:
   m_ObjectHideFlags: 0
@@ -16154,9 +16154,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentScene: 0
-  ui: {fileID: 0}
-  ui2: {fileID: 0}
-  gameEndMenuManager: {fileID: 0}
+  ui: {fileID: 454477895}
+  ui2: {fileID: 1218599432}
+  gameEndMenuManager: {fileID: 1887370577}
   audioManager: {fileID: 1915404626}
 --- !u!1 &2067343897
 GameObject:

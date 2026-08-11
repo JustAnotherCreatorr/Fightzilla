@@ -51,6 +51,7 @@ public class GameController : MonoBehaviour
             case GameStates.beforeStart:
 
                 gameEndMenuManager.GEMActive = false;
+                gameEndMenuManager.GEM.SetActive(false);
                 ct.ResetTimer();
                 ClampCheck();
 
@@ -74,7 +75,6 @@ public class GameController : MonoBehaviour
                     SetGameState(GameStates.gameOver);
                     return;
                 }
-
 
                 Invoke("Delay", 3.5f);
 

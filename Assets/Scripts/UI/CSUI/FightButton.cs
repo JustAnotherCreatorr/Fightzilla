@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class FightButton : MonoBehaviour
 {
+    public SceneManager2 sceneManager;
+
     public void OnMouseDown()
     {
         if (!ConfirmSelect.Instance.confirmedP1 || !ConfirmSelect.Instance.confirmedP2)

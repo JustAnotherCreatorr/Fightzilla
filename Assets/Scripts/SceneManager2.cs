@@ -12,9 +12,9 @@ public class SceneManager2 : MonoBehaviour
     public GameEndMenuManager gameEndMenuManager;
     public AudioManager audioManager;
 
-    void Start()
+    void Awake()
     {
-
+        currentScene = SceneManager.GetActiveScene().buildIndex;
     }
 
     void Update()
@@ -22,6 +22,7 @@ public class SceneManager2 : MonoBehaviour
         currentScene = SceneManager.GetActiveScene().buildIndex;
         CheckSSPress();
     }
+
     public void OnMouseDown()
     {
         if (gameObject.tag == "PA")

@@ -7459,7 +7459,6 @@ GameObject:
   - component: {fileID: 1462825680}
   - component: {fileID: 1462825679}
   - component: {fileID: 1462825678}
-  - component: {fileID: 1462825682}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -7552,23 +7551,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1462825682
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1462825677}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 213668e84c9fee347911b39e5b1564a6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentScene: 0
-  ui: {fileID: 0}
-  ui2: {fileID: 0}
-  gameEndMenuManager: {fileID: 0}
-  audioManager: {fileID: 536810845}
 --- !u!1 &1623439796
 GameObject:
   m_ObjectHideFlags: 0
@@ -7675,7 +7657,7 @@ GameObject:
   - component: {fileID: 1691594330}
   - component: {fileID: 1691594329}
   m_Layer: 0
-  m_Name: SceneManagerAlone
+  m_Name: SceneManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
