@@ -15315,14 +15315,15 @@ MonoBehaviour:
   musicSource: {fileID: 1155030126}
   SFXSource: {fileID: 701143872}
   Fighting: {fileID: 8300000, guid: 475b23cb4b90ed44bb855e34d826effa, type: 3}
-  MainMenu: {fileID: 8300000, guid: c97d53794d6ea0446b55f3b392d07f2e, type: 3}
+  SplashScreen: {fileID: 8300000, guid: c97d53794d6ea0446b55f3b392d07f2e, type: 3}
+  CharSelect: {fileID: 0}
   Credits: {fileID: 0}
   hurt: {fileID: 8300000, guid: 7c698653e90c6a94d84870513c2ae0dd, type: 3}
   block: {fileID: 8300000, guid: a609b869421525347b311fa6394fa5e9, type: 3}
   KO: {fileID: 8300000, guid: 0a77898ce3c40fe4ab06de2ad29bd288, type: 3}
   countdown: {fileID: 8300000, guid: e59e6694f133f6746951e8f4349c98b6, type: 3}
   win: {fileID: 8300000, guid: c03b6156fc8e6bd4fad329fe4076d31d, type: 3}
-  beep: {fileID: 8300000, guid: eecef399a75bc2443ba37e1939b5e6cc, type: 3}
+  beep: {fileID: 8300000, guid: 67ee4749b8e76f74dbda68d13098dfb4, type: 3}
   sceneManager: {fileID: 1818944468}
   p1: {fileID: 454477895}
   p2: {fileID: 1218599432}
