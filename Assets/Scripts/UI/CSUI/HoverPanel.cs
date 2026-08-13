@@ -21,6 +21,8 @@ public class HoverPanel : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     public GameObject hoverOutline;
     public Outline panelOutline;
     public ConfirmSelect confirmSelect;
+    public AudioManager audioManager;
+
     public void OnPointerEnter(PointerEventData eventData)
     {
         if (confirmSelect.confirmedP1 && confirmSelect.confirmedP2)
@@ -44,6 +46,7 @@ public class HoverPanel : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
             otherDisplay.text = $"Player 2: <color=#{colorCode}>{characterName}</color>";
         }
     }
+
     public void OnPointerExit(PointerEventData eventData)
     {
         panelOutline.effectColor = defaultPanelColor;
@@ -77,6 +80,7 @@ public class HoverPanel : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         {
             return;
         }
+
         if (!confirmSelect.confirmedP1)
         {
             isSelected1 = true;
@@ -95,5 +99,7 @@ public class HoverPanel : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
             InitializeFight.Instance.SetPlayer2Color(characterColor);
             InitializeFight.Instance.SetPlayer2Name(characterName);
         }
+
+        audioManager.PlaySFX(audioManager.beep);
     }
 }

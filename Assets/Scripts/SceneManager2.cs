@@ -35,11 +35,14 @@ public class SceneManager2 : MonoBehaviour
             gameEndMenuManager.extraMessage.text = "Preparing the ring...";
         }
     }
+
     public void MainMenuPressed()
     {
-        audioManager.PlaySFX(audioManager.beep);
+        audioManager.ResumeAudio();
+        audioManager.PlaySFX(audioManager.back);
         SceneManager.LoadScene(0);
     }
+
     public void CheckSSPress()
     {
         if (Input.GetKeyDown(KeyCode.Space) && currentScene == 0)
@@ -49,11 +52,13 @@ public class SceneManager2 : MonoBehaviour
             SceneManager.LoadScene(1);
         }
     }
+
     public void CreditPressed()
     {
         audioManager.PlaySFX(audioManager.beep);
         SceneManager.LoadScene(3);
     }
+
     public void Back()
     {
         SceneManager.LoadScene(0);

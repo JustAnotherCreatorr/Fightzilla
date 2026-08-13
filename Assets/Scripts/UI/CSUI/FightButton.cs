@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class FightButton : MonoBehaviour
 {
-    public SceneManager2 sceneManager;
+    public AudioManager audioManager;
 
     public void OnMouseDown()
     {
@@ -14,6 +14,7 @@ public class FightButton : MonoBehaviour
             return;
         }
 
+        audioManager.PlaySFX(audioManager.beep);
         SceneManager.LoadScene(2);
     }
 }

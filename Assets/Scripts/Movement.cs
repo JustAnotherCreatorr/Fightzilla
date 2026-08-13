@@ -46,6 +46,7 @@ public class Movement : MonoBehaviour
 
     public float jumpStrength;
     public bool isGrounded = true;
+    public LayerMask playerLayer;
 
     public bool isSprinting;
     public bool isCrouching;
@@ -574,7 +575,8 @@ public class Movement : MonoBehaviour
 
     private bool GetIsGrounded()
     {
-        isGrounded = Physics.Raycast(transform.position, Vector3.down, 1f);
+        int groundMask = ~playerLayer;
+        isGrounded = Physics.Raycast(transform.position, Vector3.down, 1f, groundMask);
         Debug.DrawRay(transform.position, Vector3.down * 1f, Color.black);
 
         if (isGrounded)

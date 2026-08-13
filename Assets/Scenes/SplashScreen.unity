@@ -1311,7 +1311,7 @@ MonoBehaviour:
   KO: {fileID: 8300000, guid: 0a77898ce3c40fe4ab06de2ad29bd288, type: 3}
   countdown: {fileID: 8300000, guid: e59e6694f133f6746951e8f4349c98b6, type: 3}
   win: {fileID: 8300000, guid: c03b6156fc8e6bd4fad329fe4076d31d, type: 3}
-  beep: {fileID: 8300000, guid: 67ee4749b8e76f74dbda68d13098dfb4, type: 3}
+  beep: {fileID: 8300000, guid: 4ce54fcac4d3d78478c0f6f06368a88b, type: 3}
   sceneManager: {fileID: 1691594329}
   p1: {fileID: 0}
   p2: {fileID: 0}
@@ -7222,7 +7222,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 3cf215ceb2c99a54f9aca9609929248d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 95bba3e152017ac41b612f06fb2bc277, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1

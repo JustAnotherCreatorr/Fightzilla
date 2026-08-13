@@ -60,6 +60,7 @@ public class PauseMenu : MonoBehaviour
             return;
         }
 
+        audioManager.PlaySFX(audioManager.beep);
         playerMovement.allowMovement = false;
         otherPlayerMovement.allowMovement = false;
         whichPlayerWin.color = blank;
@@ -83,6 +84,7 @@ public class PauseMenu : MonoBehaviour
         otherPlayerMovement.allowMovement = true;
         paused = false;
         audioManager.ResumeAudio();
+        audioManager.PlaySFX(audioManager.back);
         GEM.SetActive(false);
         resume.SetActive(false);
     }

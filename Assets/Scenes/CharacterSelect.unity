@@ -450,6 +450,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerNumber: 1
   startButton: {fileID: 637767665}
+  audioManager: {fileID: 1716052742}
 --- !u!1 &354735391
 GameObject:
   m_ObjectHideFlags: 0
@@ -633,6 +634,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 401718855}
   m_CullTransparentMesh: 0
+--- !u!1 &443636991
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 443636993}
+  - component: {fileID: 443636992}
+  m_Layer: 0
+  m_Name: SceneManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &443636992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 443636991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 213668e84c9fee347911b39e5b1564a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentScene: 1
+  ui: {fileID: 0}
+  ui2: {fileID: 0}
+  gameEndMenuManager: {fileID: 0}
+  audioManager: {fileID: 1716052742}
+--- !u!4 &443636993
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 443636991}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.6713995, y: 4.77466, z: 77.66714}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &488856483
 GameObject:
   m_ObjectHideFlags: 0
@@ -861,6 +910,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerNumber: 2
   startButton: {fileID: 637767665}
+  audioManager: {fileID: 1716052742}
 --- !u!1 &637767665
 GameObject:
   m_ObjectHideFlags: 0
@@ -1004,6 +1054,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac6bfbe51d228ce4bb8bfb39b1f9a7df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioManager: {fileID: 1716052742}
 --- !u!1 &690123204
 GameObject:
   m_ObjectHideFlags: 0
@@ -1123,6 +1174,7 @@ MonoBehaviour:
   hoverOutline: {fileID: 1946092783}
   panelOutline: {fileID: 690123208}
   confirmSelect: {fileID: 1018787864}
+  audioManager: {fileID: 1716052742}
 --- !u!114 &690123210
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1370,6 +1422,7 @@ MonoBehaviour:
   hoverOutline: {fileID: 1089977116}
   panelOutline: {fileID: 823379230}
   confirmSelect: {fileID: 1018787864}
+  audioManager: {fileID: 1716052742}
 --- !u!114 &823379232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1716,13 +1769,13 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.594
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 162
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -1919,6 +1972,7 @@ MonoBehaviour:
   hoverOutline: {fileID: 1248523792}
   panelOutline: {fileID: 964775283}
   confirmSelect: {fileID: 1018787864}
+  audioManager: {fileID: 1716052742}
 --- !u!114 &964775285
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2216,6 +2270,7 @@ MonoBehaviour:
   hoverOutline: {fileID: 714558623}
   panelOutline: {fileID: 1102644314}
   confirmSelect: {fileID: 1018787864}
+  audioManager: {fileID: 1716052742}
 --- !u!114 &1102644316
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2629,6 +2684,7 @@ MonoBehaviour:
   hoverOutline: {fileID: 1121246855}
   panelOutline: {fileID: 1302365711}
   confirmSelect: {fileID: 1018787864}
+  audioManager: {fileID: 1716052742}
 --- !u!114 &1302365713
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2876,6 +2932,7 @@ MonoBehaviour:
   hoverOutline: {fileID: 1399062675}
   panelOutline: {fileID: 1434557273}
   confirmSelect: {fileID: 1018787864}
+  audioManager: {fileID: 1716052742}
 --- !u!114 &1434557275
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3086,6 +3143,7 @@ MonoBehaviour:
   hoverOutline: {fileID: 1953078977}
   panelOutline: {fileID: 1536932429}
   confirmSelect: {fileID: 1018787864}
+  audioManager: {fileID: 1716052742}
 --- !u!114 &1536932431
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3412,7 +3470,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1716052742
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3425,18 +3483,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67fd67eb2e3314140a9f67a972fdb727, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musicSource: {fileID: 0}
-  SFXSource: {fileID: 0}
-  Fighting: {fileID: 0}
-  MainMenu: {fileID: 0}
-  Credits: {fileID: 0}
-  hurt: {fileID: 0}
-  block: {fileID: 0}
-  KO: {fileID: 0}
-  countdown: {fileID: 0}
-  win: {fileID: 0}
-  beep: {fileID: 0}
-  sceneManager: {fileID: 0}
+  musicSource: {fileID: 954277251}
+  SFXSource: {fileID: 2079377562}
+  Fighting: {fileID: 8300000, guid: 475b23cb4b90ed44bb855e34d826effa, type: 3}
+  SplashScreen: {fileID: 8300000, guid: c97d53794d6ea0446b55f3b392d07f2e, type: 3}
+  CharSelect: {fileID: 8300000, guid: 1d8680723721c0a4f86c4c0c8d423174, type: 3}
+  Credits: {fileID: 8300000, guid: df012301f7199494a986dd8cbb4ac3b0, type: 3}
+  hurt: {fileID: 8300000, guid: 7c698653e90c6a94d84870513c2ae0dd, type: 3}
+  block: {fileID: 8300000, guid: a609b869421525347b311fa6394fa5e9, type: 3}
+  KO: {fileID: 8300000, guid: 0a77898ce3c40fe4ab06de2ad29bd288, type: 3}
+  countdown: {fileID: 8300000, guid: e59e6694f133f6746951e8f4349c98b6, type: 3}
+  win: {fileID: 8300000, guid: c03b6156fc8e6bd4fad329fe4076d31d, type: 3}
+  beep: {fileID: 8300000, guid: 4ce54fcac4d3d78478c0f6f06368a88b, type: 3}
+  back: {fileID: 8300000, guid: 624e9a5ed2bea414899cd33ad74cae49, type: 3}
+  sceneManager: {fileID: 443636992}
   p1: {fileID: 0}
   p2: {fileID: 0}
 --- !u!4 &1716052743
@@ -3721,6 +3781,7 @@ MonoBehaviour:
   hoverOutline: {fileID: 1564390310}
   panelOutline: {fileID: 1764289626}
   confirmSelect: {fileID: 1018787864}
+  audioManager: {fileID: 1716052742}
 --- !u!114 &1764289628
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3894,6 +3955,7 @@ MonoBehaviour:
   hoverOutline: {fileID: 49023648}
   panelOutline: {fileID: 1772360931}
   confirmSelect: {fileID: 1018787864}
+  audioManager: {fileID: 1716052742}
 --- !u!114 &1772360933
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4213,7 +4275,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.663
   m_Pitch: 1
   Loop: 0
   Mute: 0
