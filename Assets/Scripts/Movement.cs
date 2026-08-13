@@ -581,7 +581,6 @@ public class Movement : MonoBehaviour
 
         if (isGrounded)
         {
-            animator.SetBool("isGrounded", true);
             backwardSpeedMod = 0.6f;
         }
 
@@ -690,7 +689,7 @@ public class Movement : MonoBehaviour
 
     private void Crouch(bool downpressed)
     {
-
+     
         if (!isGrounded)
         {
             crouchSpeedMod = 1;
@@ -956,6 +955,8 @@ public class Movement : MonoBehaviour
         {
             return;
         }
+
+        animator.SetBool("isCrouching", false);
         animator.SetTrigger("Jump");
         //animator.Play("Jumping");
         backwardSpeedMod = 1f;
