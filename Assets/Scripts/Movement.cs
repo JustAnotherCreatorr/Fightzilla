@@ -68,6 +68,8 @@ public class Movement : MonoBehaviour
     private float currentPos;
     private int direction;
 
+    public bool isPressingButton;
+
     #endregion variables
 
     // Start is called before the first frame update
@@ -191,6 +193,8 @@ public class Movement : MonoBehaviour
 
         GetIsGrounded();
 
+        isPressingButton = horizontal != 0f || shiftPressed || downPressed || dashPressed || upArrowPressed;
+
         prevPos = currentPos;
         currentPos = transform.position.z;
 
@@ -233,7 +237,7 @@ public class Movement : MonoBehaviour
             CancelCrouch();
         }
 
-        if (prevPos == currentPos && !isCrouching && isGrounded)
+        if (prevPos == currentPos && !isCrouching && isGrounded && !isPressingButton)
         {
             StartCoroutine(GradualDecrease());
         }
