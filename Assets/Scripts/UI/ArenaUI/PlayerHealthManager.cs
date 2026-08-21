@@ -41,8 +41,8 @@ public class PlayerHealthManager : MonoBehaviour
 
     public GameObject winningPlayer;
 
-    // New: reference to the single shared GameEndMenuManager instance.
     public GameEndMenuManager gameEndMenuManager;
+    public Combat combat;
 
     // Start is called before the first frame update
     void Start()
@@ -84,8 +84,9 @@ public class PlayerHealthManager : MonoBehaviour
 
     public void PlayerHurt(AttackSO attackSO)
     {
+        bool isUnblockable = attackSO.attackName == "HPunch" || attackSO.attackName == "HKick";
 
-        if (playerMovement.isBlocking && hit)
+        if (playerMovement.isBlocking && hit && !isUnblockable)
         {
             animator.SetBool("Hit", false);
             hit = false;
