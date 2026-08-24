@@ -4205,6 +4205,7 @@ MonoBehaviour:
   - {fileID: -203655887218126122, guid: 76ec7f2f246912744ba3fcdc9ba3d0cf, type: 3}
   - {fileID: -203655887218126122, guid: 4fcdf34950908e04cbeddd8fcbc212a5, type: 3}
   allowMovement: 0
+  isPressingButton: 0
 --- !u!136 &375259169
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -4575,6 +4576,7 @@ MonoBehaviour:
   deathParticles: {fileID: 1170549355}
   winningPlayer: {fileID: 0}
   gameEndMenuManager: {fileID: 1887370577}
+  combat: {fileID: 0}
 --- !u!1 &470914438
 GameObject:
   m_ObjectHideFlags: 0
@@ -6910,7 +6912,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -393, y: -90}
+  m_AnchoredPosition: {x: -393, y: -85.71}
   m_SizeDelta: {x: 238.89636, y: 73.641655}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &863168785
@@ -6934,7 +6936,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 38
+    m_FontSize: 36
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0
@@ -7028,6 +7030,7 @@ MonoBehaviour:
   - {fileID: -203655887218126122, guid: 76ec7f2f246912744ba3fcdc9ba3d0cf, type: 3}
   - {fileID: -203655887218126122, guid: 4fcdf34950908e04cbeddd8fcbc212a5, type: 3}
   allowMovement: 0
+  isPressingButton: 0
 --- !u!136 &869107094
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -11507,6 +11510,7 @@ MonoBehaviour:
   deathParticles: {fileID: 1342502929}
   winningPlayer: {fileID: 0}
   gameEndMenuManager: {fileID: 1887370577}
+  combat: {fileID: 0}
 --- !u!1 &1237826624
 GameObject:
   m_ObjectHideFlags: 0
