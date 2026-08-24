@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: HKick
   m_EditorClassIdentifier: 
   attackName: HKick
-  damage: 0.079
+  damage: 0.065

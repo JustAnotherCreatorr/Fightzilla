@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: LPunch
   m_EditorClassIdentifier: 
   attackName: LPunch
-  damage: 0.04
+  damage: 0.02
