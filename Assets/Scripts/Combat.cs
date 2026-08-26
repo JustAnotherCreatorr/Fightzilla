@@ -1,10 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class Combat : MonoBehaviour
 {
-
     public int playerNumber;
     public Animator animator;
     public string chosenAttack;
@@ -38,7 +36,6 @@ public class Combat : MonoBehaviour
             medKick = Input.GetKeyDown(KeyCode.Keypad8);
             heavyKick = Input.GetKeyDown(KeyCode.Keypad9);
         }
-
         if (playerNumber == 1)
         {
             lightPunch = Input.GetKeyDown(KeyCode.Alpha4);
@@ -48,23 +45,19 @@ public class Combat : MonoBehaviour
             medKick = Input.GetKeyDown(KeyCode.T);
             heavyKick = Input.GetKeyDown(KeyCode.Y);
         }
-
         if (delayLength > 0)
         {
             delayLength -= Time.deltaTime;
             return;
         }
-
         if (allowCombat == false)
         {
             return;
         }
-
         if (pm.paused)
         {
             return;
         }
-
         if (lightPunch) LPunch(lightPunch);
         if (medPunch) MPunch(medPunch);
         if (heavyPunch) HPunch(heavyPunch);
@@ -78,8 +71,8 @@ public class Combat : MonoBehaviour
         animator.SetBool("LPunch", true);
         animator.Play("Base Layer.LPunch");
         animator.SetBool("LPunch", false);
-        delayLength = 0.3f;
-        
+        delayLength = 0.37f;
+
     }
 
     private void MPunch(bool medPunch)
@@ -87,8 +80,7 @@ public class Combat : MonoBehaviour
         animator.SetBool("MPunch", true);
         animator.Play("Base Layer.MPunch");
         animator.SetBool("MPunch", false);
-        delayLength = 0.6f;
-       
+        delayLength = 0.45f;
     }
 
     private void HPunch(bool heavyPunch)
@@ -96,33 +88,30 @@ public class Combat : MonoBehaviour
         animator.SetBool("HPunch", true);
         animator.Play("Base Layer.HPunch");
         animator.SetBool("HPunch", false);
-        delayLength = 1f;
-       
-    }
+        delayLength = 0.5f; 
 
+    }
     private void LKick(bool lightKick)
     {
         animator.SetBool("LKick", true);
         animator.Play("Base Layer.LKick");
         animator.SetBool("LKick", false);
-        delayLength = 0f;
+        delayLength = 0.37f; 
     }
-
     private void MKick(bool medKick)
     {
         animator.SetBool("MKick", true);
         animator.Play("Base Layer.MKick");
         animator.SetBool("MKick", false);
-        delayLength = 0.7f;
-    
-    }
+        delayLength = 0.45f;
 
+    }
     private void HKick(bool heavyKick)
     {
         animator.SetBool("HKick", true);
         animator.Play("Base Layer.HKick");
         animator.SetBool("HKick", false);
-        delayLength = 1.1f;
-       
+        delayLength = 0.5f; 
+
     }
 }

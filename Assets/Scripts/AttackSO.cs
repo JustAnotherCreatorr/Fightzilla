@@ -7,4 +7,5 @@ public class AttackSO : ScriptableObject
 {
     public string attackName;
     public float damage;
+    public float hitStunDuration;
 }

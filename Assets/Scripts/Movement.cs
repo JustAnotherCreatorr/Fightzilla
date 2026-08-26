@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
+
     #region variables
 
     public bool debug;
@@ -67,8 +68,6 @@ public class Movement : MonoBehaviour
     private float prevPos;
     private float currentPos;
     private int direction;
-
-    public bool isPressingButton;
 
     #endregion variables
 
@@ -193,8 +192,6 @@ public class Movement : MonoBehaviour
 
         GetIsGrounded();
 
-        isPressingButton = horizontal != 0f || shiftPressed || downPressed || dashPressed || upArrowPressed;
-
         prevPos = currentPos;
         currentPos = transform.position.z;
 
@@ -237,7 +234,7 @@ public class Movement : MonoBehaviour
             CancelCrouch();
         }
 
-        if (prevPos == currentPos && !isCrouching && isGrounded && !isPressingButton)
+        if (prevPos == currentPos && !isCrouching && isGrounded)
         {
             StartCoroutine(GradualDecrease());
         }
@@ -579,14 +576,22 @@ public class Movement : MonoBehaviour
 
     private bool GetIsGrounded()
     {
-        int groundMask = ~playerLayer;
+        int groundMask = ~playerLayer.value;
         isGrounded = Physics.Raycast(transform.position, Vector3.down, 1f, groundMask);
         Debug.DrawRay(transform.position, Vector3.down * 1f, Color.black);
 
         if (isGrounded)
         {
+            animator.SetBool("isGrounded", true);
             backwardSpeedMod = 0.6f;
         }
+        else
+        {
+            //animator.SetTrigger("isFalling");
+            //animator.Play("Base Layer.Falling"); 
+        }
+
+        // print(isGrounded);
 
         animator.SetBool("isGrounded", isGrounded);
         return isGrounded;
@@ -693,7 +698,7 @@ public class Movement : MonoBehaviour
 
     private void Crouch(bool downpressed)
     {
-     
+
         if (!isGrounded)
         {
             crouchSpeedMod = 1;
@@ -959,8 +964,6 @@ public class Movement : MonoBehaviour
         {
             return;
         }
-
-        animator.SetBool("isCrouching", false);
         animator.SetTrigger("Jump");
         //animator.Play("Jumping");
         backwardSpeedMod = 1f;
@@ -1015,23 +1018,12 @@ public class Movement : MonoBehaviour
         if (animator.runtimeAnimatorController == OGanim)
         {
             animator.runtimeAnimatorController = reverseAnim;
-
-            if (!isGrounded)
-            {
-                animator.Play("Base Layer.Falling");
-            }
-
             return;
         }
 
         if (animator.runtimeAnimatorController == reverseAnim)
         {
             animator.runtimeAnimatorController = OGanim;
-
-            if (!isGrounded)
-            {
-                animator.Play("Base Layer.Falling");
-            }
         }
 
         // }
@@ -1083,13 +1075,12 @@ public class Movement : MonoBehaviour
         {
             yield return new WaitForSeconds(0.1f);
         }
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(playerHealth.lastHitStunDuration);
         hitStop = 1;
     }
 
     private void SetupNextRound()
     {
-
         gameTimer.timeUpText.gameObject.SetActive(false);
 
         if (playerNumber == 1)
@@ -1099,7 +1090,6 @@ public class Movement : MonoBehaviour
             transform.localEulerAngles = regularRo;
             dashForce = 5;
         }
-
 
         if (playerNumber == 2)
         {
@@ -1113,7 +1103,6 @@ public class Movement : MonoBehaviour
 
         animator.SetBool("Knockout", false);
         animator.Play("Base Layer.Blend Tree");
-
 
         if (gameTimer.timeUp)
         {

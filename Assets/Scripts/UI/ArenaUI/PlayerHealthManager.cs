@@ -31,6 +31,7 @@ public class PlayerHealthManager : MonoBehaviour
     public bool hitDefended;
     public bool crouchBlockHit;
     public int losses = 0;
+    public float lastHitStunDuration = 0.5f;
 
     public GameObject otherPlayerWinSymbol1;
     public GameObject otherPlayerWinSymbol2;
@@ -85,6 +86,8 @@ public class PlayerHealthManager : MonoBehaviour
     public void PlayerHurt(AttackSO attackSO)
     {
         bool isUnblockable = attackSO.attackName == "HPunch" || attackSO.attackName == "HKick";
+
+        lastHitStunDuration = attackSO.hitStunDuration;
 
         if (playerMovement.isBlocking && hit && !isUnblockable)
         {
@@ -224,3 +227,4 @@ public class PlayerHealthManager : MonoBehaviour
         }
     }
 }
+
