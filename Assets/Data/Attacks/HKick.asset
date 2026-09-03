@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackName: HKick
   damage: 0.065
+  hitStunDuration: 0.71

@@ -234,7 +234,7 @@ public class Movement : MonoBehaviour
             CancelCrouch();
         }
 
-        if (prevPos == currentPos && !isCrouching && isGrounded)
+        if (horizontal == 0f && isGrounded)
         {
             StartCoroutine(GradualDecrease());
         }
@@ -739,7 +739,6 @@ public class Movement : MonoBehaviour
                 isCrouching = true;
                 crouchSpeedMod = 0.8f;
                 animator.SetBool("isCrouching", true);
-                animator.Play("Base Layer.Crouch");
             }
         }
     }
@@ -748,6 +747,7 @@ public class Movement : MonoBehaviour
     {
         isCrouching = false;
         crouchSpeedMod = 1f;
+        StartCoroutine(GradualDecrease());
         animator.SetBool("isCrouching", false);
     }
 

@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackName: LKick
   damage: 0.025
+  hitStunDuration: 0.2
