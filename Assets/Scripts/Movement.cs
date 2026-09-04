@@ -35,6 +35,8 @@ public class Movement : MonoBehaviour
     private float maxParaSpeed = 1f;
     private float maxParaNegativeSpeed = -1f;
     private float runAccel = 1f;
+    public float accelRate = 3f;
+    public float reversalRate = 100f;
     public bool reversed = false;
     public bool correctDir = true;
 
@@ -241,29 +243,49 @@ public class Movement : MonoBehaviour
 
         // if right is being pressed
 
+        #region oldUnstableMethod
+        //if (Input.anyKey && horizontal != 0f)
+        //{
+        //    bool reversingDirection = (animParaSpeed > 0f && horizontal < 0f) || (animParaSpeed < 0f && horizontal > 0f);
+
+        //    if (reversingDirection)
+        //    {
+        //        float reversalTarget = horizontal > 0f ? 0.4f : -0.4f;
+        //        animParaSpeed = Mathf.MoveTowards(animParaSpeed, reversalTarget, reversalRate * Time.deltaTime);
+        //    }
+
+        //    if (playerNumber == 1)
+        //    {
+        //        float posSpeed = Mathf.Abs(animParaSpeed);
+        //        posSpeed *= -1;
+        //        acceleration = posSpeed + Time.deltaTime + 0.1f;
+        //        float PosHorizontal = Mathf.Abs(horizontal);
+        //        posSpeed = PosHorizontal * acceleration * runAccel;
+        //        holdingDown = true;
+        //        animParaSpeed = posSpeed;
+        //    }
+
+        //    if (playerNumber == 2)
+        //    {
+        //        float posSpeed = -Mathf.Abs(animParaSpeed);
+        //        posSpeed *= -1;
+        //        acceleration = posSpeed - Time.deltaTime - 0.1f;
+        //        float PosHorizontal = -Mathf.Abs(horizontal);
+        //        posSpeed = PosHorizontal * acceleration * runAccel;
+        //        holdingDown = true;
+        //        animParaSpeed = posSpeed;
+        //    }
+        //}
+        #endregion
+
         if (Input.anyKey && horizontal != 0f)
         {
-            if (playerNumber == 1)
-            {
-                float posSpeed = Mathf.Abs(animParaSpeed);
-                posSpeed *= -1;
-                acceleration = posSpeed + Time.deltaTime + 0.1f;
-                float PosHorizontal = Mathf.Abs(horizontal);
-                posSpeed = PosHorizontal * acceleration * runAccel;
-                holdingDown = true;
-                animParaSpeed = posSpeed;
-            }
+            bool reversingDirection = (animParaSpeed > 0f && horizontal < 0f) || (animParaSpeed < 0f && horizontal > 0f);
+            float target = horizontal > 0f ? maxParaSpeed : maxParaNegativeSpeed;
+            float rate = (reversingDirection ? reversalRate : accelRate) * runAccel;
 
-            if (playerNumber == 2)
-            {
-                float posSpeed = -Mathf.Abs(animParaSpeed);
-                posSpeed *= -1;
-                acceleration = posSpeed - Time.deltaTime - 0.1f;
-                float PosHorizontal = -Mathf.Abs(horizontal);
-                posSpeed = PosHorizontal * acceleration * runAccel;
-                holdingDown = true;
-                animParaSpeed = posSpeed;
-            }
+            animParaSpeed = Mathf.MoveTowards(animParaSpeed, target, rate * Time.deltaTime);
+            holdingDown = true;
         }
 
         // no keys are being pressed
@@ -280,8 +302,6 @@ public class Movement : MonoBehaviour
 
         if (horizontal > 0)
         {
-            animParaSpeed = Mathf.Abs(animParaSpeed);
-
             if (playerNumber == 2)
             {
                 if (isSprinting)
@@ -301,8 +321,6 @@ public class Movement : MonoBehaviour
         }
         else if (horizontal < 0)
         {
-            animParaSpeed = -Mathf.Abs(animParaSpeed);
-
             if (playerNumber == 2)
             {
                 if (isSprinting)
