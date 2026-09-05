@@ -36,7 +36,7 @@ public class Movement : MonoBehaviour
     private float maxParaNegativeSpeed = -1f;
     private float runAccel = 1f;
     public float accelRate = 3f;
-    public float reversalRate = 100f;
+    public float reversalRate = 120f;
     public bool reversed = false;
     public bool correctDir = true;
 
@@ -370,8 +370,6 @@ public class Movement : MonoBehaviour
                 animParaSpeed += -1;
             }
         }
-
-
         #endregion movement
 
         #region SpeedMods
@@ -454,7 +452,6 @@ public class Movement : MonoBehaviour
             {
                 pullback = 1;
             }
-
 
             if (horizontal < 0)
             {
